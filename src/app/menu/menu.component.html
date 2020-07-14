@@ -1,0 +1,28 @@
+<mat-nav-list>
+  <mat-list-item [routerLink]="['dashboard']">
+    <a matLine
+       [routerLinkActive]="'active'">Dashboard</a>
+  </mat-list-item>
+
+  <mat-divider></mat-divider>
+
+  <mat-list-item>
+    <a matLine>Diets</a>
+  </mat-list-item>
+
+  <mat-list-item>
+    <a matLine>Meals</a>
+  </mat-list-item>
+
+  <mat-list-item [routerLink]="['component']">
+    <a matLine
+       [routerLinkActive]="'active'">Components</a>
+  </mat-list-item>
+
+  <mat-divider></mat-divider>
+
+  <mat-list-item>
+    <a matLine>Log out</a>
+  </mat-list-item>
+
+</mat-nav-list>

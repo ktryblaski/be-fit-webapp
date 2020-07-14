@@ -1,0 +1,19 @@
+<table class="bf-table">
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Carbohydrates</th>
+    <th>Proteins</th>
+    <th>Fats</th>
+    <th>KCAL</th>
+  </tr>
+
+  <tr *ngFor="let component of components">
+    <td>{{component.id}}</td>
+    <td>{{component.name}}</td>
+    <td>{{component.macronutrients.carbohydrates}}</td>
+    <td>{{component.macronutrients.proteins}}</td>
+    <td>{{component.macronutrients.fats}}</td>
+    <td>{{component.macronutrients | caloriesCalculator}}</td>
+  </tr>
+</table>

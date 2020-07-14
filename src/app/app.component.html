@@ -1,2 +1,12 @@
-<p>app works!</p>
-<router-outlet></router-outlet>
+<mat-toolbar color="primary">
+  <app-toolbar></app-toolbar>
+</mat-toolbar>
+
+<mat-sidenav-container class="container">
+  <mat-sidenav mode="side" opened class="sidenav">
+    <app-menu></app-menu>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-main-area></app-main-area>
+  </mat-sidenav-content>
+</mat-sidenav-container>

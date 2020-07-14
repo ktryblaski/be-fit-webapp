@@ -1,0 +1,14 @@
+<ng-container *ngIf="loaded$ | async; else loading">
+  <h1>Components</h1>
+
+  <app-components-table [components]="components$ | async"></app-components-table>
+
+  <div *ngIf="loading$ | async">
+    LOADING .
+  </div>
+
+</ng-container>
+
+<ng-template #loading>
+  LOADING ...
+</ng-template>
