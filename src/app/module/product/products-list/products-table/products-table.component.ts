@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Product} from "../../../../shared/model/domain/product";
 
 @Component({
@@ -8,9 +8,14 @@ import {Product} from "../../../../shared/model/domain/product";
 })
 export class ProductsTableComponent {
 
-  @Input()
-  products: Product[]
+  @Input() products: Product[]
+
+  @Output() clickId: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() { }
+
+  handleClickId(id: number) {
+    this.clickId.next(id);
+  }
 
 }

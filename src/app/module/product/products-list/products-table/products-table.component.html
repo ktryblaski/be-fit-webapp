@@ -9,7 +9,10 @@
   </tr>
 
   <tr *ngFor="let product of products">
-    <td>{{product.id}}</td>
+    <td>
+      <a mat-button target="_blank" color="primary"
+         (click)="handleClickId(product.id)">{{product.id}}</a>
+    </td>
     <td>{{product.name}}</td>
     <td>{{product.macronutrients.carbohydrates}}</td>
     <td>{{product.macronutrients.proteins}}</td>

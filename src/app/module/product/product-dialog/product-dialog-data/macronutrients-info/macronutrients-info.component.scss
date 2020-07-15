@@ -1,0 +1,40 @@
+.macronutrient {
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  padding: 7px 0;
+
+  &.kcal {
+    margin-top: 20px;
+
+    span {
+      background-color: orangered;
+    }
+  }
+
+  span {
+    display: inline-block;
+    padding: .25em 1em;
+    font-weight: 500;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    color: black;
+
+    &.carbohydrates {
+      background-color: #26b826;
+    }
+
+    &.proteins {
+      background-color: cornflowerblue;
+    }
+
+    &.fats {
+      background-color: #b1b11d;
+    }
+  }
+}
+

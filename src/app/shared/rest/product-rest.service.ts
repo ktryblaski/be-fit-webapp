@@ -16,4 +16,8 @@ export class ProductRestService {
     return this.http.get<Product[]>(this.API_URL);
   }
 
+  getProduct(productId: number): Observable<Product> {
+    return this.http.get<Product>(`${this.API_URL}/${productId}`);
+  }
+
 }
