@@ -14,13 +14,6 @@ import { MatListModule } from "@angular/material/list";
 import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    DashboardComponent,
-    MenuComponent,
-    MainAreaComponent,
-    ToolbarComponent,
-  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -29,6 +22,13 @@ import { HttpClientModule } from "@angular/common/http";
     MatSidenavModule,
     MatListModule,
     HttpClientModule,
+  ],
+  declarations: [
+    AppComponent,
+    DashboardComponent,
+    MenuComponent,
+    MainAreaComponent,
+    ToolbarComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

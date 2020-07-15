@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {Product} from "../../../shared/model/domain/product";
 import {MatDialog} from "@angular/material/dialog";
 import {ProductDialogComponent} from "../product-dialog/product-dialog.component";
+import {NewProductDialogComponent} from "../new-product-dialog/new-product-dialog.component";
 
 @Component({
   selector: 'app-products-list',
@@ -33,7 +34,12 @@ export class ProductsListComponent implements OnInit {
       data: {
         productId: id
       },
-      minHeight: '300px',
+      width: '400px'
+    });
+  }
+
+  handleAddNewProduct(): void {
+    this.dialog.open(NewProductDialogComponent, {
       width: '400px'
     });
   }

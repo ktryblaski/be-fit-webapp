@@ -13,15 +13,9 @@ import { ProductDialogDataComponent } from './product-dialog/product-dialog-data
 import { MacronutrientsInfoComponent } from './product-dialog/product-dialog-data/macronutrients-info/macronutrients-info.component';
 import {MatBadgeModule} from "@angular/material/badge";
 import {MatChipsModule} from "@angular/material/chips";
+import { NewProductDialogComponent } from './new-product-dialog/new-product-dialog.component';
 
 @NgModule({
-  declarations: [
-    ProductsListComponent,
-    ProductsTableComponent,
-    ProductDialogComponent,
-    ProductDialogDataComponent,
-    MacronutrientsInfoComponent
-  ],
   imports: [
     CommonModule,
     ProductRoutingModule,
@@ -32,6 +26,14 @@ import {MatChipsModule} from "@angular/material/chips";
     MatIconModule,
     MatBadgeModule,
     MatChipsModule
+  ],
+  declarations: [
+    ProductsListComponent,
+    ProductsTableComponent,
+    ProductDialogComponent,
+    ProductDialogDataComponent,
+    MacronutrientsInfoComponent,
+    NewProductDialogComponent
   ]
 })
 export class ProductModule {

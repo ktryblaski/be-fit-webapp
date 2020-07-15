@@ -10,7 +10,7 @@
 
   <tr *ngFor="let product of products">
     <td>
-      <a mat-button target="_blank" color="primary"
+      <a class="product-link" target="_blank"
          (click)="handleClickId(product.id)">{{product.id}}</a>
     </td>
     <td>{{product.name}}</td>

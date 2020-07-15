@@ -126,7 +126,7 @@
   "defaultProject": "be-fit",
   "schematics": {
     "@schematics/angular:component": {
-      "styleext": "scss"
+      "style": "scss"
     }
   }
 }
