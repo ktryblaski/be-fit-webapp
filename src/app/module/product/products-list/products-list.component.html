@@ -1,0 +1,15 @@
+<ng-container *ngIf="loaded$ | async; else loading">
+  <h1>Products</h1>
+
+  <div class="pending-indicator-overlay-boundaries">
+    <app-products-table [products]="products$ | async"></app-products-table>
+
+    <div class="pending-indicator-overlay-container" *ngIf="loading$ | async">
+      <app-spinner></app-spinner>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #loading>
+  <app-spinner></app-spinner>
+</ng-template>

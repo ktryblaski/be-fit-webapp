@@ -1,5 +1,7 @@
 .container {
   background-color: rgb(242, 247, 251);
+  overflow: auto;
+  height: 100%;
 }
 
 .card {

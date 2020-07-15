@@ -1,23 +1,23 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import {ComponentsListComponent} from "./components-list/components-list.component";
-import {ComponentRoutingModule} from "./component-routing.module";
+import {ProductsListComponent} from "./products-list/products-list.component";
+import {ProductRoutingModule} from "./product-routing.module";
 import {SpinnerModule} from "../../shared/component/spinner/spinner.module";
-import { ComponentsTableComponent } from './components-list/components-table/components-table.component';
+import { ProductsTableComponent } from './products-list/products-table/products-table.component';
 import {CaloriesCalculatorModule} from "../../shared/pipe/calories-calculator.module";
 
 @NgModule({
   declarations: [
-    ComponentsListComponent,
-    ComponentsTableComponent
+    ProductsListComponent,
+    ProductsTableComponent
   ],
   imports: [
     CommonModule,
-    ComponentRoutingModule,
+    ProductRoutingModule,
     SpinnerModule,
     CaloriesCalculatorModule
   ]
 })
-export class ComponentModule {
+export class ProductModule {
 
 }

@@ -8,7 +8,7 @@ const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent},
 
   {path: 'auth', loadChildren: () => import('./module/auth/auth.module').then(module => module.AuthModule)},
-  {path: 'component', loadChildren: () => import('./module/component/component.module').then(module => module.ComponentModule)}
+  {path: 'product', loadChildren: () => import('./module/product/product.module').then(module => module.ProductModule)}
 
 ];
 

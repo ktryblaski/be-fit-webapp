@@ -1,25 +1,25 @@
 import {Injectable, OnDestroy} from "@angular/core";
-import {ComponentRestService} from "../../../shared/rest/component-rest.service";
 import {BehaviorSubject, merge, noop, Observable, Subject, Subscription, throwError} from "rxjs";
-import {Component} from "../../../shared/model/domain/component";
+import {Product} from "../../../shared/model/domain/product";
 import {catchError, distinctUntilChanged, ignoreElements, switchMap, tap} from "rxjs/operators";
+import {ProductRestService} from "../../../shared/rest/product-rest.service";
 
 @Injectable()
-export class ComponentsListService implements OnDestroy {
+export class ProductsListService implements OnDestroy {
 
   private readonly loadAction = new Subject();
 
-  private readonly components = new BehaviorSubject<Component[]>(null);
+  private readonly products = new BehaviorSubject<Product[]>(null);
   private readonly loaded = new BehaviorSubject<boolean>(false);
   private readonly loading = new BehaviorSubject<boolean>(false);
 
-  readonly components$: Observable<Component[]> = this.components.pipe(distinctUntilChanged());
+  readonly products$: Observable<Product[]> = this.products.pipe(distinctUntilChanged());
   readonly loaded$: Observable<boolean> = this.loaded.pipe(distinctUntilChanged());
   readonly loading$: Observable<boolean> = this.loading.pipe(distinctUntilChanged());
 
   private subscription: Subscription;
 
-  constructor(private restService: ComponentRestService) {
+  constructor(private restService: ProductRestService) {
     this.subscription = merge(
       this.loadEffect()
     ).subscribe(noop);
@@ -32,12 +32,11 @@ export class ComponentsListService implements OnDestroy {
   private loadEffect(): Observable<never> {
     return this.loadAction.pipe(
       tap(() => {
-        this.loaded.next(false);
         this.loading.next(true);
       }),
-      switchMap(() => this.restService.getComponents().pipe(
-        tap((components: Component[]) => {
-          this.components.next(components);
+      switchMap(() => this.restService.getProducts().pipe(
+        tap((products: Product[]) => {
+          this.products.next(products);
           this.loaded.next(true);
           this.loading.next(false);
         }),

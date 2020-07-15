@@ -1,6 +1,6 @@
 import {Macronutrients} from "./macronutrients";
 
-export interface Component {
+export interface Product {
   id: number,
   name: string,
   macronutrients: Macronutrients;

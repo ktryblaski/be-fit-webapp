@@ -29,3 +29,20 @@ table.bf-table > tr > td {
   color: rgba(0, 0, 0, .87);
   font-size: 14px;
 }
+
+.pending-indicator-overlay-boundaries {
+  position: relative;
+}
+
+.pending-indicator-overlay-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(255, 255, 255, 0.6);
+}
