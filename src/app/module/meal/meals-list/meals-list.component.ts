@@ -3,6 +3,7 @@ import {MealsListService} from "./meals-list.service";
 import {MatDialog} from "@angular/material/dialog";
 import {Observable} from "rxjs";
 import {MealView} from "../../../shared/model/domain/meal";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-meals-list',
@@ -17,6 +18,8 @@ export class MealsListComponent implements OnInit {
   public loading$: Observable<boolean>;
 
   constructor(private service: MealsListService,
+              private route: ActivatedRoute,
+              private router: Router,
               private dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -28,18 +31,11 @@ export class MealsListComponent implements OnInit {
   }
 
   handleClickId(id: number): void {
-    // this.dialog.open(MealDialogComponent, {
-    //   data: {
-    //     productId: id
-    //   },
-    //   width: '400px'
-    // });
+    this.router.navigate([id], {relativeTo: this.route})
   }
 
   handleAddNewMeal(): void {
-    // this.dialog.open(MealDialogComponent, {
-    //   width: '400px'
-    // });
+    this.router.navigate(['new'], {relativeTo: this.route})
   }
 
 }

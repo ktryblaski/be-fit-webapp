@@ -1,0 +1,17 @@
+<ng-container *ngIf="loaded$ | async; else loading">
+  <div class="pending-indicator-overlay-boundaries">
+    <button [routerLink]="['edit']"
+            mat-raised-button
+            class="edit-button">Edit</button>
+
+    <app-meal-details-data [meal]="meal$ | async"></app-meal-details-data>
+
+    <div class="pending-indicator-overlay-container" *ngIf="loading$ | async">
+      <app-spinner></app-spinner>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #loading>
+  <app-spinner></app-spinner>
+</ng-template>

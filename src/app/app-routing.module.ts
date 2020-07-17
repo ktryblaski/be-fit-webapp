@@ -9,12 +9,13 @@ const routes: Routes = [
 
   {path: 'auth', loadChildren: () => import('./module/auth/auth.module').then(module => module.AuthModule)},
   {path: 'product', loadChildren: () => import('./module/product/product.module').then(module => module.ProductModule)},
-  {path: 'meal', loadChildren: () => import('./module/meal/meal.module').then(module => module.MealModule)}
+  {path: 'meal', loadChildren: () => import('./module/meal/meal.module').then(module => module.MealModule)},
+  {path: 'diet', loadChildren: () => import('./module/diet/diet.module').then(module => module.DietModule)}
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules, enableTracing: true})],
+  imports: [RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules, enableTracing: false})],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

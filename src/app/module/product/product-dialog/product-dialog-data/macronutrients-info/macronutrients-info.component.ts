@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Macronutrients} from "../../../../../shared/model/domain/macronutrients";
 
 @Component({
@@ -8,9 +8,6 @@ import {Macronutrients} from "../../../../../shared/model/domain/macronutrients"
 })
 export class MacronutrientsInfoComponent {
 
-  @Input()
-  macronutrients: Macronutrients;
-
-  constructor() { }
+  @Input() macronutrients: Macronutrients;
 
 }

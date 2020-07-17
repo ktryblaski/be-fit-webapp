@@ -1,13 +1,13 @@
-<div class="macronutrient">
-  Carbohydrates <span class="carbohydrates">{{macronutrients.carbohydrates}}</span>
+<div>
+  Carbohydrates <span class="badge carbohydrates">{{macronutrients.carbohydrates}}</span>
 </div>
-<div class="macronutrient">
-  Proteins <span class="proteins">{{macronutrients.proteins}}</span>
+<div>
+  Proteins <span class="badge proteins">{{macronutrients.proteins}}</span>
 </div>
-<div class="macronutrient">
-  Fats <span class="fats">{{macronutrients.fats}}</span>
+<div>
+  Fats <span class="badge fats">{{macronutrients.fats}}</span>
 </div>
 
-<div class="macronutrient kcal">
-  KCAL <span>{{macronutrients | caloriesCalculator}}</span>
+<div class="kcal">
+  KCAL <span class="badge">{{macronutrients | macronutrientsCaloriesCalculator}}</span>
 </div>

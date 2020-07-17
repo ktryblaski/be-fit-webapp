@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import "src/app/shared/style";
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
@@ -47,7 +49,7 @@ table.bf-table {
 }
 
 a.entity-link {
-  color: #3F51B5;
+  color: $primary-color;
   padding: 0 15px;
 
   &:hover {
@@ -69,14 +71,18 @@ a.entity-link {
   }
 
   &.carbohydrates::before {
-    color: #33FF99;
+    color: $carbohydrates-color;
   }
 
   &.proteins::before {
-    color: #66B2FF;
+    color: $proteins-color;
   }
 
   &.fats::before {
-    color: #FFFF99;
+    color: $fats-color;
+  }
+
+  &.kcal::before {
+    color: $kcal-color;
   }
 }

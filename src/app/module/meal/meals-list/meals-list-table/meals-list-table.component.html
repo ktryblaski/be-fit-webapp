@@ -4,22 +4,24 @@
     <th>Name</th>
     <th>Description</th>
     <th>Type</th>
-    <th>Weight</th>
+    <th>Weight [g]</th>
     <th>
-      <span class="macronutrients-label carbohydrates">Carbohydrates</span>
+      <span class="macronutrients-label carbohydrates">Carbohydrates [g]</span>
     </th>
     <th>
-      <span class="macronutrients-label proteins">Proteins</span>
+      <span class="macronutrients-label proteins">Proteins [g]</span>
     </th>
     <th>
-      <span class="macronutrients-label fats">Fats</span>
+      <span class="macronutrients-label fats">Fats [g]</span>
     </th>
-    <th>KCAL</th>
+    <th>
+      <span class="macronutrients-label kcal">KCAL</span>
+    </th>
   </tr>
 
   <tr *ngFor="let meal of meals">
     <td>
-      <a class="entity-link" target="_blank"
+      <a class="entity-link"
          (click)="handleClickId(meal.id)">{{meal.id}}</a>
     </td>
     <td class="name-cell">{{meal.name}}</td>
@@ -29,6 +31,6 @@
     <td>{{meal.carbohydrates}}</td>
     <td>{{meal.proteins}}</td>
     <td>{{meal.fats}}</td>
-    <td>{{meal | caloriesCalculator}}</td>
+    <td>{{meal | macronutrientsCaloriesCalculator}}</td>
   </tr>
 </table>

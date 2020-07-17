@@ -4,7 +4,7 @@ import {ProductsListComponent} from "./products-list/products-list.component";
 import {ProductRoutingModule} from "./product-routing.module";
 import {SpinnerModule} from "../../shared/component/spinner/spinner.module";
 import { ProductsTableComponent } from './products-list/products-table/products-table.component';
-import {CaloriesCalculatorModule} from "../../shared/pipe/calories-calculator/calories-calculator.module";
+import {CalculatorModule} from "../../shared/pipe/calculator/calculator.module";
 import { ProductDialogComponent } from './product-dialog/product-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
@@ -13,8 +13,8 @@ import { ProductDialogDataComponent } from './product-dialog/product-dialog-data
 import { MacronutrientsInfoComponent } from './product-dialog/product-dialog-data/macronutrients-info/macronutrients-info.component';
 import {MatBadgeModule} from "@angular/material/badge";
 import {MatChipsModule} from "@angular/material/chips";
-import { NewProductDialogComponent } from './new-product-dialog/new-product-dialog.component';
-import { NewProductDialogFormComponent } from './new-product-dialog/new-product-dialog-form/new-product-dialog-form.component';
+import { ProductDialogCreateComponent } from './product-dialog-create/product-dialog-create.component';
+import { ProductCreateFormComponent } from './product-dialog-create/product-create-form/product-create-form.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 
@@ -23,7 +23,7 @@ import {MatInputModule} from "@angular/material/input";
     CommonModule,
     ProductRoutingModule,
     SpinnerModule,
-    CaloriesCalculatorModule,
+    CalculatorModule,
     MatDialogModule,
     MatButtonModule,
     MatIconModule,
@@ -38,8 +38,8 @@ import {MatInputModule} from "@angular/material/input";
     ProductDialogComponent,
     ProductDialogDataComponent,
     MacronutrientsInfoComponent,
-    NewProductDialogComponent,
-    NewProductDialogFormComponent
+    ProductDialogCreateComponent,
+    ProductCreateFormComponent
   ]
 })
 export class ProductModule {

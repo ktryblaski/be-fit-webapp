@@ -1,3 +1,5 @@
+@import "src/app/shared/style";
+
 .spinner {
   display: flex;
   justify-content: center;
@@ -12,8 +14,8 @@
     height: 48px;
     margin: 6px;
     border-radius: 50%;
-    border: 6px solid #3F51B5;
-    border-color: #3F51B5 transparent #3F51B5 transparent;
+    border: 6px solid $primary-color;
+    border-color: $primary-color transparent $primary-color transparent;
     animation: spinner 1.2s linear infinite;
   }
 }

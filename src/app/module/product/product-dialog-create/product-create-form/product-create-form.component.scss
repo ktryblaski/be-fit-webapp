@@ -1,3 +1,5 @@
+@import "src/app/shared/style";
+
 .actions {
   display: flex;
   justify-content: flex-end;
@@ -37,6 +39,8 @@
 
   .badge {
     margin-left: 10px;
+    background-color: $kcal-color;
+    color: white;
   }
 }
 

@@ -1,0 +1,43 @@
+<div class="meal-name">{{meal.name}}</div>
+
+<div class="properties">
+  <span class="carbohydrates">
+    <span>Carbohydrates</span>
+    <span class="badge">{{meal | mealCarbohydratesCalculator}}</span>
+  </span>
+  <span class="proteins">
+    <span>Proteins</span>
+    <span class="badge">{{meal | mealProteinsCalculator}}</span>
+  </span>
+  <span class="fats">
+    <span>Fats</span>
+    <span class="badge">{{meal | mealFatsCalculator}}</span>
+  </span>
+  <span class="kcal">
+    <span>KCAL</span>
+    <span class="badge">{{meal | mealCaloriesCalculator}}</span>
+  </span>
+</div>
+
+<div class="meal-property">
+  <div class="title">Meal Type:</div>
+  <div class="value">{{meal.type | i18nMealType}}</div>
+</div>
+
+<div class="meal-property">
+  <div class="title">Weight [g]:</div>
+  <div class="value">{{meal | mealWeightCalculator}}</div>
+</div>
+
+<div class="flex-row">
+  <div class="meal-property ingredients">
+    <div class="title">Ingredients:</div>
+    <app-ingredients-table [ingredients]="meal.ingredients"></app-ingredients-table>
+  </div>
+
+  <div class="meal-property">
+    <div class="title">Description:</div>
+    <div class="value">{{meal.description}}</div>
+  </div>
+</div>
+

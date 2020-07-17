@@ -1,4 +1,6 @@
+@import "src/app/shared/style";
+
 a.active {
-  color: #3F51B5;
+  color: $primary-color;
   text-align: center;
 }

@@ -1,4 +1,6 @@
-.macronutrient {
+@import "src/app/shared/style";
+
+div {
   font-size: 16px;
   display: flex;
   justify-content: space-between;
@@ -7,34 +9,26 @@
   &.kcal {
     margin-top: 20px;
 
-    span {
-      background-color: #000000;
+    span.badge {
+      background-color: $kcal-color;
       color: white;
     }
   }
 
-  span {
-    display: inline-block;
-    padding: .25em 1em;
+  span.badge {
+    font-size: 100%;
     font-weight: 500;
-    line-height: 1;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: .25rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    color: black;
 
     &.carbohydrates {
-      background-color: #33FF99;
+      background-color: $carbohydrates-color;
     }
 
     &.proteins {
-      background-color: #66B2FF;
+      background-color: $proteins-color;
     }
 
     &.fats {
-      background-color: #FFFF99;
+      background-color: $fats-color;
     }
   }
 }

@@ -8,9 +8,6 @@ import {Product} from "../../../../shared/model/domain/product";
 })
 export class ProductDialogDataComponent {
 
-  @Input()
-  product: Product;
-
-  constructor() { }
+  @Input() product: Product;
 
 }

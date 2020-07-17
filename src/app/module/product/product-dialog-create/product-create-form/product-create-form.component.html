@@ -9,23 +9,23 @@
 
   <mat-form-field class="carbohydrates-input">
     <mat-label>Carbohydrates</mat-label>
-    <input type="number" matInput>
+    <input type="number" min="0" matInput>
   </mat-form-field>
 
   <mat-form-field class="proteins-input">
     <mat-label>Proteins</mat-label>
-    <input type="number" matInput>
+    <input type="number" min="0" matInput>
   </mat-form-field>
 
   <mat-form-field class="fats-input">
     <mat-label>Fats</mat-label>
-    <input type="number" matInput>
+    <input type="number" min="0" matInput>
   </mat-form-field>
 
   <div class="kcal-section">
     <span class="kcal-text">KCAL</span>
     <!--TODO-->
-    <span class="badge badge-danger">300</span>
+    <span class="badge">300</span>
   </div>
 
   <div class="actions">

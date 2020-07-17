@@ -1,0 +1,27 @@
+<table class="bf-table">
+  <tr>
+    <th>Name</th>
+    <th>Weight [g]</th>
+    <th>
+      <span class="macronutrients-label carbohydrates">Carbohydrates [g]</span>
+    </th>
+    <th>
+      <span class="macronutrients-label proteins">Proteins [g]</span>
+    </th>
+    <th>
+      <span class="macronutrients-label fats">Fats [g]</span>
+    </th>
+    <th>
+      <span class="macronutrients-label kcal">KCAL</span>
+    </th>
+  </tr>
+
+  <tr *ngFor="let ingredient of ingredients">
+    <td class="name-cell">{{ingredient.product.name}}</td>
+    <td>{{ingredient.weight}}</td>
+    <td>{{ingredient | ingredientCarbohydratesCalculator}}</td>
+    <td>{{ingredient | ingredientProteinsCalculator}}</td>
+    <td>{{ingredient | ingredientFatsCalculator}}</td>
+    <td>{{ingredient.product.macronutrients | macronutrientsCaloriesCalculator:ingredient.weight}}</td>
+  </tr>
+</table>

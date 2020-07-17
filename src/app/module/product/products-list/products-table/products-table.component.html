@@ -3,13 +3,13 @@
     <th>Id</th>
     <th>Name</th>
     <th>
-      <span class="macronutrients-label carbohydrates">Carbohydrates</span>
+      <span class="macronutrients-label carbohydrates">Carbohydrates [g]</span>
     </th>
     <th>
-      <span class="macronutrients-label proteins">Proteins</span>
+      <span class="macronutrients-label proteins">Proteins [g]</span>
     </th>
     <th>
-      <span class="macronutrients-label fats">Fats</span>
+      <span class="macronutrients-label fats">Fats [g]</span>
     </th>
     <th>KCAL</th>
   </tr>
@@ -23,6 +23,6 @@
     <td>{{product.macronutrients.carbohydrates}}</td>
     <td>{{product.macronutrients.proteins}}</td>
     <td>{{product.macronutrients.fats}}</td>
-    <td>{{product.macronutrients | caloriesCalculator}}</td>
+    <td>{{product.macronutrients | macronutrientsCaloriesCalculator}}</td>
   </tr>
 </table>

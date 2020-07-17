@@ -9,10 +9,7 @@ import {Product} from "../../../../shared/model/domain/product";
 export class ProductsTableComponent {
 
   @Input() products: Product[]
-
   @Output() clickId: EventEmitter<number> = new EventEmitter<number>();
-
-  constructor() { }
 
   handleClickId(id: number) {
     this.clickId.next(id);
