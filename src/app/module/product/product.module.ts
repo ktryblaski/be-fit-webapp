@@ -14,6 +14,9 @@ import { MacronutrientsInfoComponent } from './product-dialog/product-dialog-dat
 import {MatBadgeModule} from "@angular/material/badge";
 import {MatChipsModule} from "@angular/material/chips";
 import { NewProductDialogComponent } from './new-product-dialog/new-product-dialog.component';
+import { NewProductDialogFormComponent } from './new-product-dialog/new-product-dialog-form/new-product-dialog-form.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   imports: [
@@ -25,7 +28,9 @@ import { NewProductDialogComponent } from './new-product-dialog/new-product-dial
     MatButtonModule,
     MatIconModule,
     MatBadgeModule,
-    MatChipsModule
+    MatChipsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   declarations: [
     ProductsListComponent,
@@ -33,7 +38,8 @@ import { NewProductDialogComponent } from './new-product-dialog/new-product-dial
     ProductDialogComponent,
     ProductDialogDataComponent,
     MacronutrientsInfoComponent,
-    NewProductDialogComponent
+    NewProductDialogComponent,
+    NewProductDialogFormComponent
   ]
 })
 export class ProductModule {

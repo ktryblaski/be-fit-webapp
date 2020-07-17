@@ -1,0 +1,35 @@
+<form (ngSubmit)="handleSubmit()">
+
+  <h1>New product</h1>
+
+  <mat-form-field class="name-input">
+    <mat-label>Name</mat-label>
+    <input matInput>
+  </mat-form-field>
+
+  <mat-form-field class="carbohydrates-input">
+    <mat-label>Carbohydrates</mat-label>
+    <input type="number" matInput>
+  </mat-form-field>
+
+  <mat-form-field class="proteins-input">
+    <mat-label>Proteins</mat-label>
+    <input type="number" matInput>
+  </mat-form-field>
+
+  <mat-form-field class="fats-input">
+    <mat-label>Fats</mat-label>
+    <input type="number" matInput>
+  </mat-form-field>
+
+  <div class="kcal-section">
+    <span class="kcal-text">KCAL</span>
+    <!--TODO-->
+    <span class="badge badge-danger">300</span>
+  </div>
+
+  <div class="actions">
+    <button (click)="handleCancel()" mat-raised-button>Cancel</button>
+    <button type="submit" mat-raised-button color="primary">Save</button>
+  </div>
+</form>

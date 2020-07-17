@@ -1,0 +1,42 @@
+.actions {
+  display: flex;
+  justify-content: flex-end;
+
+  button {
+    margin-left: 10px;
+  }
+}
+
+.name-input {
+  width: 100%;
+}
+
+.carbohydrates-input {
+  width: calc(33% - 10px);
+  margin-right: 15px;
+}
+
+.proteins-input {
+  width: calc(33% - 10px);
+  margin-right: 15px;
+}
+
+.fats-input {
+  width: calc(33% - 10px);
+}
+
+.kcal-section {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0 30px;
+  font-size: 20px;
+
+  .kcal-text {
+    padding-top: 2px;
+  }
+
+  .badge {
+    margin-left: 10px;
+  }
+}
+
