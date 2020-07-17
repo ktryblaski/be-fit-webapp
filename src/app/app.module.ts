@@ -9,9 +9,9 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MenuComponent } from './menu/menu.component';
 import { MainAreaComponent } from './main-area/main-area.component';
-import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MatListModule } from "@angular/material/list";
 import { HttpClientModule } from "@angular/common/http";
+import {LogoComponent} from "./menu/logo/logo.component";
 
 @NgModule({
   imports: [
@@ -28,7 +28,7 @@ import { HttpClientModule } from "@angular/common/http";
     DashboardComponent,
     MenuComponent,
     MainAreaComponent,
-    ToolbarComponent,
+    LogoComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

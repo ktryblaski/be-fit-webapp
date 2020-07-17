@@ -12,6 +12,10 @@ table.bf-table {
   tr {
     height: 56px;
 
+    &:hover {
+      background-color: whitesmoke;
+    }
+
     th {
       padding: 0 0 0 24px;
       border-bottom: 1px solid rgba(0, 0, 0, .12);
@@ -85,4 +89,15 @@ a.entity-link {
   &.kcal::before {
     color: $kcal-color;
   }
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  box-shadow: 0 3px 6px 0 $primary-color;
+  z-index: 100;
 }

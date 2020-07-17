@@ -16,12 +16,20 @@
     </th>
   </tr>
 
-  <tr *ngFor="let ingredient of ingredients">
+  <tr *ngFor="let ingredient of (ingredients | sortIngredients)">
     <td class="name-cell">{{ingredient.product.name}}</td>
     <td>{{ingredient.weight}}</td>
     <td>{{ingredient | ingredientCarbohydratesCalculator}}</td>
     <td>{{ingredient | ingredientProteinsCalculator}}</td>
     <td>{{ingredient | ingredientFatsCalculator}}</td>
     <td>{{ingredient.product.macronutrients | macronutrientsCaloriesCalculator:ingredient.weight}}</td>
+  </tr>
+  <tr class="total">
+    <td class="name-cell">Total</td>
+    <td>{{ingredients | mealWeightCalculator}}</td>
+    <td>{{ingredients | mealCarbohydratesCalculator}}</td>
+    <td>{{ingredients | mealProteinsCalculator}}</td>
+    <td>{{ingredients | mealFatsCalculator}}</td>
+    <td>{{ingredients | mealCaloriesCalculator}}</td>
   </tr>
 </table>

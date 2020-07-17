@@ -1,6 +1,18 @@
 @import "src/app/shared/style";
 
-a.active {
-  color: $primary-color;
-  text-align: center;
+.menu-container {
+  position: relative;
+  top: 0;
+  height: 100%;
+  background-color: #2e323a;
+
+  a {
+    color: white;
+
+    &.active {
+      color: $primary-color;
+      text-align: center;
+      font-weight: 500;
+    }
+  }
 }

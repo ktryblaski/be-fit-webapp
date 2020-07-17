@@ -1,7 +1,17 @@
-.bf-table{
+table.bf-table{
   width: 100%;
-}
 
-.name-cell {
-  font-weight: 500;
+  tr.total {
+    background-color: #f7f7f7;
+
+    td {
+      border-top: 2px solid rgba(0, 0, 0, .12);
+      color: red;
+    }
+  }
+
+  td.name-cell {
+    font-weight: 500;
+  }
+
 }

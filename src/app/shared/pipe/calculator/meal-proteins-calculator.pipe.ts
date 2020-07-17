@@ -1,18 +1,17 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {Meal} from "../../model/domain/meal";
+import {Ingredient} from "../../model/domain/ingredient";
 
 @Pipe({
   name: 'mealProteinsCalculator'
 })
 export class MealProteinsCalculatorPipe implements PipeTransform {
 
-  transform(meal: Meal): number {
+  transform(ingredients: Ingredient[]): number {
     return Math.round(
-      meal.ingredients.map(
+      ingredients.map(
         i => i.weight / 100. * i.product.macronutrients.proteins
       ).reduce((a, b) => a + b, 0)
     );
-
   }
 
 }
