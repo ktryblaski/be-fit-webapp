@@ -10,8 +10,9 @@
     <a matLine>Diets</a>
   </mat-list-item>
 
-  <mat-list-item>
-    <a matLine>Meals</a>
+  <mat-list-item [routerLink]="['meal']">
+    <a matLine
+       [routerLinkActive]="'active'">Meals</a>
   </mat-list-item>
 
   <mat-list-item [routerLink]="['product']">

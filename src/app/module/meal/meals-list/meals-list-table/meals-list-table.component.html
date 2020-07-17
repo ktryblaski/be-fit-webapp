@@ -1,0 +1,34 @@
+<table class="bf-table">
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Type</th>
+    <th>Weight</th>
+    <th>
+      <span class="macronutrients-label carbohydrates">Carbohydrates</span>
+    </th>
+    <th>
+      <span class="macronutrients-label proteins">Proteins</span>
+    </th>
+    <th>
+      <span class="macronutrients-label fats">Fats</span>
+    </th>
+    <th>KCAL</th>
+  </tr>
+
+  <tr *ngFor="let meal of meals">
+    <td>
+      <a class="entity-link" target="_blank"
+         (click)="handleClickId(meal.id)">{{meal.id}}</a>
+    </td>
+    <td class="name-cell">{{meal.name}}</td>
+    <td>{{meal.description}}</td>
+    <td>{{meal.type | i18nMealType}}</td>
+    <td>{{meal.weight}}</td>
+    <td>{{meal.carbohydrates}}</td>
+    <td>{{meal.proteins}}</td>
+    <td>{{meal.fats}}</td>
+    <td>{{meal | caloriesCalculator}}</td>
+  </tr>
+</table>

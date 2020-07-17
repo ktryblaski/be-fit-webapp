@@ -1,0 +1,21 @@
+<ng-container *ngIf="loaded$ | async; else loading">
+  <h1>Meals</h1>
+
+  <div class="button-bar">
+    <button mat-raised-button color="primary"
+            (click)="handleAddNewMeal()">Add new meal</button>
+  </div>
+
+  <div class="pending-indicator-overlay-boundaries">
+    <app-meals-list-table [meals]="meals$ | async"
+                          (clickId)="handleClickId($event)"></app-meals-list-table>
+
+    <div class="pending-indicator-overlay-container" *ngIf="loading$ | async">
+      <app-spinner></app-spinner>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #loading>
+  <app-spinner></app-spinner>
+</ng-template>

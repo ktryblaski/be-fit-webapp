@@ -45,3 +45,38 @@ table.bf-table {
     background-color: rgba(255, 255, 255, 0.6);
   }
 }
+
+a.entity-link {
+  color: #3F51B5;
+  padding: 0 15px;
+
+  &:hover {
+    cursor: pointer;
+    font-weight: 500;
+  }
+}
+
+.macronutrients-label {
+  &:before {
+    content: "\2022";
+    color: black;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+    font-size: 200%;
+    vertical-align: sub;
+  }
+
+  &.carbohydrates::before {
+    color: #33FF99;
+  }
+
+  &.proteins::before {
+    color: #66B2FF;
+  }
+
+  &.fats::before {
+    color: #FFFF99;
+  }
+}

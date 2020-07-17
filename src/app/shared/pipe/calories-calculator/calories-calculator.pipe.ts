@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {Macronutrients} from "../model/domain/macronutrients";
-import {calculateMacronutrientsKCAL} from "../util/macronutrients";
+import {Macronutrients} from "../../model/domain/macronutrients";
+import {calculateMacronutrientsKCAL} from "../../util/macronutrients";
 
 @Pipe({
   name: 'caloriesCalculator'

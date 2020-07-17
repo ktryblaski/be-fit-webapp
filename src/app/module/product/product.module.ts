@@ -4,7 +4,7 @@ import {ProductsListComponent} from "./products-list/products-list.component";
 import {ProductRoutingModule} from "./product-routing.module";
 import {SpinnerModule} from "../../shared/component/spinner/spinner.module";
 import { ProductsTableComponent } from './products-list/products-table/products-table.component';
-import {CaloriesCalculatorModule} from "../../shared/pipe/calories-calculator.module";
+import {CaloriesCalculatorModule} from "../../shared/pipe/calories-calculator/calories-calculator.module";
 import { ProductDialogComponent } from './product-dialog/product-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";

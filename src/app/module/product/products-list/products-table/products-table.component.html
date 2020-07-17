@@ -2,18 +2,24 @@
   <tr>
     <th>Id</th>
     <th>Name</th>
-    <th>Carbohydrates</th>
-    <th>Proteins</th>
-    <th>Fats</th>
+    <th>
+      <span class="macronutrients-label carbohydrates">Carbohydrates</span>
+    </th>
+    <th>
+      <span class="macronutrients-label proteins">Proteins</span>
+    </th>
+    <th>
+      <span class="macronutrients-label fats">Fats</span>
+    </th>
     <th>KCAL</th>
   </tr>
 
   <tr *ngFor="let product of products">
     <td>
-      <a class="product-link" target="_blank"
+      <a class="entity-link" target="_blank"
          (click)="handleClickId(product.id)">{{product.id}}</a>
     </td>
-    <td>{{product.name}}</td>
+    <td class="name-cell">{{product.name}}</td>
     <td>{{product.macronutrients.carbohydrates}}</td>
     <td>{{product.macronutrients.proteins}}</td>
     <td>{{product.macronutrients.fats}}</td>
