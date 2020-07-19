@@ -34,7 +34,7 @@
   <div class="actions">
     <button (click)="handleCancel()" type="button"
             mat-raised-button tabindex="6">Cancel</button>
-    <button type="submit" mat-raised-button
-            color="primary" tabindex="5">Save</button>
+    <button [disabled]="!form.valid" type="submit"
+            mat-raised-button color="primary" tabindex="5">Save</button>
   </div>
 </form>

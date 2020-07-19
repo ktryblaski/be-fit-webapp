@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {MatDialogRef} from "@angular/material/dialog";
 import {ProductCreateService} from "./product-create.service";
-import {noop, Observable, Subscription} from "rxjs";
-import {filter, tap} from "rxjs/operators";
+import {Observable, Subscription} from "rxjs";
+import {filter} from "rxjs/operators";
 import {ProductFormHandler} from "./product-form-handler";
 
 export enum ProductCreateDialogResult {

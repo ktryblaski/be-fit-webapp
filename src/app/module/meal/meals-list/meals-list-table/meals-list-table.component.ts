@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {MealView} from "../../../../shared/model/domain/meal";
-import {InternationalizationService} from "../../../../shared/internationalization.service";
+import {InternationalizationService} from "../../../../shared/service/internationalization.service";
 
 @Component({
   selector: 'app-meals-list-table',

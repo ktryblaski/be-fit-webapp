@@ -13,6 +13,7 @@ import { MatListModule } from "@angular/material/list";
 import { HttpClientModule } from "@angular/common/http";
 import {LogoComponent} from "./menu/logo/logo.component";
 import {ReactiveFormsModule} from "@angular/forms";
+import {NotificationModule} from "./shared/component/notification/notification.module";
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     MatSidenavModule,
     MatListModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NotificationModule
   ],
   declarations: [
     AppComponent,

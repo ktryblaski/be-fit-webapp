@@ -10,4 +10,12 @@
     margin: 25px 30px 30px;
     padding: 40px 20px;
   }
+
+  .notifications {
+    position: fixed;
+    top: 0;
+    left: calc(50% - 160px);
+    width: 320px;
+    z-index: 1000;
+  }
 }

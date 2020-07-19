@@ -1,0 +1,7 @@
+<div class="notifications">
+  <div *ngFor="let notification of notifications$ | async; let i = index"
+       class="notification" [ngClass]="notification.severity">
+
+    <div class="message">{{notification.message}}</div>
+  </div>
+</div>

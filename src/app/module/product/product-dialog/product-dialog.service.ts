@@ -1,8 +1,10 @@
 import {Injectable, OnDestroy} from '@angular/core';
-import {ProductRestService} from "../../../shared/rest/product-rest.service";
-import {BehaviorSubject, merge, noop, Observable, Subject, Subscription, throwError} from "rxjs";
+import {ProductRestService} from "../../../shared/service/rest/product-rest.service";
+import {BehaviorSubject, EMPTY, merge, noop, Observable, Subject, Subscription} from "rxjs";
 import {Product} from "../../../shared/model/domain/product";
 import {catchError, distinctUntilChanged, ignoreElements, switchMap, tap} from "rxjs/operators";
+import {NotificationSeverity} from "../../../shared/component/notification/notification";
+import {NotificationService} from "../../../shared/service/notification.service";
 
 @Injectable()
 export class ProductDialogService implements OnDestroy {
@@ -19,7 +21,8 @@ export class ProductDialogService implements OnDestroy {
 
   private subscription: Subscription;
 
-  constructor(private restService: ProductRestService) {
+  constructor(private restService: ProductRestService,
+              private notificationService: NotificationService) {
     this.subscription = merge(
       this.loadEffect()
     ).subscribe(noop);
@@ -42,7 +45,12 @@ export class ProductDialogService implements OnDestroy {
         }),
         catchError((error) => {
           console.error(error);
-          return throwError(error);
+          this.loading.next(false);
+          this.notificationService.show({
+            message: 'An error has occurred',
+            severity: NotificationSeverity.DANGER
+          })
+          return EMPTY;
         })
       )),
       ignoreElements()

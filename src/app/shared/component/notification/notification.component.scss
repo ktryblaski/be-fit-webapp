@@ -1,0 +1,30 @@
+.notifications {
+  .notification {
+    height: 40px;
+    width: 320px;
+    padding: .5rem 1.25rem;
+    border: 2px solid transparent;
+    border-top: none;
+    color: black;
+
+    &.success {
+      background-color: #d4edda;
+      border-color: #69b97b;
+    }
+
+    &.info {
+      background-color: #d1ecf1;
+      border-color: #bee5eb;
+    }
+
+    &.warning {
+      background-color: #fff3cd;
+      border-color: #ffeeba;
+    }
+
+    &.danger {
+      background-color: #f8d7da;
+      border-color: #f398a1;
+    }
+  }
+}

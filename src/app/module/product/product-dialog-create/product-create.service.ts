@@ -1,9 +1,11 @@
 import {Injectable, OnDestroy} from '@angular/core';
-import {BehaviorSubject, noop, Observable, Subject, Subscription, throwError} from "rxjs";
+import {BehaviorSubject, EMPTY, noop, Observable, Subject, Subscription} from "rxjs";
 import {catchError, distinctUntilChanged, ignoreElements, switchMap, tap} from "rxjs/operators";
 import {ProductFormHandler} from "./product-form-handler";
-import {ProductRestService} from "../../../shared/rest/product-rest.service";
+import {ProductRestService} from "../../../shared/service/rest/product-rest.service";
 import {Product} from "../../../shared/model/domain/product";
+import {NotificationService} from "../../../shared/service/notification.service";
+import {NotificationSeverity} from "../../../shared/component/notification/notification";
 
 @Injectable()
 export class ProductCreateService implements OnDestroy {
@@ -18,7 +20,8 @@ export class ProductCreateService implements OnDestroy {
 
   private readonly subscription: Subscription;
 
-  constructor(private restService: ProductRestService) {
+  constructor(private restService: ProductRestService,
+              private notificationService: NotificationService) {
     this.subscription = this.createEffect().subscribe(noop);
   }
 
@@ -36,10 +39,20 @@ export class ProductCreateService implements OnDestroy {
           tap(() =>{
             this.saving.next(false);
             this.saved.next(true);
+            this.notificationService.show({
+              message: 'New product has been added',
+              severity: NotificationSeverity.SUCCESS
+            })
+
           }),
           catchError((error) => {
             console.error(error);
-            return throwError(error);
+            this.saving.next(false);
+            this.notificationService.show({
+              message: 'An error has occurred',
+              severity: NotificationSeverity.DANGER
+            })
+            return EMPTY;
           })
         )),
       ignoreElements()

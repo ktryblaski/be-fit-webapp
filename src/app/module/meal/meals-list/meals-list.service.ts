@@ -1,8 +1,10 @@
 import {Injectable, OnDestroy} from '@angular/core';
-import {MealRestService} from "../../../shared/rest/meal-rest.service";
-import {BehaviorSubject, merge, noop, Observable, Subject, Subscription, throwError} from "rxjs";
+import {MealRestService} from "../../../shared/service/rest/meal-rest.service";
+import {BehaviorSubject, EMPTY, merge, noop, Observable, Subject, Subscription} from "rxjs";
 import {catchError, distinctUntilChanged, ignoreElements, switchMap, tap} from "rxjs/operators";
 import {MealView} from "../../../shared/model/domain/meal";
+import {NotificationService} from "../../../shared/service/notification.service";
+import {NotificationSeverity} from "../../../shared/component/notification/notification";
 
 @Injectable()
 export class MealsListService implements OnDestroy {
@@ -19,7 +21,8 @@ export class MealsListService implements OnDestroy {
 
   private subscription: Subscription;
 
-  constructor(private restService: MealRestService) {
+  constructor(private restService: MealRestService,
+              private notificationService: NotificationService) {
     this.subscription = merge(
       this.loadEffect()
     ).subscribe(noop);
@@ -42,7 +45,12 @@ export class MealsListService implements OnDestroy {
         }),
         catchError((error) => {
           console.error(error);
-          return throwError(error);
+          this.loading.next(false);
+          this.notificationService.show({
+            message: 'An error has occurred',
+            severity: NotificationSeverity.DANGER
+          })
+          return EMPTY;
         })
       )),
       ignoreElements()

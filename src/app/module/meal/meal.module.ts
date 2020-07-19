@@ -13,6 +13,7 @@ import { IngredientsTableComponent } from './meal-details/meal-details-data/ingr
 import { MealCreateComponent } from './meal-create/meal-create.component';
 import { MealEditComponent } from './meal-edit/meal-edit.component';
 import { SortIngredientsPipe } from './meal-details/meal-details-data/ingredients-table/sort-ingredients.pipe';
+import { MealFormComponent } from './meal-form/meal-form.component';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { SortIngredientsPipe } from './meal-details/meal-details-data/ingredient
     MealCreateComponent,
     MealEditComponent,
     SortIngredientsPipe,
+    MealFormComponent,
   ]
 })
 export class MealModule {
