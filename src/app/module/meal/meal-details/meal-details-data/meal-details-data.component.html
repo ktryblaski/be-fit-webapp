@@ -2,7 +2,7 @@
 
 <div *ngIf="meal.type" class="meal-property">
   <div class="title">Meal Type:</div>
-  <div class="value">{{meal.type | i18nMealType}}</div>
+  <div class="value">{{meal.type | i18nSelect: MEAL_TYPE}}</div>
 </div>
 
 <div class="flex-row">

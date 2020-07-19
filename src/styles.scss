@@ -12,7 +12,7 @@ table.bf-table {
   tr {
     height: 56px;
 
-    &:hover {
+    &:not(:first-child):hover {
       background-color: whitesmoke;
     }
 

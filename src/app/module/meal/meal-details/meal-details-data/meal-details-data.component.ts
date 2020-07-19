@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Meal} from "../../../../shared/model/domain/meal";
+import {InternationalizationService} from "../../../../shared/internationalization.service";
 
 @Component({
   selector: 'app-meal-details-data',
@@ -8,6 +9,12 @@ import {Meal} from "../../../../shared/model/domain/meal";
 })
 export class MealDetailsDataComponent {
 
+  readonly MEAL_TYPE;
+
   @Input() meal: Meal;
+
+  constructor(private i18nService: InternationalizationService) {
+    this.MEAL_TYPE = i18nService.MEAL_TYPE;
+  }
 
 }

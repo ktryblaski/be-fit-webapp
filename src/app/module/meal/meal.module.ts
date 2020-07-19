@@ -3,7 +3,6 @@ import { CommonModule } from "@angular/common";
 import {MealRoutingModule} from "./meal-routing.module";
 import { MealsListComponent } from './meals-list/meals-list.component';
 import { MealsListTableComponent } from './meals-list/meals-list-table/meals-list-table.component';
-import {I18nMealTypeModule} from "../../shared/pipe/i18n-meal-type/i18n-meal-type.module";
 import {CalculatorModule} from "../../shared/pipe/calculator/calculator.module";
 import {SpinnerModule} from "../../shared/component/spinner/spinner.module";
 import {MatDialogModule} from "@angular/material/dialog";
@@ -19,7 +18,6 @@ import { SortIngredientsPipe } from './meal-details/meal-details-data/ingredient
   imports: [
     CommonModule,
     MealRoutingModule,
-    I18nMealTypeModule,
     CalculatorModule,
     SpinnerModule,
     MatDialogModule,
