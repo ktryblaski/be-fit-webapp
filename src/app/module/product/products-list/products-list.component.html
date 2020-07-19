@@ -1,12 +1,12 @@
 <ng-container *ngIf="loaded$ | async; else loading">
   <h1>Products</h1>
 
-  <div class="button-bar">
-    <button mat-raised-button color="primary"
-            (click)="handleAddNewProduct()">Add new product</button>
-  </div>
-
   <div class="pending-indicator-overlay-boundaries">
+    <div class="button-bar">
+      <button mat-raised-button color="primary"
+              (click)="handleAddNewProduct()">Add new product</button>
+    </div>
+
     <app-products-table [products]="products$ | async"
                         (clickId)="handleClickId($event)"></app-products-table>
 

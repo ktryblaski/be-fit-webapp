@@ -1,5 +1,5 @@
 export interface Macronutrients {
-  id: number,
+  id?: number,
   carbohydrates: number,
   proteins: number,
   fats: number

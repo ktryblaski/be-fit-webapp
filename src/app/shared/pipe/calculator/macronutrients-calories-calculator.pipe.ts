@@ -8,6 +8,10 @@ import {calculateMacronutrientsKCAL} from "../../util/macronutrients";
 export class MacronutrientsCaloriesCalculatorPipe implements PipeTransform {
 
   transform(macronutrients: Macronutrients, weight?: number): number {
+    if(!macronutrients) {
+      return 0;
+    }
+
     const multiplier = (weight != null ? weight : 100) / 100
 
     return Math.round(

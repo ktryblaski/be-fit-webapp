@@ -20,4 +20,8 @@ export class ProductRestService {
     return this.http.get<Product>(`${this.API_URL}/${productId}`);
   }
 
+  saveProduct(product: Product): Observable<number> {
+    return this.http.post<number>(this.API_URL, product);
+  }
+
 }

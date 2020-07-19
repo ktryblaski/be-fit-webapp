@@ -1,10 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ProductsListService} from "./products-list.service";
-import {Observable} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 import {Product} from "../../../shared/model/domain/product";
 import {MatDialog} from "@angular/material/dialog";
 import {ProductDialogComponent} from "../product-dialog/product-dialog.component";
-import {ProductDialogCreateComponent} from "../product-dialog-create/product-dialog-create.component";
+import {
+  ProductCreateDialogResult,
+  ProductDialogCreateComponent
+} from "../product-dialog-create/product-dialog-create.component";
 
 @Component({
   selector: 'app-products-list',
@@ -12,11 +15,13 @@ import {ProductDialogCreateComponent} from "../product-dialog-create/product-dia
   styleUrls: ['./products-list.component.scss'],
   providers: [ProductsListService]
 })
-export class ProductsListComponent implements OnInit {
+export class ProductsListComponent implements OnInit, OnDestroy {
 
   public products$: Observable<Product[]>;
   public loaded$: Observable<boolean>;
   public loading$: Observable<boolean>;
+
+  private subscription: Subscription
 
   constructor(private service: ProductsListService,
               private dialog: MatDialog) { }
@@ -39,9 +44,24 @@ export class ProductsListComponent implements OnInit {
   }
 
   handleAddNewProduct(): void {
-    this.dialog.open(ProductDialogCreateComponent, {
+    if(this.subscription) {
+      this.subscription.unsubscribe();
+    }
+
+    this.subscription = this.dialog.open(ProductDialogCreateComponent, {
       width: '400px'
-    });
+    }).afterClosed()
+      .subscribe((result: ProductCreateDialogResult) => {
+        if(result === ProductCreateDialogResult.CREATED) {
+          this.service.load();
+        }
+      });
+  }
+
+  ngOnDestroy(): void {
+    if(this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
 }

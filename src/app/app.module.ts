@@ -12,6 +12,7 @@ import { MainAreaComponent } from './main-area/main-area.component';
 import { MatListModule } from "@angular/material/list";
 import { HttpClientModule } from "@angular/common/http";
 import {LogoComponent} from "./menu/logo/logo.component";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import {LogoComponent} from "./menu/logo/logo.component";
     MatSidenavModule,
     MatListModule,
     HttpClientModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AppComponent,

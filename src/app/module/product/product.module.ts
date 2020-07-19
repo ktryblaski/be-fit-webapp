@@ -17,6 +17,7 @@ import { ProductDialogCreateComponent } from './product-dialog-create/product-di
 import { ProductCreateFormComponent } from './product-dialog-create/product-create-form/product-create-form.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import {MatInputModule} from "@angular/material/input";
     MatBadgeModule,
     MatChipsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    ReactiveFormsModule
   ],
   declarations: [
     ProductsListComponent,

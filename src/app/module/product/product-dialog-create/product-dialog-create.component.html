@@ -1,2 +1,9 @@
-<app-product-create-form (submit)="handleSubmit()"
-                         (cancel)="handleCancel()"></app-product-create-form>
+<div class="pending-indicator-overlay-boundaries">
+  <app-product-create-form [form]="formHandler.form"
+                           (create)="handleCreate()"
+                           (cancel)="handleCancel()"></app-product-create-form>
+
+  <div class="pending-indicator-overlay-container" *ngIf="saving$ | async">
+    <app-spinner></app-spinner>
+  </div>
+</div>

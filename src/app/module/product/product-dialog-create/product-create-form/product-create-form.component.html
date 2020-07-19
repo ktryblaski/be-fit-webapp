@@ -1,35 +1,40 @@
-<form (ngSubmit)="handleSubmit()">
+<form [formGroup]="form" (ngSubmit)="handleSubmit()">
 
   <h1>New product</h1>
 
   <mat-form-field class="name-input">
     <mat-label>Name</mat-label>
-    <input matInput>
+    <input formControlName="name" type="text"
+           matInput tabindex="1">
   </mat-form-field>
 
   <mat-form-field class="carbohydrates-input">
     <mat-label>Carbohydrates</mat-label>
-    <input type="number" min="0" matInput>
+    <input formControlName="carbohydrates" type="number"
+           min="0" matInput tabindex="2">
   </mat-form-field>
 
   <mat-form-field class="proteins-input">
     <mat-label>Proteins</mat-label>
-    <input type="number" min="0" matInput>
+    <input formControlName="proteins" type="number"
+           min="0" matInput tabindex="3">
   </mat-form-field>
 
   <mat-form-field class="fats-input">
     <mat-label>Fats</mat-label>
-    <input type="number" min="0" matInput>
+    <input formControlName="fats" type="number"
+           min="0" matInput tabindex="4">
   </mat-form-field>
 
   <div class="kcal-section">
     <span class="kcal-text">KCAL</span>
-    <!--TODO-->
-    <span class="badge">300</span>
+    <span class="badge">{{kcal$ | async | macronutrientsCaloriesCalculator}}</span>
   </div>
 
   <div class="actions">
-    <button (click)="handleCancel()" mat-raised-button>Cancel</button>
-    <button type="submit" mat-raised-button color="primary">Save</button>
+    <button (click)="handleCancel()" type="button"
+            mat-raised-button tabindex="6">Cancel</button>
+    <button type="submit" mat-raised-button
+            color="primary" tabindex="5">Save</button>
   </div>
 </form>
