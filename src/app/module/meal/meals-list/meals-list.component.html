@@ -2,13 +2,13 @@
   <h1>Meals</h1>
 
   <div class="button-bar">
-    <button mat-raised-button color="primary"
-            (click)="handleAddNewMeal()">Add new meal</button>
+    <button (click)="handleAddNewMeal()"
+            mat-raised-button color="primary">Add new meal</button>
   </div>
 
   <div class="pending-indicator-overlay-boundaries">
-    <app-meals-list-table [meals]="meals$ | async"
-                          (clickId)="handleClickId($event)"></app-meals-list-table>
+    <app-meals-list-ui [meals]="meals$ | async"
+                       (clickId)="handleClickId($event)"></app-meals-list-ui>
 
     <div class="pending-indicator-overlay-container" *ngIf="loading$ | async">
       <app-spinner></app-spinner>

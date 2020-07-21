@@ -4,7 +4,7 @@
             mat-raised-button
             class="edit-button">Edit</button>
 
-    <app-meal-details-data [meal]="meal$ | async"></app-meal-details-data>
+    <app-meal-details-ui [meal]="meal$ | async"></app-meal-details-ui>
 
     <div class="pending-indicator-overlay-container" *ngIf="loading$ | async">
       <app-spinner></app-spinner>

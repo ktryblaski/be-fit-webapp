@@ -6,12 +6,12 @@ import { Injectable } from '@angular/core';
 export class InternationalizationService {
 
   readonly MEAL_TYPE = {
-    'BREAKFAST' : 'Breakfast',
-    'LUNCH' : 'Lunch',
-    'DINNER' : 'Dinner',
-    'SUPPER' : 'Supper',
-    'BEFORE_WORKOUT' : 'Before Workout',
-    'AFTER_WORKOUT' : 'After Workout',
+    'BREAKFAST': 'Breakfast',
+    'LUNCH': 'Lunch',
+    'DINNER': 'Dinner',
+    'SUPPER': 'Supper',
+    'BEFORE_WORKOUT': 'Before Workout',
+    'AFTER_WORKOUT': 'After Workout'
   };
 
 }

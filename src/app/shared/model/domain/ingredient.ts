@@ -1,7 +1,7 @@
 import {Product} from "./product";
 
 export interface Ingredient {
-  id: number;
+  id?: number;
   weight: number;
   product: Product;
 }

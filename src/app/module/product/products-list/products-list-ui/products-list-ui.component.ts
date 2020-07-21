@@ -2,11 +2,11 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Product} from "../../../../shared/model/domain/product";
 
 @Component({
-  selector: 'app-products-table',
-  templateUrl: './products-table.component.html',
-  styleUrls: ['./products-table.component.scss']
+  selector: 'app-products-list-ui',
+  templateUrl: './products-list-ui.component.html',
+  styleUrls: ['./products-list-ui.component.scss']
 })
-export class ProductsTableComponent {
+export class ProductsListUiComponent {
 
   @Input() products: Product[]
   @Output() clickId: EventEmitter<number> = new EventEmitter<number>();

@@ -1,5 +1,6 @@
 import {Ingredient} from "./ingredient";
 
+// TODO
 export enum MealType {
   BREAKFAST = "BREAKFAST",
   LUNCH = "LUNCH",
@@ -10,18 +11,16 @@ export enum MealType {
 }
 
 export interface Meal {
-  id: number,
+  id?: number,
   name: string,
   description: string,
-  type: MealType;
   ingredients: Ingredient[];
 }
 
 export interface MealView {
-  id: number,
+  id?: number,
   name: string,
   description: string,
-  type: MealType;
   weight: number,
   carbohydrates: number,
   proteins: number,

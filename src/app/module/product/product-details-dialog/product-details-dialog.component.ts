@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
-import {ProductDialogService} from "./product-dialog.service";
+import {ProductDetailsDialogService} from "./product-details-dialog.service";
 import {Observable} from "rxjs";
 import {Product} from "../../../shared/model/domain/product";
 
@@ -9,19 +9,19 @@ export interface ProductDialogData {
 }
 
 @Component({
-  selector: 'app-product-dialog',
-  templateUrl: './product-dialog.component.html',
-  styleUrls: ['./product-dialog.component.scss'],
-  providers: [ProductDialogService]
+  selector: 'app-product-details-dialog',
+  templateUrl: './product-details-dialog.component.html',
+  styleUrls: ['./product-details-dialog.component.scss'],
+  providers: [ProductDetailsDialogService]
 })
-export class ProductDialogComponent implements OnInit {
+export class ProductDetailsDialogComponent implements OnInit {
 
   public product$: Observable<Product>;
   public loaded$: Observable<boolean>;
   public loading$: Observable<boolean>;
 
   constructor(@Inject(MAT_DIALOG_DATA) private data: ProductDialogData,
-              private service: ProductDialogService) { }
+              private service: ProductDetailsDialogService) { }
 
   ngOnInit(): void {
     this.product$ = this.service.product$;

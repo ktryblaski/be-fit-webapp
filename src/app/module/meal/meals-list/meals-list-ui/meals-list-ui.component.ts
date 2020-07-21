@@ -3,11 +3,11 @@ import {MealView} from "../../../../shared/model/domain/meal";
 import {InternationalizationService} from "../../../../shared/service/internationalization.service";
 
 @Component({
-  selector: 'app-meals-list-table',
-  templateUrl: './meals-list-table.component.html',
-  styleUrls: ['./meals-list-table.component.scss']
+  selector: 'app-meals-list-ui',
+  templateUrl: './meals-list-ui.component.html',
+  styleUrls: ['./meals-list-ui.component.scss']
 })
-export class MealsListTableComponent {
+export class MealsListUiComponent {
 
   readonly MEAL_TYPE;
 

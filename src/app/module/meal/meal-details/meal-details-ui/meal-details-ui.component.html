@@ -1,0 +1,11 @@
+<div class="meal-name">{{meal.name}}</div>
+
+<div class="meal-property">
+  <div class="title">Description:</div>
+  <div class="value">{{meal.description}}</div>
+</div>
+
+<div class="meal-property ingredients">
+  <div class="title">Ingredients:</div>
+  <app-meal-details-ingredients-table [ingredients]="meal.ingredients"></app-meal-details-ingredients-table>
+</div>

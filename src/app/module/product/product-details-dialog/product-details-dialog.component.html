@@ -1,6 +1,6 @@
 <ng-container *ngIf="loaded$ | async; else loading">
   <div class="pending-indicator-overlay-boundaries">
-    <app-product-dialog-data [product]="product$ | async"></app-product-dialog-data>
+    <app-product-details-dialog-ui [product]="product$ | async"></app-product-details-dialog-ui>
 
     <div class="pending-indicator-overlay-container" *ngIf="loading$ | async">
       <app-spinner></app-spinner>

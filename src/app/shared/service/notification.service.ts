@@ -10,11 +10,9 @@ export class NotificationService {
 
   private readonly NOTIFICATION_LIFE_TIME = 7;
 
-  private readonly notifications: BehaviorSubject<Notification[]> =
-    new BehaviorSubject([]);
+  private readonly notifications: BehaviorSubject<Notification[]> = new BehaviorSubject([]);
 
-  readonly notifications$: Observable<Notification[]> =
-    this.notifications.pipe(distinctUntilChanged());
+  readonly notifications$: Observable<Notification[]> = this.notifications.pipe(distinctUntilChanged());
 
   show(notification: Notification): void {
     const notificationsArray = [
@@ -26,15 +24,11 @@ export class NotificationService {
       this.close(notification);
     }, this.NOTIFICATION_LIFE_TIME * 1000);
 
-
     this.notifications.next(notificationsArray);
   }
 
   private close(notification: Notification) {
-    const notificationsArray = this.notifications.value.filter(
-      (n: Notification) => n !== notification
-    );
-
+    const notificationsArray = this.notifications.value.filter((n: Notification) => n !== notification);
     this.notifications.next(notificationsArray);
   }
 

@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="handleSubmit()">
+<form [formGroup]="formHandler.form" (ngSubmit)="handleSubmit()">
 
   <h1>New product</h1>
 
@@ -34,7 +34,7 @@
   <div class="actions">
     <button (click)="handleCancel()" type="button"
             mat-raised-button tabindex="6">Cancel</button>
-    <button [disabled]="!form.valid" type="submit"
+    <button [disabled]="!formHandler.form.valid" type="submit"
             mat-raised-button color="primary" tabindex="5">Save</button>
   </div>
 </form>

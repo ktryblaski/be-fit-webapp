@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {MealsListService} from "./meals-list.service";
-import {MatDialog} from "@angular/material/dialog";
 import {Observable} from "rxjs";
 import {MealView} from "../../../shared/model/domain/meal";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -19,8 +18,7 @@ export class MealsListComponent implements OnInit {
 
   constructor(private service: MealsListService,
               private route: ActivatedRoute,
-              private router: Router,
-              private dialog: MatDialog) { }
+              private router: Router) { }
 
   ngOnInit(): void {
     this.meals$ = this.service.meals$;

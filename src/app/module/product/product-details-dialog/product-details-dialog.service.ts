@@ -7,7 +7,7 @@ import {NotificationSeverity} from "../../../shared/component/notification/notif
 import {NotificationService} from "../../../shared/service/notification.service";
 
 @Injectable()
-export class ProductDialogService implements OnDestroy {
+export class ProductDetailsDialogService implements OnDestroy {
 
   private readonly loadAction = new Subject<number>();
 

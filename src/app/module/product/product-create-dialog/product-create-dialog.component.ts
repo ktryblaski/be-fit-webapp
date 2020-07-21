@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {MatDialogRef} from "@angular/material/dialog";
-import {ProductCreateService} from "./product-create.service";
+import {ProductCreateDialogService} from "./product-create-dialog.service";
 import {Observable, Subscription} from "rxjs";
 import {filter} from "rxjs/operators";
 import {ProductFormHandler} from "./product-form-handler";
@@ -11,12 +11,12 @@ export enum ProductCreateDialogResult {
 }
 
 @Component({
-  selector: 'app-product-dialog-create',
-  templateUrl: './product-dialog-create.component.html',
-  styleUrls: ['./product-dialog-create.component.scss'],
-  providers: [ProductCreateService]
+  selector: 'app-product-create-dialog',
+  templateUrl: './product-create-dialog.component.html',
+  styleUrls: ['./product-create-dialog.component.scss'],
+  providers: [ProductCreateDialogService]
 })
-export class ProductDialogCreateComponent implements OnInit, OnDestroy {
+export class ProductCreateDialogComponent implements OnInit, OnDestroy {
 
   public saving$: Observable<boolean>;
 
@@ -24,8 +24,8 @@ export class ProductDialogCreateComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription;
 
-  constructor(private service: ProductCreateService,
-              private dialogRef: MatDialogRef<ProductDialogCreateComponent>) { }
+  constructor(private service: ProductCreateDialogService,
+              private dialogRef: MatDialogRef<ProductCreateDialogComponent>) { }
 
   ngOnInit(): void {
     this.saving$ = this.service.saving$;

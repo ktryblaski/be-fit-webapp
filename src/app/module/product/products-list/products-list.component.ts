@@ -3,11 +3,11 @@ import {ProductsListService} from "./products-list.service";
 import {Observable, Subscription} from "rxjs";
 import {Product} from "../../../shared/model/domain/product";
 import {MatDialog} from "@angular/material/dialog";
-import {ProductDialogComponent} from "../product-dialog/product-dialog.component";
+import {ProductDetailsDialogComponent} from "../product-details-dialog/product-details-dialog.component";
 import {
   ProductCreateDialogResult,
-  ProductDialogCreateComponent
-} from "../product-dialog-create/product-dialog-create.component";
+  ProductCreateDialogComponent
+} from "../product-create-dialog/product-create-dialog.component";
 
 @Component({
   selector: 'app-products-list',
@@ -35,7 +35,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   }
 
   handleClickId(id: number): void {
-    this.dialog.open(ProductDialogComponent, {
+    this.dialog.open(ProductDetailsDialogComponent, {
       data: {
         productId: id
       },
@@ -48,7 +48,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
       this.subscription.unsubscribe();
     }
 
-    this.subscription = this.dialog.open(ProductDialogCreateComponent, {
+    this.subscription = this.dialog.open(ProductCreateDialogComponent, {
       width: '400px'
     }).afterClosed()
       .subscribe((result: ProductCreateDialogResult) => {

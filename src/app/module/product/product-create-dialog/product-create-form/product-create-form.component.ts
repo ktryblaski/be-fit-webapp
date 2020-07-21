@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormGroup} from "@angular/forms";
 import {merge, Observable} from "rxjs";
 import {Macronutrients} from "../../../../shared/model/domain/macronutrients";
-import {mapTo} from "rxjs/operators";
+import {map, mapTo, tap} from "rxjs/operators";
+import {ProductFormHandler} from "../product-form-handler";
 
 @Component({
   selector: 'app-product-create-form',
@@ -11,7 +11,7 @@ import {mapTo} from "rxjs/operators";
 })
 export class ProductCreateFormComponent implements OnInit {
 
-  @Input() form: FormGroup
+  @Input() formHandler: ProductFormHandler
   @Output() create: EventEmitter<never> = new EventEmitter<never>();
   @Output() cancel: EventEmitter<never> = new EventEmitter<never>();
 
@@ -19,15 +19,17 @@ export class ProductCreateFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.kcal$ = merge(
-      this.form.get('carbohydrates').valueChanges,
-      this.form.get('proteins').valueChanges,
-      this.form.get('fats').valueChanges
+      this.formHandler.form.get('carbohydrates').valueChanges,
+      this.formHandler.form.get('proteins').valueChanges,
+      this.formHandler.form.get('fats').valueChanges
     ).pipe(
-      mapTo({
-        carbohydrates: this.form.get('carbohydrates').value || 0,
-        proteins: this.form.get('proteins').value || 0,
-        fats: this.form.get('fats').value || 0,
-      } as Macronutrients)
+      map(() => {
+        return {
+          carbohydrates: this.formHandler.form.get('carbohydrates').value,
+          proteins: this.formHandler.form.get('proteins').value,
+          fats: this.formHandler.form.get('fats').value,
+        } as Macronutrients
+      })
     );
   }
 
