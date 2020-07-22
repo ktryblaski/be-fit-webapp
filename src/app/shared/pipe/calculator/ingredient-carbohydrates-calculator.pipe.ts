@@ -1,14 +1,15 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import {Ingredient} from "../../model/domain/ingredient";
+import {calculateCarbohydratesForWeight} from "../../util/calculator";
 
 @Pipe({
   name: 'ingredientCarbohydratesCalculator'
 })
 export class IngredientCarbohydratesCalculatorPipe implements PipeTransform {
 
-  transform(ingredient: Ingredient): unknown {
+  transform(ingredient: Ingredient): number {
     return Math.round(
-      ingredient.weight / 100.0 * ingredient.product.macronutrients.carbohydrates
+      calculateCarbohydratesForWeight(ingredient.product.macronutrients, ingredient.weight)
     );
   }
 

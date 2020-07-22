@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import {Macronutrients} from "../../model/domain/macronutrients";
+import {calculateMacronutrientsKCALForWeight} from "../../util/calculator";
 
 @Pipe({
   name: 'macronutrientsCaloriesCalculator'
@@ -7,14 +8,8 @@ import {Macronutrients} from "../../model/domain/macronutrients";
 export class MacronutrientsCaloriesCalculatorPipe implements PipeTransform {
 
   transform(macronutrients: Macronutrients, weight?: number): number {
-    if(!macronutrients) {
-      return 0;
-    }
-
-    const multiplier = (weight != null ? weight : 100) / 100
-
     return Math.round(
-      multiplier * (macronutrients.carbohydrates * 4 + macronutrients.proteins * 4 + macronutrients.fats * 9)
+      calculateMacronutrientsKCALForWeight(macronutrients, weight)
     );
   }
 

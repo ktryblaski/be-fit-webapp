@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import {Ingredient} from "../../model/domain/ingredient";
+import {calculateMacronutrientsKCALForWeight} from "../../util/calculator";
 
 @Pipe({
   name: 'mealCaloriesCalculator'
@@ -7,11 +8,10 @@ import {Ingredient} from "../../model/domain/ingredient";
 export class MealCaloriesCalculatorPipe implements PipeTransform {
 
   transform(ingredients: Ingredient[]): number {
+    const calories = ingredients.map(i => calculateMacronutrientsKCALForWeight(i.product.macronutrients, i.weight));
+
     return Math.round(
-      ingredients.map(i =>
-        i.weight / 100.0 *
-        (i.product.macronutrients.carbohydrates * 4 + i.product.macronutrients.proteins * 4 + i.product.macronutrients.fats * 9)
-      ).reduce((a, b) => a + b)
+      calories.reduce((a, b) => a + b, 0)
     );
   }
 

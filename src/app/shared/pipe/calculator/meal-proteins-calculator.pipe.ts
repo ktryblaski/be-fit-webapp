@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import {Ingredient} from "../../model/domain/ingredient";
+import {calculateProteinsForWeight} from "../../util/calculator";
 
 @Pipe({
   name: 'mealProteinsCalculator'
@@ -7,10 +8,10 @@ import {Ingredient} from "../../model/domain/ingredient";
 export class MealProteinsCalculatorPipe implements PipeTransform {
 
   transform(ingredients: Ingredient[]): number {
+    const proteins = ingredients.map(i => calculateProteinsForWeight(i.product.macronutrients, i.weight));
+
     return Math.round(
-      ingredients.map(
-        i => i.weight / 100.0 * i.product.macronutrients.proteins
-      ).reduce((a, b) => a + b, 0)
+      proteins.reduce((a, b) => a + b, 0)
     );
   }
 

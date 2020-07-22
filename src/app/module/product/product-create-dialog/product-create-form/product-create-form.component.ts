@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {merge, Observable} from "rxjs";
 import {Macronutrients} from "../../../../shared/model/domain/macronutrients";
-import {map, mapTo, tap} from "rxjs/operators";
+import {map} from "rxjs/operators";
 import {ProductFormHandler} from "../product-form-handler";
 
 @Component({

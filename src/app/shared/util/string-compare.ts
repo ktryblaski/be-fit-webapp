@@ -1,4 +1,4 @@
-export function localeCompare(a: string, b: string): number {
+export function stringCompare(a: string, b: string): number {
   if(a && b) {
     return a.localeCompare(b);
   }

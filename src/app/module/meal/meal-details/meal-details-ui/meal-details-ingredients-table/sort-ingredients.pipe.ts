@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import {Ingredient} from "../../../../../shared/model/domain/ingredient";
-import {localeCompare} from "../../../../../shared/util/locale-compare";
+import {stringCompare} from "../../../../../shared/util/string-compare";
 import {handleNullArray} from "../../../../../shared/util/commons";
 
 @Pipe({
@@ -13,7 +13,7 @@ export class SortIngredientsPipe implements PipeTransform {
   }
 
   private ingredientCompare(a: Ingredient, b: Ingredient) {
-    return localeCompare(a.product.name, b.product.name);
+    return stringCompare(a.product.name, b.product.name);
   }
 
 }
