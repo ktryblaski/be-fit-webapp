@@ -1,0 +1,38 @@
+<table class="bf-table">
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Date start</th>
+    <th>Date end</th>
+    <th>Type</th>
+    <th>Meals</th>
+    <th>
+      <span class="macronutrients-label carbohydrates">Carbohydrates [g]</span>
+    </th>
+    <th>
+      <span class="macronutrients-label proteins">Proteins [g]</span>
+    </th>
+    <th>
+      <span class="macronutrients-label fats">Fats [g]</span>
+    </th>
+    <th>
+      <span class="macronutrients-label kcal">KCAL</span>
+    </th>
+  </tr>
+
+  <tr *ngFor="let diet of diets">
+    <td>
+      <a class="entity-link"
+         (click)="handleClickId(diet.id)">{{diet.id}}</a>
+    </td>
+    <td class="name-cell">{{diet.name}}</td>
+    <td>{{diet.startDate | date:'d/M/yyyy'}}</td>
+    <td>{{diet.endDate | date:'d/M/yyyy'}}</td>
+    <td>{{diet.type | i18nSelect:DIET_TYPE}}</td>
+    <td>{{diet.meals}}</td>
+    <td>{{diet.carbohydrates}}</td>
+    <td>{{diet.proteins}}</td>
+    <td>{{diet.fats}}</td>
+    <td>{{diet | macronutrientsCaloriesCalculator}}</td>
+  </tr>
+</table>

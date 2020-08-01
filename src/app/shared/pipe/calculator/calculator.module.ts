@@ -8,6 +8,11 @@ import { IngredientCarbohydratesCalculatorPipe } from './ingredient-carbohydrate
 import { IngredientProteinsCalculatorPipe } from './ingredient-proteins-calculator.pipe';
 import { IngredientFatsCalculatorPipe } from './ingredient-fats-calculator.pipe';
 import { MealWeightCalculatorPipe } from './meal-weight-calculator.pipe';
+import { MealsCarbohydratesCalculatorPipe } from './meals-carbohydrates-calculator.pipe';
+import { MealsProteinsCalculatorPipe } from './meals-proteins-calculator.pipe';
+import { MealsFatsCalculatorPipe } from './meals-fats-calculator.pipe';
+import { MealsCaloriesCalculatorPipe } from './meals-calories-calculator.pipe';
+import { MealsWeightCalculatorPipe } from './meals-weight-calculator.pipe';
 
 @NgModule({
   imports: [],
@@ -20,7 +25,12 @@ import { MealWeightCalculatorPipe } from './meal-weight-calculator.pipe';
     IngredientCarbohydratesCalculatorPipe,
     IngredientProteinsCalculatorPipe,
     IngredientFatsCalculatorPipe,
-    MealWeightCalculatorPipe
+    MealWeightCalculatorPipe,
+    MealsCarbohydratesCalculatorPipe,
+    MealsProteinsCalculatorPipe,
+    MealsFatsCalculatorPipe,
+    MealsCaloriesCalculatorPipe,
+    MealsWeightCalculatorPipe
   ],
   exports: [
     MacronutrientsCaloriesCalculatorPipe,
@@ -31,7 +41,12 @@ import { MealWeightCalculatorPipe } from './meal-weight-calculator.pipe';
     IngredientCarbohydratesCalculatorPipe,
     IngredientProteinsCalculatorPipe,
     IngredientFatsCalculatorPipe,
-    MealWeightCalculatorPipe
+    MealWeightCalculatorPipe,
+    MealsCarbohydratesCalculatorPipe,
+    MealsWeightCalculatorPipe,
+    MealsProteinsCalculatorPipe,
+    MealsFatsCalculatorPipe,
+    MealsCaloriesCalculatorPipe
   ]
 })
 export class CalculatorModule {

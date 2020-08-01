@@ -13,6 +13,17 @@
       color: $primary-color;
       text-align: center;
       font-weight: 500;
+
+      &:before {
+        content: "•";
+        color: $primary-color;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+        font-size: 120%;
+        vertical-align: text-top;
+      }
     }
   }
 }

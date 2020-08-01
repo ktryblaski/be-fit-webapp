@@ -1,0 +1,38 @@
+<table class="bf-table">
+  <tr>
+    <th>Name</th>
+    <th>Meal Type</th>
+    <th>Weight [g]</th>
+    <th>
+      <span class="macronutrients-label carbohydrates">Carbohydrates [g]</span>
+    </th>
+    <th>
+      <span class="macronutrients-label proteins">Proteins [g]</span>
+    </th>
+    <th>
+      <span class="macronutrients-label fats">Fats [g]</span>
+    </th>
+    <th>
+      <span class="macronutrients-label kcal">KCAL</span>
+    </th>
+  </tr>
+
+  <tr *ngFor="let meal of meals">
+    <td class="name-cell">{{meal.meal.name}}</td>
+    <td>{{meal.mealType | i18nSelect:MEAL_TYPE}}</td>
+    <td>{{meal.meal.ingredients | mealWeightCalculator}}</td>
+    <td>{{meal.meal.ingredients | mealCarbohydratesCalculator}}</td>
+    <td>{{meal.meal.ingredients | mealProteinsCalculator}}</td>
+    <td>{{meal.meal.ingredients | mealFatsCalculator}}</td>
+    <td>{{meal.meal.ingredients | mealCaloriesCalculator}}</td>
+  </tr>
+  <tr class="total">
+    <td class="name-cell">Total</td>
+    <td>-</td>
+    <td>{{meals | mealsWeightCalculator}}</td>
+    <td>{{meals | mealsCarbohydratesCalculator}}</td>
+    <td>{{meals | mealsProteinsCalculator}}</td>
+    <td>{{meals | mealsFatsCalculator}}</td>
+    <td>{{meals | mealsCaloriesCalculator}}</td>
+  </tr>
+</table>

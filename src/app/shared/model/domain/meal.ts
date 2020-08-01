@@ -18,7 +18,7 @@ export interface Meal {
 }
 
 export interface MealView {
-  id?: number,
+  id: number,
   name: string,
   description: string,
   weight: number,

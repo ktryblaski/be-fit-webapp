@@ -1,27 +1,27 @@
 import {Injectable, OnDestroy} from '@angular/core';
+import {DietRestService} from "../../../shared/service/rest/diet-rest.service";
 import {BehaviorSubject, EMPTY, merge, noop, Observable, Subject, Subscription} from "rxjs";
+import {DietView} from "../../../shared/model/domain/diet";
 import {catchError, distinctUntilChanged, ignoreElements, switchMap, tap} from "rxjs/operators";
-import {Meal} from "../../../shared/model/domain/meal";
-import {MealRestService} from "../../../shared/service/rest/meal-rest.service";
 import {NotificationService} from "../../../shared/service/notification.service";
 import {NotificationSeverity} from "../../../shared/component/notification/notification";
 
 @Injectable()
-export class MealDetailsService implements OnDestroy {
+export class DietsListService implements OnDestroy {
 
-  private readonly loadAction = new Subject<number>();
+  private readonly loadAction: Subject<never> = new Subject<never>();
 
-  private readonly meal = new BehaviorSubject<Meal>(null);
-  private readonly loaded = new BehaviorSubject<boolean>(false);
-  private readonly loading = new BehaviorSubject<boolean>(false);
+  private readonly diets: BehaviorSubject<DietView[]> = new BehaviorSubject<DietView[]>(null);
+  private readonly loading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private readonly loaded: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  readonly meal$: Observable<Meal> = this.meal.pipe(distinctUntilChanged());
-  readonly loaded$: Observable<boolean> = this.loaded.pipe(distinctUntilChanged());
+  readonly diets$: Observable<DietView[]> = this.diets.pipe(distinctUntilChanged());
   readonly loading$: Observable<boolean> = this.loading.pipe(distinctUntilChanged());
+  readonly loaded$: Observable<boolean> = this.loaded.pipe(distinctUntilChanged());
 
   private subscription: Subscription;
 
-  constructor(private restService: MealRestService,
+  constructor(private restService: DietRestService,
               private notificationService: NotificationService) {
 
     this.subscription = merge(
@@ -29,20 +29,20 @@ export class MealDetailsService implements OnDestroy {
     ).subscribe(noop);
   }
 
-  load(mealId: number): void {
-    this.loadAction.next(mealId);
+  load(): void {
+    this.loadAction.next();
   }
 
-  private loadEffect(): Observable<never> {
+  loadEffect(): Observable<never> {
     return this.loadAction.pipe(
       tap(() => {
-        this.loading.next(true);
+        this.loading.next(true)
       }),
-      switchMap((mealId: number) => this.restService.getMeal(mealId).pipe(
-        tap((meal: Meal) => {
-          this.meal.next(meal);
-          this.loaded.next(true);
+      switchMap(() => this.restService.getDietsLite().pipe(
+        tap((diets: DietView[]) => {
+          this.diets.next(diets);
           this.loading.next(false);
+          this.loaded.next(true);
         }),
         catchError((error) => {
           console.error(error);
@@ -61,4 +61,5 @@ export class MealDetailsService implements OnDestroy {
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
+
 }

@@ -14,4 +14,10 @@ export class InternationalizationService {
     'AFTER_WORKOUT': 'After Workout'
   };
 
+  readonly DIET_TYPE = {
+    'CUTTING': 'Cutting',
+    'KEEPING': 'Keeping',
+    'BULKING': 'Bulking'
+  };
+
 }
