@@ -1,0 +1,9 @@
+<div class="title">Ingredients:</div>
+
+<app-meal-ingredients-select [formHandler]="formHandler"
+                             (addProduct)="handleAddProduct($event)"></app-meal-ingredients-select>
+
+<div *ngIf="ingredients.length > 0" class="ingredients-table">
+  <app-meal-ingredients-table [formHandler]="formHandler"
+                              (removeProduct)="handleRemoveProduct($event)"></app-meal-ingredients-table>
+</div>

@@ -20,11 +20,11 @@
   <tr *ngFor="let meal of meals">
     <td class="name-cell">{{meal.meal.name}}</td>
     <td>{{meal.mealType | i18nSelect:MEAL_TYPE}}</td>
-    <td>{{meal.meal.ingredients | mealWeightCalculator}}</td>
-    <td>{{meal.meal.ingredients | mealCarbohydratesCalculator}}</td>
-    <td>{{meal.meal.ingredients | mealProteinsCalculator}}</td>
-    <td>{{meal.meal.ingredients | mealFatsCalculator}}</td>
-    <td>{{meal.meal.ingredients | mealCaloriesCalculator}}</td>
+    <td>{{meal.meal.ingredients | ingredientsWeightCalculator}}</td>
+    <td>{{meal.meal.ingredients | ingredientsCarbohydratesCalculator}}</td>
+    <td>{{meal.meal.ingredients | ingredientsProteinsCalculator}}</td>
+    <td>{{meal.meal.ingredients | ingredientsFatsCalculator}}</td>
+    <td>{{meal.meal.ingredients | ingredientsCaloriesCalculator}}</td>
   </tr>
   <tr class="total">
     <td class="name-cell">Total</td>

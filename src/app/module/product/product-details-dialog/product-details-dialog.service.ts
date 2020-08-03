@@ -4,7 +4,7 @@ import {BehaviorSubject, EMPTY, merge, noop, Observable, Subject, Subscription} 
 import {Product} from "../../../shared/model/domain/product";
 import {catchError, distinctUntilChanged, ignoreElements, switchMap, tap} from "rxjs/operators";
 import {NotificationSeverity} from "../../../shared/component/notification/notification";
-import {NotificationService} from "../../../shared/service/notification.service";
+import {NotificationService} from "../../../shared/component/notification/notification.service";
 
 @Injectable()
 export class ProductDetailsDialogService implements OnDestroy {

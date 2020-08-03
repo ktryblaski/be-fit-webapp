@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {NotificationService} from "../../service/notification.service";
+import {NotificationService} from "./notification.service";
 import {Observable} from "rxjs";
 import {Notification} from "./notification";
 

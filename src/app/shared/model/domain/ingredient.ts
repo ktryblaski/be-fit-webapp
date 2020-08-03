@@ -5,3 +5,8 @@ export interface Ingredient {
   weight: number;
   product: Product;
 }
+
+export interface IngredientDTO {
+  productId: number,
+  weight: number
+}

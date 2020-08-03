@@ -1,28 +1,28 @@
 @import "src/app/shared/style";
 
+$border-color: #2e323a;
+$active-color: #546eff;
+
 .menu-container {
   position: relative;
   top: 0;
   height: 100%;
-  background-color: #2e323a;
+  background-color: $border-color;
+  width: 197px;
 
   a {
     color: white;
+    font-weight: 500;
+  }
+
+  mat-list-item {
+    border-left: 2px solid $border-color;
 
     &.active {
-      color: $primary-color;
-      text-align: center;
-      font-weight: 500;
+      border-left: 2px solid $active-color;
 
-      &:before {
-        content: "•";
-        color: $primary-color;
-        font-weight: bold;
-        display: inline-block;
-        width: 1em;
-        margin-left: -1em;
-        font-size: 120%;
-        vertical-align: text-top;
+      a {
+        color: $active-color;
       }
     }
   }

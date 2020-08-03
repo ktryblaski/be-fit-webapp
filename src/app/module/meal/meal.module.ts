@@ -14,6 +14,19 @@ import { MealCreateComponent } from './meal-create/meal-create.component';
 import { MealEditComponent } from './meal-edit/meal-edit.component';
 import { SortIngredientsPipe } from './meal-details/meal-details-ui/meal-details-ingredients-table/sort-ingredients.pipe';
 import { MealFormComponent } from './meal-form/meal-form.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {ReactiveFormsModule} from "@angular/forms";
+import { MealIngredientsComponent } from './meal-form/meal-ingredients/meal-ingredients.component';
+import {MatChipsModule} from "@angular/material/chips";
+import {MatIconModule} from "@angular/material/icon";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import { MealIngredientsTableComponent } from './meal-form/meal-ingredients/meal-ingredients-table/meal-ingredients-table.component';
+import { MealIngredientsSelectComponent } from './meal-form/meal-ingredients/meal-ingredients-select/meal-ingredients-select.component';
+import { MealIngredientsSelectUiComponent } from './meal-form/meal-ingredients/meal-ingredients-select/meal-ingredients-select-ui/meal-ingredients-select-ui.component';
+import { ProductPipe } from './meal-form/meal-ingredients/meal-ingredients-table/product.pipe';
+import { IsAddingDisabledPipe } from './meal-form/meal-ingredients/meal-ingredients-select/is-adding-disabled.pipe';
+import { FilterProductsPipe } from './meal-form/meal-ingredients/meal-ingredients-select/filter-products.pipe';
 
 @NgModule({
   imports: [
@@ -23,6 +36,12 @@ import { MealFormComponent } from './meal-form/meal-form.component';
     SpinnerModule,
     MatDialogModule,
     MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatChipsModule,
+    MatIconModule,
+    MatAutocompleteModule,
   ],
   declarations: [
     MealsListComponent,
@@ -34,6 +53,13 @@ import { MealFormComponent } from './meal-form/meal-form.component';
     MealEditComponent,
     SortIngredientsPipe,
     MealFormComponent,
+    MealIngredientsComponent,
+    MealIngredientsTableComponent,
+    MealIngredientsSelectComponent,
+    MealIngredientsSelectUiComponent,
+    ProductPipe,
+    IsAddingDisabledPipe,
+    FilterProductsPipe,
   ]
 })
 export class MealModule {

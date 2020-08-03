@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Notification} from "../component/notification/notification";
+import {Notification} from "./notification";
 import {BehaviorSubject, Observable} from "rxjs";
 import {distinctUntilChanged} from "rxjs/operators";
 

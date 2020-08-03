@@ -4,7 +4,7 @@ import {catchError, distinctUntilChanged, ignoreElements, switchMap, tap} from "
 import {ProductFormHandler} from "./product-form-handler";
 import {ProductRestService} from "../../../shared/service/rest/product-rest.service";
 import {Product} from "../../../shared/model/domain/product";
-import {NotificationService} from "../../../shared/service/notification.service";
+import {NotificationService} from "../../../shared/component/notification/notification.service";
 import {NotificationSeverity} from "../../../shared/component/notification/notification";
 
 @Injectable()
@@ -43,7 +43,6 @@ export class ProductCreateDialogService implements OnDestroy {
               message: 'New product has been added',
               severity: NotificationSeverity.SUCCESS
             })
-
           }),
           catchError((error) => {
             console.error(error);

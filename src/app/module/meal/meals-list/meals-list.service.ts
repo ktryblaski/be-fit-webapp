@@ -3,7 +3,7 @@ import {MealRestService} from "../../../shared/service/rest/meal-rest.service";
 import {BehaviorSubject, EMPTY, merge, noop, Observable, Subject, Subscription} from "rxjs";
 import {catchError, distinctUntilChanged, ignoreElements, switchMap, tap} from "rxjs/operators";
 import {MealView} from "../../../shared/model/domain/meal";
-import {NotificationService} from "../../../shared/service/notification.service";
+import {NotificationService} from "../../../shared/component/notification/notification.service";
 import {NotificationSeverity} from "../../../shared/component/notification/notification";
 
 @Injectable()

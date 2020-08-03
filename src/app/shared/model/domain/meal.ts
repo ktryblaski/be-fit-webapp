@@ -1,4 +1,4 @@
-import {Ingredient} from "./ingredient";
+import {Ingredient, IngredientDTO} from "./ingredient";
 
 // TODO
 export enum MealType {
@@ -25,4 +25,11 @@ export interface MealView {
   carbohydrates: number,
   proteins: number,
   fats: number;
+}
+
+export interface MealDTO {
+  id?: number,
+  name: string,
+  description: string,
+  ingredients: IngredientDTO[];
 }

@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {MealFormHandler} from "./meal.form-handler";
 
 @Component({
   selector: 'app-meal-form',
   templateUrl: './meal-form.component.html',
   styleUrls: ['./meal-form.component.scss']
 })
-export class MealFormComponent implements OnInit {
+export class MealFormComponent {
 
-  constructor() { }
+  @Input() formHandler: MealFormHandler
+  @Output() save: EventEmitter<void> = new EventEmitter<void>();
+  @Output() cancel: EventEmitter<void> = new EventEmitter<void>();
 
-  ngOnInit(): void {
+  handleSubmit(): void {
+    this.save.emit();
+  }
+
+  handleCancel(): void {
+    this.cancel.emit();
   }
 
 }

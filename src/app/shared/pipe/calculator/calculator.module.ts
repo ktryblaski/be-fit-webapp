@@ -1,13 +1,13 @@
 import {NgModule} from "@angular/core";
 import {MacronutrientsCaloriesCalculatorPipe} from "./macronutrients-calories-calculator.pipe";
-import {MealCaloriesCalculatorPipe} from "./meal-calories-calculator.pipe";
-import {MealCarbohydratesCalculatorPipe} from "./meal-carbohydrates-calculator.pipe";
-import {MealProteinsCalculatorPipe} from "./meal-proteins-calculator.pipe";
-import {MealFatsCalculatorPipe} from "./meal-fats-calculator.pipe";
-import { IngredientCarbohydratesCalculatorPipe } from './ingredient-carbohydrates-calculator.pipe';
-import { IngredientProteinsCalculatorPipe } from './ingredient-proteins-calculator.pipe';
-import { IngredientFatsCalculatorPipe } from './ingredient-fats-calculator.pipe';
-import { MealWeightCalculatorPipe } from './meal-weight-calculator.pipe';
+import {IngredientsCaloriesCalculatorPipe} from "./ingredients-calories-calculator.pipe";
+import {IngredientsCarbohydratesCalculatorPipe} from "./ingredients-carbohydrates-calculator.pipe";
+import {IngredientsProteinsCalculatorPipe} from "./ingredients-proteins-calculator.pipe";
+import {IngredientsFatsCalculatorPipe} from "./ingredients-fats-calculator.pipe";
+import { MacronutrientsCarbohydratesCalculatorPipe } from './macronutrients-carbohydrates-calculator.pipe';
+import { MacronutrientsProteinsCalculatorPipe } from './macronutrients-proteins-calculator.pipe';
+import { MacronutrientsFatsCalculatorPipe } from './macronutrients-fats-calculator.pipe';
+import { IngredientsWeightCalculatorPipe } from './ingredients-weight-calculator.pipe';
 import { MealsCarbohydratesCalculatorPipe } from './meals-carbohydrates-calculator.pipe';
 import { MealsProteinsCalculatorPipe } from './meals-proteins-calculator.pipe';
 import { MealsFatsCalculatorPipe } from './meals-fats-calculator.pipe';
@@ -18,14 +18,14 @@ import { MealsWeightCalculatorPipe } from './meals-weight-calculator.pipe';
   imports: [],
   declarations: [
     MacronutrientsCaloriesCalculatorPipe,
-    MealCaloriesCalculatorPipe,
-    MealCarbohydratesCalculatorPipe,
-    MealProteinsCalculatorPipe,
-    MealFatsCalculatorPipe,
-    IngredientCarbohydratesCalculatorPipe,
-    IngredientProteinsCalculatorPipe,
-    IngredientFatsCalculatorPipe,
-    MealWeightCalculatorPipe,
+    IngredientsCaloriesCalculatorPipe,
+    IngredientsCarbohydratesCalculatorPipe,
+    IngredientsProteinsCalculatorPipe,
+    IngredientsFatsCalculatorPipe,
+    MacronutrientsCarbohydratesCalculatorPipe,
+    MacronutrientsProteinsCalculatorPipe,
+    MacronutrientsFatsCalculatorPipe,
+    IngredientsWeightCalculatorPipe,
     MealsCarbohydratesCalculatorPipe,
     MealsProteinsCalculatorPipe,
     MealsFatsCalculatorPipe,
@@ -34,14 +34,14 @@ import { MealsWeightCalculatorPipe } from './meals-weight-calculator.pipe';
   ],
   exports: [
     MacronutrientsCaloriesCalculatorPipe,
-    MealCaloriesCalculatorPipe,
-    MealCarbohydratesCalculatorPipe,
-    MealProteinsCalculatorPipe,
-    MealFatsCalculatorPipe,
-    IngredientCarbohydratesCalculatorPipe,
-    IngredientProteinsCalculatorPipe,
-    IngredientFatsCalculatorPipe,
-    MealWeightCalculatorPipe,
+    IngredientsCaloriesCalculatorPipe,
+    IngredientsCarbohydratesCalculatorPipe,
+    IngredientsProteinsCalculatorPipe,
+    IngredientsFatsCalculatorPipe,
+    MacronutrientsCarbohydratesCalculatorPipe,
+    MacronutrientsProteinsCalculatorPipe,
+    MacronutrientsFatsCalculatorPipe,
+    IngredientsWeightCalculatorPipe,
     MealsCarbohydratesCalculatorPipe,
     MealsWeightCalculatorPipe,
     MealsProteinsCalculatorPipe,

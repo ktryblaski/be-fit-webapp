@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {DietRestService} from "../../../shared/service/rest/diet-rest.service";
-import {NotificationService} from "../../../shared/service/notification.service";
+import {NotificationService} from "../../../shared/component/notification/notification.service";
 import {BehaviorSubject, EMPTY, merge, noop, Observable, Subject, Subscription} from "rxjs";
 import {catchError, distinctUntilChanged, ignoreElements, switchMap, tap} from "rxjs/operators";
 import {NotificationSeverity} from "../../../shared/component/notification/notification";
