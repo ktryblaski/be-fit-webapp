@@ -13,7 +13,6 @@ export interface Diet {
   startDate: number,
   endDate: number,
   type: DietType,
-  macronutrients: Macronutrients,
   meals: DietMeal[]
 }
 
@@ -33,4 +32,13 @@ export interface DietMeal {
   id?: number,
   mealType: MealType,
   meal: Meal
+}
+
+export interface DietDTO {
+  id?: number,
+  name: string,
+  startDate: number,
+  endDate: number,
+  type: DietType,
+  meals: DietMeal[]
 }

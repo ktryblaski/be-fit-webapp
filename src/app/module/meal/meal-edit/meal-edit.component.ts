@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MealEditService} from "./meal-edit.service";
 import {Observable, Subscription} from "rxjs";
-import {MealFormHandler} from "../meal-form/meal.form-handler";
+import {MealFormHandler} from "../meal-form/meal-form-handler";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({

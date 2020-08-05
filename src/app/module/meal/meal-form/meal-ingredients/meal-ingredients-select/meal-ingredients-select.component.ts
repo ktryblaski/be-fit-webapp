@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angula
 import {MealIngredientsSelectService} from "./meal-ingredients-select.service";
 import {Observable, Subscription} from "rxjs";
 import {Product} from "../../../../../shared/model/domain/product";
-import {MealFormHandler} from "../../meal.form-handler";
+import {MealFormHandler} from "../../meal-form-handler";
 import {Ingredient} from "../../../../../shared/model/domain/ingredient";
 
 @Component({
@@ -13,10 +13,10 @@ import {Ingredient} from "../../../../../shared/model/domain/ingredient";
 })
 export class MealIngredientsSelectComponent implements OnInit, OnDestroy {
 
-  selected = [];
-
   @Input() formHandler: MealFormHandler
   @Output() addProduct: EventEmitter<Product> = new EventEmitter<Product>();
+
+  selected = [];
 
   products$: Observable<Product[]>;
   loading$: Observable<boolean>;

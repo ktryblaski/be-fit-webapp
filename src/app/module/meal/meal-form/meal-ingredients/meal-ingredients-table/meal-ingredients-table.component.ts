@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import {MealFormHandler} from "../../meal.form-handler";
+import {MealFormHandler} from "../../meal-form-handler";
 import {FormArray} from "@angular/forms";
 import {BehaviorSubject, Observable, Subscription} from "rxjs";
 import {distinctUntilChanged} from "rxjs/operators";

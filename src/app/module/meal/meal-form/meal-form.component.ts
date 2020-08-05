@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {MealFormHandler} from "./meal.form-handler";
+import {MealFormHandler} from "./meal-form-handler";
 
 @Component({
   selector: 'app-meal-form',

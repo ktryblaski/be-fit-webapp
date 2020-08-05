@@ -1,17 +1,17 @@
 import {Injectable} from "@angular/core";
-import {MealRestService} from "../../../shared/service/rest/meal-rest.service";
 import {BehaviorSubject, EMPTY, noop, Observable, Subject, Subscription} from "rxjs";
 import {catchError, distinctUntilChanged, ignoreElements, switchMap, tap} from "rxjs/operators";
 import {NotificationSeverity} from "../../../shared/component/notification/notification";
 import {NotificationService} from "../../../shared/component/notification/notification.service";
 import {Router} from "@angular/router";
-import {MealFormHandler} from "../meal-form/meal-form-handler";
-import {MealMapperService} from "../meal-form/meal-mapper.service";
+import {DietFormHandler} from "../diet-form/diet-form-handler";
+import {DietRestService} from "../../../shared/service/rest/diet-rest.service";
+import {DietMapperService} from "../diet-form/diet-mapper.service";
 
 @Injectable()
-export class MealCreateService {
+export class DietCreateService {
 
-  private readonly saveAction = new Subject<MealFormHandler>();
+  private readonly saveAction = new Subject<DietFormHandler>();
 
   private readonly saving = new BehaviorSubject<boolean>(false);
 
@@ -19,14 +19,14 @@ export class MealCreateService {
 
   private subscription: Subscription;
 
-  constructor(private restService: MealRestService,
+  constructor(private restService: DietRestService,
               private notificationService: NotificationService,
-              private mapper: MealMapperService,
+              private mapper: DietMapperService,
               private router: Router) {
     this.subscription = this.saveEffect().subscribe(noop);
   }
 
-  save(formHandler: MealFormHandler): void {
+  save(formHandler: DietFormHandler): void {
     this.saveAction.next(formHandler);
   }
 
@@ -35,11 +35,11 @@ export class MealCreateService {
       tap(() => {
         this.saving.next(true);
       }),
-      switchMap((meal) => this.restService.create(this.mapper.map(meal)).pipe(
+      switchMap((diet) => this.restService.create(this.mapper.map(diet)).pipe(
         tap((id) => {
-          this.router.navigate(['meal', id]);
+          this.router.navigate(['diet', id]);
           this.notificationService.show({
-            message: 'New meal has been added',
+            message: 'New diet has been added',
             severity: NotificationSeverity.SUCCESS
           })
 

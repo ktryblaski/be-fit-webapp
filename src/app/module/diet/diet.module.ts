@@ -11,6 +11,20 @@ import { DietEditComponent } from './diet-edit/diet-edit.component';
 import { DietDetailsComponent } from './diet-details/diet-details.component';
 import { DietDetailsUiComponent } from './diet-details/diet-details-ui/diet-details-ui.component';
 import { DietDetailsMealsTableComponent } from './diet-details/diet-details-ui/diet-details-meals-table/diet-details-meals-table.component';
+import { DietFormComponent } from './diet-form/diet-form.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import { DietMealsComponent } from './diet-form/diet-meals/diet-meals.component';
+import { DietMealsSelectComponent } from './diet-form/diet-meals/diet-meals-select/diet-meals-select.component';
+import { DietMealsTableComponent } from './diet-form/diet-meals/diet-meals-table/diet-meals-table.component';
+import { DietMealsSelectUiComponent } from './diet-form/diet-meals/diet-meals-select/diet-meals-select-ui/diet-meals-select-ui.component';
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {FilterMealsPipe} from "./diet-form/diet-meals/diet-meals-select/filter-meals.pipe";
+import {IsAddingDisabledPipe} from "./diet-form/diet-meals/diet-meals-select/is-adding-disabled.pipe";
 
 @NgModule({
     imports: [
@@ -19,22 +33,45 @@ import { DietDetailsMealsTableComponent } from './diet-details/diet-details-ui/d
         MatButtonModule,
         SpinnerModule,
         CalculatorModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatSelectModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatAutocompleteModule
     ],
   declarations: [
 
-  DietsListComponent,
+    DietsListComponent,
 
-  DietsListUiComponent,
+    DietsListUiComponent,
 
-  DietCreateComponent,
+    DietCreateComponent,
 
-  DietEditComponent,
+    DietEditComponent,
 
-  DietDetailsComponent,
+    DietDetailsComponent,
 
-  DietDetailsUiComponent,
+    DietDetailsUiComponent,
 
-  DietDetailsMealsTableComponent]
+    DietDetailsMealsTableComponent,
+
+    DietFormComponent,
+
+    DietMealsComponent,
+
+    DietMealsSelectComponent,
+
+    DietMealsTableComponent,
+
+    DietMealsSelectUiComponent,
+    FilterMealsPipe,
+    IsAddingDisabledPipe
+  ],
+  providers: [
+    MatDatepickerModule,
+  ],
 })
 export class DietModule {
 

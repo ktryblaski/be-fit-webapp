@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MealFormHandler} from "../meal-form/meal.form-handler";
+import {MealFormHandler} from "../meal-form/meal-form-handler";
 import {MealCreateService} from "./meal-create.service";
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";

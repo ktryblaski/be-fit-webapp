@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {MealFormHandler} from "./meal.form-handler";
+import {MealFormHandler} from "./meal-form-handler";
 import {FormArray} from "@angular/forms";
 import {Product} from "../../../shared/model/domain/product";
 import {MealDTO} from "../../../shared/model/domain/meal";

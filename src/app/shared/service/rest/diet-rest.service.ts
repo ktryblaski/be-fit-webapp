@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Diet, DietView} from "../../model/domain/diet";
+import {Diet, DietDTO, DietView} from "../../model/domain/diet";
 
 @Injectable({
   providedIn: "root"
@@ -18,6 +18,15 @@ export class DietRestService {
 
   getDiet(dietId: number): Observable<Diet> {
     return this.http.get<Diet>(`${this.API_URL}/${dietId}`);
+  }
+
+  create(diet: DietDTO): Observable<number> {
+    return this.http.post<number>(`${this.API_URL}`, diet);
+  }
+
+  update(diet: DietDTO, dietId: number): Observable<Diet> {
+    diet.id = dietId;
+    return this.http.put<Diet>(`${this.API_URL}/${diet.id}`, diet);
   }
 
 }

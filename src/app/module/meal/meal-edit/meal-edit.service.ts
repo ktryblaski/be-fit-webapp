@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {BehaviorSubject, EMPTY, merge, noop, Observable, Subject, Subscription} from "rxjs";
-import {MealFormHandler} from "../meal-form/meal.form-handler";
+import {MealFormHandler} from "../meal-form/meal-form-handler";
 import {catchError, distinctUntilChanged, ignoreElements, switchMap, tap} from "rxjs/operators";
 import {NotificationSeverity} from "../../../shared/component/notification/notification";
 import {MealRestService} from "../../../shared/service/rest/meal-rest.service";

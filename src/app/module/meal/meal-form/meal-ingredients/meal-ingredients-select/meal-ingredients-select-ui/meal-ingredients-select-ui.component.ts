@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
 import {Product} from "../../../../../../shared/model/domain/product";
-import {MealFormHandler} from "../../../meal.form-handler";
+import {MealFormHandler} from "../../../meal-form-handler";
 import {merge, Observable, Subject} from "rxjs";
 import {map} from "rxjs/operators";
 

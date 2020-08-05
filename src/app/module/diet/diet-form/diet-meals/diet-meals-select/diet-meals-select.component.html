@@ -1,0 +1,11 @@
+<div class="pending-indicator-overlay-boundaries">
+  <app-diet-meals-select-ui [meals]="meals$ | async | filterMeals:selected"
+                            [formHandler]="formHandler"></app-diet-meals-select-ui>
+
+  <button [disabled]="formHandler.form.get('meal').value | isAddingDisabled"
+          (click)="handleAddMeal()"
+          mat-raised-button type="button"
+          class="add-button">Add</button>
+
+  <div class="pending-indicator-overlay-container" *ngIf="loading$ | async"></div>
+</div>

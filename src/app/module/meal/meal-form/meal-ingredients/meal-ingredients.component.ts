@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {MealFormHandler} from "../meal.form-handler";
+import {MealFormHandler} from "../meal-form-handler";
 import {Product} from "../../../../shared/model/domain/product";
 import {FormArray} from "@angular/forms";
 

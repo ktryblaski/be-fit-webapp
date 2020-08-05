@@ -1,0 +1,21 @@
+.actions {
+  margin-bottom: 30px;
+
+  button {
+    margin-right: 10px;
+  }
+}
+
+.base-data {
+  div {
+    margin-bottom: 10px;
+  }
+
+  .name {
+    width: 50%;
+
+    mat-form-field {
+      width: 100%;
+    }
+  }
+}
