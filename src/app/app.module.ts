@@ -11,7 +11,6 @@ import { MenuComponent } from './menu/menu.component';
 import { MainAreaComponent } from './main-area/main-area.component';
 import { MatListModule } from "@angular/material/list";
 import { HttpClientModule } from "@angular/common/http";
-import {LogoComponent} from "./menu/logo/logo.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {NotificationModule} from "./shared/component/notification/notification.module";
 
@@ -32,9 +31,9 @@ import {NotificationModule} from "./shared/component/notification/notification.m
     DashboardComponent,
     MenuComponent,
     MainAreaComponent,
-    LogoComponent,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {MealFormHandler} from "./meal-form-handler";
 
 @Component({
@@ -9,6 +9,7 @@ import {MealFormHandler} from "./meal-form-handler";
 export class MealFormComponent {
 
   @Input() formHandler: MealFormHandler
+  @Input() new = false;
   @Output() save: EventEmitter<void> = new EventEmitter<void>();
   @Output() cancel: EventEmitter<void> = new EventEmitter<void>();
 

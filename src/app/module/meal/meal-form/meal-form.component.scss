@@ -1,17 +1,27 @@
 .actions {
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 
   button {
     margin-right: 10px;
   }
 }
 
-.name, .description {
-  mat-form-field {
-    width: 50%;
+.title {
+  font-size: 20px;
+  margin-bottom: 30px;
+
+  .name {
+    font-size: 30px;
+    font-weight: 500;
   }
 }
 
-.description {
-  margin-bottom: 20px;
+.controls {
+  mat-form-field {
+    width: 50%;
+  }
+
+  .description {
+    margin-bottom: 20px;
+  }
 }

@@ -1,0 +1,11 @@
+@import "src/app/shared/colors";
+
+a[appLink] {
+  color: $primary-color;
+  padding: 0 15px;
+
+  &:hover {
+    cursor: pointer;
+    font-weight: 500;
+  }
+}

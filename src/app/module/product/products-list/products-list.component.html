@@ -2,13 +2,13 @@
   <h1>Products</h1>
 
   <div class="pending-indicator-overlay-boundaries">
-    <div class="button-bar">
+    <div class="actions">
       <button (click)="handleAddNewProduct()"
-              mat-raised-button color="primary">Add new product</button>
+              mat-raised-button color="primary">Add New Product</button>
     </div>
 
     <app-products-list-ui [products]="products$ | async"
-                          (clickId)="handleClickId($event)"></app-products-list-ui>
+                          (clickId)="handleClick($event)"></app-products-list-ui>
 
     <div class="pending-indicator-overlay-container" *ngIf="loading$ | async">
       <app-spinner></app-spinner>

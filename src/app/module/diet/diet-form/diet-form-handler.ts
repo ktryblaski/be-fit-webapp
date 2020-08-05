@@ -47,6 +47,7 @@ export class DietFormHandler {
   private createEmptyForm(): FormGroup {
     return new FormGroup({
       name: new FormControl(null, Validators.required),
+      description: new FormControl(null),
       type: new FormControl(null, Validators.required),
       dates: new FormGroup({
         startDate: new FormControl(moment().toDate()),

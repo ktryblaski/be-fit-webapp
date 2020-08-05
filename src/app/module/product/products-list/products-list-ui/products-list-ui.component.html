@@ -1,6 +1,5 @@
-<table class="bf-table">
+<table *ngIf="products.length; else noTableData" appTable selectable>
   <tr>
-    <th>Id</th>
     <th>Name</th>
     <th>
       <span class="macronutrients-label carbohydrates">Carbohydrates [g]</span>
@@ -14,15 +13,16 @@
     <th>KCAL</th>
   </tr>
 
-  <tr *ngFor="let product of products">
-    <td>
-      <a class="entity-link" target="_blank"
-         (click)="handleClickId(product.id)">{{product.id}}</a>
-    </td>
-    <td class="name-cell">{{product.name}}</td>
+  <tr *ngFor="let product of products"
+      (click)="handleClick(product)">
+    <td class="name">{{product.name}}</td>
     <td>{{product.macronutrients.carbohydrates}}</td>
     <td>{{product.macronutrients.proteins}}</td>
     <td>{{product.macronutrients.fats}}</td>
     <td>{{product.macronutrients | macronutrientsCaloriesCalculator}}</td>
   </tr>
 </table>
+
+<ng-template #noTableData>
+  <app-no-table-data></app-no-table-data>
+</ng-template>

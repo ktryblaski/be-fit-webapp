@@ -1,29 +1,48 @@
-@import "src/app/shared/style";
+@import "src/app/shared/colors";
 
-$border-color: #2e323a;
-$active-color: #546eff;
+$background-color: #ffffff;
+$active-color: $primary-color;
 
 .menu-container {
   position: relative;
   top: 0;
   height: 100%;
-  background-color: $border-color;
-  width: 197px;
+  background-color: $background-color;
 
   a {
-    color: white;
-    font-weight: 500;
+    color: #464653;
+    font-weight: 400;
+    padding-left: 10px;
   }
 
   mat-list-item {
-    border-left: 2px solid $border-color;
+    box-sizing: border-box;
+    border-left: 3px solid $background-color;
+
+    &.dashboard {
+      height: 58px;
+    }
+
+    &.log-out {
+      margin-top: 10px;
+    }
 
     &.active {
-      border-left: 2px solid $active-color;
+      border-left: 3px solid $active-color;
 
       a {
         color: $active-color;
       }
     }
+  }
+
+  .title {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2e323a;
+    font-weight: 500;
+    font-size: 30px;
   }
 }

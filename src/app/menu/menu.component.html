@@ -1,12 +1,10 @@
 <div class="menu-container">
-  <app-logo></app-logo>
+  <div class="title">be fit</div>
 
   <mat-nav-list>
-    <mat-list-item [routerLink]="['dashboard']" [routerLinkActive]="'active'">
+    <mat-list-item class="dashboard" [routerLink]="['dashboard']" [routerLinkActive]="'active'">
       <a matLine>Dashboard</a>
     </mat-list-item>
-
-    <mat-divider></mat-divider>
 
     <mat-list-item [routerLink]="['diet']" [routerLinkActive]="'active'">
       <a matLine>Diets</a>
@@ -20,9 +18,7 @@
       <a matLine>Products</a>
     </mat-list-item>
 
-    <mat-divider></mat-divider>
-
-    <mat-list-item>
+    <mat-list-item class="log-out">
       <a matLine>Log out</a>
     </mat-list-item>
 

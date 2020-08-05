@@ -25,46 +25,38 @@ import { DietMealsSelectUiComponent } from './diet-form/diet-meals/diet-meals-se
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {FilterMealsPipe} from "./diet-form/diet-meals/diet-meals-select/filter-meals.pipe";
 import {IsAddingDisabledPipe} from "./diet-form/diet-meals/diet-meals-select/is-adding-disabled.pipe";
+import {HelperModule} from "../../shared/helper/helper.module";
+import {NoTableDataModule} from "../../shared/component/no-table-data/no-table-data.module";
 
 @NgModule({
-    imports: [
-        CommonModule,
-        DietRoutingModule,
-        MatButtonModule,
-        SpinnerModule,
-        CalculatorModule,
-        MatFormFieldModule,
-        ReactiveFormsModule,
-        MatInputModule,
-        MatSelectModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatAutocompleteModule
-    ],
+  imports: [
+    CommonModule,
+    DietRoutingModule,
+    MatButtonModule,
+    SpinnerModule,
+    CalculatorModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatAutocompleteModule,
+    HelperModule,
+    NoTableDataModule
+  ],
   declarations: [
-
     DietsListComponent,
-
     DietsListUiComponent,
-
     DietCreateComponent,
-
     DietEditComponent,
-
     DietDetailsComponent,
-
     DietDetailsUiComponent,
-
     DietDetailsMealsTableComponent,
-
     DietFormComponent,
-
     DietMealsComponent,
-
     DietMealsSelectComponent,
-
     DietMealsTableComponent,
-
     DietMealsSelectUiComponent,
     FilterMealsPipe,
     IsAddingDisabledPipe
@@ -73,6 +65,4 @@ import {IsAddingDisabledPipe} from "./diet-form/diet-meals/diet-meals-select/is-
     MatDatepickerModule,
   ],
 })
-export class DietModule {
-
-}
+export class DietModule { }

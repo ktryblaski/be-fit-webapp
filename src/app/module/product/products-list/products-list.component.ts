@@ -34,10 +34,10 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     this.service.load();
   }
 
-  handleClickId(id: number): void {
+  handleClick(product: Product): void {
     this.dialog.open(ProductDetailsDialogComponent, {
       data: {
-        productId: id
+        productId: product.id
       },
       width: '400px'
     });

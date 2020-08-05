@@ -1,28 +1,33 @@
 <form [formGroup]="formHandler.form" (ngSubmit)="handleSubmit()">
 
   <div class="actions">
-    <button (click)="handleCancel()" type="button" mat-raised-button>Cancel</button>
+    <button (click)="handleCancel()" type="button" mat-raised-button tabindex="5">Cancel</button>
     <button [disabled]="!formHandler.form.valid" type="submit"
-            mat-raised-button color="primary">Save</button>
+            mat-raised-button color="primary" tabindex="6">Save</button>
   </div>
 
-  <h1>New Meal</h1>
-
-  <div class="name">
-    <mat-form-field>
-      <mat-label>Name</mat-label>
-      <input formControlName="name" type="text"
-             matInput tabindex="1">
-    </mat-form-field>
+  <div class="title">
+    {{new ? 'New Meal' : 'Meal'}}:
+    <span class="name">{{formHandler.form.get('name').value}}</span>
   </div>
 
-  <div class="description">
-    <mat-form-field>
-      <mat-label>Description</mat-label>
-      <textarea matInput formControlName="description" tabindex></textarea>
-    </mat-form-field>
-  </div>
+  <div class="controls">
+    <div class="name">
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input formControlName="name" matInput
+               type="text" tabindex="1">
+      </mat-form-field>
+    </div>
 
-  <app-meal-ingredients [formHandler]="formHandler"></app-meal-ingredients>
+    <div class="description">
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea formControlName="description" matInput tabindex="2" rows="4"></textarea>
+      </mat-form-field>
+    </div>
+
+    <app-meal-ingredients [formHandler]="formHandler"></app-meal-ingredients>
+  </div>
 
 </form>

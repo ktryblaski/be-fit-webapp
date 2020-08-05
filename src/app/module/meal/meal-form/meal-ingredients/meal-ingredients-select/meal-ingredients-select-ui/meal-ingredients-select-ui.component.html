@@ -1,6 +1,7 @@
 <mat-form-field [formGroup]="formHandler.form">
   <input type="text"
          matInput
+         tabindex="3"
          formControlName="product"
          [matAutocomplete]="auto">
   <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayFn">

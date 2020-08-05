@@ -12,10 +12,14 @@
   }
 
   .name {
-    width: 50%;
-
     mat-form-field {
-      width: 100%;
+      width: 50%;
+    }
+  }
+
+  .type {
+    mat-form-field {
+      width: 236px
     }
   }
 }

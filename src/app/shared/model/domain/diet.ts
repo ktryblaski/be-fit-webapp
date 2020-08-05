@@ -1,4 +1,3 @@
-import {Macronutrients} from "./macronutrients";
 import {Meal, MealType} from "./meal";
 
 export enum DietType {
@@ -10,6 +9,7 @@ export enum DietType {
 export interface Diet {
   id?: number,
   name: string,
+  description: string,
   startDate: number,
   endDate: number,
   type: DietType,
@@ -37,6 +37,7 @@ export interface DietMeal {
 export interface DietDTO {
   id?: number,
   name: string,
+  description: string,
   startDate: number,
   endDate: number,
   type: DietType,

@@ -9,10 +9,10 @@ import {MealView} from "../../../../shared/model/domain/meal";
 export class MealsListUiComponent {
 
   @Input() meals: MealView[]
-  @Output() clickId: EventEmitter<number> = new EventEmitter<number>();
+  @Output() clickId: EventEmitter<MealView> = new EventEmitter<MealView>();
 
-  handleClickId(id: number) {
-    this.clickId.next(id);
+  handleClick(meal: MealView) {
+    this.clickId.next(meal);
   }
 
 }

@@ -1,6 +1,5 @@
-<table class="bf-table">
+<table *ngIf="meals.length; else noTableData" appTable selectable>
   <tr>
-    <th>Id</th>
     <th>Name</th>
     <th>Weight [g]</th>
     <th>
@@ -17,12 +16,9 @@
     </th>
   </tr>
 
-  <tr *ngFor="let meal of meals">
-    <td>
-      <a class="entity-link"
-         (click)="handleClickId(meal.id)">{{meal.id}}</a>
-    </td>
-    <td class="name-cell">{{meal.name}}</td>
+  <tr *ngFor="let meal of meals"
+      (click)="handleClick(meal)">
+    <td class="name">{{meal.name}}</td>
     <td>{{meal.weight}}</td>
     <td>{{meal.carbohydrates}}</td>
     <td>{{meal.proteins}}</td>
@@ -30,3 +26,7 @@
     <td>{{meal | macronutrientsCaloriesCalculator}}</td>
   </tr>
 </table>
+
+<ng-template #noTableData>
+  <app-no-table-data></app-no-table-data>
+</ng-template>

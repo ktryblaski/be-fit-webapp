@@ -10,7 +10,6 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import { ProductDetailsDialogUiComponent } from './product-details-dialog/product-details-dialog-ui/product-details-dialog-ui.component';
-import { ProductDetailsDialogMacronutrientsInfoComponent } from './product-details-dialog/product-details-dialog-ui/product-details-dialog-macronutrients-info/product-details-dialog-macronutrients-info.component';
 import {MatBadgeModule} from "@angular/material/badge";
 import {MatChipsModule} from "@angular/material/chips";
 import { ProductCreateDialogComponent } from './product-create-dialog/product-create-dialog.component';
@@ -18,6 +17,10 @@ import { ProductCreateFormComponent } from './product-create-dialog/product-crea
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
+import {HelperModule} from "../../shared/helper/helper.module";
+import {ChartsModule} from "ng2-charts";
+import {MacronutrientsChartModule} from "../../shared/component/macronutrients-chart/macronutrients-chart.module";
+import {NoTableDataModule} from "../../shared/component/no-table-data/no-table-data.module";
 
 @NgModule({
   imports: [
@@ -32,18 +35,19 @@ import {ReactiveFormsModule} from "@angular/forms";
     MatChipsModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HelperModule,
+    ChartsModule,
+    MacronutrientsChartModule,
+    NoTableDataModule
   ],
   declarations: [
     ProductsListComponent,
     ProductsListUiComponent,
     ProductDetailsDialogComponent,
     ProductDetailsDialogUiComponent,
-    ProductDetailsDialogMacronutrientsInfoComponent,
     ProductCreateDialogComponent,
     ProductCreateFormComponent
   ]
 })
-export class ProductModule {
-
-}
+export class ProductModule { }

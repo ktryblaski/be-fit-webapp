@@ -9,17 +9,18 @@ import {InternationalizationService} from "../../../../shared/service/internatio
 })
 export class DietsListUiComponent {
 
+  readonly DATE_FORMAT: 'd/M/yyyy';
   readonly DIET_TYPE: {[key: string]: string};
 
   @Input() diets: DietView[];
-  @Output() clickId: EventEmitter<number> = new EventEmitter<number>();
+  @Output() clickId: EventEmitter<DietView> = new EventEmitter<DietView>();
 
   constructor(private i18nService: InternationalizationService) {
     this.DIET_TYPE = i18nService.DIET_TYPE;
   }
 
-  handleClickId(id: number) {
-    this.clickId.next(id);
+  handleClick(diet: DietView) {
+    this.clickId.next(diet);
   }
 
 }

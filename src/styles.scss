@@ -1,38 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "src/app/shared/style";
+@import "src/app/shared/colors";
+@import "src/app/shared/helper/table/table";
+@import "src/app/shared/helper/link/link";
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-table.bf-table {
-  border-spacing: 0;
-  box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
+::-webkit-scrollbar {
+  width: 6px;
+}
 
-  tr {
-    height: 56px;
+::-webkit-scrollbar-track {
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
 
-    &:not(:first-child):hover {
-      background-color: whitesmoke;
-    }
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background: $primary-color;
+}
 
-    th {
-      padding: 0 0 0 24px;
-      border-bottom: 1px solid rgba(0, 0, 0, .12);
-      text-align: left;
-      color: rgba(0, 0, 0, .54);
-      font-size: 12px;
-      font-weight: 500;
-    }
-
-    td {
-      padding: 0 0 0 24px;
-      border-bottom: 1px solid rgba(0, 0, 0, .12);
-      text-align: left;
-      color: rgba(0, 0, 0, .87);
-      font-size: 14px;
-    }
-  }
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba($primary-color, 0.8);
 }
 
 .pending-indicator-overlay-boundaries {
@@ -52,26 +43,15 @@ table.bf-table {
   }
 }
 
-a.entity-link {
-  color: $primary-color;
-  padding: 0 15px;
-
-  &:hover {
-    cursor: pointer;
-    font-weight: 500;
-  }
-}
-
 .macronutrients-label {
   &:before {
     content: "\2022";
     color: black;
     font-weight: bold;
     display: inline-block;
-    width: 1em;
-    margin-left: -1em;
+    width: 0.5em;
     font-size: 200%;
-    vertical-align: sub;
+    vertical-align: middle;
   }
 
   &.carbohydrates::before {

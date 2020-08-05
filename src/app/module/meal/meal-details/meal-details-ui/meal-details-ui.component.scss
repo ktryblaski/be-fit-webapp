@@ -1,14 +1,20 @@
-@import "src/app/shared/style";
+@import "src/app/shared/colors";
 
-.meal-name {
-  color: $primary-color;
-  font-size: 36px;
-  font-weight: 500;
-  margin-bottom: 45px;
-}
-
-.meal-property {
+.property {
   margin-bottom: 50px;
+
+  &.name {
+    color: $primary-color;
+    font-size: 36px;
+    font-weight: 500;
+    margin-top: 30px;
+    margin-bottom: 45px;
+  }
+
+  &.ingredients {
+    width: 50%;
+    margin-right: 50px;
+  }
 
   .title {
     font-size: 12px;
@@ -18,10 +24,5 @@
 
   .value {
     font-size: 20px;
-  }
-
-  &.ingredients {
-    width: calc(50% - 25px);
-    margin-right: 50px;
   }
 }

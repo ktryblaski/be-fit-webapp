@@ -27,6 +27,8 @@ import { MealIngredientsSelectUiComponent } from './meal-form/meal-ingredients/m
 import { ProductPipe } from './meal-form/meal-ingredients/meal-ingredients-table/product.pipe';
 import { IsAddingDisabledPipe } from './meal-form/meal-ingredients/meal-ingredients-select/is-adding-disabled.pipe';
 import { FilterProductsPipe } from './meal-form/meal-ingredients/meal-ingredients-select/filter-products.pipe';
+import {HelperModule} from "../../shared/helper/helper.module";
+import {NoTableDataModule} from "../../shared/component/no-table-data/no-table-data.module";
 
 @NgModule({
   imports: [
@@ -42,6 +44,8 @@ import { FilterProductsPipe } from './meal-form/meal-ingredients/meal-ingredient
     MatChipsModule,
     MatIconModule,
     MatAutocompleteModule,
+    HelperModule,
+    NoTableDataModule,
   ],
   declarations: [
     MealsListComponent,
@@ -62,6 +66,4 @@ import { FilterProductsPipe } from './meal-form/meal-ingredients/meal-ingredient
     FilterProductsPipe,
   ]
 })
-export class MealModule {
-
-}
+export class MealModule { }

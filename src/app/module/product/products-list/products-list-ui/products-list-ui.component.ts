@@ -9,10 +9,10 @@ import {Product} from "../../../../shared/model/domain/product";
 export class ProductsListUiComponent {
 
   @Input() products: Product[]
-  @Output() clickId: EventEmitter<number> = new EventEmitter<number>();
+  @Output() clickId: EventEmitter<Product> = new EventEmitter<Product>();
 
-  handleClickId(id: number) {
-    this.clickId.next(id);
+  handleClick(product: Product) {
+    this.clickId.next(product);
   }
 
 }

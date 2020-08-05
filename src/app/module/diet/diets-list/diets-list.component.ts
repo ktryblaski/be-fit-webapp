@@ -32,8 +32,8 @@ export class DietsListComponent implements OnInit {
     this.router.navigate(['new'], {relativeTo: this.route})
   }
 
-  handleClickId(id: number): void {
-    this.router.navigate([id], {relativeTo: this.route})
+  handleClick(diet: DietView): void {
+    this.router.navigate([diet.id], {relativeTo: this.route})
   }
 
 }

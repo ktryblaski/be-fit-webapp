@@ -28,8 +28,8 @@ export class MealsListComponent implements OnInit {
     this.service.load();
   }
 
-  handleClickId(id: number): void {
-    this.router.navigate([id], {relativeTo: this.route})
+  handleClick(meal: MealView): void {
+    this.router.navigate([meal.id], {relativeTo: this.route})
   }
 
   handleAddNewMeal(): void {
