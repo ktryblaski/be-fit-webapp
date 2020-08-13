@@ -15,7 +15,7 @@ export class NotificationService {
   readonly notifications$: Observable<Notification[]> = this.notifications.pipe(distinctUntilChanged());
 
   show(notification: Notification): void {
-    const notificationsArray = [
+    const notifications = [
       ...this.notifications.value,
       notification
     ];
@@ -24,7 +24,7 @@ export class NotificationService {
       this.close(notification);
     }, this.NOTIFICATION_LIFE_TIME * 1000);
 
-    this.notifications.next(notificationsArray);
+    this.notifications.next(notifications);
   }
 
   private close(notification: Notification) {
