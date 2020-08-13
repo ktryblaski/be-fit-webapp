@@ -1,1 +1,32 @@
-<p>dashboard works!</p>
+<h3 *appForMobile>
+  1. Shows up only for MOBILE
+</h3>
+
+<h3 *appForLandscapeMobile>
+  2. Shows up only for LANDSCAPE MOBILE
+</h3>
+
+<h3 *appForDesktop>
+  3. Shows up only for DESKTOP
+</h3>
+
+<h3 *appForMedia="'(max-width: 599px)'">
+  4. Shows up only for static MEDIA (max-width: 599px)
+</h3>
+
+<h3 *appForMedia="mediaQuery">
+  5. Shows up only for dynamic MEDIA - switches after 5 seconds - current media query equals to {{mediaQuery}}
+</h3>
+
+<h3 [appClassForMedia]="'(max-width: 599px)'" [classes]="['example-class-1']">
+  6. Adds class only for static MEDIA (max-width: 599px)
+</h3>
+
+<h3 [appClassForMedia]="Breakpoints.Web" [classes]="['example-class-1']">
+  7. Adds class only for DESKTOP
+</h3>
+
+<h3 [appClassForMedia]="mediaQuery" [classes]="['example-class-1']">
+  8. Adds class only for dynamic MEDIA - switches after 5 seconds - current media query equals to {{mediaQuery}}
+</h3>
+

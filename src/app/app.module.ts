@@ -13,6 +13,7 @@ import { MatListModule } from "@angular/material/list";
 import { HttpClientModule } from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 import {NotificationModule} from "./shared/component/notification/notification.module";
+import {ResponsiveModule} from "./shared/directive/responsive/responsive.module";
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import {NotificationModule} from "./shared/component/notification/notification.m
     MatListModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NotificationModule
+    NotificationModule,
+    ResponsiveModule
   ],
   declarations: [
     AppComponent,
