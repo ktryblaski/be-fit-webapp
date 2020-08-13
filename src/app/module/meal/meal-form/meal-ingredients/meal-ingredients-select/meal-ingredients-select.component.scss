@@ -1,3 +1,9 @@
-.add-button {
-  margin-left: 20px;
+.ingredient-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
+  app-meal-ingredients-select-ui {
+    width: calc(100% - 84px);
+  }
 }

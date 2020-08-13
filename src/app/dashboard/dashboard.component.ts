@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     setInterval(() => {
-      this.mediaQuery = this.mediaQuery === this.mediaQuery_1 ? this.mediaQuery_2 : this.mediaQuery_1
+      this.mediaQuery = this.mediaQuery === this.mediaQuery_1 ? this.mediaQuery_2 : this.mediaQuery_1;
     }, 5000);
   }
 

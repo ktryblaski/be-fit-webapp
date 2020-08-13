@@ -24,9 +24,7 @@ export class DietMealsSelectUiComponent implements OnInit, OnChanges {
       this.formHandler.form.get('meal').valueChanges,
       this._meals.pipe()
     ).pipe(
-      map(() => {
-        return this.filter(this.meals, this.formHandler.form.get('meal').value);
-      })
+      map(() => this.filter(this.meals, this.formHandler.form.get('meal').value))
     );
   }
 

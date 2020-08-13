@@ -1,11 +1,13 @@
 <div class="pending-indicator-overlay-boundaries">
-  <app-meal-ingredients-select-ui [products]="products$ | async | filterProducts:selected"
-                                  [formHandler]="formHandler"></app-meal-ingredients-select-ui>
+  <div class="ingredient-container">
+    <app-meal-ingredients-select-ui [products]="products$ | async | filterProducts:selected"
+                                    [formHandler]="formHandler"></app-meal-ingredients-select-ui>
 
-  <button [disabled]="formHandler.form.get('product').value | isAddingDisabled"
-          (click)="handleAddProduct()"
-          mat-raised-button type="button"
-          class="add-button" tabindex="4">Add</button>
+    <button [disabled]="formHandler.form.get('product').value | isAddingDisabled"
+            (click)="handleAddProduct()"
+            mat-raised-button type="button"
+            class="add-button" tabindex="4">Add</button>
+  </div>
 
   <div class="pending-indicator-overlay-container" *ngIf="loading$ | async"></div>
 </div>

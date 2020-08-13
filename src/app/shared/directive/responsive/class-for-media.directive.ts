@@ -31,12 +31,14 @@ export class ClassForMediaDirective implements OnChanges, OnDestroy {
       this.adjustClasses(changes.classes.currentValue, this.breakpointObserver.isMatched(this.mediaQuery))
     }
 
-    if(changes.mediaQuery && changes.mediaQuery.currentValue) {
+    if(changes.mediaQuery) {
       this.ngOnDestroy();
 
-      this.subscription = this.breakpointObserver.observe(changes.mediaQuery.currentValue).subscribe(state => {
-        this.adjustClasses(this.classes, state.matches);
-      });
+      if(changes.mediaQuery.currentValue) {
+        this.subscription = this.breakpointObserver.observe(changes.mediaQuery.currentValue).subscribe(state => {
+          this.adjustClasses(this.classes, state.matches);
+        });
+      }
     }
   }
 

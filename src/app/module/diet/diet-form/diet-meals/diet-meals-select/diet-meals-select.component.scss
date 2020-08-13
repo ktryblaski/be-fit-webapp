@@ -1,3 +1,9 @@
-.add-button {
-  margin-left: 20px;
+.meals-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
+  app-diet-meals-select-ui {
+    width: calc(100% - 84px);
+  }
 }

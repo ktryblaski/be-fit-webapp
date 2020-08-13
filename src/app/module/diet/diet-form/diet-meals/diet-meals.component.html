@@ -4,6 +4,8 @@
                        (addMeal)="handleAddMeal($event)"></app-diet-meals-select>
 
 <div *ngIf="(formHandler.meals$ | async).length" class="meals-table">
-  <app-diet-meals-table [formHandler]="formHandler"
+
+  <p>Meals table is not implemented yet</p>
+  <app-diet-meals-table *ngIf="false" [formHandler]="formHandler"
                         (removeMeal)="handleRemoveMeal($event)"></app-diet-meals-table>
 </div>

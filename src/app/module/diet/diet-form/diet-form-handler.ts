@@ -1,5 +1,5 @@
 import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
-import {Meal} from "../../../shared/model/domain/meal";
+import {MealView} from "../../../shared/model/domain/meal";
 import {Diet} from "../../../shared/model/domain/diet";
 import * as moment from 'moment';
 import {BehaviorSubject, Observable} from "rxjs";
@@ -9,11 +9,11 @@ export class DietFormHandler {
 
   readonly form: FormGroup;
 
-  private readonly meals = new BehaviorSubject<Meal[]>([]);
-  readonly meals$: Observable<Meal[]> = this.meals.pipe(distinctUntilChanged());
+  private readonly meals = new BehaviorSubject<MealView[]>([]);
+  readonly meals$: Observable<MealView[]> = this.meals.pipe(distinctUntilChanged());
 
-  private get _meals(): Meal[] {
-    return this.form.get('meals').value as Meal[];
+  private get _meals(): MealView[] {
+    return this.form.get('meals').value as MealView[];
   }
 
   constructor(diet?: Diet) {
@@ -24,7 +24,7 @@ export class DietFormHandler {
     }
   }
 
-  public addMeal(meal: Meal): void {
+  public addMeal(meal: MealView): void {
     const meals = [...this._meals, meal];
 
     this.form.patchValue({
@@ -34,7 +34,7 @@ export class DietFormHandler {
     this.meals.next([...meals]);
   }
 
-  public removeMeal(meal: Meal): void {
+  public removeMeal(meal: MealView): void {
     const meals = this._meals.filter(m => m !== meal);
 
     this.form.patchValue({

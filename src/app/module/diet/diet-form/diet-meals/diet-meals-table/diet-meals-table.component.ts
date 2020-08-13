@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {DietFormHandler} from "../../diet-form-handler";
-import {Meal} from "../../../../../shared/model/domain/meal";
+import {MealView} from "../../../../../shared/model/domain/meal";
 
 @Component({
   selector: 'app-diet-meals-table',
@@ -10,7 +10,7 @@ import {Meal} from "../../../../../shared/model/domain/meal";
 export class DietMealsTableComponent implements OnInit {
 
   @Input() formHandler: DietFormHandler
-  @Output() removeMeal: EventEmitter<Meal> = new EventEmitter<Meal>();
+  @Output() removeMeal: EventEmitter<MealView> = new EventEmitter<MealView>();
 
   constructor() { }
 
