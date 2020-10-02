@@ -12,6 +12,4 @@ import { CommonModule } from "@angular/common";
     LoginComponent
   ]
 })
-export class AuthModule {
-
-}
+export class AuthModule { }

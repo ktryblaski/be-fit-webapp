@@ -49,6 +49,4 @@ import { MealsWeightCalculatorPipe } from './meals-weight-calculator.pipe';
     MealsCaloriesCalculatorPipe
   ]
 })
-export class CalculatorModule {
-
-}
+export class CalculatorModule { }

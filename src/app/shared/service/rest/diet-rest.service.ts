@@ -2,8 +2,6 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Diet, DietDTO, DietView} from "../../model/domain/diet";
-import {ApiResponse, mapResponse} from "../../model/domain/response";
-import {map} from "rxjs/operators";
 
 @Injectable({
   providedIn: "root"
@@ -15,24 +13,20 @@ export class DietRestService {
   constructor(private http: HttpClient) {}
 
   getDietsLite(): Observable<DietView[]> {
-    return this.http.get<ApiResponse<DietView[]>>(`${this.API_URL}/lite`)
-      .pipe(map(mapResponse));
+    return this.http.get<DietView[]>(`${this.API_URL}/lite`);
   }
 
   getDiet(dietId: number): Observable<Diet> {
-    return this.http.get<ApiResponse<Diet>>(`${this.API_URL}/${dietId}`)
-      .pipe(map(mapResponse));
+    return this.http.get<Diet>(`${this.API_URL}/${dietId}`);
   }
 
   create(diet: DietDTO): Observable<number> {
-    return this.http.post<ApiResponse<number>>(`${this.API_URL}`, diet)
-      .pipe(map(mapResponse));
+    return this.http.post<number>(`${this.API_URL}`, diet);
   }
 
   update(diet: DietDTO, dietId: number): Observable<Diet> {
-    diet.id = dietId;
-    return this.http.put<ApiResponse<Diet>>(`${this.API_URL}/${diet.id}`, diet)
-      .pipe(map(mapResponse));
+    diet.id = dietId; // TODO
+    return this.http.put<Diet>(`${this.API_URL}/${diet.id}`, diet);
   }
 
 }

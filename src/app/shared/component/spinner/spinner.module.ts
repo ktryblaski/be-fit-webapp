@@ -15,6 +15,4 @@ import {CommonModule} from "@angular/common";
     SpinnerComponent
   ]
 })
-export class SpinnerModule {
-
-}
+export class SpinnerModule { }

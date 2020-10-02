@@ -5,7 +5,6 @@ import {DietDetailsComponent} from "./diet-details/diet-details.component";
 import {DietCreateComponent} from "./diet-create/diet-create.component";
 import {DietEditComponent} from "./diet-edit/diet-edit.component";
 
-
 const routes: Routes = [
   {path: '', component: DietsListComponent},
   {path: 'new', component: DietCreateComponent},
@@ -19,6 +18,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class DietRoutingModule {
-
-}
+export class DietRoutingModule { }

@@ -26,11 +26,6 @@
            min="0" matInput tabindex="4">
   </mat-form-field>
 
-  <div class="kcal-section">
-    <span class="kcal-text">KCAL</span>
-    <span class="badge">{{kcal$ | async | macronutrientsCaloriesCalculator}}</span>
-  </div>
-
   <div class="actions">
     <button (click)="handleCancel()" type="button"
             mat-raised-button tabindex="6">Cancel</button>

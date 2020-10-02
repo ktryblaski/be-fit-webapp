@@ -1,6 +1,7 @@
 @import "src/app/shared/colors";
 
 .actions {
+  margin-top: 20px;
   display: flex;
   justify-content: flex-end;
 
@@ -26,21 +27,3 @@
 .fats-input {
   width: calc(33% - 10px);
 }
-
-.kcal-section {
-  display: flex;
-  justify-content: center;
-  padding: 20px 0 30px;
-  font-size: 20px;
-
-  .kcal-text {
-    padding-top: 2px;
-  }
-
-  .badge {
-    margin-left: 10px;
-    background-color: $kcal-color;
-    color: white;
-  }
-}
-
