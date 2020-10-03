@@ -1,0 +1,12 @@
+<mat-form-field>
+  <input [formControl]="formHandler.product.ref"
+         [matAutocomplete]="auto"
+         type="text"
+         matInput
+         tabindex="3">
+  <mat-autocomplete [displayWith]="displayFn" autoActiveFirstOption #auto="matAutocomplete">
+    <mat-option *ngFor="let product of (products | filterProducts:formHandler.product.value | sortProducts)" [value]="product">
+      {{product.name}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

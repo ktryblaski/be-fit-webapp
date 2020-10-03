@@ -1,6 +1,6 @@
-import { NgModule } from "@angular/core";
-import { PreloadAllModules, RouterModule, Routes } from "@angular/router"
-import { DashboardComponent } from "./dashboard/dashboard.component";
+import { NgModule } from '@angular/core';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
 
@@ -10,6 +10,8 @@ const routes: Routes = [
   {path: 'auth', loadChildren: () => import('./module/auth/auth.module').then(module => module.AuthModule)},
   {path: 'product', loadChildren: () => import('./module/product/product.module').then(module => module.ProductModule)},
   {path: 'meal', loadChildren: () => import('./module/meal/meal.module').then(module => module.MealModule)},
+  {path: 'meal-template',
+    loadChildren: () => import('./module/meal-template/meal-template.module').then(module => module.MealTemplateModule)},
   {path: 'diet', loadChildren: () => import('./module/diet/diet.module').then(module => module.DietModule)}
 
 ];

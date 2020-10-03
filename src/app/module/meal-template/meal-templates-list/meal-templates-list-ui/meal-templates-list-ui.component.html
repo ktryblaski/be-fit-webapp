@@ -1,0 +1,32 @@
+<table *ngIf="mealTemplates.length; else noTableData" appTable selectable>
+  <tr>
+    <th>Name</th>
+    <th>Weight [g]</th>
+    <th>
+      <span class="macronutrients-label carbohydrates">Carbohydrates [g]</span>
+    </th>
+    <th>
+      <span class="macronutrients-label proteins">Proteins [g]</span>
+    </th>
+    <th>
+      <span class="macronutrients-label fats">Fats [g]</span>
+    </th>
+    <th>
+      <span class="macronutrients-label kcal">KCAL</span>
+    </th>
+  </tr>
+
+  <tr *ngFor="let mealTemplate of mealTemplates"
+      (click)="handleClick(mealTemplate)">
+    <td class="name">{{mealTemplate.name}}</td>
+    <td>{{mealTemplate.ingredients | ingredientsWeightCalculator}}</td>
+    <td>{{mealTemplate.ingredients | ingredientsCarbohydratesCalculator}}</td>
+    <td>{{mealTemplate.ingredients | ingredientsProteinsCalculator}}</td>
+    <td>{{mealTemplate.ingredients | ingredientsFatsCalculator}}</td>
+    <td>{{mealTemplate.ingredients | ingredientsCaloriesCalculator}}</td>
+  </tr>
+</table>
+
+<ng-template #noTableData>
+  <app-no-table-data></app-no-table-data>
+</ng-template>

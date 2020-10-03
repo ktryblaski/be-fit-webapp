@@ -1,13 +1,13 @@
-import {Injectable} from "@angular/core";
-import {BehaviorSubject, EMPTY, merge, noop, Observable, Subject, Subscription} from "rxjs";
-import {MealFormHandler} from "../meal-form/meal-form-handler";
-import {catchError, distinctUntilChanged, ignoreElements, switchMap, tap} from "rxjs/operators";
-import {NotificationSeverity} from "../../../shared/component/notification/notification";
-import {MealRestService} from "../../../shared/service/rest/meal-rest.service";
-import {NotificationService} from "../../../shared/component/notification/notification.service";
-import {MealMapperService} from "../meal-form/meal-mapper.service";
-import {Router} from "@angular/router";
-import {Meal} from "../../../shared/model/domain/meal";
+import {Injectable} from '@angular/core';
+import {BehaviorSubject, EMPTY, merge, noop, Observable, Subject, Subscription} from 'rxjs';
+import {MealFormHandler} from '../meal-form/meal-form-handler';
+import {catchError, distinctUntilChanged, ignoreElements, switchMap, tap} from 'rxjs/operators';
+import {NotificationSeverity} from '../../../shared/component/notification/notification';
+import {MealRestService} from '../../../shared/service/rest/meal-rest.service';
+import {NotificationService} from '../../../shared/component/notification/notification.service';
+import {MealMapperService} from '../meal-form/meal-mapper.service';
+import {Router} from '@angular/router';
+import {Meal} from '../../../shared/model/domain/meal';
 
 @Injectable()
 export class MealEditService {
@@ -62,7 +62,7 @@ export class MealEditService {
           this.notificationService.show({
             message: 'An error has occurred',
             severity: NotificationSeverity.DANGER
-          })
+          });
           return EMPTY;
         })
       )),
@@ -76,13 +76,12 @@ export class MealEditService {
         this.pending.next(true);
       }),
       switchMap((meal) => this.restService.update(this.mapper.map(meal), this.meal.value.id).pipe(
-        tap((meal) => {
-          this.router.navigate(['meal', meal.id]);
+        tap((savedMeal) => {
+          this.router.navigate(['meal', savedMeal.id]);
           this.notificationService.show({
             message: 'The meal has been saved',
             severity: NotificationSeverity.SUCCESS
-          })
-
+          });
         }),
         catchError((error) => {
           console.error(error);
@@ -90,12 +89,12 @@ export class MealEditService {
           this.notificationService.show({
             message: 'An error has occurred',
             severity: NotificationSeverity.DANGER
-          })
+          });
           return EMPTY;
         })
       )),
       ignoreElements()
     );
-  };
+  }
 
 }

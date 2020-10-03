@@ -1,11 +1,11 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA} from "@angular/material/dialog";
-import {ProductDetailsDialogService} from "./product-details-dialog.service";
-import {Observable} from "rxjs";
-import {Product} from "../../../shared/model/domain/product";
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {ProductDetailsDialogService} from './product-details-dialog.service';
+import {Observable} from 'rxjs';
+import {Product} from '../../../shared/model/domain/product';
 
 export interface ProductDialogData {
-  productId: number
+  productId: number;
 }
 
 @Component({

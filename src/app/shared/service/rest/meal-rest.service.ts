@@ -1,10 +1,10 @@
-import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {Meal, MealDTO, MealView} from "../../model/domain/meal";
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {Meal, MealDTO, MealView} from '../../model/domain/meal';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class MealRestService {
 

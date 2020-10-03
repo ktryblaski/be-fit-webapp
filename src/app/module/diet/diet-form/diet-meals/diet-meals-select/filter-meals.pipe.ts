@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {MealView} from "../../../../../shared/model/domain/meal";
+import {MealView} from '../../../../../shared/model/domain/meal';
 
 @Pipe({
   name: 'filterMeals'

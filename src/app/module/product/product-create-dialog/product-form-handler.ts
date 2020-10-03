@@ -1,4 +1,4 @@
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 export class ProductFormHandler {
 
@@ -14,7 +14,7 @@ export class ProductFormHandler {
       carbohydrates: new FormControl(0, Validators.required),
       proteins: new FormControl(0, Validators.required),
       fats: new FormControl(0, Validators.required)
-    })
+    });
   }
 
 }

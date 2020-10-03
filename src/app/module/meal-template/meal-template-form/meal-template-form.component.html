@@ -1,0 +1,28 @@
+<form [formGroup]="formHandler.form" (ngSubmit)="handleSubmit()">
+
+  <div class="actions">
+    <button (click)="handleCancel()" type="button" mat-raised-button tabindex="5">Cancel</button>
+    <button [disabled]="formHandler.form.invalid" type="submit"
+            mat-raised-button color="primary" tabindex="6">Save</button>
+  </div>
+
+  <div class="controls">
+    <div class="name">
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input [formControl]="formHandler.name.ref" matInput
+               type="text" tabindex="1">
+      </mat-form-field>
+    </div>
+
+    <div class="description">
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea [formControl]="formHandler.description.ref" matInput tabindex="2"></textarea>
+      </mat-form-field>
+    </div>
+
+    <app-meal-template-form-ingredients [products]="dataSource.products"></app-meal-template-form-ingredients>
+  </div>
+
+</form>

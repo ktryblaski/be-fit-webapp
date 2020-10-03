@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
-import {Meal} from "../../../../shared/model/domain/meal";
-import {InternationalizationService} from "../../../../shared/service/internationalization.service";
+import {Meal} from '../../../../shared/model/domain/meal';
+import {InternationalizationService} from '../../../../shared/service/internationalization.service';
 
 @Component({
   selector: 'app-meal-details-ui',

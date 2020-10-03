@@ -1,10 +1,10 @@
-import {Injectable, OnDestroy} from "@angular/core";
-import {ProductRestService} from "../../../../../shared/service/rest/product-rest.service";
-import {BehaviorSubject, EMPTY, noop, Observable, Subject, Subscription} from "rxjs";
-import {Product} from "../../../../../shared/model/domain/product";
-import {catchError, distinctUntilChanged, ignoreElements, switchMap, tap} from "rxjs/operators";
-import {NotificationSeverity} from "../../../../../shared/component/notification/notification";
-import {NotificationService} from "../../../../../shared/component/notification/notification.service";
+import {Injectable, OnDestroy} from '@angular/core';
+import {ProductRestService} from '../../../../../shared/service/rest/product-rest.service';
+import {BehaviorSubject, EMPTY, noop, Observable, Subject, Subscription} from 'rxjs';
+import {Product} from '../../../../../shared/model/domain/product';
+import {catchError, distinctUntilChanged, ignoreElements, switchMap, tap} from 'rxjs/operators';
+import {NotificationSeverity} from '../../../../../shared/component/notification/notification';
+import {NotificationService} from '../../../../../shared/component/notification/notification.service';
 
 @Injectable()
 export class MealIngredientsSelectService implements OnDestroy {
@@ -36,7 +36,7 @@ export class MealIngredientsSelectService implements OnDestroy {
       }),
       switchMap(() => this.restService.getProducts().pipe(
         tap((products: Product[]) => {
-          this.products.next(products)
+          this.products.next(products);
           this.loading.next(false);
         }),
         catchError((error) => {
@@ -45,7 +45,7 @@ export class MealIngredientsSelectService implements OnDestroy {
           this.notificationService.show({
             message: 'An error has occurred',
             severity: NotificationSeverity.DANGER
-          })
+          });
           return EMPTY;
         })
       )),

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {DietFormHandler} from "./diet-form-handler";
-import {DietDTO} from "../../../shared/model/domain/diet";
+import {DietFormHandler} from './diet-form-handler';
+import {DietDTO} from '../../../shared/model/domain/diet';
 
 @Injectable({
   providedIn: 'root'

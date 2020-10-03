@@ -1,10 +1,10 @@
 import {Injectable, OnDestroy} from '@angular/core';
-import {BehaviorSubject, EMPTY, merge, noop, Observable, Subject, Subscription} from "rxjs";
-import {catchError, distinctUntilChanged, ignoreElements, switchMap, tap} from "rxjs/operators";
-import {Meal} from "../../../shared/model/domain/meal";
-import {MealRestService} from "../../../shared/service/rest/meal-rest.service";
-import {NotificationService} from "../../../shared/component/notification/notification.service";
-import {NotificationSeverity} from "../../../shared/component/notification/notification";
+import {BehaviorSubject, EMPTY, merge, noop, Observable, Subject, Subscription} from 'rxjs';
+import {catchError, distinctUntilChanged, ignoreElements, switchMap, tap} from 'rxjs/operators';
+import {Meal} from '../../../shared/model/domain/meal';
+import {MealRestService} from '../../../shared/service/rest/meal-rest.service';
+import {NotificationService} from '../../../shared/component/notification/notification.service';
+import {NotificationSeverity} from '../../../shared/component/notification/notification';
 
 @Injectable()
 export class MealDetailsService implements OnDestroy {
@@ -50,7 +50,7 @@ export class MealDetailsService implements OnDestroy {
           this.notificationService.show({
             message: 'An error has occurred',
             severity: NotificationSeverity.DANGER
-          })
+          });
           return EMPTY;
         })
       )),

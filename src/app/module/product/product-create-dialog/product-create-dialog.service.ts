@@ -1,11 +1,11 @@
 import {Injectable, OnDestroy} from '@angular/core';
-import {BehaviorSubject, EMPTY, noop, Observable, Subject, Subscription} from "rxjs";
-import {catchError, distinctUntilChanged, ignoreElements, switchMap, tap} from "rxjs/operators";
-import {ProductFormHandler} from "./product-form-handler";
-import {ProductRestService} from "../../../shared/service/rest/product-rest.service";
-import {Product} from "../../../shared/model/domain/product";
-import {NotificationService} from "../../../shared/component/notification/notification.service";
-import {NotificationSeverity} from "../../../shared/component/notification/notification";
+import {BehaviorSubject, EMPTY, noop, Observable, Subject, Subscription} from 'rxjs';
+import {catchError, distinctUntilChanged, ignoreElements, switchMap, tap} from 'rxjs/operators';
+import {ProductFormHandler} from './product-form-handler';
+import {ProductRestService} from '../../../shared/service/rest/product-rest.service';
+import {Product} from '../../../shared/model/domain/product';
+import {NotificationService} from '../../../shared/component/notification/notification.service';
+import {NotificationSeverity} from '../../../shared/component/notification/notification';
 
 @Injectable()
 export class ProductCreateDialogService implements OnDestroy {
@@ -36,13 +36,13 @@ export class ProductCreateDialogService implements OnDestroy {
       }),
       switchMap((formHandler: ProductFormHandler) =>
         this.restService.saveProduct(this.mapProduct(formHandler)).pipe(
-          tap(() =>{
+          tap(() => {
             this.saving.next(false);
             this.saved.next(true);
             this.notificationService.show({
               message: 'New product has been added',
               severity: NotificationSeverity.SUCCESS
-            })
+            });
           }),
           catchError((error) => {
             console.error(error);
@@ -50,7 +50,7 @@ export class ProductCreateDialogService implements OnDestroy {
             this.notificationService.show({
               message: 'An error has occurred',
               severity: NotificationSeverity.DANGER
-            })
+            });
             return EMPTY;
           })
         )),
@@ -68,7 +68,7 @@ export class ProductCreateDialogService implements OnDestroy {
         proteins: form.get('proteins').value,
         fats: form.get('fats').value
       }
-    }
+    };
   }
 
   ngOnDestroy(): void {

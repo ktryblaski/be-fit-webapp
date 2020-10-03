@@ -1,9 +1,9 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import {MealIngredientsSelectService} from "./meal-ingredients-select.service";
-import {Observable, Subscription} from "rxjs";
-import {Product} from "../../../../../shared/model/domain/product";
-import {MealFormHandler} from "../../meal-form-handler";
-import {Ingredient} from "../../../../../shared/model/domain/ingredient";
+import {MealIngredientsSelectService} from './meal-ingredients-select.service';
+import {Observable, Subscription} from 'rxjs';
+import {Product} from '../../../../../shared/model/domain/product';
+import {MealFormHandler} from '../../meal-form-handler';
+import {Ingredient} from '../../../../../shared/model/domain/ingredient';
 
 @Component({
   selector: 'app-meal-ingredients-select',
@@ -13,7 +13,7 @@ import {Ingredient} from "../../../../../shared/model/domain/ingredient";
 })
 export class MealIngredientsSelectComponent implements OnInit, OnDestroy {
 
-  @Input() formHandler: MealFormHandler
+  @Input() formHandler: MealFormHandler;
   @Output() addProduct: EventEmitter<Product> = new EventEmitter<Product>();
 
   selected = [];

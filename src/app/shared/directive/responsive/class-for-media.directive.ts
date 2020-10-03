@@ -6,8 +6,8 @@ import {
   OnDestroy,
   Renderer2, SimpleChanges,
 } from '@angular/core';
-import {BreakpointObserver} from "@angular/cdk/layout";
-import {Subscription} from "rxjs";
+import {BreakpointObserver} from '@angular/cdk/layout';
+import {Subscription} from 'rxjs';
 
 type Classes = string | string[];
 
@@ -26,15 +26,15 @@ export class ClassForMediaDirective implements OnChanges, OnDestroy {
               private breakpointObserver: BreakpointObserver) { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if(changes.classes && !changes.classes.isFirstChange()) {
+    if (changes.classes && !changes.classes.isFirstChange()) {
       this.adjustClasses(changes.classes.previousValue, false);
-      this.adjustClasses(changes.classes.currentValue, this.breakpointObserver.isMatched(this.mediaQuery))
+      this.adjustClasses(changes.classes.currentValue, this.breakpointObserver.isMatched(this.mediaQuery));
     }
 
-    if(changes.mediaQuery) {
+    if (changes.mediaQuery) {
       this.ngOnDestroy();
 
-      if(changes.mediaQuery.currentValue) {
+      if (changes.mediaQuery.currentValue) {
         this.subscription = this.breakpointObserver.observe(changes.mediaQuery.currentValue).subscribe(state => {
           this.adjustClasses(this.classes, state.matches);
         });
@@ -43,7 +43,7 @@ export class ClassForMediaDirective implements OnChanges, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if(this.subscription) {
+    if (this.subscription) {
       this.subscription.unsubscribe();
     }
   }
@@ -51,7 +51,7 @@ export class ClassForMediaDirective implements OnChanges, OnDestroy {
   private adjustClasses(classes: Classes, matches: boolean): void {
     const classesArray = this.getClassesAsArray(classes);
 
-    if(matches) {
+    if (matches) {
       classesArray.forEach(clazz => {
         this.renderer.addClass(this.hostElement.nativeElement, clazz);
       });
@@ -63,11 +63,11 @@ export class ClassForMediaDirective implements OnChanges, OnDestroy {
   }
 
   private getClassesAsArray(classes: Classes): string[] {
-    if(Array.isArray(classes)) {
+    if (Array.isArray(classes)) {
       return classes;
     }
 
-    if(typeof classes === 'string') {
+    if (typeof classes === 'string') {
       return [classes];
     }
 

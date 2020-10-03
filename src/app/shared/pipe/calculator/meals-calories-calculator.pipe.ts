@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {DietMeal} from "../../model/domain/diet";
-import {mealsKCAL} from "../../util/calculator";
+import {DietMeal} from '../../model/domain/diet';
+import {mealsKCAL} from '../../util/calculator';
 
 @Pipe({
   name: 'mealsCaloriesCalculator'

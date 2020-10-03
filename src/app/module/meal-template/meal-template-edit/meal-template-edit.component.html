@@ -1,0 +1,16 @@
+<ng-container *ngIf="loaded$ | async; else loading">
+  <div class="pending-indicator-overlay-boundaries">
+    <app-meal-template-form [mealTemplate]="mealTemplate$ | async"
+                            [dataSource]="dataSource$ | async"
+                            (save)="handleUpdate($event)"
+                            (cancel)="handleCancel()"></app-meal-template-form>
+
+    <div class="pending-indicator-overlay-container" *ngIf="(loading$ | async) || (saving$ | async)">
+      <app-spinner></app-spinner>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #loading>
+  <app-spinner></app-spinner>
+</ng-template>

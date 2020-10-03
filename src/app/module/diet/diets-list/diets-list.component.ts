@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from "rxjs";
-import {DietView} from "../../../shared/model/domain/diet";
-import {DietsListService} from "./diets-list.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Observable} from 'rxjs';
+import {DietView} from '../../../shared/model/domain/diet';
+import {DietsListService} from './diets-list.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-diets-list',
@@ -29,11 +29,11 @@ export class DietsListComponent implements OnInit {
   }
 
   handleAddNewDiet(): void {
-    this.router.navigate(['new'], {relativeTo: this.route})
+    this.router.navigate(['new'], {relativeTo: this.route});
   }
 
   handleClick(diet: DietView): void {
-    this.router.navigate([diet.id], {relativeTo: this.route})
+    this.router.navigate([diet.id], {relativeTo: this.route});
   }
 
 }

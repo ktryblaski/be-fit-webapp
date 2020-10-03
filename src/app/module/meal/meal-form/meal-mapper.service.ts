@@ -1,9 +1,9 @@
-import {Injectable} from "@angular/core";
-import {MealFormHandler} from "./meal-form-handler";
-import {FormArray} from "@angular/forms";
-import {Product} from "../../../shared/model/domain/product";
-import {MealDTO} from "../../../shared/model/domain/meal";
-import {IngredientDTO} from "../../../shared/model/domain/ingredient";
+import {Injectable} from '@angular/core';
+import {MealFormHandler} from './meal-form-handler';
+import {FormArray} from '@angular/forms';
+import {Product} from '../../../shared/model/domain/product';
+import {MealDTO} from '../../../shared/model/domain/meal';
+import {IngredientDTO} from '../../../shared/model/domain/ingredient';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class MealMapperService {
   }
 
   mapIngredients(formHandler: MealFormHandler): IngredientDTO[] {
-    const ingredients = formHandler.form.get('ingredients') as FormArray
+    const ingredients = formHandler.form.get('ingredients') as FormArray;
     return ingredients.controls.map((ingredient) => {
       return {
         productId: (ingredient.get('product').value as Product).id,

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {MealEditService} from "./meal-edit.service";
-import {Observable, Subscription} from "rxjs";
-import {MealFormHandler} from "../meal-form/meal-form-handler";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {MealEditService} from './meal-edit.service';
+import {Observable, Subscription} from 'rxjs';
+import {MealFormHandler} from '../meal-form/meal-form-handler';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-meal-edit',
@@ -10,7 +10,7 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./meal-edit.component.scss'],
   providers: [MealEditService]
 })
-export class MealEditComponent implements OnInit {
+export class MealEditComponent implements OnInit, OnDestroy {
 
   mealFormHandler$: Observable<MealFormHandler>;
   pending$: Observable<boolean>;
@@ -29,7 +29,7 @@ export class MealEditComponent implements OnInit {
 
     this.subscription = this.route.paramMap.subscribe(paramMap => {
       this.service.load(+paramMap.get('id'));
-    })
+    });
   }
 
   handleUpdate(mealFormHandler: MealFormHandler): void {

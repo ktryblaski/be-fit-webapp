@@ -1,4 +1,4 @@
-import {EmbeddedViewRef, TemplateRef, ViewContainerRef} from "@angular/core";
+import {EmbeddedViewRef, TemplateRef, ViewContainerRef} from '@angular/core';
 
 export abstract class AbstractTemplateDirective {
 
@@ -8,7 +8,7 @@ export abstract class AbstractTemplateDirective {
   protected viewRef: EmbeddedViewRef<any>;
 
   protected renderWhen(condition: boolean): void {
-    if(condition) {
+    if (condition) {
       this.renderView();
     } else {
       this.destroyView();
@@ -16,13 +16,13 @@ export abstract class AbstractTemplateDirective {
   }
 
   protected renderView(): void {
-    if(!this.viewRef) {
+    if (!this.viewRef) {
       this.viewRef = this.viewContainerRef.createEmbeddedView(this.templateRef);
     }
   }
 
   protected destroyView(): void {
-    if(this.viewRef) {
+    if (this.viewRef) {
       this.viewRef.destroy();
       this.viewRef = null;
     }

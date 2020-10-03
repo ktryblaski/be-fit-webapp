@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Macronutrients} from "../../model/domain/macronutrients";
-import {Color} from "ng2-charts";
-import {ChartOptions} from "chart.js";
+import {Macronutrients} from '../../model/domain/macronutrients';
+import {Color} from 'ng2-charts';
+import {ChartOptions} from 'chart.js';
 
 @Component({
   selector: 'app-macronutrients-chart',
@@ -10,7 +10,7 @@ import {ChartOptions} from "chart.js";
 })
 export class MacronutrientsChartComponent implements OnInit {
 
-  readonly labels: String[] = ['Carbohydrates', 'Proteins', 'Fats'];
+  readonly labels: string[] = ['Carbohydrates', 'Proteins', 'Fats'];
   readonly colors: Color[] = [{
     backgroundColor: ['rgb(51, 255, 153)', 'rgb(105, 195, 255)', 'rgb(255, 220, 133)']
   }];
@@ -39,7 +39,7 @@ export class MacronutrientsChartComponent implements OnInit {
 
   @Input() macronutrients: Macronutrients;
 
-  data: number[]
+  data: number[];
 
   ngOnInit(): void {
     this.data = [

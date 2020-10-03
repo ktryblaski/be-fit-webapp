@@ -1,9 +1,9 @@
-import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
-import {MealView} from "../../../shared/model/domain/meal";
-import {Diet} from "../../../shared/model/domain/diet";
+import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
+import {MealView} from '../../../shared/model/domain/meal';
+import {Diet} from '../../../shared/model/domain/diet';
 import * as moment from 'moment';
-import {BehaviorSubject, Observable} from "rxjs";
-import {distinctUntilChanged} from "rxjs/operators";
+import {BehaviorSubject, Observable} from 'rxjs';
+import {distinctUntilChanged} from 'rxjs/operators';
 
 export class DietFormHandler {
 
@@ -19,7 +19,7 @@ export class DietFormHandler {
   constructor(diet?: Diet) {
     this.form = this.createEmptyForm();
 
-    if(diet) {
+    if (diet) {
       this.patchDiet(diet);
     }
   }
@@ -27,9 +27,7 @@ export class DietFormHandler {
   public addMeal(meal: MealView): void {
     const meals = [...this._meals, meal];
 
-    this.form.patchValue({
-      meals: meals
-    });
+    this.form.patchValue({meals});
 
     this.meals.next([...meals]);
   }
@@ -37,9 +35,7 @@ export class DietFormHandler {
   public removeMeal(meal: MealView): void {
     const meals = this._meals.filter(m => m !== meal);
 
-    this.form.patchValue({
-      meals: meals
-    });
+    this.form.patchValue({meals});
 
     this.meals.next([...meals]);
   }
@@ -55,7 +51,7 @@ export class DietFormHandler {
       }, [this.ValidateDates.bind(this)]),
       meals: new FormControl([]),
       meal: new FormControl(null),
-    })
+    });
   }
 
   private patchDiet(diet: Diet): void {
@@ -73,11 +69,11 @@ export class DietFormHandler {
     const startControl = control.get('startDate').value as Date;
     const endControl = control.get('endDate').value as Date;
 
-    if(!startControl || !endControl || (endControl.getTime() > startControl.getTime())) {
+    if (!startControl || !endControl || (endControl.getTime() > startControl.getTime())) {
       return null;
     }
 
-    return {'invalidEndDate': true}
+    return {invalidEndDate: true};
   }
 
 }

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {MealView} from "../../../../shared/model/domain/meal";
+import {MealView} from '../../../../shared/model/domain/meal';
 
 @Component({
   selector: 'app-meals-list-ui',
@@ -8,7 +8,7 @@ import {MealView} from "../../../../shared/model/domain/meal";
 })
 export class MealsListUiComponent {
 
-  @Input() meals: MealView[]
+  @Input() meals: MealView[];
   @Output() clickId: EventEmitter<MealView> = new EventEmitter<MealView>();
 
   handleClick(meal: MealView) {

@@ -1,9 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {MatDialogRef} from "@angular/material/dialog";
-import {ProductCreateDialogService} from "./product-create-dialog.service";
-import {Observable, Subscription} from "rxjs";
-import {filter} from "rxjs/operators";
-import {ProductFormHandler} from "./product-form-handler";
+import {MatDialogRef} from '@angular/material/dialog';
+import {ProductCreateDialogService} from './product-create-dialog.service';
+import {Observable, Subscription} from 'rxjs';
+import {filter} from 'rxjs/operators';
+import {ProductFormHandler} from './product-form-handler';
 
 export enum ProductCreateDialogResult {
   CREATED,
@@ -32,7 +32,7 @@ export class ProductCreateDialogComponent implements OnInit, OnDestroy {
     this.subscription = this.service.saved$.pipe(
       filter((saved: boolean) => saved),
     ).subscribe(() => {
-      this.dialogRef.close(ProductCreateDialogResult.CREATED)
+      this.dialogRef.close(ProductCreateDialogResult.CREATED);
     });
   }
 

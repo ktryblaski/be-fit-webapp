@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
-import {MealView} from "../../../../../../shared/model/domain/meal";
-import {DietFormHandler} from "../../../diet-form-handler";
-import {merge, Observable, Subject} from "rxjs";
-import {map} from "rxjs/operators";
+import {MealView} from '../../../../../../shared/model/domain/meal';
+import {DietFormHandler} from '../../../diet-form-handler';
+import {merge, Observable, Subject} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-diet-meals-select-ui',
@@ -12,24 +12,24 @@ import {map} from "rxjs/operators";
 export class DietMealsSelectUiComponent implements OnInit, OnChanges {
 
   @Input() meals: MealView[];
-  @Input() formHandler: DietFormHandler
+  @Input() formHandler: DietFormHandler;
   @Output() addMeal: EventEmitter<MealView> = new EventEmitter<MealView>();
 
-  private readonly _meals = new Subject<void>();
+  private readonly mealsChange = new Subject<void>();
 
   meals$: Observable<MealView[]>;
 
   ngOnInit(): void {
     this.meals$ = merge(
       this.formHandler.form.get('meal').valueChanges,
-      this._meals.pipe()
+      this.mealsChange.pipe()
     ).pipe(
       map(() => this.filter(this.meals, this.formHandler.form.get('meal').value))
     );
   }
 
   ngOnChanges(): void {
-    this._meals.next();
+    this.mealsChange.next();
   }
 
   displayFn(meal: MealView): string {
@@ -37,7 +37,7 @@ export class DietMealsSelectUiComponent implements OnInit, OnChanges {
   }
 
   private filter(meals: MealView[], value: any): MealView[] {
-    if(!value || typeof value !== 'string') {
+    if (!value || typeof value !== 'string') {
       return meals;
     }
 

@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {DietFormHandler} from "./diet-form-handler";
-import {DietType} from "../../../shared/model/domain/diet";
-import {InternationalizationService} from "../../../shared/service/internationalization.service";
+import {DietFormHandler} from './diet-form-handler';
+import {DietType} from '../../../shared/model/domain/diet';
+import {InternationalizationService} from '../../../shared/service/internationalization.service';
 
 @Component({
   selector: 'app-diet-form',
@@ -10,7 +10,7 @@ import {InternationalizationService} from "../../../shared/service/international
 })
 export class DietFormComponent {
 
-  @Input() formHandler: DietFormHandler
+  @Input() formHandler: DietFormHandler;
   @Output() save: EventEmitter<void> = new EventEmitter<void>();
   @Output() cancel: EventEmitter<void> = new EventEmitter<void>();
 

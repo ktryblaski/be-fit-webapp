@@ -1,4 +1,4 @@
-import {Product} from "./product";
+import {Product} from './product';
 
 export interface Ingredient {
   id?: number;
@@ -7,6 +7,6 @@ export interface Ingredient {
 }
 
 export interface IngredientDTO {
-  productId: number,
-  weight: number
+  productId: number;
+  weight: number;
 }

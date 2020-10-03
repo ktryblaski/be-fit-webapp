@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import {DietFormHandler} from "../../diet-form-handler";
-import {MealView} from "../../../../../shared/model/domain/meal";
-import {Observable, Subscription} from "rxjs";
-import {DietMealsSelectService} from "./diet-meals-select.service";
+import {DietFormHandler} from '../../diet-form-handler';
+import {MealView} from '../../../../../shared/model/domain/meal';
+import {Observable, Subscription} from 'rxjs';
+import {DietMealsSelectService} from './diet-meals-select.service';
 
 @Component({
   selector: 'app-diet-meals-select',
@@ -12,7 +12,7 @@ import {DietMealsSelectService} from "./diet-meals-select.service";
 })
 export class DietMealsSelectComponent implements OnInit, OnDestroy {
 
-  @Input() formHandler: DietFormHandler
+  @Input() formHandler: DietFormHandler;
   @Output() addMeal: EventEmitter<MealView> = new EventEmitter<MealView>();
 
   selected = [];

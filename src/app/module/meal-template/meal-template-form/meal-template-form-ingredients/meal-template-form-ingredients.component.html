@@ -1,0 +1,8 @@
+<div class="title">Ingredients:</div>
+
+<app-meal-template-form-product [products]="products"
+                                (addProduct)="handleAddProduct($event)"></app-meal-template-form-product>
+
+<div *ngIf="this.formHandler.hasIngredients$ | async" class="ingredients-table">
+  <app-meal-template-ingredients-table (removeProduct)="handleRemoveProduct($event)"></app-meal-template-ingredients-table>
+</div>

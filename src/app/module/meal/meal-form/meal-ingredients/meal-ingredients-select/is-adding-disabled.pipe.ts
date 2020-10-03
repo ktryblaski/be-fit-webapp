@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {Product} from "../../../../../shared/model/domain/product";
+import {Product} from '../../../../../shared/model/domain/product';
 
 @Pipe({
   name: 'isAddingDisabled'

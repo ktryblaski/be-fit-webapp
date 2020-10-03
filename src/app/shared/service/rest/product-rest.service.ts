@@ -1,10 +1,10 @@
-import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {Product} from "../../model/domain/product";
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {Product} from '../../model/domain/product';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class ProductRestService {
 

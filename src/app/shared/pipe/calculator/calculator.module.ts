@@ -1,9 +1,9 @@
-import {NgModule} from "@angular/core";
-import {MacronutrientsCaloriesCalculatorPipe} from "./macronutrients-calories-calculator.pipe";
-import {IngredientsCaloriesCalculatorPipe} from "./ingredients-calories-calculator.pipe";
-import {IngredientsCarbohydratesCalculatorPipe} from "./ingredients-carbohydrates-calculator.pipe";
-import {IngredientsProteinsCalculatorPipe} from "./ingredients-proteins-calculator.pipe";
-import {IngredientsFatsCalculatorPipe} from "./ingredients-fats-calculator.pipe";
+import {NgModule} from '@angular/core';
+import {MacronutrientsCaloriesCalculatorPipe} from './macronutrients-calories-calculator.pipe';
+import {IngredientsCaloriesCalculatorPipe} from './ingredients-calories-calculator.pipe';
+import {IngredientsCarbohydratesCalculatorPipe} from './ingredients-carbohydrates-calculator.pipe';
+import {IngredientsProteinsCalculatorPipe} from './ingredients-proteins-calculator.pipe';
+import {IngredientsFatsCalculatorPipe} from './ingredients-fats-calculator.pipe';
 import { MacronutrientsCarbohydratesCalculatorPipe } from './macronutrients-carbohydrates-calculator.pipe';
 import { MacronutrientsProteinsCalculatorPipe } from './macronutrients-proteins-calculator.pipe';
 import { MacronutrientsFatsCalculatorPipe } from './macronutrients-fats-calculator.pipe';

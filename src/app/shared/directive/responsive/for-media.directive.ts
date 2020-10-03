@@ -1,7 +1,7 @@
 import {Directive, Input, OnChanges, OnDestroy, TemplateRef, ViewContainerRef} from '@angular/core';
-import {AbstractTemplateDirective} from "../abstract-template-directive";
-import {BreakpointObserver} from "@angular/cdk/layout";
-import {Subscription} from "rxjs";
+import {AbstractTemplateDirective} from '../abstract-template-directive';
+import {BreakpointObserver} from '@angular/cdk/layout';
+import {Subscription} from 'rxjs';
 
 @Directive({
   selector: '[appForMedia]'
@@ -26,7 +26,7 @@ export class ForMediaDirective extends AbstractTemplateDirective implements OnCh
   }
 
   ngOnDestroy(): void {
-    if(this.subscription) {
+    if (this.subscription) {
       this.subscription.unsubscribe();
     }
   }

@@ -4,5 +4,5 @@ export interface ApiResponse<T> {
 }
 
 export function mapResponse<T>(response: ApiResponse<T>): T {
-  return response.data
+  return response.data;
 }

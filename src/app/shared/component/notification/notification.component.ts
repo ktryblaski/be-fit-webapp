@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import {NotificationService} from "./notification.service";
-import {Observable} from "rxjs";
-import {Notification} from "./notification";
+import {NotificationService} from './notification.service';
+import {Observable} from 'rxjs';
+import {Notification} from './notification';
 
 @Component({
   selector: 'app-notification',
@@ -10,7 +10,7 @@ import {Notification} from "./notification";
 })
 export class NotificationComponent {
 
-  readonly notifications$: Observable<Notification[]>
+  readonly notifications$: Observable<Notification[]>;
 
   constructor(private service: NotificationService) {
     this.notifications$ = this.service.notifications$;

@@ -1,0 +1,35 @@
+<table appTable>
+  <tr>
+    <th>Name</th>
+    <th>Weight [g]</th>
+    <th>
+      <span class="macronutrients-label carbohydrates">Carbohydrates [g]</span>
+    </th>
+    <th>
+      <span class="macronutrients-label proteins">Proteins [g]</span>
+    </th>
+    <th>
+      <span class="macronutrients-label fats">Fats [g]</span>
+    </th>
+    <th>
+      <span class="macronutrients-label kcal">KCAL</span>
+    </th>
+  </tr>
+
+  <tr *ngFor="let ingredient of (ingredients | sortIngredients)">
+    <td class="name-cell">{{ingredient.product.name}}</td>
+    <td>{{ingredient.weight}}</td>
+    <td>{{ingredient.product.macronutrients | macronutrientsCarbohydratesCalculator:ingredient.weight}}</td>
+    <td>{{ingredient.product.macronutrients | macronutrientsProteinsCalculator:ingredient.weight}}</td>
+    <td>{{ingredient.product.macronutrients | macronutrientsFatsCalculator:ingredient.weight}}</td>
+    <td>{{ingredient.product.macronutrients | macronutrientsCaloriesCalculator:ingredient.weight}}</td>
+  </tr>
+  <tr class="total">
+    <td class="name-cell">Total</td>
+    <td>{{ingredients | ingredientsWeightCalculator}}</td>
+    <td>{{ingredients | ingredientsCarbohydratesCalculator}}</td>
+    <td>{{ingredients | ingredientsProteinsCalculator}}</td>
+    <td>{{ingredients | ingredientsFatsCalculator}}</td>
+    <td>{{ingredients | ingredientsCaloriesCalculator}}</td>
+  </tr>
+</table>

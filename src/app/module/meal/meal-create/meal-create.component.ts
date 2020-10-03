@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {MealFormHandler} from "../meal-form/meal-form-handler";
-import {MealCreateService} from "./meal-create.service";
-import {Observable} from "rxjs";
-import {Router} from "@angular/router";
+import {MealFormHandler} from '../meal-form/meal-form-handler';
+import {MealCreateService} from './meal-create.service';
+import {Observable} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-meal-create',

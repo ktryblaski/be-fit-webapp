@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Product} from "../../../../shared/model/domain/product";
+import {Product} from '../../../../shared/model/domain/product';
 
 @Component({
   selector: 'app-products-list-ui',
@@ -8,7 +8,7 @@ import {Product} from "../../../../shared/model/domain/product";
 })
 export class ProductsListUiComponent {
 
-  @Input() products: Product[]
+  @Input() products: Product[];
   @Output() clickId: EventEmitter<Product> = new EventEmitter<Product>();
 
   handleClick(product: Product) {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {Notification} from "./notification";
-import {BehaviorSubject, Observable} from "rxjs";
-import {distinctUntilChanged} from "rxjs/operators";
+import {Notification} from './notification';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {distinctUntilChanged} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'

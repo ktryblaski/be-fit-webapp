@@ -1,8 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "src/app/shared/colors";
-@import "src/app/shared/helper/table/table";
-@import "src/app/shared/helper/link/link";
+@import 'src/app/shared/_colors';
+@import 'src/app/shared/helper/table/_table';
+@import 'src/app/shared/helper/link/_link';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

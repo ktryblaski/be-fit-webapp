@@ -1,13 +1,13 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ProductsListService} from "./products-list.service";
-import {Observable, Subscription} from "rxjs";
-import {Product} from "../../../shared/model/domain/product";
-import {MatDialog} from "@angular/material/dialog";
-import {ProductDetailsDialogComponent} from "../product-details-dialog/product-details-dialog.component";
+import {ProductsListService} from './products-list.service';
+import {Observable, Subscription} from 'rxjs';
+import {Product} from '../../../shared/model/domain/product';
+import {MatDialog} from '@angular/material/dialog';
+import {ProductDetailsDialogComponent} from '../product-details-dialog/product-details-dialog.component';
 import {
   ProductCreateDialogResult,
   ProductCreateDialogComponent
-} from "../product-create-dialog/product-create-dialog.component";
+} from '../product-create-dialog/product-create-dialog.component';
 
 @Component({
   selector: 'app-products-list',
@@ -21,7 +21,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   public loaded$: Observable<boolean>;
   public loading$: Observable<boolean>;
 
-  private subscription: Subscription
+  private subscription: Subscription;
 
   constructor(private service: ProductsListService,
               private dialog: MatDialog) { }
@@ -44,7 +44,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   }
 
   handleAddNewProduct(): void {
-    if(this.subscription) {
+    if (this.subscription) {
       this.subscription.unsubscribe();
     }
 
@@ -52,14 +52,14 @@ export class ProductsListComponent implements OnInit, OnDestroy {
       width: '400px'
     }).afterClosed()
       .subscribe((result: ProductCreateDialogResult) => {
-        if(result === ProductCreateDialogResult.CREATED) {
+        if (result === ProductCreateDialogResult.CREATED) {
           this.service.load();
         }
       });
   }
 
   ngOnDestroy(): void {
-    if(this.subscription) {
+    if (this.subscription) {
       this.subscription.unsubscribe();
     }
   }

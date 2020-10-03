@@ -1,13 +1,13 @@
-import {Injectable} from "@angular/core";
-import {DietRestService} from "../../../shared/service/rest/diet-rest.service";
-import {NotificationService} from "../../../shared/component/notification/notification.service";
-import {BehaviorSubject, EMPTY, merge, noop, Observable, Subject, Subscription} from "rxjs";
-import {catchError, distinctUntilChanged, ignoreElements, switchMap, tap} from "rxjs/operators";
-import {NotificationSeverity} from "../../../shared/component/notification/notification";
-import {Diet} from "../../../shared/model/domain/diet";
+import {Injectable, OnDestroy} from '@angular/core';
+import {DietRestService} from '../../../shared/service/rest/diet-rest.service';
+import {NotificationService} from '../../../shared/component/notification/notification.service';
+import {BehaviorSubject, EMPTY, merge, noop, Observable, Subject, Subscription} from 'rxjs';
+import {catchError, distinctUntilChanged, ignoreElements, switchMap, tap} from 'rxjs/operators';
+import {NotificationSeverity} from '../../../shared/component/notification/notification';
+import {Diet} from '../../../shared/model/domain/diet';
 
 @Injectable()
-export class DietDetailsService {
+export class DietDetailsService implements OnDestroy {
 
   private readonly loadAction = new Subject<number>();
 
@@ -50,7 +50,7 @@ export class DietDetailsService {
           this.notificationService.show({
             message: 'An error has occurred',
             severity: NotificationSeverity.DANGER
-          })
+          });
           return EMPTY;
         })
       )),
