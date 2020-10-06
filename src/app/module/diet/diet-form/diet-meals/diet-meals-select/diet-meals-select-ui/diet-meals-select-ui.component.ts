@@ -1,8 +1,8 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
-import {MealView} from '../../../../../../shared/model/domain/meal';
-import {DietFormHandler} from '../../../diet-form-handler';
-import {merge, Observable, Subject} from 'rxjs';
-import {map} from 'rxjs/operators';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { MealView } from '../../../../../../shared/model/domain/meal';
+import { DietFormHandler } from '../../../diet-form-handler';
+import { merge, Observable, Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-diet-meals-select-ui',

@@ -5,9 +5,9 @@ import {
   OnChanges,
   OnDestroy,
   Renderer2, SimpleChanges,
-} from '@angular/core';
-import {BreakpointObserver} from '@angular/cdk/layout';
-import {Subscription} from 'rxjs';
+ } from '@angular/core';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { Subscription } from 'rxjs';
 
 type Classes = string | string[];
 

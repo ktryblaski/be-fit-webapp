@@ -1,0 +1,37 @@
+@import 'src/app/shared/_colors';
+
+::ng-deep .header:not(empty) {
+  .title {
+    color: $label-color;
+    font-size: 24px;
+    font-weight: 400;
+  }
+
+  button + button {
+    margin-left: 10px;
+  }
+
+  app-slot {
+    display: flex;
+
+    span, div {
+      align-self: flex-end;
+    }
+  }
+}
+
+.header:not(empty) {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0 40px;
+
+  .title {
+    color: $label-color;
+    font-size: 24px;
+    font-weight: 400;
+  }
+}
+
+.header:empty {
+  display: none;
+}

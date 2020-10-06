@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {MealsListService} from './meals-list.service';
-import {Observable} from 'rxjs';
-import {MealView} from '../../../shared/model/domain/meal';
-import {ActivatedRoute, Router} from '@angular/router';
+import { MealsListService } from './meals-list.service';
+import { Observable } from 'rxjs';
+import { MealView } from '../../../shared/model/domain/meal';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-meals-list',

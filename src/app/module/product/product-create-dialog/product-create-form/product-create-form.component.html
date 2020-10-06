@@ -4,25 +4,25 @@
 
   <mat-form-field class="name-input">
     <mat-label>Name</mat-label>
-    <input formControlName="name" type="text"
+    <input [formControl]="formHandler.name.ref" type="text"
            matInput tabindex="1">
   </mat-form-field>
 
   <mat-form-field class="carbohydrates-input">
     <mat-label>Carbohydrates</mat-label>
-    <input formControlName="carbohydrates" type="number"
+    <input [formControl]="formHandler.carbohydrates.ref" type="number"
            min="0" matInput tabindex="2">
   </mat-form-field>
 
   <mat-form-field class="proteins-input">
     <mat-label>Proteins</mat-label>
-    <input formControlName="proteins" type="number"
+    <input [formControl]="formHandler.proteins.ref" type="number"
            min="0" matInput tabindex="3">
   </mat-form-field>
 
   <mat-form-field class="fats-input">
     <mat-label>Fats</mat-label>
-    <input formControlName="fats" type="number"
+    <input [formControl]="formHandler.fats.ref" type="number"
            min="0" matInput tabindex="4">
   </mat-form-field>
 

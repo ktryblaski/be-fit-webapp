@@ -11,9 +11,9 @@ import { MenuComponent } from './menu/menu.component';
 import { MainAreaComponent } from './main-area/main-area.component';
 import { MatListModule } from '@angular/material/list';
 import { HttpClientModule } from '@angular/common/http';
-import {ReactiveFormsModule} from '@angular/forms';
-import {NotificationModule} from './shared/component/notification/notification.module';
-import {ResponsiveModule} from './shared/directive/responsive/responsive.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NotificationModule } from './shared/component/notification/notification.module';
+import { ResponsiveModule } from './shared/directive/responsive/responsive.module';
 
 @NgModule({
   imports: [

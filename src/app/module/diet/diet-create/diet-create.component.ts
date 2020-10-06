@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from 'rxjs';
-import {Router} from '@angular/router';
-import {DietFormHandler} from '../diet-form/diet-form-handler';
-import {DietCreateService} from './diet-create.service';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { DietFormHandler } from '../diet-form/diet-form-handler';
+import { DietCreateService } from './diet-create.service';
 
 @Component({
   selector: 'app-diet-create',

@@ -1,8 +1,8 @@
-import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
-import {MealTemplateFormHandler} from './meal-template-form-handler';
-import {MealTemplateFormValue} from './-model/meal-template-form-value';
-import {MealTemplateFormDataSource} from './-model/meal-template-form-data-source';
-import {MealTemplate} from '../../../shared/model/domain/meal-template';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { MealTemplateFormHandler } from './meal-template-form-handler';
+import { MealTemplateFormValue } from './-shared/meal-template-form-value';
+import { MealTemplateFormDataSource } from './-shared/meal-template-form-data-source';
+import { MealTemplate } from '../../../shared/model/domain/meal-template';
 
 @Component({
   selector: 'app-meal-template-form',
@@ -14,8 +14,8 @@ export class MealTemplateFormComponent implements OnChanges {
 
   @Input() mealTemplate: MealTemplate;
   @Input() dataSource: MealTemplateFormDataSource;
-  @Output() save: EventEmitter<MealTemplateFormValue> = new EventEmitter<MealTemplateFormValue>();
-  @Output() cancel: EventEmitter<void> = new EventEmitter<void>();
+  @Output() save = new EventEmitter<MealTemplateFormValue>();
+  @Output() cancel = new EventEmitter<void>();
 
   constructor(public formHandler: MealTemplateFormHandler) { }
 

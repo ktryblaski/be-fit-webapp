@@ -1,5 +1,5 @@
-import {Component, Input} from '@angular/core';
-import {Ingredient} from '../../../../../shared/model/domain/ingredient';
+import { Component, Input } from '@angular/core';
+import { Ingredient } from '../../../../../shared/model/domain/ingredient';
 
 @Component({
   selector: 'app-meal-details-ingredients-table',

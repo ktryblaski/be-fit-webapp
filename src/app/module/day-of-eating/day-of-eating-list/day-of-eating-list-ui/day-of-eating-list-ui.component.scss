@@ -1,0 +1,10 @@
+@import 'src/app/shared/_colors';
+
+table[appTable] {
+  width: 100%;
+}
+
+tr.today td {
+  color: $primary-color;
+  font-weight: 500;
+}

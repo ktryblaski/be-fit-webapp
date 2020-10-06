@@ -1,4 +1,4 @@
-import {Ingredient, IngredientDTO} from './ingredient';
+import { Ingredient, IngredientDTO } from './ingredient';
 
 // TODO
 export enum MealType {

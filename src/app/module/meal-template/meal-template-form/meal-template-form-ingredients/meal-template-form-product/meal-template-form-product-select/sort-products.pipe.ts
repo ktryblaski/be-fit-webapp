@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {Product} from '../../../../../../shared/model/domain/product';
-import {stringCompare} from '../../../../../../shared/util/string-compare';
+import { Product } from '../../../../../../shared/model/domain/product';
+import { stringCompare } from '../../../../../../shared/util/string-compare';
 
 @Pipe({
   name: 'sortProducts'

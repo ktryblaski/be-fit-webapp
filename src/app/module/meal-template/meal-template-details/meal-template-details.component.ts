@@ -1,8 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {Observable, Subscription} from 'rxjs';
-import {MealTemplateDetailsService} from './meal-template-details.service';
-import {MealTemplate} from '../../../shared/model/domain/meal-template';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
+import { MealTemplateDetailsService } from './meal-template-details.service';
+import { MealTemplate } from '../../../shared/model/domain/meal-template';
 
 @Component({
   selector: 'app-meal-template-details',
@@ -17,6 +17,7 @@ export class MealTemplateDetailsComponent implements OnInit, OnDestroy {
   public mealTemplate$: Observable<MealTemplate>;
   public loaded$: Observable<boolean>;
   public loading$: Observable<boolean>;
+  public saving$: Observable<boolean>;
 
   constructor(private service: MealTemplateDetailsService,
               private route: ActivatedRoute) { }
@@ -25,10 +26,19 @@ export class MealTemplateDetailsComponent implements OnInit, OnDestroy {
     this.mealTemplate$ = this.service.mealTemplate$;
     this.loaded$ = this.service.loaded$;
     this.loading$ = this.service.loading$;
+    this.saving$ = this.service.saving$;
 
     this.subscription = this.route.paramMap.subscribe(paramMap => {
       this.service.load(+paramMap.get('id'));
     });
+  }
+
+  handleActivate(): void {
+    this.service.activate();
+  }
+
+  handleDeactivate(): void {
+    this.service.deactivate();
   }
 
   ngOnDestroy(): void {

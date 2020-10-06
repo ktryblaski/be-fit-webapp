@@ -1,11 +1,11 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {MealTemplateEditService} from './meal-template-edit.service';
-import {Observable, Subscription} from 'rxjs';
-import {MealTemplateFormHandler} from '../meal-template-form/meal-template-form-handler';
-import {ActivatedRoute, Router} from '@angular/router';
-import {MealTemplateFormDataSource} from '../meal-template-form/-model/meal-template-form-data-source';
-import {MealTemplate} from '../../../shared/model/domain/meal-template';
-import {MealTemplateFormValue} from '../meal-template-form/-model/meal-template-form-value';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MealTemplateEditService } from './meal-template-edit.service';
+import { Observable, Subscription } from 'rxjs';
+import { MealTemplateFormHandler } from '../meal-template-form/meal-template-form-handler';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MealTemplateFormDataSource } from '../meal-template-form/-shared/meal-template-form-data-source';
+import { MealTemplate } from '../../../shared/model/domain/meal-template';
+import { MealTemplateFormValue } from '../meal-template-form/-shared/meal-template-form-value';
 
 @Component({
   selector: 'app-meal-template-edit',

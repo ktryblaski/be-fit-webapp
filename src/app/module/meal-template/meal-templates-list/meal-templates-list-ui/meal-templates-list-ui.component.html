@@ -14,6 +14,9 @@
     <th>
       <span class="macronutrients-label kcal">KCAL</span>
     </th>
+    <td>
+      <span>Status</span>
+    </td>
   </tr>
 
   <tr *ngFor="let mealTemplate of mealTemplates"
@@ -24,6 +27,10 @@
     <td>{{mealTemplate.ingredients | ingredientsProteinsCalculator}}</td>
     <td>{{mealTemplate.ingredients | ingredientsFatsCalculator}}</td>
     <td>{{mealTemplate.ingredients | ingredientsCaloriesCalculator}}</td>
+    <td>
+      <span [class.active]="mealTemplate.active"
+            [class.inactive]="!mealTemplate.active">{{mealTemplate.active ? 'Active' : 'Inactive'}}</span>
+    </td>
   </tr>
 </table>
 

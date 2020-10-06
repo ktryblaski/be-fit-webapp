@@ -1,0 +1,13 @@
+<app-async-data-container [loaded]="loaded$ | async"
+                          [pending]="loading$ | async">
+
+  <app-slot title>
+    <div class="title">Begin Day of Eating</div>
+  </app-slot>
+
+  <app-slot data>
+    <app-day-of-eating-begin-form [dataSource]="dataSource$ | async"
+                                  (save)="handleSave($event)"
+                                  (cancel)="handleCancel()"></app-day-of-eating-begin-form>
+  </app-slot>
+</app-async-data-container>

@@ -1,0 +1,33 @@
+<form [formGroup]="formHandler.form" (ngSubmit)="handleSubmit()">
+
+  <div class="header">
+    <div class="title">
+      <span class="label">Day of Eating:</span>
+      <span>{{dayOfEating.dayDate | date:DATE_FORMAT}}</span>
+    </div>
+    <div class="actions">
+      <button (click)="handleCancel()" type="button" mat-raised-button tabindex="5">Cancel</button>
+      <button [disabled]="formHandler.form.invalid" type="submit"
+              mat-raised-button color="primary" tabindex="6">Save</button>
+    </div>
+  </div>
+
+  <mat-tab-group mat-align-tabs="start" animationDuration="1000ms">
+    <ng-container formArrayName="meals">
+      <mat-tab *ngFor="let meal of formHandler.mealsControls; let i = index" [label]="meal.get('name').value">
+        <div class="meal-container">
+<!--          <app-day-of-eating-form-meal [formGroup]="meal"-->
+<!--                                       [mealIdx]="i"-->
+<!--                                       [dataSource]="dataSource"></app-day-of-eating-form-meal>-->
+        </div>
+      </mat-tab>
+    </ng-container>
+  </mat-tab-group>
+
+<!--  <ng-template #noMeals>-->
+<!--    <div class="no-meals">-->
+<!--      No Meals-->
+<!--    </div>-->
+<!--  </ng-template>-->
+
+</form>

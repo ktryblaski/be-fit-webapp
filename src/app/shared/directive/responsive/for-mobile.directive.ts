@@ -1,7 +1,7 @@
-import {Directive, OnDestroy, OnInit, TemplateRef, ViewContainerRef} from '@angular/core';
-import {AbstractTemplateDirective} from '../abstract-template-directive';
-import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
-import {Subscription} from 'rxjs';
+import { Directive, OnDestroy, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
+import { AbstractTemplateDirective } from '../abstract-template-directive';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Subscription } from 'rxjs';
 
 @Directive({
   selector: '[appForMobile]'

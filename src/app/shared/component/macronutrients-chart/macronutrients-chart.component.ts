@@ -1,7 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Macronutrients} from '../../model/domain/macronutrients';
-import {Color} from 'ng2-charts';
-import {ChartOptions} from 'chart.js';
+import { Component, Input, OnInit } from '@angular/core';
+import { Macronutrients } from '../../model/domain/macronutrients';
+import { Color } from 'ng2-charts';
+import { ChartOptions } from 'chart.js';
 
 @Component({
   selector: 'app-macronutrients-chart',

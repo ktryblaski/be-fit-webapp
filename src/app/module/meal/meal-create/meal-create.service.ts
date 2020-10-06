@@ -1,12 +1,12 @@
-import {Injectable} from '@angular/core';
-import {MealRestService} from '../../../shared/service/rest/meal-rest.service';
-import {BehaviorSubject, EMPTY, noop, Observable, Subject, Subscription} from 'rxjs';
-import {catchError, distinctUntilChanged, ignoreElements, switchMap, tap} from 'rxjs/operators';
-import {NotificationSeverity} from '../../../shared/component/notification/notification';
-import {NotificationService} from '../../../shared/component/notification/notification.service';
-import {Router} from '@angular/router';
-import {MealFormHandler} from '../meal-form/meal-form-handler';
-import {MealMapperService} from '../meal-form/meal-mapper.service';
+import { Injectable } from '@angular/core';
+import { MealRestService } from '../../../shared/service/rest/meal-rest.service';
+import { BehaviorSubject, EMPTY, noop, Observable, Subject, Subscription } from 'rxjs';
+import { catchError, distinctUntilChanged, ignoreElements, switchMap, tap } from 'rxjs/operators';
+import { NotificationSeverity } from '../../../shared/component/notification/notification';
+import { NotificationService } from '../../../shared/component/notification/notification.service';
+import { Router } from '@angular/router';
+import { MealFormHandler } from '../meal-form/meal-form-handler';
+import { MealMapperService } from '../meal-form/meal-mapper.service';
 
 @Injectable()
 export class MealCreateService {

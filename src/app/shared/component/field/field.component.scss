@@ -1,0 +1,12 @@
+@import 'src/app/shared/_colors';
+
+:host {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.label {
+  color: $label-color;
+  font-size: 12px;
+  font-weight: 400;
+}

@@ -1,7 +1,7 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {DietFormHandler} from './diet-form-handler';
-import {DietType} from '../../../shared/model/domain/diet';
-import {InternationalizationService} from '../../../shared/service/internationalization.service';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { DietFormHandler } from './diet-form-handler';
+import { DietType } from '../../../shared/model/domain/diet';
+import { InternationalizationService } from '../../../shared/service/internationalization.service';
 
 @Component({
   selector: 'app-diet-form',

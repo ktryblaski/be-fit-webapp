@@ -1,0 +1,18 @@
+<ng-container *ngIf="loaded; else loading">
+  <div class="pending-indicator-overlay-boundaries">
+    <div class="header">
+      <ng-content select="app-slot[title]"></ng-content>
+      <ng-content select="app-slot[actions]"></ng-content>
+    </div>
+
+    <ng-content select="app-slot[data]"></ng-content>
+
+    <div class="pending-indicator-overlay-container" *ngIf="pending">
+      <app-spinner></app-spinner>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #loading>
+  <app-spinner></app-spinner>
+</ng-template>

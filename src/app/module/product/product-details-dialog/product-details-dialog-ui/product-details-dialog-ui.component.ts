@@ -1,5 +1,5 @@
-import {Component, Input} from '@angular/core';
-import {Product} from '../../../../shared/model/domain/product';
+import { Component, Input } from '@angular/core';
+import { Product } from '../../../../shared/model/domain/product';
 
 @Component({
   selector: 'app-product-details-dialog-ui',

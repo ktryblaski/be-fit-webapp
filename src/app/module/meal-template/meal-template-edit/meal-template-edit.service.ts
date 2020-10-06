@@ -1,15 +1,14 @@
-import {Injectable} from '@angular/core';
-import {BehaviorSubject, EMPTY, forkJoin, merge, noop, Observable, Subject, Subscription} from 'rxjs';
-import {MealTemplateFormHandler} from '../meal-template-form/meal-template-form-handler';
-import {catchError, distinctUntilChanged, finalize, ignoreElements, switchMap, tap} from 'rxjs/operators';
-import {NotificationSeverity} from '../../../shared/component/notification/notification';
-import {NotificationService} from '../../../shared/component/notification/notification.service';
-import {Router} from '@angular/router';
-import {MealTemplateFormValue} from '../meal-template-form/-model/meal-template-form-value';
-import {MealTemplate, MealTemplateCU} from '../../../shared/model/domain/meal-template';
-import {MealTemplateFormDataSource} from '../meal-template-form/-model/meal-template-form-data-source';
-import {ProductRestService} from '../../../shared/service/rest/product-rest.service';
-import {MealTemplateRestService} from '../../../shared/service/rest/meal-template-rest.service';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, EMPTY, forkJoin, merge, noop, Observable, Subject, Subscription } from 'rxjs';
+import { catchError, distinctUntilChanged, finalize, ignoreElements, switchMap, tap } from 'rxjs/operators';
+import { NotificationSeverity } from '../../../shared/component/notification/notification';
+import { NotificationService } from '../../../shared/component/notification/notification.service';
+import { Router } from '@angular/router';
+import { MealTemplateFormValue } from '../meal-template-form/-shared/meal-template-form-value';
+import { MealTemplate, MealTemplateCU } from '../../../shared/model/domain/meal-template';
+import { MealTemplateFormDataSource } from '../meal-template-form/-shared/meal-template-form-data-source';
+import { ProductRestService } from '../../../shared/service/rest/product-rest.service';
+import { MealTemplateRestService } from '../../../shared/service/rest/meal-template-rest.service';
 
 @Injectable()
 export class MealTemplateEditService {
@@ -56,8 +55,8 @@ export class MealTemplateEditService {
         this.loading.next(true);
       }),
       switchMap(mealTemplateId => forkJoin([
-        this.restService.get(mealTemplateId),
-        this.productRestService.getProducts()
+        this.restService.getOne(mealTemplateId),
+        this.productRestService.findAll()
       ]).pipe(
         tap(([mealTemplate, products]) => {
           this.mealTemplate.next(mealTemplate);
@@ -85,7 +84,7 @@ export class MealTemplateEditService {
       tap(() => {
         this.saving.next(true);
       }),
-      switchMap(formValue => this.restService.update(this.mapToUpdate(formValue), this.mealTemplate.value.id).pipe(
+      switchMap(formValue => this.restService.update(this.mapToUpdate(formValue)).pipe(
         tap(mealTemplate => {
           this.router.navigate(['meal-template', mealTemplate.id]);
           this.notificationService.show({

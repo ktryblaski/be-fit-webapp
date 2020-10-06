@@ -1,6 +1,6 @@
-import {Component, Input} from '@angular/core';
-import {MealTemplateFormHandler} from '../meal-template-form-handler';
-import {Product} from '../../../../shared/model/domain/product';
+import { Component, Input } from '@angular/core';
+import { MealTemplateFormHandler } from '../meal-template-form-handler';
+import { Product } from '../../../../shared/model/domain/product';
 
 @Component({
   selector: 'app-meal-template-form-ingredients',

@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {Product} from '../../model/domain/product';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Product } from '../../model/domain/product';
 
 @Injectable({
   providedIn: 'root'
@@ -12,15 +12,15 @@ export class ProductRestService {
 
   constructor(private http: HttpClient) {}
 
-  getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.API_URL);
-  }
-
-  getProduct(productId: number): Observable<Product> {
+  getOne(productId: number): Observable<Product> {
     return this.http.get<Product>(`${this.API_URL}/${productId}`);
   }
 
-  saveProduct(product: Product): Observable<number> {
+  findAll(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.API_URL);
+  }
+
+  save(product: Product): Observable<number> {
     return this.http.post<number>(this.API_URL, product);
   }
 

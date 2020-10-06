@@ -1,0 +1,21 @@
+<app-async-data-container [loaded]="loaded$ | async"
+                          [pending]="loading$ | async">
+
+  <app-slot title>
+    <div class="title">
+      <span>Day of Eating:</span>
+      <span class="day">{{(dayOfEating$ | async).dayDate | date:DATE_FORMAT}}</span>
+    </div>
+  </app-slot>
+
+  <app-slot actions>
+    <button [routerLink]="['edit']"
+            mat-raised-button
+            class="edit-button">Edit</button>
+  </app-slot>
+
+  <app-slot data>
+    <app-day-of-eating-details-ui [dayOfEating]="dayOfEating$ | async"></app-day-of-eating-details-ui>
+  </app-slot>
+
+</app-async-data-container>

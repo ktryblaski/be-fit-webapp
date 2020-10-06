@@ -1,21 +1,18 @@
-<ng-container *ngIf="loaded$ | async; else loading">
-  <h1>Products</h1>
+<app-async-data-container [loaded]="loaded$ | async"
+                          [pending]="(loading$ | async) || (creating$ | async)">
 
-  <div class="pending-indicator-overlay-boundaries">
-    <div class="actions">
-      <button (click)="handleAddNewProduct()"
-              mat-raised-button color="primary">Add New Product</button>
-    </div>
+  <app-slot title>
+    <div class="title">Products</div>
+  </app-slot>
 
+  <app-slot actions>
+    <button (click)="handleAddNewProduct()"
+            mat-raised-button color="primary">Add New Product</button>
+  </app-slot>
+
+  <app-slot data>
     <app-products-list-ui [products]="products$ | async"
                           (clickId)="handleClick($event)"></app-products-list-ui>
+  </app-slot>
 
-    <div class="pending-indicator-overlay-container" *ngIf="loading$ | async">
-      <app-spinner></app-spinner>
-    </div>
-  </div>
-</ng-container>
-
-<ng-template #loading>
-  <app-spinner></app-spinner>
-</ng-template>
+</app-async-data-container>

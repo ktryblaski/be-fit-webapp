@@ -1,10 +1,10 @@
-import {Injectable, OnDestroy} from '@angular/core';
-import {BehaviorSubject, EMPTY, noop, Observable, Subject, Subscription} from 'rxjs';
-import {catchError, distinctUntilChanged, finalize, ignoreElements, switchMap, tap} from 'rxjs/operators';
-import {NotificationService} from '../../../shared/component/notification/notification.service';
-import {NotificationSeverity} from '../../../shared/component/notification/notification';
-import {MealTemplateRestService} from '../../../shared/service/rest/meal-template-rest.service';
-import {MealTemplate} from '../../../shared/model/domain/meal-template';
+import { Injectable, OnDestroy } from '@angular/core';
+import { BehaviorSubject, EMPTY, noop, Observable, Subject, Subscription } from 'rxjs';
+import { catchError, distinctUntilChanged, finalize, ignoreElements, switchMap, tap } from 'rxjs/operators';
+import { NotificationService } from '../../../shared/component/notification/notification.service';
+import { NotificationSeverity } from '../../../shared/component/notification/notification';
+import { MealTemplateRestService } from '../../../shared/service/rest/meal-template-rest.service';
+import { MealTemplate } from '../../../shared/model/domain/meal-template';
 
 @Injectable()
 export class MealTemplatesListService implements OnDestroy {

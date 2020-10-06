@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Product} from '../../../../shared/model/domain/product';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Product } from '../../../../shared/model/domain/product';
 
 @Component({
   selector: 'app-products-list-ui',

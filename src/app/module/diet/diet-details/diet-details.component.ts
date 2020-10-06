@@ -1,8 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Observable, Subscription} from 'rxjs';
-import {ActivatedRoute} from '@angular/router';
-import {DietDetailsService} from './diet-details.service';
-import {Diet} from '../../../shared/model/domain/diet';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { DietDetailsService } from './diet-details.service';
+import { Diet } from '../../../shared/model/domain/diet';
 
 @Component({
   selector: 'app-diet-details',

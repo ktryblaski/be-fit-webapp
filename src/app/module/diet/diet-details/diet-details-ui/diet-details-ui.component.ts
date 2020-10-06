@@ -1,6 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Diet} from '../../../../shared/model/domain/diet';
-import {InternationalizationService} from '../../../../shared/service/internationalization.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { Diet } from '../../../../shared/model/domain/diet';
+import { InternationalizationService } from '../../../../shared/service/internationalization.service';
 
 @Component({
   selector: 'app-diet-details-ui',

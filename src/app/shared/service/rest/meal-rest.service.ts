@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {Meal, MealDTO, MealView} from '../../model/domain/meal';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Meal, MealDTO, MealView } from '../../model/domain/meal';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +12,8 @@ export class MealRestService {
 
   constructor(private http: HttpClient) {}
 
-  getMealsLite(): Observable<MealView[]> {
-    return this.http.get<MealView[]>(`${this.API_URL}/lite`);
+  findAll(): Observable<MealView[]> {
+    return this.http.get<MealView[]>(`${this.API_URL}`);
   }
 
   getMeal(mealId: number): Observable<Meal> {

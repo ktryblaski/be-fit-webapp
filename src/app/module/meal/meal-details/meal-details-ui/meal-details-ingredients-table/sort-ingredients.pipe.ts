@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {Ingredient} from '../../../../../shared/model/domain/ingredient';
-import {stringCompare} from '../../../../../shared/util/string-compare';
-import {handleNullArray} from '../../../../../shared/util/commons';
+import { Ingredient } from '../../../../../shared/model/domain/ingredient';
+import { stringCompare } from '../../../../../shared/util/string-compare';
+import { handleNullArray } from '../../../../../shared/util/commons';
 
 @Pipe({
   name: 'sortIngredients'

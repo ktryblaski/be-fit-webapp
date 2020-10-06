@@ -1,6 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Product} from '../../../../../../shared/model/domain/product';
-import {MealTemplateFormHandler} from '../../../meal-template-form-handler';
+import { Component, Input, OnInit } from '@angular/core';
+import { Product } from '../../../../../../shared/model/domain/product';
+import { MealTemplateFormHandler } from '../../../meal-template-form-handler';
 
 @Component({
   selector: 'app-meal-template-form-product-select',

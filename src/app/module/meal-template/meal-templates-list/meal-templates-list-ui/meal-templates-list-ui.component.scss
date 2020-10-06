@@ -1,3 +1,11 @@
 table[appTable] {
   width: 100%;
+
+  .active {
+    color: green;
+  }
+
+  .inactive {
+    color: red;
+  }
 }

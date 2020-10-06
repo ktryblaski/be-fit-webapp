@@ -1,9 +1,9 @@
-import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
-import {MealView} from '../../../shared/model/domain/meal';
-import {Diet} from '../../../shared/model/domain/diet';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MealView } from '../../../shared/model/domain/meal';
+import { Diet } from '../../../shared/model/domain/diet';
 import * as moment from 'moment';
-import {BehaviorSubject, Observable} from 'rxjs';
-import {distinctUntilChanged} from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { distinctUntilChanged } from 'rxjs/operators';
 
 export class DietFormHandler {
 

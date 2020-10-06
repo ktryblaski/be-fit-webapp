@@ -1,10 +1,10 @@
-import {Injectable, OnDestroy} from '@angular/core';
-import {ProductRestService} from '../../../shared/service/rest/product-rest.service';
-import {BehaviorSubject, EMPTY, merge, noop, Observable, Subject, Subscription} from 'rxjs';
-import {Product} from '../../../shared/model/domain/product';
-import {catchError, distinctUntilChanged, ignoreElements, switchMap, tap} from 'rxjs/operators';
-import {NotificationSeverity} from '../../../shared/component/notification/notification';
-import {NotificationService} from '../../../shared/component/notification/notification.service';
+import { Injectable, OnDestroy } from '@angular/core';
+import { ProductRestService } from '../../../shared/service/rest/product-rest.service';
+import { BehaviorSubject, EMPTY, merge, noop, Observable, Subject, Subscription } from 'rxjs';
+import { Product } from '../../../shared/model/domain/product';
+import { catchError, distinctUntilChanged, ignoreElements, switchMap, tap } from 'rxjs/operators';
+import { NotificationSeverity } from '../../../shared/component/notification/notification';
+import { NotificationService } from '../../../shared/component/notification/notification.service';
 
 @Injectable()
 export class ProductDetailsDialogService implements OnDestroy {
@@ -37,7 +37,7 @@ export class ProductDetailsDialogService implements OnDestroy {
       tap(() => {
         this.loading.next(true);
       }),
-      switchMap((productId: number) => this.restService.getProduct(productId).pipe(
+      switchMap((productId: number) => this.restService.getOne(productId).pipe(
         tap((product: Product) => {
           this.product.next(product);
           this.loaded.next(true);

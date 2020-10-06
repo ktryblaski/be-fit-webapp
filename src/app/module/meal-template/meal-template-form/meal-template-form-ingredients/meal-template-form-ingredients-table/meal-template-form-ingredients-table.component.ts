@@ -1,15 +1,15 @@
-import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
-import {MealTemplateFormHandler} from '../../meal-template-form-handler';
-import {BehaviorSubject, Observable, Subscription} from 'rxjs';
-import {distinctUntilChanged} from 'rxjs/operators';
-import {Ingredient} from '../../../../../shared/model/domain/ingredient';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { MealTemplateFormHandler } from '../../meal-template-form-handler';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { distinctUntilChanged } from 'rxjs/operators';
+import { Ingredient } from '../../../../../shared/model/domain/ingredient';
 import {
   ingredientsCarbohydrates,
   ingredientsFats, ingredientsKCAL,
   ingredientsProteins,
   ingredientsWeight
-} from '../../../../../shared/util/calculator';
-import {Product} from '../../../../../shared/model/domain/product';
+ } from '../../../../../shared/util/calculator';
+import { Product } from '../../../../../shared/model/domain/product';
 
 @Component({
   selector: 'app-meal-template-ingredients-table',

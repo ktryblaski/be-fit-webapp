@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {Diet, DietDTO, DietView} from '../../model/domain/diet';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Diet, DietDTO, DietView } from '../../model/domain/diet';
 
 @Injectable({
   providedIn: 'root'

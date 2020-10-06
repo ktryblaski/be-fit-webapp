@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {MealTemplate} from '../../../../shared/model/domain/meal-template';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { MealTemplate } from '../../../../shared/model/domain/meal-template';
 
 @Component({
   selector: 'app-meal-templates-list-ui',

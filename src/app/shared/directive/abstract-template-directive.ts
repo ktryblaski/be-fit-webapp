@@ -1,4 +1,4 @@
-import {EmbeddedViewRef, TemplateRef, ViewContainerRef} from '@angular/core';
+import { EmbeddedViewRef, TemplateRef, ViewContainerRef } from '@angular/core';
 
 export abstract class AbstractTemplateDirective {
 

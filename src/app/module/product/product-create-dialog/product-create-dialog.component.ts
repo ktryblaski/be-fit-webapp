@@ -1,51 +1,22 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {MatDialogRef} from '@angular/material/dialog';
-import {ProductCreateDialogService} from './product-create-dialog.service';
-import {Observable, Subscription} from 'rxjs';
-import {filter} from 'rxjs/operators';
-import {ProductFormHandler} from './product-form-handler';
-
-export enum ProductCreateDialogResult {
-  CREATED,
-  NOTHING
-}
+import { Component } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
+import { ProductFormValue } from './product-create-form/-shared/product-form-value';
 
 @Component({
   selector: 'app-product-create-dialog',
   templateUrl: './product-create-dialog.component.html',
-  styleUrls: ['./product-create-dialog.component.scss'],
-  providers: [ProductCreateDialogService]
+  styleUrls: ['./product-create-dialog.component.scss']
 })
-export class ProductCreateDialogComponent implements OnInit, OnDestroy {
+export class ProductCreateDialogComponent {
 
-  public saving$: Observable<boolean>;
+  constructor(private dialogRef: MatDialogRef<ProductCreateDialogComponent>) { }
 
-  readonly formHandler: ProductFormHandler = new ProductFormHandler();
-
-  private subscription: Subscription;
-
-  constructor(private service: ProductCreateDialogService,
-              private dialogRef: MatDialogRef<ProductCreateDialogComponent>) { }
-
-  ngOnInit(): void {
-    this.saving$ = this.service.saving$;
-    this.subscription = this.service.saved$.pipe(
-      filter((saved: boolean) => saved),
-    ).subscribe(() => {
-      this.dialogRef.close(ProductCreateDialogResult.CREATED);
-    });
-  }
-
-  handleCreate(): void {
-    this.service.create(this.formHandler);
+  handleCreate(formValue: ProductFormValue): void {
+    this.dialogRef.close(formValue);
   }
 
   handleCancel(): void {
-    this.dialogRef.close(ProductCreateDialogResult.NOTHING);
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.dialogRef.close();
   }
 
 }

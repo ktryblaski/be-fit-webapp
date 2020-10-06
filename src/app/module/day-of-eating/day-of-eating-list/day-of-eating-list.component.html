@@ -1,0 +1,19 @@
+<app-async-data-container [loaded]="loaded$ | async"
+                          [pending]="(loading$ | async) || (saving$ | async)">
+
+  <app-slot title>
+    <div class="title">Days of Eating</div>
+  </app-slot>
+
+  <app-slot actions>
+    <button [disabled]="(canBeginDayOfEating$ | async) !== true"
+            (click)="handleBeginDayOfEating()"
+            mat-raised-button color="primary">Begin Day of Eating</button>
+  </app-slot>
+
+  <app-slot data>
+    <app-day-of-eating-list-ui [daysOfEating]="daysOfEating$ | async"
+                               (clickRow)="handleClick($event)"></app-day-of-eating-list-ui>
+  </app-slot>
+
+</app-async-data-container>

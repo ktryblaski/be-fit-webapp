@@ -1,0 +1,50 @@
+@import 'src/app/shared/_colors';
+
+$radius: 3px;
+$hover-color: rgba($primary-color, 0.1);
+$selected-color: rgba($primary-color, 0.9);
+$border-color: rgb(232, 232, 232);;
+
+:host {
+  padding: 16px;
+  border-top: 1px solid $border-color;
+  border-right: none;
+  border-bottom: 1px solid $border-color;
+  border-left: 1px solid $border-color;
+  background-color: white;
+  cursor: pointer;
+  outline: none;
+  font-size: 14px;
+
+  &:first-of-type {
+    border-top-left-radius: $radius;
+    border-bottom-left-radius: $radius;
+  }
+
+  &:last-of-type {
+    border-right: 1px solid $border-color;
+    border-top-right-radius: $radius;
+    border-bottom-right-radius: $radius;
+  }
+
+  &:hover:not(.disabled) {
+    background-color: $hover-color;
+    border-color: $hover-color;
+  }
+
+  &.disabled {
+    background-color: rgb(246, 246, 246);
+    cursor: not-allowed;
+  }
+
+  &.selected {
+    background-color: $selected-color;
+    border-color: $selected-color;
+    color: white;
+
+    &:hover {
+      background-color: $primary-color;
+      border-color: $primary-color;
+    }
+  }
+}

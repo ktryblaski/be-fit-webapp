@@ -1,0 +1,33 @@
+@import 'src/app/shared/_colors';
+
+.meal-container {
+  //margin-top: 20px;
+  //margin-left: 20px;
+  //width: calc(50% - 20px);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0 40px;
+
+  .title {
+    color: $primary-color;
+    font-size: 24px;
+    font-weight: 500;
+    align-self: flex-end;
+
+    .label {
+      color: $label-color;
+      font-weight: 400;
+      margin-right: 10px;
+    }
+  }
+
+  .actions {
+    button + button {
+      margin-left: 10px;
+    }
+  }
+}
+

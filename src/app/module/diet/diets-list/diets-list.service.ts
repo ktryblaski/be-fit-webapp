@@ -1,10 +1,10 @@
-import {Injectable, OnDestroy} from '@angular/core';
-import {DietRestService} from '../../../shared/service/rest/diet-rest.service';
-import {BehaviorSubject, EMPTY, merge, noop, Observable, Subject, Subscription} from 'rxjs';
-import {DietView} from '../../../shared/model/domain/diet';
-import {catchError, distinctUntilChanged, ignoreElements, switchMap, tap} from 'rxjs/operators';
-import {NotificationService} from '../../../shared/component/notification/notification.service';
-import {NotificationSeverity} from '../../../shared/component/notification/notification';
+import { Injectable, OnDestroy } from '@angular/core';
+import { DietRestService } from '../../../shared/service/rest/diet-rest.service';
+import { BehaviorSubject, EMPTY, merge, noop, Observable, Subject, Subscription } from 'rxjs';
+import { DietView } from '../../../shared/model/domain/diet';
+import { catchError, distinctUntilChanged, ignoreElements, switchMap, tap } from 'rxjs/operators';
+import { NotificationService } from '../../../shared/component/notification/notification.service';
+import { NotificationSeverity } from '../../../shared/component/notification/notification';
 
 @Injectable()
 export class DietsListService implements OnDestroy {

@@ -1,0 +1,16 @@
+<div class="meal-container">
+  <app-field label="Name">
+    <div>{{mealTemplate.name}}</div>
+  </app-field>
+
+  <app-field label="Description">
+    <div>{{mealTemplate.description}}</div>
+  </app-field>
+
+  <app-field label="Status">
+    <div [class.active]="mealTemplate.active"
+         [class.inactive]="!mealTemplate.active">{{mealTemplate.active ? 'Active' : 'Inactive'}}</div>
+  </app-field>
+
+  <app-ingredients-table [ingredients]="mealTemplate.ingredients"></app-ingredients-table>
+</div>

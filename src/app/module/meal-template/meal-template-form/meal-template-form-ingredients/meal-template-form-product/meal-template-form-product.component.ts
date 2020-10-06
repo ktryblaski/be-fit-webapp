@@ -1,9 +1,9 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Observable} from 'rxjs';
-import {Product} from '../../../../../shared/model/domain/product';
-import {MealTemplateFormHandler} from '../../meal-template-form-handler';
-import {Ingredient} from '../../../../../shared/model/domain/ingredient';
-import {map} from 'rxjs/operators';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Product } from '../../../../../shared/model/domain/product';
+import { MealTemplateFormHandler } from '../../meal-template-form-handler';
+import { Ingredient } from '../../../../../shared/model/domain/ingredient';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-meal-template-form-product',

@@ -1,8 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {MealEditService} from './meal-edit.service';
-import {Observable, Subscription} from 'rxjs';
-import {MealFormHandler} from '../meal-form/meal-form-handler';
-import {ActivatedRoute, Router} from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MealEditService } from './meal-edit.service';
+import { Observable, Subscription } from 'rxjs';
+import { MealFormHandler } from '../meal-form/meal-form-handler';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-meal-edit',

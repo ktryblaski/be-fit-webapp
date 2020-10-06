@@ -1,14 +1,14 @@
-import {Injectable} from '@angular/core';
-import {BehaviorSubject, EMPTY, merge, noop, Observable, Subject, Subscription} from 'rxjs';
-import {catchError, distinctUntilChanged, finalize, ignoreElements, switchMap, tap} from 'rxjs/operators';
-import {NotificationSeverity} from '../../../shared/component/notification/notification';
-import {NotificationService} from '../../../shared/component/notification/notification.service';
-import {Router} from '@angular/router';
-import {MealTemplateFormValue} from '../meal-template-form/-model/meal-template-form-value';
-import {MealTemplateRestService} from '../../../shared/service/rest/meal-template-rest.service';
-import {ProductRestService} from '../../../shared/service/rest/product-rest.service';
-import {MealTemplateFormDataSource} from '../meal-template-form/-model/meal-template-form-data-source';
-import {MealTemplateCU} from '../../../shared/model/domain/meal-template';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, EMPTY, merge, noop, Observable, Subject, Subscription } from 'rxjs';
+import { catchError, distinctUntilChanged, finalize, ignoreElements, switchMap, tap } from 'rxjs/operators';
+import { NotificationSeverity } from '../../../shared/component/notification/notification';
+import { NotificationService } from '../../../shared/component/notification/notification.service';
+import { Router } from '@angular/router';
+import { MealTemplateFormValue } from '../meal-template-form/-shared/meal-template-form-value';
+import { MealTemplateRestService } from '../../../shared/service/rest/meal-template-rest.service';
+import { ProductRestService } from '../../../shared/service/rest/product-rest.service';
+import { MealTemplateFormDataSource } from '../meal-template-form/-shared/meal-template-form-data-source';
+import { MealTemplateCU } from '../../../shared/model/domain/meal-template';
 
 @Injectable()
 export class MealTemplateCreateService {
@@ -83,7 +83,7 @@ export class MealTemplateCreateService {
       tap(() => {
         this.loading.next(true);
       }),
-      switchMap(() => this.productRestService.getProducts().pipe(
+      switchMap(() => this.productRestService.findAll().pipe(
         tap((products) => {
           this.dataSource.next({products});
           this.loaded.next(true);

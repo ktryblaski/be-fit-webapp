@@ -1,6 +1,6 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {DietView} from '../../../../shared/model/domain/diet';
-import {InternationalizationService} from '../../../../shared/service/internationalization.service';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { DietView } from '../../../../shared/model/domain/diet';
+import { InternationalizationService } from '../../../../shared/service/internationalization.service';
 
 @Component({
   selector: 'app-diets-list-ui',

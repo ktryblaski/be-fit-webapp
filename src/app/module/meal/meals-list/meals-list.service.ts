@@ -1,10 +1,10 @@
-import {Injectable, OnDestroy} from '@angular/core';
-import {MealRestService} from '../../../shared/service/rest/meal-rest.service';
-import {BehaviorSubject, EMPTY, merge, noop, Observable, Subject, Subscription} from 'rxjs';
-import {catchError, distinctUntilChanged, ignoreElements, switchMap, tap} from 'rxjs/operators';
-import {MealView} from '../../../shared/model/domain/meal';
-import {NotificationService} from '../../../shared/component/notification/notification.service';
-import {NotificationSeverity} from '../../../shared/component/notification/notification';
+import { Injectable, OnDestroy } from '@angular/core';
+import { MealRestService } from '../../../shared/service/rest/meal-rest.service';
+import { BehaviorSubject, EMPTY, merge, noop, Observable, Subject, Subscription } from 'rxjs';
+import { catchError, distinctUntilChanged, ignoreElements, switchMap, tap } from 'rxjs/operators';
+import { MealView } from '../../../shared/model/domain/meal';
+import { NotificationService } from '../../../shared/component/notification/notification.service';
+import { NotificationSeverity } from '../../../shared/component/notification/notification';
 
 @Injectable()
 export class MealsListService implements OnDestroy {
@@ -37,7 +37,7 @@ export class MealsListService implements OnDestroy {
       tap(() => {
         this.loading.next(true);
       }),
-      switchMap(() => this.restService.getMealsLite().pipe(
+      switchMap(() => this.restService.findAll().pipe(
         tap((meals: MealView[]) => {
           this.meals.next(meals);
           this.loaded.next(true);

@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {Product} from '../../../../../shared/model/domain/product';
-import {AbstractControl} from '@angular/forms';
+import { Product } from '../../../../../shared/model/domain/product';
+import { AbstractControl } from '@angular/forms';
 
 @Pipe({
   name: 'product'

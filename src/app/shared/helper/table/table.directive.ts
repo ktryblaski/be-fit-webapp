@@ -1,4 +1,4 @@
-import {Attribute, Directive} from '@angular/core';
+import { Attribute, Directive } from '@angular/core';
 
 @Directive({
   selector: 'table[appTable]'

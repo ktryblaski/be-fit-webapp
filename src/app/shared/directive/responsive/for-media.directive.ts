@@ -1,7 +1,7 @@
-import {Directive, Input, OnChanges, OnDestroy, TemplateRef, ViewContainerRef} from '@angular/core';
-import {AbstractTemplateDirective} from '../abstract-template-directive';
-import {BreakpointObserver} from '@angular/cdk/layout';
-import {Subscription} from 'rxjs';
+import { Directive, Input, OnChanges, OnDestroy, TemplateRef, ViewContainerRef } from '@angular/core';
+import { AbstractTemplateDirective } from '../abstract-template-directive';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { Subscription } from 'rxjs';
 
 @Directive({
   selector: '[appForMedia]'

@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {MealView} from '../../../../shared/model/domain/meal';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { MealView } from '../../../../shared/model/domain/meal';
 
 @Component({
   selector: 'app-meals-list-ui',

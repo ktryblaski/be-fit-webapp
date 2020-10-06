@@ -1,4 +1,4 @@
-import {Meal, MealType} from './meal';
+import { Meal, MealType } from './meal';
 
 export enum DietType {
   CUTTING = 'CUTTING',

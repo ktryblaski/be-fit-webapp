@@ -1,12 +1,12 @@
-import {Injectable} from '@angular/core';
-import {BehaviorSubject, EMPTY, noop, Observable, Subject, Subscription} from 'rxjs';
-import {catchError, distinctUntilChanged, ignoreElements, switchMap, tap} from 'rxjs/operators';
-import {NotificationSeverity} from '../../../shared/component/notification/notification';
-import {NotificationService} from '../../../shared/component/notification/notification.service';
-import {Router} from '@angular/router';
-import {DietFormHandler} from '../diet-form/diet-form-handler';
-import {DietRestService} from '../../../shared/service/rest/diet-rest.service';
-import {DietMapperService} from '../diet-form/diet-mapper.service';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, EMPTY, noop, Observable, Subject, Subscription } from 'rxjs';
+import { catchError, distinctUntilChanged, ignoreElements, switchMap, tap } from 'rxjs/operators';
+import { NotificationSeverity } from '../../../shared/component/notification/notification';
+import { NotificationService } from '../../../shared/component/notification/notification.service';
+import { Router } from '@angular/router';
+import { DietFormHandler } from '../diet-form/diet-form-handler';
+import { DietRestService } from '../../../shared/service/rest/diet-rest.service';
+import { DietMapperService } from '../diet-form/diet-mapper.service';
 
 @Injectable()
 export class DietCreateService {

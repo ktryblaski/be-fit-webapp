@@ -1,0 +1,11 @@
+<app-async-data-container [loaded]="loaded$ | async"
+                          [pending]="loading$ | async">
+
+  <app-slot data>
+    <app-day-of-eating-form [dayOfEating]="dayOfEating$ | async"
+                            [dataSource]="dataSource$ | async"
+                            (save)="handleSave($event)"
+                            (cancel)="handleCancel()"></app-day-of-eating-form>
+  </app-slot>
+
+</app-async-data-container>

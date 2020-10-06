@@ -1,0 +1,12 @@
+<mat-tab-group *ngIf="dayOfEating.meals.length > 0; else noMeals"
+               mat-align-tabs="start">
+    <mat-tab *ngFor="let meal of dayOfEating.meals" [label]="meal.name">
+      <div class="meal-container">
+        <app-meal-view [meal]="meal"></app-meal-view>
+      </div>
+    </mat-tab>
+</mat-tab-group>
+
+<ng-template #noMeals>
+  <div class="no-meals">No Meals</div>
+</ng-template>

@@ -1,0 +1,26 @@
+<form [formGroup]="formHandler.form" (ngSubmit)="handleSubmit()">
+  <app-toggle-button [formControl]="formHandler.origin.ref">
+    <button [appToggleButtonOption]="DayOfEatingBeginOrigin.NEW" type="button">Begin new Day of Eating</button>
+    <button [disabled]="dataSource.dayOfEatings.length === 0"
+            [appToggleButtonOption]="DayOfEatingBeginOrigin.AS_COPY" type="button">Copy existing Day of Eating</button>
+  </app-toggle-button>
+
+  <div *ngIf="formHandler.origin.value | isCopyFormDateVisible:dataSource"
+       class="date-container">
+    <mat-form-field color="primary" appearance="fill">
+      <mat-label>Day of Eating date</mat-label>
+      <input matInput [matDatepicker]="originDatePicker"
+             [matDatepickerFilter]="dateFilter"
+             [formControl]="formHandler.originDayDate.ref">
+      <mat-datepicker-toggle matSuffix [for]="originDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #originDatePicker></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div class="actions">
+    <button (click)="handleCancel()" mat-raised-button
+            type="button" tabindex="6">Cancel</button>
+    <button [disabled]="!formHandler.form.valid"
+            mat-raised-button color="primary" tabindex="5">Save</button>
+  </div>
+</form>

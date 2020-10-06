@@ -1,0 +1,11 @@
+<div class="meal-container">
+  <app-field label="Name">
+    <div>{{meal.name}}</div>
+  </app-field>
+
+  <app-field label="Description">
+    <div>{{meal.description}}</div>
+  </app-field>
+
+  <app-ingredients-table [ingredients]="meal.ingredients"></app-ingredients-table>
+</div>

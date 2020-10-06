@@ -1,12 +1,12 @@
-import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
-import {Product} from '../../../shared/model/domain/product';
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
-import {MealTemplateFormIngredientValue, MealTemplateFormValue} from './-model/meal-template-form-value';
-import {MealTemplate} from '../../../shared/model/domain/meal-template';
-import {TypedFormControl} from '../../../shared/form/typed-form-control';
-import {TypedFormArray} from '../../../shared/form/typed-form-array';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Product } from '../../../shared/model/domain/product';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { MealTemplateFormIngredientValue, MealTemplateFormValue } from './-shared/meal-template-form-value';
+import { MealTemplate } from '../../../shared/model/domain/meal-template';
+import { TypedFormControl } from '../../../shared/form/typed/typed-form-control';
+import { TypedFormArray } from '../../../shared/form/typed/typed-form-array';
 
 @Injectable()
 export class MealTemplateFormHandler {
@@ -51,11 +51,9 @@ export class MealTemplateFormHandler {
     this.description.setValue(mealTemplate.description);
     this.ingredients.setValue([]);
 
-    for (const ingredient of mealTemplate.ingredients) {
-      this.ingredients.push(
-        this.createIngredientGroup(ingredient.product, ingredient.weight)
-      );
-    }
+    mealTemplate.ingredients
+      .map(ingredient => this.createIngredientGroup(ingredient.product, ingredient.weight))
+      .forEach(ingredient => this.ingredients.push(ingredient));
   }
 
   addNewIngredient(product: Product): void {

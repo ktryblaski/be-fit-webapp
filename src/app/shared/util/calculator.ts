@@ -1,6 +1,6 @@
-import {Macronutrients} from '../model/domain/macronutrients';
-import {Ingredient} from '../model/domain/ingredient';
-import {Meal} from '../model/domain/meal';
+import { Macronutrients } from '../model/domain/macronutrients';
+import { Ingredient } from '../model/domain/ingredient';
+import { Meal } from '../model/domain/meal';
 
 // macronutrients
 export function macronutrientsKCAL(macronutrients: Macronutrients): number {
