@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { MealTemplateFormHandler } from '../meal-template-form/meal-template-form-handler';
 import { MealTemplateCreateService } from './meal-template-create.service';
-import { Observable } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { MealTemplateFormValue } from '../meal-template-form/-shared/meal-template-form-value';
 import { MealTemplateFormDataSource } from '../meal-template-form/-shared/meal-template-form-data-source';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-meal-template-create',
@@ -14,21 +14,19 @@ import { MealTemplateFormDataSource } from '../meal-template-form/-shared/meal-t
 })
 export class MealTemplateCreateComponent implements OnInit {
 
-  formHandler: MealTemplateFormHandler = new MealTemplateFormHandler();
-
-  saving$: Observable<boolean>;
-  loading$: Observable<boolean>;
-  loaded$: Observable<boolean>;
   dataSource$: Observable<MealTemplateFormDataSource>;
+  loaded$: Observable<boolean>;
+  pending$: Observable<boolean>;
 
   constructor(private service: MealTemplateCreateService,
               private router: Router) { }
 
   ngOnInit(): void {
-    this.saving$ = this.service.saving$;
-    this.loading$ = this.service.loading$;
-    this.loaded$ = this.service.loaded$;
     this.dataSource$ = this.service.dataSource$;
+    this.loaded$ = this.service.loaded$;
+    this.pending$ = combineLatest([this.service.loading$, this.service.saving$]).pipe(
+      map(([loading, saving]) => loading || saving)
+    );
 
     this.service.load();
   }

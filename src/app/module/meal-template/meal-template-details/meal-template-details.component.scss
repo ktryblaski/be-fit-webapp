@@ -1,6 +1,10 @@
 @import 'src/app/shared/_colors';
 
-.title {
+[header] {
+  margin-bottom: 40px;
+}
+
+[header] [title] {
   .name {
     color: $primary-color;
     font-weight: 500;

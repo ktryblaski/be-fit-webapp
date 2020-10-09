@@ -1,11 +1,18 @@
-<app-async-data-container [loaded]="loaded$ | async"
-                          [pending]="loading$ | async">
+<ng-container *ngIf="loaded$ | async; else loading">
+  <div class="pending-indicator-overlay-boundaries">
 
-  <app-slot data>
     <app-day-of-eating-form [dayOfEating]="dayOfEating$ | async"
                             [dataSource]="dataSource$ | async"
                             (save)="handleSave($event)"
                             (cancel)="handleCancel()"></app-day-of-eating-form>
-  </app-slot>
 
-</app-async-data-container>
+    <div class="pending-indicator-overlay-container" *ngIf="loading$ | async">
+      <app-spinner></app-spinner>
+    </div>
+
+  </div>
+</ng-container>
+
+<ng-template #loading>
+  <app-spinner></app-spinner>
+</ng-template>

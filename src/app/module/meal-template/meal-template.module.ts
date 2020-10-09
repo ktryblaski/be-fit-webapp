@@ -15,7 +15,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MealTemplateFormModule } from './meal-template-form/meal-template-form.module';
 import { MealTemplateCreateComponent } from './meal-template-create/meal-template-create.component';
 import { MealTemplateEditComponent } from './meal-template-edit/meal-template-edit.component';
-import { AsyncDataContainerModule } from '../../shared/component/async-data-container/async-data-container.module';
 import { MealTemplateViewModule } from '../../shared/component/meal-template/meal-template-view/meal-template-view.module';
 
 @NgModule({
@@ -31,7 +30,6 @@ import { MealTemplateViewModule } from '../../shared/component/meal-template/mea
     ReactiveFormsModule,
     MatInputModule,
     MealTemplateFormModule,
-    AsyncDataContainerModule,
     MealTemplateViewModule
   ],
   declarations: [

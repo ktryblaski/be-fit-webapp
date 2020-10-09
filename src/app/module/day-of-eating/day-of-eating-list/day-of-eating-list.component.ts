@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
 import { DayOfEatingLite } from '../../../shared/model/domain/day-of-eating';
 import { DayOfEatingListService } from './day-of-eating-list.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DayOfEatingBeginDialogComponent } from '../day-of-eating-begin-dialog/day-of-eating-begin-dialog.component';
 import { DayOfEatingBeginDTO } from '../../../shared/model/dto/day-of-eating-begin-dto';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-day-of-eating-list',
@@ -15,22 +16,22 @@ import { DayOfEatingBeginDTO } from '../../../shared/model/dto/day-of-eating-beg
 })
 export class DayOfEatingListComponent implements OnInit {
 
-  loading$: Observable<boolean>;
-  loaded$: Observable<boolean>;
   daysOfEating$: Observable<DayOfEatingLite[]>;
+  loaded$: Observable<boolean>;
+  pending$: Observable<boolean>;
   canBeginDayOfEating$: Observable<boolean>;
-  saving$: Observable<boolean>;
 
   constructor(private service: DayOfEatingListService,
               private dialog: MatDialog,
               private router: Router) { }
 
   ngOnInit(): void {
-    this.loading$ = this.service.loading$;
-    this.loaded$ = this.service.loaded$;
     this.daysOfEating$ = this.service.daysOfEating$;
+    this.loaded$ = this.service.loaded$;
+    this.pending$ = combineLatest([this.service.loading$, this.service.saving$]).pipe(
+      map(([loading, saving]) => loading || saving)
+    );
     this.canBeginDayOfEating$ = this.service.canBeginDayOfEating$;
-    this.saving$ = this.service.saving$;
 
     this.service.load();
   }

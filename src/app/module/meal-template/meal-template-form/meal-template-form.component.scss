@@ -1,21 +1,19 @@
-form {
-  width: 50%;
+@import 'src/app/shared/_colors';
+
+[header] {
+  margin-bottom: 40px;
 }
 
-.actions {
-  margin-bottom: 50px;
-
-  button {
-    margin-right: 10px;
-  }
+[header] [title] .name {
+  color: $primary-color;
+  font-weight: 500;
+  margin-left: 10px;
 }
 
 .controls {
+  width: 50%;
+
   mat-form-field {
     width: 100%;
-  }
-
-  .description {
-    margin-bottom: 20px;
   }
 }

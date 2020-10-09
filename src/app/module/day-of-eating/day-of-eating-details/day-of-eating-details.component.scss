@@ -1,6 +1,10 @@
 @import 'src/app/shared/_colors';
 
-.title .day {
+[header] {
+  margin-bottom: 40px;
+}
+
+[header] [title] .day {
   color: $primary-color;
   font-weight: 500;
   margin-left: 10px;

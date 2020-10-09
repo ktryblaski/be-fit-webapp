@@ -1,30 +1,40 @@
-<app-async-data-container [loaded]="loaded$ | async"
-                          [pending]="(loading$ | async) || (saving$ | async)">
+<ng-container *ngIf="loaded$ | async; else loading">
 
-  <app-slot title>
-    <div class="title">
-      <span>Meal Template:</span>
-      <span class="name">{{(mealTemplate$ | async).name }}</span>
-      <span class="inactive" *ngIf="!(mealTemplate$ | async).active">[INACTIVE]</span>
+  <div class="pending-indicator-overlay-boundaries">
+
+    <ng-container *ngIf="mealTemplate$ | async as mealTemplate">
+      <div header>
+        <div title>
+          <span>Meal Template:</span>
+          <span class="name">{{mealTemplate.name}}</span>
+          <span class="inactive" *ngIf="!mealTemplate.active">[INACTIVE]</span>
+        </div>
+        <div actions>
+          <button *ngIf="mealTemplate.active"
+                  (click)="handleDeactivate()"
+                  mat-raised-button
+                  class="edit-button">Deactivate</button>
+          <button *ngIf="!mealTemplate.active"
+                  (click)="handleActivate()"
+                  mat-raised-button
+                  class="edit-button">Activate</button>
+          <button [routerLink]="['edit']"
+                  mat-raised-button
+                  class="edit-button">Edit</button>
+        </div>
+      </div>
+
+      <app-meal-template-view [mealTemplate]="mealTemplate"></app-meal-template-view>
+    </ng-container>
+
+    <div class="pending-indicator-overlay-container" *ngIf="pending$ | async">
+      <app-spinner></app-spinner>
     </div>
-  </app-slot>
 
-  <app-slot actions>
-    <button *ngIf="(mealTemplate$ | async).active"
-            (click)="handleDeactivate()"
-            mat-raised-button
-            class="edit-button">Deactivate</button>
-    <button *ngIf="!(mealTemplate$ | async).active"
-            (click)="handleActivate()"
-            mat-raised-button
-            class="edit-button">Activate</button>
-    <button [routerLink]="['edit']"
-            mat-raised-button
-            class="edit-button">Edit</button>
-  </app-slot>
+  </div>
+</ng-container>
 
-  <app-slot data>
-    <app-meal-template-view [mealTemplate]="mealTemplate$ | async"></app-meal-template-view>
-  </app-slot>
+<ng-template #loading>
+  <app-spinner></app-spinner>
+</ng-template>
 
-</app-async-data-container>

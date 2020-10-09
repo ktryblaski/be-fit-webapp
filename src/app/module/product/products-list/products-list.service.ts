@@ -13,7 +13,7 @@ export class ProductsListService implements OnDestroy {
   private readonly loadAction = new Subject();
   private readonly createAction = new Subject<ProductFormValue>();
 
-  private readonly products = new BehaviorSubject<Product[]>(null);
+  private readonly products = new BehaviorSubject<Product[]>([]);
   private readonly loaded = new BehaviorSubject<boolean>(false);
   private readonly loading = new BehaviorSubject<boolean>(false);
   private readonly creating = new BehaviorSubject<boolean>(false);

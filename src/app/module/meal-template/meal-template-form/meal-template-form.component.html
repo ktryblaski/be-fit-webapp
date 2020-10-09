@@ -1,9 +1,20 @@
 <form [formGroup]="formHandler.form" (ngSubmit)="handleSubmit()">
 
-  <div class="actions">
-    <button (click)="handleCancel()" type="button" mat-raised-button tabindex="5">Cancel</button>
-    <button [disabled]="formHandler.form.invalid" type="submit"
-            mat-raised-button color="primary" tabindex="6">Save</button>
+  <div header>
+    <div title>
+      <div *ngIf="mealTemplate">
+        <span>Meal Template:</span>
+        <span class="name">{{mealTemplate.name}}</span>
+      </div>
+      <div *ngIf="!mealTemplate">
+        <span>New Meal Template</span>
+      </div>
+    </div>
+    <div actions>
+      <button (click)="handleCancel()" type="button" mat-raised-button tabindex="5">Cancel</button>
+      <button [disabled]="formHandler.form.invalid" type="submit"
+              mat-raised-button color="primary" tabindex="6">Save</button>
+    </div>
   </div>
 
   <div class="controls">

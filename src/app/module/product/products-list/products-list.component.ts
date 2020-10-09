@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsListService } from './products-list.service';
-import { Observable } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
 import { Product } from '../../../shared/model/domain/product';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductDetailsDialogComponent } from '../product-details-dialog/product-details-dialog.component';
 import { ProductCreateDialogComponent } from '../product-create-dialog/product-create-dialog.component';
 import { ProductFormValue } from '../product-create-dialog/product-create-form/-shared/product-form-value';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-products-list',
@@ -17,8 +18,7 @@ export class ProductsListComponent implements OnInit {
 
   public products$: Observable<Product[]>;
   public loaded$: Observable<boolean>;
-  public loading$: Observable<boolean>;
-  public creating$: Observable<boolean>;
+  public pending$: Observable<boolean>;
 
   constructor(private service: ProductsListService,
               private dialog: MatDialog) { }
@@ -26,8 +26,9 @@ export class ProductsListComponent implements OnInit {
   ngOnInit(): void {
     this.products$ = this.service.products$;
     this.loaded$ = this.service.loaded$;
-    this.loading$ = this.service.loading$;
-    this.creating$ = this.service.creating$;
+    this.pending$ = combineLatest([this.service.loading$, this.service.creating$]).pipe(
+      map(([loading, saving]) => loading || saving)
+    );
 
     this.service.load();
   }

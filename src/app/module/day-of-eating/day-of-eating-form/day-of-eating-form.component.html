@@ -1,11 +1,11 @@
 <form [formGroup]="formHandler.form" (ngSubmit)="handleSubmit()">
 
-  <div class="header">
-    <div class="title">
-      <span class="label">Day of Eating:</span>
-      <span>{{dayOfEating.dayDate | date:DATE_FORMAT}}</span>
+  <div header>
+    <div title>
+      <span>Day of Eating:</span>
+      <span class="date">{{dayOfEating.dayDate | date:DATE_FORMAT}}</span>
     </div>
-    <div class="actions">
+    <div actions>
       <button (click)="handleCancel()" type="button" mat-raised-button tabindex="5">Cancel</button>
       <button [disabled]="formHandler.form.invalid" type="submit"
               mat-raised-button color="primary" tabindex="6">Save</button>

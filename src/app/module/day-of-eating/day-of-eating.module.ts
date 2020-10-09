@@ -15,7 +15,6 @@ import { DayOfEatingFormModule } from './day-of-eating-form/day-of-eating-form.m
 import { IsTodayPipe } from './day-of-eating-list/day-of-eating-list-ui/is-today.pipe';
 import { CalculatorModule } from '../../shared/pipe/calculator/calculator.module';
 import { MealViewModule } from '../../shared/component/meal/meal-view/meal-view.module';
-import { AsyncDataContainerModule } from '../../shared/component/async-data-container/async-data-container.module';
 import { DayOfEatingBeginDialogComponent } from './day-of-eating-begin-dialog/day-of-eating-begin-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DayOfEatingBeginFormModule } from './day-of-eating-begin-dialog/day-of-eating-begin-form/day-of-eating-begin-form.module';
@@ -32,7 +31,6 @@ import { DayOfEatingBeginFormModule } from './day-of-eating-begin-dialog/day-of-
     DayOfEatingFormModule,
     CalculatorModule,
     MealViewModule,
-    AsyncDataContainerModule,
     MatDialogModule,
     DayOfEatingBeginFormModule,
   ],

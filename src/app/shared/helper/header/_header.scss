@@ -1,0 +1,36 @@
+@import 'src/app/shared/_colors';
+
+app-main-area [header] {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+
+  [actions] button + button {
+    margin-left: 10px;
+  }
+
+  [title] {
+    color: $label-color;
+    font-size: 28px;
+    font-weight: 400;
+    align-self: flex-end;
+  }
+}
+
+mat-dialog-container [title] {
+  color: $label-color;
+  font-size: 28px;
+  font-weight: 400;
+  align-self: flex-end;
+  margin-bottom: 30px;
+}
+
+mat-dialog-container [actions] {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+
+  button + button {
+    margin-left: 10px;
+  }
+}

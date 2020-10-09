@@ -113,7 +113,8 @@ export class MealTemplateEditService {
       id: this.mealTemplate.value.id,
       name: formValue.name,
       description: formValue.description,
-      ingredients: formValue.ingredients.map(i => ({productId: i.product.id, weight: i.weight}))
+      ingredients: formValue.ingredients.map(i => ({productId: i.product.id, weight: i.weight})),
+      active: this.mealTemplate.value.active
     };
   }
 

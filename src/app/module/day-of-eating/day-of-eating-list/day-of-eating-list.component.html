@@ -1,19 +1,25 @@
-<app-async-data-container [loaded]="loaded$ | async"
-                          [pending]="(loading$ | async) || (saving$ | async)">
+<ng-container *ngIf="loaded$ | async; else loading">
+  <div class="pending-indicator-overlay-boundaries">
 
-  <app-slot title>
-    <div class="title">Days of Eating</div>
-  </app-slot>
+    <div header>
+      <div title>Days of Eating</div>
+      <div actions>
+        <button [disabled]="(canBeginDayOfEating$ | async) !== true"
+                (click)="handleBeginDayOfEating()"
+                mat-raised-button color="primary">Begin Day of Eating</button>
+      </div>
+    </div>
 
-  <app-slot actions>
-    <button [disabled]="(canBeginDayOfEating$ | async) !== true"
-            (click)="handleBeginDayOfEating()"
-            mat-raised-button color="primary">Begin Day of Eating</button>
-  </app-slot>
-
-  <app-slot data>
     <app-day-of-eating-list-ui [daysOfEating]="daysOfEating$ | async"
                                (clickRow)="handleClick($event)"></app-day-of-eating-list-ui>
-  </app-slot>
 
-</app-async-data-container>
+    <div class="pending-indicator-overlay-container" *ngIf="pending$ | async">
+      <app-spinner></app-spinner>
+    </div>
+
+  </div>
+</ng-container>
+
+<ng-template #loading>
+  <app-spinner></app-spinner>
+</ng-template>

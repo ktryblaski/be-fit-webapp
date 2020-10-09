@@ -21,7 +21,6 @@ import { HelperModule } from '../../shared/helper/helper.module';
 import { ChartsModule } from 'ng2-charts';
 import { MacronutrientsChartModule } from '../../shared/component/macronutrients-chart/macronutrients-chart.module';
 import { NoTableDataModule } from '../../shared/component/no-table-data/no-table-data.module';
-import { AsyncDataContainerModule } from '../../shared/component/async-data-container/async-data-container.module';
 
 @NgModule({
   imports: [
@@ -41,7 +40,6 @@ import { AsyncDataContainerModule } from '../../shared/component/async-data-cont
     ChartsModule,
     MacronutrientsChartModule,
     NoTableDataModule,
-    AsyncDataContainerModule
   ],
   declarations: [
     ProductsListComponent,

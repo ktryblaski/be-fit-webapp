@@ -28,8 +28,9 @@ export class NotificationService {
   }
 
   private close(notification: Notification) {
-    const notificationsArray = this.notifications.value.filter((n: Notification) => n !== notification);
-    this.notifications.next(notificationsArray);
+    this.notifications.next(
+      this.notifications.value.filter(n => n !== notification)
+    );
   }
 
 }

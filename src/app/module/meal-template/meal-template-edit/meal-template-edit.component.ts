@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MealTemplateEditService } from './meal-template-edit.service';
-import { Observable, Subscription } from 'rxjs';
-import { MealTemplateFormHandler } from '../meal-template-form/meal-template-form-handler';
+import { combineLatest, Observable, Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MealTemplateFormDataSource } from '../meal-template-form/-shared/meal-template-form-data-source';
 import { MealTemplate } from '../../../shared/model/domain/meal-template';
 import { MealTemplateFormValue } from '../meal-template-form/-shared/meal-template-form-value';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-meal-template-edit',
@@ -15,12 +15,9 @@ import { MealTemplateFormValue } from '../meal-template-form/-shared/meal-templa
 })
 export class MealTemplateEditComponent implements OnInit, OnDestroy {
 
-  formHandler: MealTemplateFormHandler = new MealTemplateFormHandler();
-
-  saving$: Observable<boolean>;
-  loading$: Observable<boolean>;
-  loaded$: Observable<boolean>;
   mealTemplate$: Observable<MealTemplate>;
+  loaded$: Observable<boolean>;
+  pending$: Observable<boolean>;
   dataSource$: Observable<MealTemplateFormDataSource>;
 
   private subscription: Subscription;
@@ -30,10 +27,11 @@ export class MealTemplateEditComponent implements OnInit, OnDestroy {
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.saving$ = this.service.saving$;
-    this.loading$ = this.service.loading$;
-    this.loaded$ = this.service.loaded$;
     this.mealTemplate$ = this.service.mealTemplate$;
+    this.loaded$ = this.service.loaded$;
+    this.pending$ = combineLatest([this.service.loading$, this.service.saving$]).pipe(
+      map(([loading, saving]) => loading || saving)
+    );
     this.dataSource$ = this.service.dataSource$;
 
     this.subscription = this.route.paramMap.subscribe(paramMap => {

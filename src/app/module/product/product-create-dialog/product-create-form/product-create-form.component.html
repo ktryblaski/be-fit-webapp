@@ -1,7 +1,5 @@
 <form [formGroup]="formHandler.form" (ngSubmit)="handleSubmit()">
 
-  <h1>New Product</h1>
-
   <mat-form-field class="name-input">
     <mat-label>Name</mat-label>
     <input [formControl]="formHandler.name.ref" type="text"
@@ -26,8 +24,8 @@
            min="0" matInput tabindex="4">
   </mat-form-field>
 
-  <div class="actions">
-    <button (click)="handleCancel()" type="button"
+  <div actions>
+    <button mat-dialog-close type="button"
             mat-raised-button tabindex="6">Cancel</button>
     <button [disabled]="!formHandler.form.valid" type="submit"
             mat-raised-button color="primary" tabindex="5">Save</button>

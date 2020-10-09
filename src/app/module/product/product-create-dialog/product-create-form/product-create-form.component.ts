@@ -11,16 +11,11 @@ import { ProductFormValue } from './-shared/product-form-value';
 export class ProductCreateFormComponent {
 
   @Output() create = new EventEmitter<ProductFormValue>();
-  @Output() cancel = new EventEmitter();
 
   constructor(public formHandler: ProductFormHandler) { }
 
   handleSubmit(): void {
     this.create.emit(this.formHandler.getValue());
-  }
-
-  handleCancel(): void {
-    this.cancel.emit();
   }
 
 }

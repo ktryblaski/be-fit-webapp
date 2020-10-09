@@ -2,6 +2,7 @@
   <input [formControl]="formHandler.product.ref"
          [matAutocomplete]="auto"
          type="text"
+         placeholder="Ingredients"
          matInput
          tabindex="3">
   <mat-autocomplete [displayWith]="displayFn" autoActiveFirstOption #auto="matAutocomplete">

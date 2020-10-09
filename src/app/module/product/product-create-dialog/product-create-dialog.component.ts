@@ -15,8 +15,4 @@ export class ProductCreateDialogComponent {
     this.dialogRef.close(formValue);
   }
 
-  handleCancel(): void {
-    this.dialogRef.close();
-  }
-
 }

@@ -1,21 +1,27 @@
-<app-async-data-container [loaded]="loaded$ | async"
-                          [pending]="loading$ | async">
+<ng-container *ngIf="loaded$ | async; else loading">
+  <div class="pending-indicator-overlay-boundaries">
 
-  <app-slot title>
-    <div class="title">
-      <span>Day of Eating:</span>
-      <span class="day">{{(dayOfEating$ | async).dayDate | date:DATE_FORMAT}}</span>
+    <div header>
+      <div title>
+        <span>Day of Eating:</span>
+        <span class="day">{{(dayOfEating$ | async).dayDate | date:DATE_FORMAT}}</span>
+      </div>
+      <div actions>
+        <button [routerLink]="['edit']"
+                mat-raised-button
+                class="edit-button">Edit</button>
+      </div>
     </div>
-  </app-slot>
 
-  <app-slot actions>
-    <button [routerLink]="['edit']"
-            mat-raised-button
-            class="edit-button">Edit</button>
-  </app-slot>
-
-  <app-slot data>
     <app-day-of-eating-details-ui [dayOfEating]="dayOfEating$ | async"></app-day-of-eating-details-ui>
-  </app-slot>
 
-</app-async-data-container>
+    <div class="pending-indicator-overlay-container" *ngIf="loading$ | async">
+      <app-spinner></app-spinner>
+    </div>
+
+  </div>
+</ng-container>
+
+<ng-template #loading>
+  <app-spinner></app-spinner>
+</ng-template>
