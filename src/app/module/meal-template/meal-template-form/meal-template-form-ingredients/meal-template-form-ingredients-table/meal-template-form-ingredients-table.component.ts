@@ -10,11 +10,15 @@ import {
   ingredientsWeight
  } from '../../../../../shared/util/calculator';
 import { Product } from '../../../../../shared/model/domain/product';
+import { ControlContainer, FormGroupDirective } from '@angular/forms';
 
 @Component({
   selector: 'app-meal-template-ingredients-table',
   templateUrl: './meal-template-form-ingredients-table.component.html',
-  styleUrls: ['./meal-template-form-ingredients-table.component.scss']
+  styleUrls: ['./meal-template-form-ingredients-table.component.scss'],
+  viewProviders: [
+    { provide: ControlContainer, useExisting: FormGroupDirective }
+  ]
 })
 export class MealTemplateFormIngredientsTableComponent implements OnInit, OnDestroy {
 
