@@ -3,11 +3,10 @@ import { BehaviorSubject, EMPTY, noop, Observable, Subject, Subscription } from 
 import { DayOfEatingBeginFormDataSource } from './day-of-eating-begin-form/-shared/day-of-eating-begin-form-data-source';
 import { catchError, distinctUntilChanged, finalize, ignoreElements, switchMap, tap } from 'rxjs/operators';
 import { DayOfEatingRestService } from '../../../shared/service/rest/day-of-eating-rest.service';
-import { NotificationSeverity } from '../../../shared/component/notification/notification';
-import { NotificationService } from '../../../shared/component/notification/notification.service';
 import { DayOfEatingBeginFormValue } from './day-of-eating-begin-form/-shared/day-of-eating-begin-form-value';
 import * as moment from 'moment';
 import { DayOfEatingBeginDTO, DayOfEatingBeginOrigin } from '../../../shared/model/dto/day-of-eating-begin-dto';
+import { ErrorModalService } from '../../../shared/error-modal/error-modal.service';
 
 @Injectable()
 export class DayOfEatingBeginDialogService implements OnDestroy {
@@ -25,7 +24,7 @@ export class DayOfEatingBeginDialogService implements OnDestroy {
   private subscription: Subscription;
 
   constructor(private dayOfEatingRestService: DayOfEatingRestService,
-              private notificationService: NotificationService) {
+              private errorModalService: ErrorModalService) {
 
     this.subscription = this.loadEffect().subscribe(noop);
   }
@@ -59,10 +58,7 @@ export class DayOfEatingBeginDialogService implements OnDestroy {
         }),
         catchError(error => {
           console.error(error);
-          this.notificationService.show({
-            message: 'An error has occurred',
-            severity: NotificationSeverity.DANGER
-          });
+          this.errorModalService.showError('An error has occurred while loading data');
           return EMPTY;
         }),
         finalize(() => {

@@ -6,6 +6,7 @@ import { ProductRestService } from '../../../shared/service/rest/product-rest.se
 import { NotificationService } from '../../../shared/component/notification/notification.service';
 import { NotificationSeverity } from '../../../shared/component/notification/notification';
 import { ProductFormValue } from '../product-create-dialog/product-create-form/-shared/product-form-value';
+import { ErrorModalService } from '../../../shared/error-modal/error-modal.service';
 
 @Injectable()
 export class ProductsListService implements OnDestroy {
@@ -26,7 +27,8 @@ export class ProductsListService implements OnDestroy {
   private subscription: Subscription;
 
   constructor(private restService: ProductRestService,
-              private notificationService: NotificationService) {
+              private notificationService: NotificationService,
+              private errorModalService: ErrorModalService) {
 
     this.subscription = merge(
       this.loadEffect(),
@@ -59,12 +61,9 @@ export class ProductsListService implements OnDestroy {
           });
           this.load();
         }),
-        catchError((error) => {
+        catchError(error => {
           console.error(error);
-          this.notificationService.show({
-            message: 'An error has occurred',
-            severity: NotificationSeverity.DANGER
-          });
+          this.errorModalService.showError('An error has occurred while creating new product');
           return EMPTY;
         }),
         finalize(() => {
@@ -81,16 +80,13 @@ export class ProductsListService implements OnDestroy {
         this.loading.next(true);
       }),
       switchMap(() => this.restService.findAll().pipe(
-        tap((products: Product[]) => {
+        tap(products => {
           this.products.next(products);
           this.loaded.next(true);
         }),
-        catchError((error) => {
+        catchError(error => {
           console.error(error);
-          this.notificationService.show({
-            message: 'An error has occurred',
-            severity: NotificationSeverity.DANGER
-          });
+          this.errorModalService.showError('An error has occurred while loading data');
           return EMPTY;
         }),
         finalize(() => {

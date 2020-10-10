@@ -1,10 +1,9 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { ProductRestService } from '../../../shared/service/rest/product-rest.service';
-import { BehaviorSubject, EMPTY, merge, noop, Observable, Subject, Subscription } from 'rxjs';
+import { BehaviorSubject, EMPTY, noop, Observable, Subject, Subscription } from 'rxjs';
 import { Product } from '../../../shared/model/domain/product';
-import { catchError, distinctUntilChanged, ignoreElements, switchMap, tap } from 'rxjs/operators';
-import { NotificationSeverity } from '../../../shared/component/notification/notification';
-import { NotificationService } from '../../../shared/component/notification/notification.service';
+import { catchError, distinctUntilChanged, finalize, ignoreElements, switchMap, tap } from 'rxjs/operators';
+import { ErrorModalService } from '../../../shared/error-modal/error-modal.service';
 
 @Injectable()
 export class ProductDetailsDialogService implements OnDestroy {
@@ -22,10 +21,9 @@ export class ProductDetailsDialogService implements OnDestroy {
   private subscription: Subscription;
 
   constructor(private restService: ProductRestService,
-              private notificationService: NotificationService) {
-    this.subscription = merge(
-      this.loadEffect()
-    ).subscribe(noop);
+              private errorModalService: ErrorModalService) {
+
+    this.subscription = this.loadEffect().subscribe(noop);
   }
 
   load(productId: number): void {
@@ -37,20 +35,19 @@ export class ProductDetailsDialogService implements OnDestroy {
       tap(() => {
         this.loading.next(true);
       }),
-      switchMap((productId: number) => this.restService.getOne(productId).pipe(
-        tap((product: Product) => {
+      switchMap(productId => this.restService.getOne(productId).pipe(
+        tap(product => {
           this.product.next(product);
           this.loaded.next(true);
-          this.loading.next(false);
         }),
-        catchError((error) => {
+        catchError(error => {
           console.error(error);
           this.loading.next(false);
-          this.notificationService.show({
-            message: 'An error has occurred',
-            severity: NotificationSeverity.DANGER
-          });
+          this.errorModalService.showError('An error has occurred while creating new product');
           return EMPTY;
+        }),
+        finalize(() => {
+          this.loading.next(false);
         })
       )),
       ignoreElements()

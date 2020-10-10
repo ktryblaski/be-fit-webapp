@@ -7,6 +7,7 @@ import { NotificationSeverity } from '../../../shared/component/notification/not
 import { NotificationService } from '../../../shared/component/notification/notification.service';
 import { DayOfEatingBeginDTO } from '../../../shared/model/dto/day-of-eating-begin-dto';
 import { Router } from '@angular/router';
+import { ErrorModalService } from '../../../shared/error-modal/error-modal.service';
 
 @Injectable()
 export class DayOfEatingListService implements OnDestroy {
@@ -30,6 +31,7 @@ export class DayOfEatingListService implements OnDestroy {
 
   constructor(private restService: DayOfEatingRestService,
               private notificationService: NotificationService,
+              private errorModalService: ErrorModalService,
               private router: Router) {
 
     this.subscription = merge(
@@ -66,10 +68,7 @@ export class DayOfEatingListService implements OnDestroy {
         }),
         catchError(error => {
           console.error(error);
-          this.notificationService.show({
-            message: 'An error has occurred',
-            severity: NotificationSeverity.DANGER
-          });
+          this.errorModalService.showError('An error has occurred while loading data');
           return EMPTY;
         }),
         finalize(() => {

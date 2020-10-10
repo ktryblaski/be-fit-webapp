@@ -9,6 +9,7 @@ import { MealTemplate, MealTemplateCU } from '../../../shared/model/domain/meal-
 import { MealTemplateFormDataSource } from '../meal-template-form/-shared/meal-template-form-data-source';
 import { ProductRestService } from '../../../shared/service/rest/product-rest.service';
 import { MealTemplateRestService } from '../../../shared/service/rest/meal-template-rest.service';
+import { ErrorModalService } from '../../../shared/error-modal/error-modal.service';
 
 @Injectable()
 export class MealTemplateEditService {
@@ -33,6 +34,7 @@ export class MealTemplateEditService {
   constructor(private restService: MealTemplateRestService,
               private productRestService: ProductRestService,
               private notificationService: NotificationService,
+              private errorModalService: ErrorModalService,
               private router: Router) {
 
     this.subscription = merge(
@@ -65,10 +67,7 @@ export class MealTemplateEditService {
         }),
         catchError(error => {
           console.error(error);
-          this.notificationService.show({
-            message: 'An error has occurred',
-            severity: NotificationSeverity.DANGER
-          });
+          this.errorModalService.showError('An error has occurred while loading data');
           return EMPTY;
         }),
         finalize(() => {
@@ -94,10 +93,7 @@ export class MealTemplateEditService {
         }),
         catchError((error) => {
           console.error(error);
-          this.notificationService.show({
-            message: 'An error has occurred',
-            severity: NotificationSeverity.DANGER
-          });
+          this.errorModalService.showError('An error has occurred while saving meal template');
           return EMPTY;
         }),
         finalize(() => {

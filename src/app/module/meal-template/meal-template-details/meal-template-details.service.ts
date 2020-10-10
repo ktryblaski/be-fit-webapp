@@ -5,6 +5,7 @@ import { NotificationService } from '../../../shared/component/notification/noti
 import { NotificationSeverity } from '../../../shared/component/notification/notification';
 import { MealTemplate } from '../../../shared/model/domain/meal-template';
 import { MealTemplateRestService } from '../../../shared/service/rest/meal-template-rest.service';
+import { ErrorModalService } from '../../../shared/error-modal/error-modal.service';
 
 @Injectable()
 export class MealTemplateDetailsService implements OnDestroy {
@@ -26,7 +27,8 @@ export class MealTemplateDetailsService implements OnDestroy {
   readonly saving$: Observable<boolean> = this.saving.pipe(distinctUntilChanged());
 
   constructor(private restService: MealTemplateRestService,
-              private notificationService: NotificationService) {
+              private notificationService: NotificationService,
+              private errorModalService: ErrorModalService) {
 
     this.subscription = merge(
       this.loadEffect(),
@@ -63,10 +65,7 @@ export class MealTemplateDetailsService implements OnDestroy {
         }),
         catchError(error => {
           console.error(error);
-          this.notificationService.show({
-            message: 'An error has occurred',
-            severity: NotificationSeverity.DANGER
-          });
+          this.errorModalService.showError('An error has occurred while loading data');
           return EMPTY;
         }),
         finalize(() => {
@@ -92,10 +91,7 @@ export class MealTemplateDetailsService implements OnDestroy {
         }),
         catchError(error => {
           console.error(error);
-          this.notificationService.show({
-            message: 'An error has occurred',
-            severity: NotificationSeverity.DANGER
-          });
+          this.errorModalService.showError('An error has occurred while activating meal template');
           return EMPTY;
         }),
         finalize(() => {
@@ -121,10 +117,7 @@ export class MealTemplateDetailsService implements OnDestroy {
         }),
         catchError(error => {
           console.error(error);
-          this.notificationService.show({
-            message: 'An error has occurred',
-            severity: NotificationSeverity.DANGER
-          });
+          this.errorModalService.showError('An error has occurred while deactivating meal template');
           return EMPTY;
         }),
         finalize(() => {

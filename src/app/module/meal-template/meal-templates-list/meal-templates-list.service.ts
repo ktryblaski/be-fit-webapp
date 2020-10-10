@@ -1,10 +1,9 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, EMPTY, noop, Observable, Subject, Subscription } from 'rxjs';
 import { catchError, distinctUntilChanged, finalize, ignoreElements, switchMap, tap } from 'rxjs/operators';
-import { NotificationService } from '../../../shared/component/notification/notification.service';
-import { NotificationSeverity } from '../../../shared/component/notification/notification';
 import { MealTemplateRestService } from '../../../shared/service/rest/meal-template-rest.service';
 import { MealTemplate } from '../../../shared/model/domain/meal-template';
+import { ErrorModalService } from '../../../shared/error-modal/error-modal.service';
 
 @Injectable()
 export class MealTemplatesListService implements OnDestroy {
@@ -22,7 +21,7 @@ export class MealTemplatesListService implements OnDestroy {
   readonly loading$: Observable<boolean> = this.loading.pipe(distinctUntilChanged());
 
   constructor(private restService: MealTemplateRestService,
-              private notificationService: NotificationService) {
+              private errorModalService: ErrorModalService) {
 
     this.subscription = this.loadEffect().subscribe(noop);
   }
@@ -43,10 +42,7 @@ export class MealTemplatesListService implements OnDestroy {
         }),
         catchError(error => {
           console.error(error);
-          this.notificationService.show({
-            message: 'An error has occurred',
-            severity: NotificationSeverity.DANGER
-          });
+          this.errorModalService.showError('An error has occurred while loading data');
           return EMPTY;
         }),
         finalize(() => {

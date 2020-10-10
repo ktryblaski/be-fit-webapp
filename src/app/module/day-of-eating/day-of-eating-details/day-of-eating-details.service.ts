@@ -3,8 +3,7 @@ import { BehaviorSubject, EMPTY, noop, Observable, Subject, Subscription } from 
 import { DayOfEating } from '../../../shared/model/domain/day-of-eating';
 import { catchError, distinctUntilChanged, finalize, ignoreElements, switchMap, tap } from 'rxjs/operators';
 import { DayOfEatingRestService } from '../../../shared/service/rest/day-of-eating-rest.service';
-import { NotificationSeverity } from '../../../shared/component/notification/notification';
-import { NotificationService } from '../../../shared/component/notification/notification.service';
+import { ErrorModalService } from '../../../shared/error-modal/error-modal.service';
 
 @Injectable()
 export class DayOfEatingDetailsService implements OnDestroy {
@@ -22,7 +21,7 @@ export class DayOfEatingDetailsService implements OnDestroy {
   private subscription: Subscription;
 
   constructor(private restService: DayOfEatingRestService,
-              private notificationService: NotificationService) {
+              private errorModalService: ErrorModalService) {
 
     this.subscription = this.loadEffect().subscribe(noop);
   }
@@ -47,10 +46,7 @@ export class DayOfEatingDetailsService implements OnDestroy {
         }),
         catchError(error => {
           console.error(error);
-          this.notificationService.show({
-            message: 'An error has occurred',
-            severity: NotificationSeverity.DANGER
-          });
+          this.errorModalService.showError('An error has occurred while loading data');
           return EMPTY;
         }),
         finalize(() => {

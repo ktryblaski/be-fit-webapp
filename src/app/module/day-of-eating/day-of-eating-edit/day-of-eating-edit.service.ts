@@ -10,6 +10,7 @@ import { DayOfEatingFormValue } from '../day-of-eating-form/-shared/day-of-eatin
 import { ProductRestService } from '../../../shared/service/rest/product-rest.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MealTemplateRestService } from '../../../shared/service/rest/meal-template-rest.service';
+import { ErrorModalService } from '../../../shared/error-modal/error-modal.service';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +38,7 @@ export class DayOfEatingEditService implements OnDestroy {
               private mealTemplateRestService: MealTemplateRestService,
               private productRestService: ProductRestService,
               private notificationService: NotificationService,
+              private errorModalService: ErrorModalService,
               private router: Router,
               private route: ActivatedRoute) {
 
@@ -75,10 +77,7 @@ export class DayOfEatingEditService implements OnDestroy {
         }),
         catchError(error => {
           console.error(error);
-          this.notificationService.show({
-            message: 'An error has occurred',
-            severity: NotificationSeverity.DANGER
-          });
+          this.errorModalService.showError('An error has occurred while loading data');
           return EMPTY;
         }),
         finalize(() => {
@@ -104,10 +103,7 @@ export class DayOfEatingEditService implements OnDestroy {
         }),
         catchError(error => {
           console.error(error);
-          this.notificationService.show({
-            message: 'An error has occurred',
-            severity: NotificationSeverity.DANGER
-          });
+          this.errorModalService.showError('An error has occurred while saving day of eating');
           return EMPTY;
         }),
         finalize(() => {

@@ -14,19 +14,23 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NotificationModule } from './shared/component/notification/notification.module';
 import { ResponsiveModule } from './shared/directive/responsive/responsive.module';
+import { ErrorModalModule } from './shared/error-modal/error-modal.module';
 
 @NgModule({
   imports: [
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
-    HttpClientModule,
-    ReactiveFormsModule,
+
+    ResponsiveModule,
     NotificationModule,
-    ResponsiveModule
+    ErrorModalModule
   ],
   declarations: [
     AppComponent,
