@@ -3,9 +3,9 @@ import { Observable } from 'rxjs';
 import { TypedControl } from './typed-control';
 import { startWith } from 'rxjs/operators';
 
-export abstract class AbstractTypedControl<T> implements TypedControl<T> {
+export abstract class AbstractTypedControl<T, Y extends AbstractControl> implements TypedControl<T, Y> {
 
-  protected constructor(public ref: AbstractControl) { }
+  protected constructor(public ref: Y) { }
 
   get value(): T {
     return this.ref.value;

@@ -19,14 +19,14 @@ export class MealTemplateEditService {
   private readonly saving = new BehaviorSubject<boolean>(false);
   private readonly loading = new BehaviorSubject<boolean>(false);
   private readonly loaded = new BehaviorSubject<boolean>(false);
-  private readonly mealTemplate = new BehaviorSubject<MealTemplate>(null);
-  private readonly dataSource = new BehaviorSubject<MealTemplateFormDataSource>(null);
+  private readonly mealTemplate = new BehaviorSubject<MealTemplate | null>(null);
+  private readonly dataSource = new BehaviorSubject<MealTemplateFormDataSource | null>(null);
 
   readonly saving$: Observable<boolean> = this.saving.pipe(distinctUntilChanged());
   readonly loading$: Observable<boolean> = this.loading.pipe(distinctUntilChanged());
   readonly loaded$: Observable<boolean> = this.loaded.pipe(distinctUntilChanged());
-  readonly mealTemplate$: Observable<MealTemplate> = this.mealTemplate.pipe(distinctUntilChanged());
-  readonly dataSource$: Observable<MealTemplateFormDataSource> = this.dataSource.pipe(distinctUntilChanged());
+  readonly mealTemplate$: Observable<MealTemplate | null> = this.mealTemplate.pipe(distinctUntilChanged());
+  readonly dataSource$: Observable<MealTemplateFormDataSource | null> = this.dataSource.pipe(distinctUntilChanged());
 
   private subscription: Subscription;
 

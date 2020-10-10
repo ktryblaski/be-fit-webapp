@@ -5,5 +5,5 @@ export enum DayOfEatingBeginOrigin {
 
 export interface DayOfEatingBeginDTO {
   origin: DayOfEatingBeginOrigin;
-  originDayId: number;
+  originDayId: number | null;
 }

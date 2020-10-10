@@ -14,13 +14,13 @@ export class DayOfEatingBeginDialogService implements OnDestroy {
 
   private readonly loading = new BehaviorSubject<boolean>(false);
   private readonly loaded = new BehaviorSubject<boolean>(false);
-  private readonly dataSource = new BehaviorSubject<DayOfEatingBeginFormDataSource>(null);
+  private readonly dataSource = new BehaviorSubject<DayOfEatingBeginFormDataSource | null>(null);
 
   private loadAction = new Subject<void>();
 
   readonly loading$: Observable<boolean> = this.loading.pipe(distinctUntilChanged());
   readonly loaded$: Observable<boolean> = this.loaded.pipe(distinctUntilChanged());
-  readonly dataSource$: Observable<DayOfEatingBeginFormDataSource> = this.dataSource.pipe(distinctUntilChanged());
+  readonly dataSource$: Observable<DayOfEatingBeginFormDataSource | null> = this.dataSource.pipe(distinctUntilChanged());
 
   private subscription: Subscription;
 

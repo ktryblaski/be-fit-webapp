@@ -5,7 +5,7 @@ export abstract class AbstractTemplateDirective {
   protected constructor(private templateRef: TemplateRef<any>,
                         private viewContainerRef: ViewContainerRef) { }
 
-  protected viewRef: EmbeddedViewRef<any>;
+  protected viewRef: EmbeddedViewRef<any> | null;
 
   protected renderWhen(condition: boolean): void {
     if (condition) {

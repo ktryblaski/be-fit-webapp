@@ -1,7 +1,7 @@
 import { AbstractControl, FormControl } from '@angular/forms';
 import { AbstractTypedControl } from './abstract-typed-control';
 
-export class TypedFormControl<T> extends AbstractTypedControl<T> {
+export class TypedFormControl<T> extends AbstractTypedControl<T, FormControl> {
 
   static from<T>(control: AbstractControl): TypedFormControl<T> {
     return new TypedFormControl<T>(control as FormControl);

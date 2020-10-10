@@ -13,11 +13,11 @@ export class DayOfEatingDetailsService implements OnDestroy {
 
   private readonly loading = new BehaviorSubject<boolean>(false);
   private readonly loaded = new BehaviorSubject<boolean>(false);
-  private readonly dayOfEating = new BehaviorSubject<DayOfEating>(null);
+  private readonly dayOfEating = new BehaviorSubject<DayOfEating | null>(null);
 
   readonly loading$: Observable<boolean> = this.loading.pipe(distinctUntilChanged());
   readonly loaded$: Observable<boolean> = this.loaded.pipe(distinctUntilChanged());
-  readonly dayOfEating$: Observable<DayOfEating> = this.dayOfEating.pipe(distinctUntilChanged());
+  readonly dayOfEating$: Observable<DayOfEating | null> = this.dayOfEating.pipe(distinctUntilChanged());
 
   private subscription: Subscription;
 

@@ -15,12 +15,12 @@ export class MealEditService {
   private readonly saveAction = new Subject<MealFormHandler>();
   private readonly loadAction = new Subject<number>();
 
-  private readonly meal = new BehaviorSubject<Meal>(null);
-  private readonly mealFormHandler = new BehaviorSubject<MealFormHandler>(null);
+  private readonly meal = new BehaviorSubject<Meal | null>(null);
+  private readonly mealFormHandler = new BehaviorSubject<MealFormHandler | null>(null);
   private readonly pending = new BehaviorSubject<boolean>(false);
   private readonly loaded = new BehaviorSubject<boolean>(false);
 
-  readonly mealFormHandler$: Observable<MealFormHandler> = this.mealFormHandler.pipe(distinctUntilChanged());
+  readonly mealFormHandler$: Observable<MealFormHandler | null> = this.mealFormHandler.pipe(distinctUntilChanged());
   readonly pending$: Observable<boolean> = this.pending.pipe(distinctUntilChanged());
   readonly loaded$: Observable<boolean> = this.loaded.pipe(distinctUntilChanged());
 

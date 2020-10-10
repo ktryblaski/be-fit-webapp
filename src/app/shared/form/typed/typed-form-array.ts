@@ -2,7 +2,7 @@ import { AbstractControl, FormArray } from '@angular/forms';
 import { AbstractTypedControl } from './abstract-typed-control';
 
 // TODO
-export class TypedFormArray<T> extends AbstractTypedControl<T> {
+export class TypedFormArray<T> extends AbstractTypedControl<T, FormArray> {
 
   static from<T>(control: AbstractControl): TypedFormArray<T> {
     return new TypedFormArray<T>(control as FormArray);

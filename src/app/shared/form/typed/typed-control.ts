@@ -1,8 +1,8 @@
 import { AbstractControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 
-export interface TypedControl<T> {
-  ref: AbstractControl;
+export interface TypedControl<T, Y extends AbstractControl> {
+  ref: Y;
 
   readonly value: T;
   readonly values: Observable<T>;

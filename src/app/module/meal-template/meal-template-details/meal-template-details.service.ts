@@ -13,14 +13,14 @@ export class MealTemplateDetailsService implements OnDestroy {
   private readonly activateAction = new Subject<void>();
   private readonly deactivateAction = new Subject<void>();
 
-  private readonly mealTemplate = new BehaviorSubject<MealTemplate>(null);
+  private readonly mealTemplate = new BehaviorSubject<MealTemplate | null>(null);
   private readonly loaded = new BehaviorSubject<boolean>(false);
   private readonly loading = new BehaviorSubject<boolean>(false);
   private readonly saving = new BehaviorSubject<boolean>(false);
 
   private subscription: Subscription;
 
-  readonly mealTemplate$: Observable<MealTemplate> = this.mealTemplate.pipe(distinctUntilChanged());
+  readonly mealTemplate$: Observable<MealTemplate | null> = this.mealTemplate.pipe(distinctUntilChanged());
   readonly loaded$: Observable<boolean> = this.loaded.pipe(distinctUntilChanged());
   readonly loading$: Observable<boolean> = this.loading.pipe(distinctUntilChanged());
   readonly saving$: Observable<boolean> = this.saving.pipe(distinctUntilChanged());

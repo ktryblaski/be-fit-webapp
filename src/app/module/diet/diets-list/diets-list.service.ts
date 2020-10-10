@@ -11,7 +11,7 @@ export class DietsListService implements OnDestroy {
 
   private readonly loadAction: Subject<never> = new Subject<never>();
 
-  private readonly diets: BehaviorSubject<DietView[]> = new BehaviorSubject<DietView[]>(null);
+  private readonly diets: BehaviorSubject<DietView[]> = new BehaviorSubject<DietView[]>([]);
   private readonly loading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private readonly loaded: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 

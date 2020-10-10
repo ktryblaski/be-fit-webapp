@@ -11,11 +11,11 @@ export class ProductDetailsDialogService implements OnDestroy {
 
   private readonly loadAction = new Subject<number>();
 
-  private readonly product = new BehaviorSubject<Product>(null);
+  private readonly product = new BehaviorSubject<Product | null>(null);
   private readonly loaded = new BehaviorSubject<boolean>(false);
   private readonly loading = new BehaviorSubject<boolean>(false);
 
-  readonly product$: Observable<Product> = this.product.pipe(distinctUntilChanged());
+  readonly product$: Observable<Product | null> = this.product.pipe(distinctUntilChanged());
   readonly loaded$: Observable<boolean> = this.loaded.pipe(distinctUntilChanged());
   readonly loading$: Observable<boolean> = this.loading.pipe(distinctUntilChanged());
 

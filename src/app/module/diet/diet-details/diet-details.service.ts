@@ -11,11 +11,11 @@ export class DietDetailsService implements OnDestroy {
 
   private readonly loadAction = new Subject<number>();
 
-  private readonly diet = new BehaviorSubject<Diet>(null);
+  private readonly diet = new BehaviorSubject<Diet | null>(null);
   private readonly loaded = new BehaviorSubject<boolean>(false);
   private readonly loading = new BehaviorSubject<boolean>(false);
 
-  readonly diet$: Observable<Diet> = this.diet.pipe(distinctUntilChanged());
+  readonly diet$: Observable<Diet | null> = this.diet.pipe(distinctUntilChanged());
   readonly loaded$: Observable<boolean> = this.loaded.pipe(distinctUntilChanged());
   readonly loading$: Observable<boolean> = this.loading.pipe(distinctUntilChanged());
 

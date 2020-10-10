@@ -21,14 +21,14 @@ export class DayOfEatingEditService implements OnDestroy {
 
   private readonly loading = new BehaviorSubject<boolean>(false);
   private readonly loaded = new BehaviorSubject<boolean>(false);
-  private readonly dayOfEating = new BehaviorSubject<DayOfEating>(null);
-  private readonly dataSource = new BehaviorSubject<DayOfEatingFormDataSource>(null);
+  private readonly dayOfEating = new BehaviorSubject<DayOfEating | null>(null);
+  private readonly dataSource = new BehaviorSubject<DayOfEatingFormDataSource | null>(null);
   private readonly saving = new BehaviorSubject<boolean>(false);
 
   readonly loading$: Observable<boolean> = this.loading.pipe(distinctUntilChanged());
   readonly loaded$: Observable<boolean> = this.loaded.pipe(distinctUntilChanged());
-  readonly dayOfEating$: Observable<DayOfEating> = this.dayOfEating.pipe(distinctUntilChanged());
-  readonly dataSource$: Observable<DayOfEatingFormDataSource> = this.dataSource.pipe(distinctUntilChanged());
+  readonly dayOfEating$: Observable<DayOfEating | null> = this.dayOfEating.pipe(distinctUntilChanged());
+  readonly dataSource$: Observable<DayOfEatingFormDataSource | null> = this.dataSource.pipe(distinctUntilChanged());
   readonly saving$: Observable<boolean> = this.saving.pipe(distinctUntilChanged());
 
   private subscription: Subscription;

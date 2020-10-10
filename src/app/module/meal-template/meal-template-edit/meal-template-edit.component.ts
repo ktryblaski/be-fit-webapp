@@ -15,10 +15,10 @@ import { map } from 'rxjs/operators';
 })
 export class MealTemplateEditComponent implements OnInit, OnDestroy {
 
-  mealTemplate$: Observable<MealTemplate>;
+  mealTemplate$: Observable<MealTemplate | null>;
   loaded$: Observable<boolean>;
   pending$: Observable<boolean>;
-  dataSource$: Observable<MealTemplateFormDataSource>;
+  dataSource$: Observable<MealTemplateFormDataSource | null>;
 
   private subscription: Subscription;
 
