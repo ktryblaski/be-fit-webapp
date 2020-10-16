@@ -2,52 +2,38 @@
   <tr>
     <th>Name</th>
     <th>
-      <span class="macronutrients-label carbohydrates">Carbohydrates [g]</span>
-    </th>
-    <th>
       <span class="macronutrients-label proteins">Proteins [g]</span>
     </th>
     <th>
       <span class="macronutrients-label fats">Fats [g]</span>
     </th>
     <th>
+      <span class="macronutrients-label carbohydrates">Carbohydrates [g]</span>
+    </th>
+    <th class="weight">
+      Weight [g]
+    </th>
+    <th>
       <span class="macronutrients-label kcal">KCAL</span>
     </th>
-    <th class="weight">Weight [g]</th>
     <th class="remove"></th>
   </tr>
 
   <ng-container formArrayName="ingredients">
-    <tr *ngFor="let ingredient of formHandler.ingredients.controls; let i = index">
-      <ng-container [formGroupName]="i">
-        <ng-container *ngIf="(ingredient.get('product') | product) as product">
-          <td class="name">{{product.name}}</td>
-          <td>{{product.macronutrients | macronutrientsCarbohydratesCalculator:ingredient.get('weight').value}}</td>
-          <td>{{product.macronutrients | macronutrientsProteinsCalculator:ingredient.get('weight').value}}</td>
-          <td>{{product.macronutrients | macronutrientsFatsCalculator:ingredient.get('weight').value}}</td>
-          <td>{{product.macronutrients | macronutrientsCaloriesCalculator:ingredient.get('weight').value}}</td>
-          <td class="weight">
-            <mat-form-field>
-              <input formControlName="weight" type="number" min="0" matInput>
-            </mat-form-field>
-          </td>
-          <td class="remove">
-            <button (click)="removeIngredient(product)" type="button">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </td>
-        </ng-container>
-      </ng-container>
-    </tr>
+    <ng-container *ngFor="let ingredient of formHandler.ingredients.controls; let i = index">
+      <tr app-meal-template-form-ingredient-row
+          [formControlName]="i"
+          (removeIngredient)="handleRemoveIngredient(i)"></tr>
+    </ng-container>
   </ng-container>
 
-  <tr class="total">
+  <tr *ngIf="(stats$ | async) as stats" class="total">
     <td class="name">Total</td>
-    <td>{{carbohydrates$ | async}}</td>
-    <td>{{proteins$ | async}}</td>
-    <td>{{fats$ | async}}</td>
-    <td>{{KCAL$ | async}}</td>
-    <td>{{weight$ | async}}</td>
+    <td>{{stats.proteins}}</td>
+    <td>{{stats.fats}}</td>
+    <td>{{stats.carbohydrates}}</td>
+    <td>{{stats.weight}}</td>
+    <td>{{stats.kcal}}</td>
     <td></td>
   </tr>
 </table>

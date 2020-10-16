@@ -55,7 +55,7 @@ export class MealTemplateCreateService {
       tap(() => {
         this.saving.next(true);
       }),
-      switchMap((formValue) => this.restService.create(this.mapToCreate(formValue)).pipe(
+      switchMap(formValue => this.restService.create(this.mapToCreate(formValue)).pipe(
         tap((id) => {
           this.router.navigate(['meal-template', id]);
           this.notificationService.show({
@@ -82,7 +82,7 @@ export class MealTemplateCreateService {
         this.loading.next(true);
       }),
       switchMap(() => this.productRestService.findAll().pipe(
-        tap((products) => {
+        tap(products => {
           this.dataSource.next({products});
           this.loaded.next(true);
         }),
@@ -104,7 +104,7 @@ export class MealTemplateCreateService {
       id: null,
       name: formValue.name,
       description: formValue.description,
-      ingredients: formValue.ingredients.map(i => ({productId: i.product.id, weight: i.weight}))
+      ingredients: formValue.ingredients.map(i => ({id: null, productId: i.product.id, weight: i.weight}))
     };
   }
 

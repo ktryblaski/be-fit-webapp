@@ -11,6 +11,7 @@ import {
  } from '../../../../../shared/util/calculator';
 import { Product } from '../../../../../shared/model/domain/product';
 import { ControlContainer, FormGroupDirective } from '@angular/forms';
+import { FoodStats } from '../../../../../shared/model/food-stats';
 
 @Component({
   selector: 'app-meal-template-ingredients-table',
@@ -22,19 +23,11 @@ import { ControlContainer, FormGroupDirective } from '@angular/forms';
 })
 export class MealTemplateFormIngredientsTableComponent implements OnInit, OnDestroy {
 
-  private readonly carbohydrates = new BehaviorSubject<number>(0);
-  private readonly proteins = new BehaviorSubject<number>(0);
-  private readonly fats = new BehaviorSubject<number>(0);
-  private readonly KCAL = new BehaviorSubject<number>(0);
-  private readonly weight = new BehaviorSubject<number>(0);
+  @Output() removeIngredient = new EventEmitter<number>();
 
-  readonly carbohydrates$: Observable<number> = this.carbohydrates.pipe(distinctUntilChanged());
-  readonly proteins$: Observable<number> = this.proteins.pipe(distinctUntilChanged());
-  readonly fats$: Observable<number> = this.fats.pipe(distinctUntilChanged());
-  readonly KCAL$: Observable<number> = this.KCAL.pipe(distinctUntilChanged());
-  readonly weight$: Observable<number> = this.weight.pipe(distinctUntilChanged());
+  private readonly stats = new BehaviorSubject<FoodStats | null>(null);
 
-  @Output() removeProduct = new EventEmitter<Product>();
+  readonly stats$: Observable<FoodStats | null> = this.stats.pipe(distinctUntilChanged());
 
   subscription: Subscription;
 
@@ -44,12 +37,10 @@ export class MealTemplateFormIngredientsTableComponent implements OnInit, OnDest
     this.subscription = this.formHandler.ingredients.values.subscribe((ingredients: Ingredient[]) => {
       this.updateTotalData(ingredients);
     });
-
-    this.updateTotalData(this.formHandler.ingredients.value);
   }
 
-  removeIngredient(product: Product): void {
-    this.removeProduct.emit(product);
+  handleRemoveIngredient(idx: number): void {
+    this.removeIngredient.emit(idx);
   }
 
   ngOnDestroy(): void {
@@ -57,11 +48,13 @@ export class MealTemplateFormIngredientsTableComponent implements OnInit, OnDest
   }
 
   private updateTotalData(ingredients: Ingredient[]): void {
-    this.carbohydrates.next(Math.round(ingredientsCarbohydrates(ingredients)));
-    this.proteins.next(Math.round(ingredientsProteins(ingredients)));
-    this.fats.next(Math.round(ingredientsFats(ingredients)));
-    this.KCAL.next(Math.round(ingredientsKCAL(ingredients)));
-    this.weight.next(ingredientsWeight(ingredients));
+    this.stats.next({
+      proteins: Math.round(ingredientsProteins(ingredients)),
+      fats: Math.round(ingredientsFats(ingredients)),
+      carbohydrates: Math.round(ingredientsCarbohydrates(ingredients)),
+      weight: ingredientsWeight(ingredients),
+      kcal: Math.round(ingredientsKCAL(ingredients))
+    });
   }
 
 }

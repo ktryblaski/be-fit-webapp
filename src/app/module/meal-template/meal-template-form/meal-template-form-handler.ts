@@ -15,8 +15,8 @@ export class MealTemplateFormHandler {
 
   readonly name: TypedFormControl<string>;
   readonly description: TypedFormControl<string>;
-  readonly product: TypedFormControl<Product | string>;
   readonly ingredients: TypedFormArray<any>; // TODO any
+  readonly product: TypedFormControl<Product | string>;
 
   hasIngredients$: Observable<boolean>;
 
@@ -30,8 +30,8 @@ export class MealTemplateFormHandler {
 
     this.name = TypedFormControl.from(this.form.get('name'));
     this.description = TypedFormControl.from(this.form.get('description'));
-    this.product = TypedFormControl.from(this.form.get('product'));
     this.ingredients = TypedFormArray.from(this.form.get('ingredients'));
+    this.product = TypedFormControl.from(this.form.get('product'));
 
     this.hasIngredients$ = this.ingredients.values.pipe(
       map((ingredients: MealTemplateFormIngredientValue[]) => ingredients.length > 0)
@@ -52,34 +52,23 @@ export class MealTemplateFormHandler {
     this.ingredients.setValue([]);
 
     mealTemplate.ingredients
-      .map(ingredient => this.createIngredientGroup(ingredient.product, ingredient.weight))
+      .map(ingredient => ({id: ingredient.id, product: ingredient.product, weight: ingredient.weight}))
+      .map(ingredient => new FormControl(ingredient))
       .forEach(ingredient => this.ingredients.push(ingredient));
   }
 
   addNewIngredient(product: Product): void {
     this.ingredients.push(
-      this.createIngredientGroup(product, 100)
+      new FormControl({id: null, product, weight: 100})
     );
   }
 
-  removeIngredient(productId: number): void {
-    for (let i = 0 ; i < this.ingredients.length ; ++i) {
-      if ((this.ingredients.at(i).get('product').value as Product).id === productId) {
-        this.ingredients.removeAt(i);
-        break;
-      }
-    }
+  removeIngredient(idx: number): void {
+    this.ingredients.removeAt(idx);
   }
 
   clearProduct(): void {
     this.product.reset();
-  }
-
-  private createIngredientGroup(product: Product, weight: number): FormGroup {
-    return new FormGroup({
-      product: new FormControl(product, Validators.required),
-      weight: new FormControl(weight, Validators.required)
-    });
   }
 
 }

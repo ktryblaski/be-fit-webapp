@@ -91,7 +91,7 @@ export class MealTemplateEditService {
             severity: NotificationSeverity.SUCCESS
           });
         }),
-        catchError((error) => {
+        catchError(error => {
           console.error(error);
           this.errorModalService.showError('An error has occurred while saving meal template');
           return EMPTY;
@@ -109,7 +109,7 @@ export class MealTemplateEditService {
       id: this.mealTemplate.value.id,
       name: formValue.name,
       description: formValue.description,
-      ingredients: formValue.ingredients.map(i => ({productId: i.product.id, weight: i.weight})),
+      ingredients: formValue.ingredients.map(i => ({id: i.id, productId: i.product.id, weight: i.weight})),
       active: this.mealTemplate.value.active
     };
   }

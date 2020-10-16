@@ -18,8 +18,8 @@ export class MealTemplateFormIngredientsComponent {
     this.formHandler.addNewIngredient(product);
   }
 
-  handleRemoveProduct(product: Product): void {
-    this.formHandler.removeIngredient(product.id);
+  handleIngredient(idx: number): void {
+    this.formHandler.removeIngredient(idx);
   }
 
 }

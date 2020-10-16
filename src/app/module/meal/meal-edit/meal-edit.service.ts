@@ -56,7 +56,7 @@ export class MealEditService {
           this.pending.next(false);
           this.loaded.next(true);
         }),
-        catchError((error) => {
+        catchError(error => {
           console.error(error);
           this.pending.next(false);
           this.notificationService.show({
@@ -83,7 +83,7 @@ export class MealEditService {
             severity: NotificationSeverity.SUCCESS
           });
         }),
-        catchError((error) => {
+        catchError(error => {
           console.error(error);
           this.pending.next(false);
           this.notificationService.show({

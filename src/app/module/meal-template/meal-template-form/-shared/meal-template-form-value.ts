@@ -7,6 +7,7 @@ export interface MealTemplateFormValue {
 }
 
 export interface MealTemplateFormIngredientValue {
-  product: Product;
+  id: number | null;
   weight: number;
+  product: Product;
 }

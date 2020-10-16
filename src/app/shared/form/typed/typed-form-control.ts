@@ -7,7 +7,7 @@ export class TypedFormControl<T> extends AbstractTypedControl<T, FormControl> {
     return new TypedFormControl<T>(control as FormControl);
   }
 
-  static of<T>(value: {[key: string]: any}): TypedFormControl<T> {
+  static of<T>(value: T): TypedFormControl<T> {
     return this.from<T>(new FormControl(value));
   }
 

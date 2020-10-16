@@ -39,7 +39,7 @@ export class DietMealsSelectService implements OnDestroy {
           this.meals.next(meals);
           this.loading.next(false);
         }),
-        catchError((error) => {
+        catchError(error => {
           console.error(error);
           this.loading.next(false);
           this.notificationService.show({

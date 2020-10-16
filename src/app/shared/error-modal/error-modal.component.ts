@@ -13,7 +13,7 @@ export class ErrorModalComponent {
   content: string;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: ErrorModalData) {
-    if (!data || (typeof data === 'string' && !!data.trim()) || (typeof data !== 'string' && !!data.content.trim())) {
+    if (!data || (typeof data === 'string' && !data.trim()) || (typeof data !== 'string' && !data.content.trim())) {
       throw Error('No content for error modal');
     }
 

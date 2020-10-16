@@ -43,7 +43,7 @@ export class DietCreateService {
             severity: NotificationSeverity.SUCCESS
           });
         }),
-        catchError((error) => {
+        catchError(error => {
           console.error(error);
           this.saving.next(false);
           this.notificationService.show({
