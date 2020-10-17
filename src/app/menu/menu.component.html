@@ -3,11 +3,17 @@
 
   <mat-nav-list>
     <mat-list-item class="dashboard" [routerLink]="['dashboard']" [routerLinkActive]="'active'">
-      <a matLine>Dashboard</a>
+      <a matLine>
+        <fa-icon [fixedWidth]="true" icon="home"></fa-icon>
+        <span>Dashboard</span>
+      </a>
     </mat-list-item>
 
     <mat-list-item [routerLink]="['day-of-eating']" [routerLinkActive]="'active'">
-      <a matLine>Days of Eating</a>
+      <a matLine>
+        <fa-icon [fixedWidth]="true" icon="calendar-day"></fa-icon>
+        <span>Days of Eating</span>
+      </a>
     </mat-list-item>
 
 <!--    <mat-list-item [routerLink]="['diet']" [routerLinkActive]="'active'">-->
@@ -15,7 +21,10 @@
 <!--    </mat-list-item>-->
 
     <mat-list-item [routerLink]="['meal-template']" [routerLinkActive]="'active'">
-      <a matLine>Meal Templates</a>
+      <a matLine>
+        <fa-icon [fixedWidth]="true" icon="utensils"></fa-icon>
+        <span>Meal Templates</span>
+      </a>
     </mat-list-item>
 
 <!--    <mat-list-item [routerLink]="['meal']" [routerLinkActive]="'active'">-->
@@ -23,7 +32,10 @@
 <!--    </mat-list-item>-->
 
     <mat-list-item [routerLink]="['product']" [routerLinkActive]="'active'">
-      <a matLine>Products</a>
+      <a matLine>
+        <fa-icon [fixedWidth]="true" icon="carrot"></fa-icon>
+        <span>Products</span>
+      </a>
     </mat-list-item>
 
 <!--    <mat-list-item class="log-out">-->

@@ -15,6 +15,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NotificationModule } from './shared/component/notification/notification.module';
 import { ResponsiveModule } from './shared/directive/responsive/responsive.module';
 import { ErrorModalModule } from './shared/error-modal/error-modal.module';
+import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
 
 @NgModule({
   imports: [
@@ -24,13 +27,14 @@ import { ErrorModalModule } from './shared/error-modal/error-modal.module';
     HttpClientModule,
     ReactiveFormsModule,
 
+    FontAwesomeModule,
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
 
     ResponsiveModule,
     NotificationModule,
-    ErrorModalModule
+    ErrorModalModule,
   ],
   declarations: [
     AppComponent,
@@ -42,4 +46,10 @@ import { ErrorModalModule } from './shared/error-modal/error-modal.module';
     AppComponent
   ]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fas, far);
+  }
+
+}

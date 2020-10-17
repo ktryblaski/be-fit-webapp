@@ -1,6 +1,6 @@
 @import 'src/app/shared/_colors';
 
-$background-color: #ffffff;
+$background-color: #cbf6db;
 $active-color: $primary-color;
 
 .menu-container {
@@ -10,38 +10,44 @@ $active-color: $primary-color;
   background-color: $background-color;
 
   a {
-    color: #464653;
+    color: #828282;
     font-weight: 400;
-    padding-left: 10px;
+
+    fa-icon {
+      margin-right: 15px;
+      font-size: 130%;
+    }
+
   }
 
   mat-list-item {
     box-sizing: border-box;
     border-left: 3px solid $background-color;
 
-    &.dashboard {
-      height: 58px;
-    }
-
-    &.log-out {
-      margin-top: 10px;
-    }
+    //&.dashboard {
+    //  height: 58px;
+    //}
+    //
+    //&.log-out {
+    //  margin-top: 10px;
+    //}
 
     &.active {
       border-left: 3px solid $active-color;
 
       a {
         color: $active-color;
+        font-weight: 500;
       }
     }
   }
 
   .title {
-    height: 80px;
+    height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #2e323a;
+    color: $active-color;
     font-weight: 500;
     font-size: 30px;
   }
