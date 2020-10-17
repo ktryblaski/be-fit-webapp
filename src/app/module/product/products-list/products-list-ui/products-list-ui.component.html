@@ -11,6 +11,9 @@
       <span class="macronutrients-label fats">Fats [g]</span>
     </th>
     <th>KCAL</th>
+    <th class="favourite">
+      <fa-icon icon="heart"></fa-icon>
+    </th>
   </tr>
 
   <tr *ngFor="let product of products"
@@ -20,6 +23,9 @@
     <td>{{product.macronutrients.proteins}}</td>
     <td>{{product.macronutrients.fats}}</td>
     <td>{{product.macronutrients | macronutrientsCaloriesCalculator}}</td>
+    <td class="favourite">
+      <fa-icon *ngIf="product.favourite" icon="heart"></fa-icon>
+    </td>
   </tr>
 </table>
 

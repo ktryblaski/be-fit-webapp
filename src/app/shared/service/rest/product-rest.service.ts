@@ -12,8 +12,8 @@ export class ProductRestService {
 
   constructor(private http: HttpClient) {}
 
-  getOne(productId: number): Observable<Product> {
-    return this.http.get<Product>(`${this.API_URL}/${productId}`);
+  getOne(id: number): Observable<Product> {
+    return this.http.get<Product>(`${this.API_URL}/${id}`);
   }
 
   findAll(): Observable<Product[]> {
@@ -22,6 +22,14 @@ export class ProductRestService {
 
   save(product: Product): Observable<number> {
     return this.http.post<number>(this.API_URL, product);
+  }
+
+  favourite(id: number): Observable<Product> {
+    return this.http.put<Product>(`${this.API_URL}/${id}/favourite`, {});
+  }
+
+  unfavourite(id: number): Observable<Product> {
+    return this.http.put<Product>(`${this.API_URL}/${id}/unfavourite`, {});
   }
 
 }

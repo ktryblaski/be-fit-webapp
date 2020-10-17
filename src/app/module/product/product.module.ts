@@ -22,6 +22,7 @@ import { ChartsModule } from 'ng2-charts';
 import { MacronutrientsChartModule } from '../../shared/component/macronutrients-chart/macronutrients-chart.module';
 import { NoTableDataModule } from '../../shared/component/no-table-data/no-table-data.module';
 import { ErrorModalModule } from '../../shared/error-modal/error-modal.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   imports: [
@@ -41,7 +42,8 @@ import { ErrorModalModule } from '../../shared/error-modal/error-modal.module';
     ChartsModule,
     MacronutrientsChartModule,
     NoTableDataModule,
-    ErrorModalModule
+    ErrorModalModule,
+    FontAwesomeModule
   ],
   declarations: [
     ProductsListComponent,

@@ -100,6 +100,7 @@ export class ProductsListService implements OnDestroy {
   private mapProduct(formValue: ProductFormValue): Product {
     return {
       name: formValue.name,
+      favourite: false,
       macronutrients: {
         carbohydrates: formValue.carbohydrates,
         proteins: formValue.proteins,

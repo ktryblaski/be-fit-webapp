@@ -1,3 +1,15 @@
-<div title>{{product.name}}</div>
+<div class="header">
+  <div title>{{product.name}}</div>
+  <fa-icon [class.favourite]="product.favourite"
+           (click)="handleToggleFavourite()"
+           icon="heart"></fa-icon>
+</div>
 
-<app-macronutrients-chart [macronutrients]="product.macronutrients"></app-macronutrients-chart>
+<div class="macronutrients-container">
+  <app-macronutrients-chart [macronutrients]="product.macronutrients"></app-macronutrients-chart>
+</div>
+
+<div actions>
+  <button (click)="handleExit()" type="button"
+          mat-raised-button>Close</button>
+</div>

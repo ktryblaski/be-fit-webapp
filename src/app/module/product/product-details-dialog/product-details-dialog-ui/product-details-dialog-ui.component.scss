@@ -1,7 +1,35 @@
 @import 'src/app/shared/_colors';
 
-[title] {
-  color: $primary-color;
-  font-weight: 500;
-  margin-bottom: 20px;
+.macronutrients-container {
+  padding: 20px 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  [title] {
+    color: $primary-color;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+
+  fa-icon {
+    font-size: 24px;
+    margin-bottom: 20px;
+    cursor: pointer;
+
+    &:not(.favourite):hover {
+      color: $primary-color;
+    }
+
+    &.favourite {
+      color: $primary-color;
+
+      &:hover {
+        color: inherit;
+      }
+    }
+
+  }
 }

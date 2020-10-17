@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../../../shared/model/domain/product';
 
 @Component({
@@ -9,5 +9,15 @@ import { Product } from '../../../../shared/model/domain/product';
 export class ProductDetailsDialogUiComponent {
 
   @Input() product: Product;
+  @Output() toggleFavourite = new EventEmitter();
+  @Output() exit = new EventEmitter();
+
+  handleToggleFavourite(): void {
+    this.toggleFavourite.next();
+  }
+
+  handleExit(): void {
+    this.exit.next();
+  }
 
 }

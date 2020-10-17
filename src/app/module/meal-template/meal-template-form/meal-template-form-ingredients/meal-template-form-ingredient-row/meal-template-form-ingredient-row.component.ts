@@ -5,6 +5,7 @@ import { TypedFormControl } from '../../../../../shared/form/typed/typed-form-co
 import { Observable } from 'rxjs';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'tr[app-meal-template-form-ingredient-row]',
   templateUrl: './meal-template-form-ingredient-row.component.html',
   styleUrls: ['./meal-template-form-ingredient-row.component.scss'],

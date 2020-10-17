@@ -38,7 +38,12 @@ export class ProductsListComponent implements OnInit {
       data: {
         productId: product.id
       },
+      disableClose: true,
       width: '400px'
+    }).afterClosed().subscribe((saved: boolean) => {
+      if (saved) {
+        this.service.load();
+      }
     });
   }
 
