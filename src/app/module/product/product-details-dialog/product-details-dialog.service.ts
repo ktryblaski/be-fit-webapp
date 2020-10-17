@@ -85,8 +85,8 @@ export class ProductDetailsDialogService implements OnDestroy {
             this.saved.next(true);
             this.notificationService.show({
               message: savedProduct.favourite
-                ? 'Product has been added to favourites'
-                : 'Product has removed from favourites',
+                ? 'Product has been been added to favourites'
+                : 'Product has been removed from favourites',
               severity: NotificationSeverity.SUCCESS
             });
           }),

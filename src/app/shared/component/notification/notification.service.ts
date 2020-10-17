@@ -9,14 +9,15 @@ import { distinctUntilChanged } from 'rxjs/operators';
 export class NotificationService {
 
   private readonly NOTIFICATION_LIFE_TIME = 7;
+  private readonly MAX_NOTIFICATIONS_NUMBER = 5;
 
-  private readonly notifications: BehaviorSubject<Notification[]> = new BehaviorSubject([]);
+  private readonly notifications = new BehaviorSubject([]);
 
   readonly notifications$: Observable<Notification[]> = this.notifications.pipe(distinctUntilChanged());
 
   show(notification: Notification): void {
     const notifications = [
-      ...this.notifications.value,
+      ...(this.notifications.value.length === this.MAX_NOTIFICATIONS_NUMBER ? this.notifications.value.slice(1) : this.notifications.value),
       notification
     ];
 

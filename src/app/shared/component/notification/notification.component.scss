@@ -1,13 +1,16 @@
+@import 'src/app/shared/_colors';
+
 .notification {
-  width: 320px;
-  padding: 1rem 1.25rem;
+  width: 270px;
+  padding: 15px;
   border: 2px solid transparent;
-  border-top: none;
   color: black;
+  margin: 10px;
+  font-size: 13px;
 
   &.success {
-    background-color: #d4edda;
-    border-color: #69b97b;
+    background-color: $secondary-color;
+    box-shadow: 0 0 10px 0 $secondary-color;
   }
 
   &.info {

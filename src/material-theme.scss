@@ -37,7 +37,7 @@ $mat-be-fit: (
 
 $theming-material-components-primary: mat-palette($mat-be-fit);
 $theming-material-components-accent: mat-palette($mat-be-fit);
-$theming-material-components-warn: mat-palette($mat-be-fit);
+$theming-material-components-warn: mat-palette($mat-red);
 
 $theming-material-components-theme: mat-light-theme(
     $theming-material-components-primary,
