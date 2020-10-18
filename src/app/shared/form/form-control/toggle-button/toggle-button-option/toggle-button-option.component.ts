@@ -1,6 +1,7 @@
 import { Component, HostBinding, HostListener, Input } from '@angular/core';
 import { ToggleButtonComponent } from '../toggle-button.component';
 
+// TODO add invalid layout
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'button[appToggleButtonOption]',
@@ -18,7 +19,7 @@ export class ToggleButtonOptionComponent {
   @HostListener('click')
   handleClickOption(): void {
     if (!this.disabled) {
-      this.toggleButtonComponent.setValue(this.value);
+      this.toggleButtonComponent.handleClicked(this.value);
     }
   }
 

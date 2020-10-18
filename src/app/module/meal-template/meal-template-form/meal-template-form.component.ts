@@ -15,7 +15,7 @@ export class MealTemplateFormComponent implements OnChanges {
   @Input() mealTemplate: MealTemplate;
   @Input() dataSource: MealTemplateFormDataSource;
   @Output() save = new EventEmitter<MealTemplateFormValue>();
-  @Output() cancel = new EventEmitter<void>();
+  @Output() cancel = new EventEmitter();
 
   constructor(public formHandler: MealTemplateFormHandler) { }
 

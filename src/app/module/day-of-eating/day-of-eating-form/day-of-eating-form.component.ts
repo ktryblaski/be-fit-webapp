@@ -17,7 +17,7 @@ export class DayOfEatingFormComponent implements OnChanges {
   @Input() dayOfEating: DayOfEating;
   @Input() dataSource: DayOfEatingFormDataSource;
   @Output() save = new EventEmitter<DayOfEatingFormValue>();
-  @Output() cancel = new EventEmitter<void>();
+  @Output() cancel = new EventEmitter();
 
   constructor(public formHandler: DayOfEatingFormHandler) { }
 

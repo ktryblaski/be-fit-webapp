@@ -21,9 +21,10 @@ export class ToggleButtonComponent implements ControlValueAccessor {
   onChanged: any = () => {};
   onTouched: any = () => {};
 
-  setValue(value: any): void {
+  handleClicked(value: any): void {
     this.writeValue(value);
     this.onChanged(value);
+    this.onTouched();
   }
 
   writeValue(value: any): void {

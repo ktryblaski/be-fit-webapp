@@ -11,8 +11,8 @@ import { InternationalizationService } from '../../../shared/service/internation
 export class DietFormComponent {
 
   @Input() formHandler: DietFormHandler;
-  @Output() save: EventEmitter<void> = new EventEmitter<void>();
-  @Output() cancel: EventEmitter<void> = new EventEmitter<void>();
+  @Output() save = new EventEmitter();
+  @Output() cancel = new EventEmitter();
 
   readonly DIET_TYPE: {[key: string]: string};
   readonly dietTypes: DietType[] = [DietType.CUTTING, DietType.KEEPING, DietType.BULKING];

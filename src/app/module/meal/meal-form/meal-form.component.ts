@@ -10,8 +10,8 @@ export class MealFormComponent {
 
   @Input() formHandler: MealFormHandler;
   @Input() new = false;
-  @Output() save: EventEmitter<void> = new EventEmitter<void>();
-  @Output() cancel: EventEmitter<void> = new EventEmitter<void>();
+  @Output() save = new EventEmitter();
+  @Output() cancel = new EventEmitter();
 
   handleSubmit(): void {
     this.save.emit();

@@ -17,7 +17,7 @@ export class DayOfEatingBeginFormComponent implements OnInit, OnChanges, OnDestr
 
   @Input() dataSource: DayOfEatingBeginFormDataSource;
   @Output() save = new EventEmitter<DayOfEatingBeginFormValue>();
-  @Output() cancel = new EventEmitter<void>();
+  @Output() cancel = new EventEmitter();
 
   readonly DayOfEatingBeginOrigin = DayOfEatingBeginOrigin;
 
