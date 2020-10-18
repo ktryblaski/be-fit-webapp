@@ -29,7 +29,7 @@ export class MealTemplateFormComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.mealTemplate) {
-      // TODO why
+      // TODO without setTimeout formHandler.hasIngredients$ does not catch the initial value
       setTimeout(() => {
         this.formHandler.setValue(this.mealTemplate);
       }, 0);

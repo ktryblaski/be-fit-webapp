@@ -30,11 +30,9 @@ export class MealTemplateFormIngredientRowComponent implements ControlValueAcces
   }
 
   ngAfterViewInit(): void {
-    this.weight.values.subscribe(weight => {
+    this.weight.valueChanges.subscribe(weight => {
       this.value.weight = weight;
-      setTimeout(() => {
-        this.onChanged(this.value);
-      }, 0);
+      this.onChanged(this.value);
     });
   }
 

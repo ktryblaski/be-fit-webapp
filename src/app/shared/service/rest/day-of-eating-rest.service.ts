@@ -40,9 +40,4 @@ export class DayOfEatingRestService {
     return this.http.post<number>(`${this.API_URL}`, begin);
   }
 
-  // update(mealTemplate: MealTemplateCU, mealId: number): Observable<MealTemplate> {
-  //   mealTemplate.id = mealId; // TODO
-  //   return this.http.put<MealTemplate>(`${this.API_URL}/${mealTemplate.id}`, mealTemplate);
-  // }
-
 }
