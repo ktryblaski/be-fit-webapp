@@ -56,7 +56,7 @@ export class MealTemplateCreateService {
         this.saving.next(true);
       }),
       switchMap(formValue => this.restService.create(this.mapToCreate(formValue)).pipe(
-        tap((id) => {
+        tap(id => {
           this.router.navigate(['meal-template', id]);
           this.notificationService.show({
             message: 'New meal has been added',

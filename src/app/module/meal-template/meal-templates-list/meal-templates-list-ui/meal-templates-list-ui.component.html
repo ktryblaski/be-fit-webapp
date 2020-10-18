@@ -20,7 +20,7 @@
   </tr>
 
   <tr *ngFor="let mealTemplate of mealTemplates"
-      (click)="handleClick(mealTemplate)">
+      (click)="handleClickRow(mealTemplate)">
     <td class="name">{{mealTemplate.name}}</td>
     <td>{{mealTemplate.ingredients | ingredientsWeightCalculator}}</td>
     <td>{{mealTemplate.ingredients | ingredientsCarbohydratesCalculator}}</td>

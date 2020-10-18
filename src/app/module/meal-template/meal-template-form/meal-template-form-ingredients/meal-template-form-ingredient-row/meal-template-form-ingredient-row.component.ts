@@ -25,6 +25,9 @@ export class MealTemplateFormIngredientRowComponent implements ControlValueAcces
   weight: TypedFormControl<number>;
   weight$: Observable<number>;
 
+  onChanged: any = () => {};
+  onTouched: any = () => {};
+
   constructor() {
     this.weight = TypedFormControl.of<number>(0);
   }
@@ -33,11 +36,9 @@ export class MealTemplateFormIngredientRowComponent implements ControlValueAcces
     this.weight.valueChanges.subscribe(weight => {
       this.value.weight = weight;
       this.onChanged(this.value);
+      this.onTouched();
     });
   }
-
-  onChanged: any = () => {};
-  onTouched: any = () => {};
 
   writeValue(value: MealTemplateFormIngredientValue): void {
     this.value = value;

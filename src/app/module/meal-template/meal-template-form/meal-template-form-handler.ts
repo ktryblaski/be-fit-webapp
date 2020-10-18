@@ -15,7 +15,7 @@ export class MealTemplateFormHandler {
 
   readonly name: TypedFormControl<string>;
   readonly description: TypedFormControl<string>;
-  readonly ingredients: TypedFormArray<any>; // TODO any
+  readonly ingredients: TypedFormArray<any>;
   readonly product: TypedFormControl<Product | string>;
 
   hasIngredients$: Observable<boolean>;

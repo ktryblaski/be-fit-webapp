@@ -1,13 +1,13 @@
 <td class="name">{{value.product.name}}</td>
-<td>{{value.product.macronutrients | macronutrientsProteinsCalculator: (weight.value | ingredientWeight)}}</td>
-<td>{{value.product.macronutrients | macronutrientsFatsCalculator: (weight.value | ingredientWeight)}}</td>
-<td>{{value.product.macronutrients | macronutrientsCarbohydratesCalculator: (weight.value | ingredientWeight)}}</td>
+<td>{{value.product.macronutrients | macronutrientsProteinsCalculator: (weight.value | notEmptyWeight)}}</td>
+<td>{{value.product.macronutrients | macronutrientsFatsCalculator: (weight.value | notEmptyWeight)}}</td>
+<td>{{value.product.macronutrients | macronutrientsCarbohydratesCalculator: (weight.value | notEmptyWeight)}}</td>
 <td class="weight">
   <mat-form-field>
     <input [formControl]="weight.ref" type="number" min="0" matInput>
   </mat-form-field>
 </td>
-<td>{{value.product.macronutrients | macronutrientsCaloriesCalculator: (weight.value | ingredientWeight)}}</td>
+<td>{{value.product.macronutrients | macronutrientsCaloriesCalculator: (weight.value | notEmptyWeight)}}</td>
 <td class="remove">
   <button (click)="handleRemoveIngredient()" type="button">
     <mat-icon>delete</mat-icon>

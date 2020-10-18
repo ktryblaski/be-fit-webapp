@@ -11,7 +11,7 @@ export class MealTemplatesListUiComponent {
   @Input() mealTemplates: MealTemplate[];
   @Output() clickRow: EventEmitter<MealTemplate> = new EventEmitter<MealTemplate>();
 
-  handleClick(mealTemplate: MealTemplate) {
+  handleClickRow(mealTemplate: MealTemplate) {
     this.clickRow.next(mealTemplate);
   }
 

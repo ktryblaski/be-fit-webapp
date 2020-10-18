@@ -9,7 +9,6 @@ import {
   ingredientsProteins,
   ingredientsWeight
  } from '../../../../../shared/util/calculator';
-import { Product } from '../../../../../shared/model/domain/product';
 import { ControlContainer, FormGroupDirective } from '@angular/forms';
 import { FoodStats } from '../../../../../shared/model/food-stats';
 

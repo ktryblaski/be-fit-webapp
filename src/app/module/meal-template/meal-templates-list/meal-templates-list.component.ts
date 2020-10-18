@@ -27,7 +27,7 @@ export class MealTemplatesListComponent implements OnInit {
     this.service.load();
   }
 
-  handleClick(mealTemplate: MealTemplate): void {
+  handleClickRow(mealTemplate: MealTemplate): void {
     this.router.navigate(['meal-template', mealTemplate.id]);
   }
 

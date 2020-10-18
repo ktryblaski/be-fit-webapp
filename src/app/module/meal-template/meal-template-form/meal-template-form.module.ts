@@ -18,7 +18,7 @@ import { MealTemplateFormProductSelectComponent } from './meal-template-form-ing
 import { SortProductsPipe } from './meal-template-form-ingredients/meal-template-form-product/meal-template-form-product-select/sort-products.pipe';
 import { FilterProductsPipe } from './meal-template-form-ingredients/meal-template-form-product/meal-template-form-product-select/filter-products.pipe';
 import { MealTemplateFormIngredientRowComponent } from './meal-template-form-ingredients/meal-template-form-ingredient-row/meal-template-form-ingredient-row.component';
-import { IngredientWeightPipe } from './meal-template-form-ingredients/meal-template-form-ingredient-row/ingredient-weight.pipe';
+import { NonEmptyWeightPipe } from './meal-template-form-ingredients/meal-template-form-ingredient-row/not-empty-weight.pipe';
 
 @NgModule({
   imports: [
@@ -43,7 +43,7 @@ import { IngredientWeightPipe } from './meal-template-form-ingredients/meal-temp
     SortProductsPipe,
     FilterProductsPipe,
     MealTemplateFormIngredientRowComponent,
-    IngredientWeightPipe
+    NonEmptyWeightPipe
   ],
   exports: [
     MealTemplateFormComponent

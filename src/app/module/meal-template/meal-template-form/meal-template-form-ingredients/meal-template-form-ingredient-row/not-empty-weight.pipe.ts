@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'ingredientWeight'
+  name: 'notEmptyWeight'
 })
-export class IngredientWeightPipe implements PipeTransform {
+export class NonEmptyWeightPipe implements PipeTransform {
 
   transform(weight: number | null): number {
     return weight ?? 0;
