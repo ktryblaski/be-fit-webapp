@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Ingredient } from '../../model/domain/ingredient';
-import { ingredientsProteins } from '../../util/calculator';
+import { ingredientsProteins } from '../../util/calculator/ingredients-calculator';
 
 @Pipe({
   name: 'ingredientsProteinsCalculator'

@@ -3,14 +3,14 @@ import { MealTemplateFormHandler } from '../../meal-template-form-handler';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { Ingredient } from '../../../../../shared/model/domain/ingredient';
-import {
-  ingredientsCarbohydrates,
-  ingredientsFats, ingredientsKCAL,
-  ingredientsProteins,
-  ingredientsWeight
- } from '../../../../../shared/util/calculator';
 import { ControlContainer, FormGroupDirective } from '@angular/forms';
 import { FoodStats } from '../../../../../shared/model/food-stats';
+import {
+  ingredientsCalories,
+  ingredientsCarbohydrates,
+  ingredientsFats,
+  ingredientsProteins, ingredientsWeight
+} from '../../../../../shared/util/calculator/ingredients-calculator';
 
 @Component({
   selector: 'app-meal-template-ingredients-table',
@@ -52,7 +52,7 @@ export class MealTemplateFormIngredientsTableComponent implements OnInit, OnDest
       fats: Math.round(ingredientsFats(ingredients)),
       carbohydrates: Math.round(ingredientsCarbohydrates(ingredients)),
       weight: ingredientsWeight(ingredients),
-      kcal: Math.round(ingredientsKCAL(ingredients))
+      kcal: Math.round(ingredientsCalories(ingredients))
     });
   }
 
