@@ -31,10 +31,7 @@ export class DayOfEatingFormComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.dayOfEating) {
-      // TODO without setTimeout formHandler.hasMeals$ does not catch the initial value
-      setTimeout(() => {
-        this.formHandler.setValue(this.dayOfEating);
-      }, 0);
+      this.formHandler.setValue(this.dayOfEating);
     }
   }
 

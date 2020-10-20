@@ -1,5 +1,5 @@
 import { AbstractControl } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { defer, Observable } from 'rxjs';
 import { TypedControl } from './typed-control';
 import { startWith } from 'rxjs/operators';
 
@@ -12,9 +12,9 @@ export abstract class AbstractTypedControl<T, Y extends AbstractControl> impleme
   }
 
   get values(): Observable<T> {
-    return this.ref.valueChanges.pipe(
+    return defer(() => this.ref.valueChanges.pipe(
       startWith<T, T>(this.ref.value)
-    );
+    ));
   }
 
   get valueChanges(): Observable<T> {
