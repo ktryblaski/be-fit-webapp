@@ -1,6 +1,5 @@
 <div class="product-container">
-  <app-meal-template-form-product-select
-    [products]="products | notSelectedProducts:(selected$ | async)"></app-meal-template-form-product-select>
+  <app-form-product-select [products]="products$ | async"></app-form-product-select>
 
   <button [disabled]="formHandler.product.empty"
           (click)="handleAddProduct()"

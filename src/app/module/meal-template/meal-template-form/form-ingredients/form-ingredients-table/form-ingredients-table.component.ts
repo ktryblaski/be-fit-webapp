@@ -13,14 +13,14 @@ import {
 } from '../../../../../shared/util/calculator/ingredients-calculator';
 
 @Component({
-  selector: 'app-meal-template-ingredients-table',
-  templateUrl: './meal-template-form-ingredients-table.component.html',
-  styleUrls: ['./meal-template-form-ingredients-table.component.scss'],
+  selector: 'app-ingredients-table',
+  templateUrl: './form-ingredients-table.component.html',
+  styleUrls: ['./form-ingredients-table.component.scss'],
   viewProviders: [
     { provide: ControlContainer, useExisting: FormGroupDirective }
   ]
 })
-export class MealTemplateFormIngredientsTableComponent implements OnInit, OnDestroy {
+export class FormIngredientsTableComponent implements OnInit, OnDestroy {
 
   @Output() removeIngredient = new EventEmitter<number>();
 

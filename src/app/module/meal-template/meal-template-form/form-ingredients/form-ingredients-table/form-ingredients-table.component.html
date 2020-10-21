@@ -21,7 +21,7 @@
 
   <ng-container formArrayName="ingredients">
     <ng-container *ngFor="let ingredient of formHandler.ingredients.controls; let i = index">
-      <tr app-meal-template-form-ingredient-row
+      <tr app-form-ingredient-row
           [formControlName]="i"
           (removeIngredient)="handleRemoveIngredient(i)"></tr>
     </ng-container>

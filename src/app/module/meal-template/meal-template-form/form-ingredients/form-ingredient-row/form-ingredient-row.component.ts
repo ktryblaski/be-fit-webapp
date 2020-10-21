@@ -6,18 +6,18 @@ import { Observable } from 'rxjs';
 
 @Component({
   // tslint:disable-next-line:component-selector
-  selector: 'tr[app-meal-template-form-ingredient-row]',
-  templateUrl: './meal-template-form-ingredient-row.component.html',
-  styleUrls: ['./meal-template-form-ingredient-row.component.scss'],
+  selector: 'tr[app-form-ingredient-row]',
+  templateUrl: './form-ingredient-row.component.html',
+  styleUrls: ['./form-ingredient-row.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => MealTemplateFormIngredientRowComponent),
+      useExisting: forwardRef(() => FormIngredientRowComponent),
       multi: true
     }
   ]
 })
-export class MealTemplateFormIngredientRowComponent implements ControlValueAccessor, AfterViewInit {
+export class FormIngredientRowComponent implements ControlValueAccessor, AfterViewInit {
 
   @Output() removeIngredient = new EventEmitter();
 

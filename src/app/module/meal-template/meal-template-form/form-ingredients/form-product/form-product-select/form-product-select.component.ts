@@ -3,11 +3,11 @@ import { Product } from '../../../../../../shared/model/domain/product';
 import { MealTemplateFormHandler } from '../../../meal-template-form-handler';
 
 @Component({
-  selector: 'app-meal-template-form-product-select',
-  templateUrl: './meal-template-form-product-select.component.html',
-  styleUrls: ['./meal-template-form-product-select.component.scss']
+  selector: 'app-form-product-select',
+  templateUrl: './form-product-select.component.html',
+  styleUrls: ['./form-product-select.component.scss']
 })
-export class MealTemplateFormProductSelectComponent {
+export class FormProductSelectComponent {
 
   @Input() products: Product[];
 

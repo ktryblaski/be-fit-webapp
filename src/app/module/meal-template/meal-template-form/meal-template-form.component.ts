@@ -12,7 +12,7 @@ import { MealTemplate } from '../../../shared/model/domain/meal-template';
 })
 export class MealTemplateFormComponent implements OnChanges {
 
-  @Input() mealTemplate: MealTemplate;
+  @Input() mealTemplate: MealTemplate | null;
   @Input() dataSource: MealTemplateFormDataSource;
   @Output() save = new EventEmitter<MealTemplateFormValue>();
   @Output() cancel = new EventEmitter();
