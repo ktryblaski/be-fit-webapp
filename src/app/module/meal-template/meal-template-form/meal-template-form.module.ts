@@ -18,6 +18,8 @@ import { SortProductsPipe } from './form-ingredients/form-product/form-product-s
 import { FilterProductsPipe } from './form-ingredients/form-product/form-product-select/filter-products.pipe';
 import { FormIngredientRowComponent } from './form-ingredients/form-ingredient-row/form-ingredient-row.component';
 import { NonEmptyWeightPipe } from './form-ingredients/form-ingredient-row/not-empty-weight.pipe';
+import { RawButtonModule } from '../../../shared/component/raw-button/raw-button.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   imports: [
@@ -30,6 +32,8 @@ import { NonEmptyWeightPipe } from './form-ingredients/form-ingredient-row/not-e
     CalculatorModule,
     MatIconModule,
     HelperModule,
+    RawButtonModule,
+    FontAwesomeModule,
   ],
   declarations: [
     MealTemplateFormComponent,
