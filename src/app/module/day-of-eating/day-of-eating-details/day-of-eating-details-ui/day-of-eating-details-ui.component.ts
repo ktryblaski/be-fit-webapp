@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { DayOfEating } from '../../../../shared/model/domain/day-of-eating';
+import { MatAccordion } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-day-of-eating-details-ui',
@@ -9,5 +10,7 @@ import { DayOfEating } from '../../../../shared/model/domain/day-of-eating';
 export class DayOfEatingDetailsUiComponent {
 
   @Input() dayOfEating: DayOfEating;
+
+  @ViewChild(MatAccordion) accordion: MatAccordion;
 
 }

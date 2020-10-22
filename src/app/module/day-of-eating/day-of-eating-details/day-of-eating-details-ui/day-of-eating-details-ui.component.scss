@@ -1,5 +1,46 @@
-.meal-container {
-  width: 50%;
+@import 'src/app/shared/_colors';
+
+mat-expansion-panel-header.mat-expanded:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.meals-container > mat-accordion > mat-expansion-panel {
+  .mat-expansion-panel-header-title,
+  .mat-expansion-panel-header-description {
+    flex-basis: 0;
+  }
+
+  .mat-expansion-panel-header-title {
+    font-weight: 500;
+  }
+
+  .calories {
+    font-weight: 500;
+  }
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+
+  div {
+    width: 400px;
+  }
+}
+
+.expansion-actions {
+  display: flex;
+  justify-content: flex-end;
+
+  button {
+    margin-bottom: 10px;
+    font-size: 22px;
+    color: #676767;
+  }
+
+  button:hover {
+    color: black;
+  }
 }
 
 .no-meals {
@@ -8,4 +49,26 @@
   font-size: 24px;
   font-weight: 400;
   text-align: center;
+}
+
+.description {
+  & > * {
+    margin: 0 2px;
+  }
+
+  .proteins {
+    color: $proteins-color;
+  }
+
+  .fats {
+    color: $fats-color;
+  }
+
+  .carbohydrates {
+    color: $carbohydrates-color;
+  }
+
+  .calories {
+    color: $kcal-color;
+  }
 }

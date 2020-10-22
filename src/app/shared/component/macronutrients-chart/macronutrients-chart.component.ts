@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Macronutrients } from '../../model/domain/macronutrients';
 import { Color } from 'ng2-charts';
 import { ChartOptions } from 'chart.js';
@@ -8,45 +8,17 @@ import { ChartOptions } from 'chart.js';
   templateUrl: './macronutrients-chart.component.html',
   styleUrls: ['./macronutrients-chart.component.scss']
 })
-export class MacronutrientsChartComponent implements OnInit {
+export class MacronutrientsChartComponent {
 
-  readonly labels: string[] = ['Carbohydrates', 'Proteins', 'Fats'];
+  @Input() macronutrients: Macronutrients;
+
   readonly colors: Color[] = [{
-    backgroundColor: ['rgb(51, 255, 153)', 'rgb(105, 195, 255)', 'rgb(255, 220, 133)']
+    backgroundColor: ['#FE6847', '#FBB13C', '#00C49A']
   }];
   readonly options: ChartOptions = {
     tooltips: {
       enabled: false
-    },
-    legend: {
-      labels: {
-        generateLabels: (chart: Chart) => {
-          const data = chart.data.datasets[0];
-          const labels = chart.data.labels;
-
-          return [0, 1, 2].map(i => {
-            return {
-              datasetIndex: i,
-              text: `${labels[i]} ${data.data[i]}`,
-              fillStyle: `${data.backgroundColor[i]}`,
-              strokeStyle: `${data.backgroundColor[i]}`
-            } as Chart.ChartLegendLabelItem;
-          });
-        }
-      }
     }
   };
-
-  @Input() macronutrients: Macronutrients;
-
-  data: number[];
-
-  ngOnInit(): void {
-    this.data = [
-      this.macronutrients.carbohydrates,
-      this.macronutrients.proteins,
-      this.macronutrients.fats
-    ];
-  }
 
 }

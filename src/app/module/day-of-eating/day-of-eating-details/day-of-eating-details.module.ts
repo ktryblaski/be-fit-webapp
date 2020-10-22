@@ -8,6 +8,12 @@ import { DayOfEatingRoutingModule } from '../day-of-eating-routing.module';
 import { MatButtonModule } from '@angular/material/button';
 import { HelperModule } from '../../../shared/helper/helper.module';
 import { SpinnerModule } from '../../../shared/component/spinner/spinner.module';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { CalculatorModule } from '../../../shared/pipe/calculator/calculator.module';
+import { RawButtonModule } from '../../../shared/component/raw-button/raw-button.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MacronutrientsChartModule } from '../../../shared/component/macronutrients-chart/macronutrients-chart.module';
+import { ToMacronutrientsPipe } from './day-of-eating-details-ui/to-macronutrients.pipe';
 
 @NgModule({
   imports: [
@@ -17,11 +23,17 @@ import { SpinnerModule } from '../../../shared/component/spinner/spinner.module'
     DayOfEatingRoutingModule,
     MatButtonModule,
     HelperModule,
-    SpinnerModule
+    SpinnerModule,
+    MatExpansionModule,
+    CalculatorModule,
+    RawButtonModule,
+    FontAwesomeModule,
+    MacronutrientsChartModule
   ],
   declarations: [
     DayOfEatingDetailsComponent,
-    DayOfEatingDetailsUiComponent
+    DayOfEatingDetailsUiComponent,
+    ToMacronutrientsPipe
   ]
 })
 export class DayOfEatingDetailsModule { }
