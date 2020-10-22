@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { DayOfEatingBeginFormDataSource } from './-shared/day-of-eating-begin-form-data-source';
-import { DayOfEatingBeginOrigin } from '../../../../shared/model/dto/day-of-eating-begin-dto';
+import { DayOfEatingBeginOrigin } from '../../../shared/model/dto/day-of-eating-begin-dto';
 
 @Pipe({
   name: 'isCopyFormDateVisible'

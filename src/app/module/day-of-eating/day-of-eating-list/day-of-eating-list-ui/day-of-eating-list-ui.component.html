@@ -5,7 +5,8 @@
   </tr>
 
   <tr *ngFor="let dayOfEating of daysOfEating"
-      (click)="handleClick(dayOfEating)" [class.today]="dayOfEating | isToday">
+      [class.today]="dayOfEating | isToday"
+      (click)="handleClick(dayOfEating)">
     <td>{{dayOfEating.dayDate | date:DATE_FORMAT}}</td>
     <td>{{dayOfEating.mealsNumber}}</td>
   </tr>

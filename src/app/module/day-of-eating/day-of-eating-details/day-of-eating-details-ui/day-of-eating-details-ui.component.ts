@@ -8,7 +8,6 @@ import { DayOfEating } from '../../../../shared/model/domain/day-of-eating';
 })
 export class DayOfEatingDetailsUiComponent {
 
-
   @Input() dayOfEating: DayOfEating;
 
 }
