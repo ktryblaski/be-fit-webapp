@@ -1,6 +1,6 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProductFormValue } from './-shared/product-form-value';
-import { TypedFormControl } from '../../../../shared/form/typed/typed-form-control';
+import { TypedFormControl } from '../../../shared/form/typed/typed-form-control';
 import { Injectable } from '@angular/core';
 
 @Injectable()

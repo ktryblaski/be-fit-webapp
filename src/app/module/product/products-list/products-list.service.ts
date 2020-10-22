@@ -5,7 +5,7 @@ import { catchError, distinctUntilChanged, finalize, ignoreElements, switchMap, 
 import { ProductRestService } from '../../../shared/service/rest/product-rest.service';
 import { NotificationService } from '../../../shared/component/notification/notification.service';
 import { NotificationSeverity } from '../../../shared/component/notification/notification';
-import { ProductFormValue } from '../product-create-dialog/product-create-form/-shared/product-form-value';
+import { ProductFormValue } from '../product-create-form/-shared/product-form-value';
 import { ErrorModalService } from '../../../shared/error-modal/error-modal.service';
 
 @Injectable()

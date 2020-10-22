@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { ProductFormValue } from './product-create-form/-shared/product-form-value';
+import { ProductFormValue } from '../product-create-form/-shared/product-form-value';
 
 @Component({
   selector: 'app-product-create-dialog',
@@ -13,6 +13,10 @@ export class ProductCreateDialogComponent {
 
   handleCreate(formValue: ProductFormValue): void {
     this.dialogRef.close(formValue);
+  }
+
+  handleCancel(): void {
+    this.dialogRef.close();
   }
 
 }

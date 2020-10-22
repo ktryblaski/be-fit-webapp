@@ -5,7 +5,7 @@ import { Product } from '../../../shared/model/domain/product';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductDetailsDialogComponent } from '../product-details-dialog/product-details-dialog.component';
 import { ProductCreateDialogComponent } from '../product-create-dialog/product-create-dialog.component';
-import { ProductFormValue } from '../product-create-dialog/product-create-form/-shared/product-form-value';
+import { ProductFormValue } from '../product-create-form/-shared/product-form-value';
 import { map } from 'rxjs/operators';
 
 @Component({

@@ -1,8 +1,11 @@
 <div class="header">
   <div title>{{product.name}}</div>
-  <fa-icon [class.favourite]="product.favourite"
-           (click)="handleToggleFavourite()"
-           icon="heart"></fa-icon>
+  <button [class.favourite]="product.favourite"
+          (click)="handleToggleFavourite()"
+          rawButton type="button"
+          class="toggle-favourite">
+    <fa-icon icon="heart"></fa-icon>
+  </button>
 </div>
 
 <div class="macronutrients-container">

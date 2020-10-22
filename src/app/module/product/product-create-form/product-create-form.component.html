@@ -25,7 +25,7 @@
   </mat-form-field>
 
   <div actions>
-    <button mat-dialog-close type="button"
+    <button (click)="handleCancel()" type="button"
             mat-raised-button tabindex="6">Cancel</button>
     <button [disabled]="!formHandler.form.valid" type="submit"
             mat-raised-button color="primary" tabindex="5">Save</button>

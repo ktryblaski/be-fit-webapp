@@ -14,7 +14,7 @@ export class FormProductComponent implements OnInit, OnChanges {
   @Input() products: Product[];
   @Output() addProduct = new EventEmitter<Product>();
 
-  private readonly productsChange = new BehaviorSubject<Product[]>([])
+  private readonly productsChange = new BehaviorSubject<Product[]>([]);
 
   products$: Observable<Product[]> = this.productsChange.pipe(distinctUntilChanged());
 
