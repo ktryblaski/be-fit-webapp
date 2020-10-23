@@ -3,5 +3,5 @@ export interface FoodStats {
   fats: number;
   carbohydrates: number;
   weight: number;
-  kcal: number;
+  calories: number;
 }

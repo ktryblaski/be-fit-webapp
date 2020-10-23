@@ -5,7 +5,7 @@ import { DayOfEatingBeginFormValue } from './-shared/day-of-eating-begin-form-va
 import { noop, Subscription } from 'rxjs';
 import { filter, tap } from 'rxjs/operators';
 import * as moment from 'moment';
-import { DayOfEatingBeginOrigin } from '../../../shared/model/dto/day-of-eating-begin-dto';
+import { DayOfEatingBeginOrigin } from '../../../../shared/model/dto/day-of-eating-begin-dto';
 
 @Component({
   selector: 'app-day-of-eating-begin-form',

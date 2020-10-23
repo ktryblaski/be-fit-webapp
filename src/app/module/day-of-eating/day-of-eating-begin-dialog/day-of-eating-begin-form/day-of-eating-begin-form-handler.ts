@@ -1,10 +1,10 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { TypedFormControl } from '../../../shared/form/typed/typed-form-control';
+import { TypedFormControl } from '../../../../shared/form/typed/typed-form-control';
 import { DayOfEatingBeginFormValue } from './-shared/day-of-eating-begin-form-value';
 import { noop, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { DayOfEatingBeginOrigin } from '../../../shared/model/dto/day-of-eating-begin-dto';
+import { DayOfEatingBeginOrigin } from '../../../../shared/model/dto/day-of-eating-begin-dto';
 
 @Injectable()
 export class DayOfEatingBeginFormHandler implements OnDestroy {

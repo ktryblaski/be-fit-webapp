@@ -1,9 +1,9 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, EMPTY, noop, Observable, Subject, Subscription } from 'rxjs';
-import { DayOfEatingBeginFormDataSource } from '../day-of-eating-begin-form/-shared/day-of-eating-begin-form-data-source';
+import { DayOfEatingBeginFormDataSource } from './day-of-eating-begin-form/-shared/day-of-eating-begin-form-data-source';
 import { catchError, distinctUntilChanged, finalize, ignoreElements, switchMap, tap } from 'rxjs/operators';
 import { DayOfEatingRestService } from '../../../shared/service/rest/day-of-eating-rest.service';
-import { DayOfEatingBeginFormValue } from '../day-of-eating-begin-form/-shared/day-of-eating-begin-form-value';
+import { DayOfEatingBeginFormValue } from './day-of-eating-begin-form/-shared/day-of-eating-begin-form-value';
 import * as moment from 'moment';
 import { DayOfEatingBeginDTO, DayOfEatingBeginOrigin } from '../../../shared/model/dto/day-of-eating-begin-dto';
 import { ErrorModalService } from '../../../shared/error-modal/error-modal.service';

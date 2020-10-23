@@ -14,14 +14,14 @@ import { ProductDetailsDialogModule } from '../product-details-dialog/product-de
 @NgModule({
   imports: [
     CommonModule,
-    ProductCreateDialogModule,
-    ProductDetailsDialogModule,
+    MatButtonModule,
+    FontAwesomeModule,
     CalculatorModule,
     HelperModule,
-    FontAwesomeModule,
     NoTableDataModule,
-    MatButtonModule,
-    SpinnerModule
+    SpinnerModule,
+    ProductCreateDialogModule,
+    ProductDetailsDialogModule
   ],
   declarations: [
     ProductsListComponent,

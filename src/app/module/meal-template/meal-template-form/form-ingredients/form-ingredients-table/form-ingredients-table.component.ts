@@ -52,7 +52,7 @@ export class FormIngredientsTableComponent implements OnInit, OnDestroy {
       fats: Math.round(ingredientsFats(ingredients)),
       carbohydrates: Math.round(ingredientsCarbohydrates(ingredients)),
       weight: ingredientsWeight(ingredients),
-      kcal: Math.round(ingredientsCalories(ingredients))
+      calories: Math.round(ingredientsCalories(ingredients))
     });
   }
 

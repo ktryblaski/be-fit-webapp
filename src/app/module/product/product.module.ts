@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
-import { ProductsListModule } from './products-list/products-list.module';
 import { ProductRoutingModule } from './product-routing.module';
+import { ProductsListModule } from './products-list/products-list.module';
 
 @NgModule({
   imports: [
-    ProductsListModule,
-    ProductRoutingModule
+    ProductRoutingModule,
+    ProductsListModule
   ]
 })
 export class ProductModule { }

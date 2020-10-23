@@ -7,6 +7,7 @@ import { HelperModule } from '../../../shared/helper/helper.module';
 import { MatButtonModule } from '@angular/material/button';
 import { SpinnerModule } from '../../../shared/component/spinner/spinner.module';
 import { NoTableDataModule } from '../../../shared/component/no-table-data/no-table-data.module';
+import { DayOfEatingBeginDialogModule } from '../day-of-eating-begin-dialog/day-of-eating-begin-dialog.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { NoTableDataModule } from '../../../shared/component/no-table-data/no-ta
     HelperModule,
     MatButtonModule,
     SpinnerModule,
-    NoTableDataModule
+    NoTableDataModule,
+    DayOfEatingBeginDialogModule
   ],
   declarations: [
     DayOfEatingListComponent,

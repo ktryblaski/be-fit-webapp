@@ -1,7 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Ingredient } from '../../../model/domain/ingredient';
-import { handleNullArray } from '../../../util/commons';
-import { stringCompare } from '../../../util/string-compare';
+import { handleNullArray, stringCompare } from '../../../util/commons';
 
 @Pipe({
   name: 'sortIngredients'
