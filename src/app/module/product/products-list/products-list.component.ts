@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ProductsListService } from './products-list.service';
 import { combineLatest, Observable } from 'rxjs';
 import { Product } from '../../../shared/model/domain/product';
@@ -13,6 +13,7 @@ import { map } from 'rxjs/operators';
   templateUrl: './products-list.component.html',
   styleUrls: ['./products-list.component.scss'],
   providers: [ProductsListService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsListComponent implements OnInit {
   public products$: Observable<Product[]>;

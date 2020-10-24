@@ -5,12 +5,14 @@ export interface DayOfEatingFormValue {
 }
 
 export interface DayOfEatingFormMealValue {
+  id: number | null;
   name: string;
   description: string;
   ingredients: DayOfEatingFormIngredientValue[];
 }
 
 export interface DayOfEatingFormIngredientValue {
-  product: Product;
+  id: number | null;
   weight: number;
+  product: Product;
 }

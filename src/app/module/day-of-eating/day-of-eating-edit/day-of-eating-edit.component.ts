@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { DayOfEating } from '../../../shared/model/domain/day-of-eating';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,6 +11,7 @@ import { DayOfEatingFormValue } from '../day-of-eating-form/-shared/day-of-eatin
   templateUrl: './day-of-eating-edit.component.html',
   styleUrls: ['./day-of-eating-edit.component.scss'],
   providers: [DayOfEatingEditService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DayOfEatingEditComponent implements OnInit, OnDestroy {
   loading$: Observable<boolean>;

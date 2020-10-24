@@ -17,3 +17,7 @@ export function stringCompare(a: string, b: string): number {
 
   return 0;
 }
+
+export function clone<T extends object>(object: T): T {
+  return object ? JSON.parse(JSON.stringify(object)) : object;
+}

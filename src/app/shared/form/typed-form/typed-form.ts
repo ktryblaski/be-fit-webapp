@@ -1,13 +1,13 @@
 import { AbstractControl, FormArray, FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { ControlsIn, InferredControlsIn, Properties, TypedFormControlType } from './typed-utils';
+import { ControlsIn, InferredControlsIn, Properties, InferredTypedControl } from './typed-utils';
 
-export interface AbstractTypedControl<T = any> extends AbstractControl {
+export interface TypedAbstractControl<T = any> extends AbstractControl {
   value: T;
   valueChanges: Observable<T>;
 }
 
-export interface TypedFormControl<T> extends AbstractTypedControl<T>, FormControl {
+export interface TypedFormControl<T> extends TypedAbstractControl<T>, FormControl {
   value: T;
   valueChanges: Observable<T>;
   setValue: (
@@ -37,7 +37,7 @@ export interface TypedFormControl<T> extends AbstractTypedControl<T>, FormContro
   ) => void;
 }
 
-export interface TypedFormGroup<T, C extends ControlsIn<T> = InferredControlsIn<T>> extends AbstractTypedControl<T>, FormGroup {
+export interface TypedFormGroup<T, C extends ControlsIn<T> = InferredControlsIn<T>> extends TypedAbstractControl<T>, FormGroup {
   value: T;
   valueChanges: Observable<T>;
   controls: Properties<C>;
@@ -64,14 +64,14 @@ export interface TypedFormGroup<T, C extends ControlsIn<T> = InferredControlsIn<
   ) => void;
 }
 
-export interface TypedFormArray<T> extends AbstractTypedControl<T[]>, FormArray {
+export interface TypedFormArray<T, C extends TypedAbstractControl = InferredTypedControl<T>> extends TypedAbstractControl<T[]>, FormArray {
   value: T[];
   valueChanges: Observable<T[]>;
-  controls: TypedFormControlType<T>[];
-  at: (index: number) => TypedFormControlType<T>;
-  push: (control: TypedFormControlType<T>) => void;
-  insert: (index: number, control: TypedFormControlType<T>) => void;
-  setControl: (index: number, control: TypedFormControlType<T>) => void;
+  controls: C[];
+  at: (index: number) => C;
+  push: (control: C) => void;
+  insert: (index: number, control: C) => void;
+  setControl: (index: number, control: C) => void;
   setValue: (
     value: T[],
     options?: {

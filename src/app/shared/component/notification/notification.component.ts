@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NotificationService } from './notification.service';
 import { Observable } from 'rxjs';
 import { Notification } from './notification';
@@ -7,6 +7,7 @@ import { Notification } from './notification';
   selector: 'app-notification',
   templateUrl: './notification.component.html',
   styleUrls: ['./notification.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NotificationComponent {
   readonly notifications$: Observable<Notification[]>;

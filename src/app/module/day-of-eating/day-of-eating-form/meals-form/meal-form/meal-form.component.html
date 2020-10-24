@@ -1,0 +1,31 @@
+<div class="meal-container">
+  <div class="actions">
+    <button *ngIf="mealIdx | canMoveDown: mealsNumber" (click)="handleMoveDown()" rawButton type="button">
+      <fa-icon [fixedWidth]="true" icon="arrow-down"></fa-icon>
+    </button>
+    <button *ngIf="mealIdx | canMoveUp" (click)="handleMoveUp()" rawButton type="button">
+      <fa-icon [fixedWidth]="true" icon="arrow-up"></fa-icon>
+    </button>
+    <button (click)="handleRemove()" rawButton type="button">
+      <fa-icon [fixedWidth]="true" icon="trash"></fa-icon>
+    </button>
+  </div>
+</div>
+
+<div class="controls">
+  <div class="name">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input [formControl]="mealControl.controls.name" matInput type="text" />
+    </mat-form-field>
+  </div>
+
+  <div class="description">
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <textarea [formControl]="mealControl.controls.description" matInput></textarea>
+    </mat-form-field>
+  </div>
+
+  <app-ingredients-form [mealControl]="mealControl" [mealIdx]="mealIdx" [products]="products"></app-ingredients-form>
+</div>

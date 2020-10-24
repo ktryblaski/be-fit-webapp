@@ -15,7 +15,6 @@ import { MealsCaloriesCalculatorPipe } from './meals-calories-calculator.pipe';
 import { MealsWeightCalculatorPipe } from './meals-weight-calculator.pipe';
 
 @NgModule({
-  imports: [],
   declarations: [
     MacronutrientsCaloriesCalculatorPipe,
     IngredientsCaloriesCalculatorPipe,

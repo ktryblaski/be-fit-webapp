@@ -1,0 +1,26 @@
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+
+  button {
+    color: #676767;
+    font-size: 20px;
+  }
+
+  button:hover {
+    color: black;
+  }
+
+  & > button + button {
+    margin-left: 5px;
+  }
+}
+
+.controls {
+  width: 50%;
+
+  mat-form-field {
+    width: 100%;
+  }
+}

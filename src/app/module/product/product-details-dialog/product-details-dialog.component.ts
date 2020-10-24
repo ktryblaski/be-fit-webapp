@@ -1,4 +1,4 @@
-import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ProductDetailsDialogService } from './product-details-dialog.service';
 import { combineLatest, merge, noop, Observable, Subscription } from 'rxjs';
@@ -14,6 +14,7 @@ export interface ProductDialogData {
   templateUrl: './product-details-dialog.component.html',
   styleUrls: ['./product-details-dialog.component.scss'],
   providers: [ProductDetailsDialogService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductDetailsDialogComponent implements OnInit, OnDestroy {
   public product$: Observable<Product>;

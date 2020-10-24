@@ -1,0 +1,33 @@
+table[appTable] {
+  width: 100%;
+
+  tr.total {
+    background-color: #f7f7f7;
+
+    td {
+      border-top: 2px solid rgba(0, 0, 0, 0.12);
+      color: red;
+    }
+  }
+
+  .weight {
+    width: 120px;
+  }
+
+  .remove {
+    width: 50px;
+    padding: 0;
+
+    fa-icon {
+      border: none;
+      font-size: 0.9rem;
+      line-height: 1.2;
+      white-space: nowrap;
+      text-decoration: none;
+      padding: 0.25rem 0.5rem;
+      margin: 0.25rem;
+      background-color: inherit;
+      outline: none;
+    }
+  }
+}

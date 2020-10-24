@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { Product } from '../../../../../shared/model/domain/product';
 import { MealTemplateFormHandler } from '../../meal-template-form-handler';
@@ -9,6 +9,7 @@ import { values$ } from '../../../../../shared/form/typed-form/typed-utils';
   selector: 'app-form-product',
   templateUrl: './form-product.component.html',
   styleUrls: ['./form-product.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormProductComponent implements OnInit, OnChanges {
   @Input() products: Product[];

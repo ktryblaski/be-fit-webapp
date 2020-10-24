@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { MealView } from '../../../../../../shared/model/domain/meal';
 import { DietFormHandler } from '../../../diet-form-handler';
 import { merge, Observable, Subject } from 'rxjs';
@@ -8,6 +8,7 @@ import { map } from 'rxjs/operators';
   selector: 'app-diet-meals-select-ui',
   templateUrl: './diet-meals-select-ui.component.html',
   styleUrls: ['./diet-meals-select-ui.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DietMealsSelectUiComponent implements OnInit, OnChanges {
   @Input() meals: MealView[];

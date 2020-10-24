@@ -1,10 +1,11 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { MealFormHandler } from './meal-form-handler';
 
 @Component({
   selector: 'app-meal-form',
   templateUrl: './meal-form.component.html',
   styleUrls: ['./meal-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealFormComponent {
   @Input() formHandler: MealFormHandler;

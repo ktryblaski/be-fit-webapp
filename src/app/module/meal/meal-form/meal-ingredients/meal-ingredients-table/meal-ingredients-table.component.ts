@@ -1,21 +1,22 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { MealFormHandler } from '../../meal-form-handler';
 import { FormArray } from '@angular/forms';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { Ingredient } from '../../../../../shared/model/domain/ingredient';
 import {
+  ingredientsCalories,
   ingredientsCarbohydrates,
   ingredientsFats,
-  ingredientsKCAL,
   ingredientsProteins,
   ingredientsWeight,
-} from '../../../../../shared/util/calculator';
+} from '../../../../../shared/util/calculator/ingredients-calculator';
 
 @Component({
   selector: 'app-meal-ingredients-table',
   templateUrl: './meal-ingredients-table.component.html',
   styleUrls: ['./meal-ingredients-table.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealIngredientsTableComponent implements OnInit, OnDestroy {
   private readonly carbohydrates = new BehaviorSubject<number>(0);
@@ -59,7 +60,7 @@ export class MealIngredientsTableComponent implements OnInit, OnDestroy {
     this.carbohydrates.next(Math.round(ingredientsCarbohydrates(ingredients)));
     this.proteins.next(Math.round(ingredientsProteins(ingredients)));
     this.fats.next(Math.round(ingredientsFats(ingredients)));
-    this.KCAL.next(Math.round(ingredientsKCAL(ingredients)));
+    this.KCAL.next(Math.round(ingredientsCalories(ingredients)));
     this.weight.next(ingredientsWeight(ingredients));
   }
 }

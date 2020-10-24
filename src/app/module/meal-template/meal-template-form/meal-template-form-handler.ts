@@ -10,13 +10,13 @@ import { MealTemplateFormIngredientValue, MealTemplateFormValue } from './-share
 import { values$ } from '../../../shared/form/typed-form/typed-utils';
 import { TypedFormGroup } from '../../../shared/form/typed-form/typed-form';
 
-export type IngredientProduct = Omit<MealTemplateFormIngredientValue, 'weight'>;
+export type MealTemplateIngredient = Omit<MealTemplateFormIngredientValue, 'weight'>;
 
 @Injectable()
 export class MealTemplateFormHandler {
   form: TypedFormGroup<MealTemplateForm, MealTemplateFormControls>;
 
-  ingredients: IngredientProduct[] = [];
+  ingredients: MealTemplateIngredient[] = [];
   hasIngredients$: Observable<boolean>;
 
   constructor(private fb: TypedFormBuilder) {

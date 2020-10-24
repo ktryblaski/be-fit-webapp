@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Meal } from '../../../../shared/model/domain/meal';
 import { InternationalizationService } from '../../../../shared/service/internationalization.service';
 
@@ -6,6 +6,7 @@ import { InternationalizationService } from '../../../../shared/service/internat
   selector: 'app-meal-details-ui',
   templateUrl: './meal-details-ui.component.html',
   styleUrls: ['./meal-details-ui.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealDetailsUiComponent {
   readonly MEAL_TYPE;

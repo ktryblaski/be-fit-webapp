@@ -1,0 +1,31 @@
+<app-day-of-eating-stats [mealsControl]="mealsControl"></app-day-of-eating-stats>
+
+<div class="expansion-actions">
+  <button (click)="accordion.closeAll()" rawButton type="button">
+    <fa-icon [fixedWidth]="true" icon="compress-alt"></fa-icon>
+  </button>
+  <button (click)="accordion.openAll()" rawButton type="button">
+    <fa-icon [fixedWidth]="true" icon="expand-alt"></fa-icon>
+  </button>
+</div>
+
+<mat-accordion multi>
+  <mat-expansion-panel *ngFor="let mealControl of mealsControl.controls; let i = index" [expanded]="true">
+    <mat-expansion-panel-header class="meal-panel-header">
+      <mat-panel-title class="meal-panel-title">{{ mealControl.controls.name.value }}</mat-panel-title>
+      <mat-panel-description class="meal-panel-description">
+        <app-meal-stats [mealIdx]="i" [mealControl]="mealControl"></app-meal-stats>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <app-meal-form
+      [mealIdx]="i"
+      [mealsNumber]="mealsControl.length"
+      [mealControl]="mealControl"
+      [products]="products"
+      (moveUpMeal)="handleMoveUpMeal(i)"
+      (moveDownMeal)="handleMoveDownMeal(i)"
+      (removeMeal)="handleRemoveMeal(i)"
+    ></app-meal-form>
+  </mat-expansion-panel>
+</mat-accordion>

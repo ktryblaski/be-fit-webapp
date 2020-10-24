@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { MealTemplatesListService } from './meal-templates-list.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
@@ -9,6 +9,7 @@ import { MealTemplate } from '../../../shared/model/domain/meal-template';
   templateUrl: './meal-templates-list.component.html',
   styleUrls: ['./meal-templates-list.component.scss'],
   providers: [MealTemplatesListService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealTemplatesListComponent implements OnInit {
   public mealTemplates$: Observable<MealTemplate[]>;

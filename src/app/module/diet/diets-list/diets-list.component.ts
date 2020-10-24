@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DietView } from '../../../shared/model/domain/diet';
 import { DietsListService } from './diets-list.service';
@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './diets-list.component.html',
   styleUrls: ['./diets-list.component.scss'],
   providers: [DietsListService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DietsListComponent implements OnInit {
   public diets$: Observable<DietView[]>;

@@ -1,97 +1,206 @@
 import { Injectable } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { TypedFormArray } from '../../../shared/form/typed/typed-form-array';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { DayOfEatingFormMealValue, DayOfEatingFormValue } from './-shared/day-of-eating-form-value';
 import { DayOfEating } from '../../../shared/model/domain/day-of-eating';
 import { Meal } from '../../../shared/model/domain/meal';
+import { Ingredient } from '../../../shared/model/domain/ingredient';
+import { DayOfEatingFormIngredientValue, DayOfEatingFormMealValue, DayOfEatingFormValue } from './-shared/day-of-eating-form-value';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { MealTemplate } from '../../../shared/model/domain/meal-template';
+import { clone } from '../../../shared/util/commons';
+import { values$ } from '../../../shared/form/typed-form/typed-utils';
+import { TypedFormBuilder } from '../../../shared/form/typed-form/typed-form-builder.service';
+import { TypedFormArray, TypedFormGroup } from '../../../shared/form/typed-form/typed-form';
+import { DayOfEatingForm, DayOfEatingFormControls, DayOfEatingFormMeal, DayOfEatingFormMealControls } from './-shared/day-of-eating-form';
 import { Product } from '../../../shared/model/domain/product';
+import { Validators } from '@angular/forms';
+
+export type MealIngredient = Omit<DayOfEatingFormIngredientValue, 'weight'>;
+export type DayOfEatingMeal = Omit<DayOfEatingFormMealValue, 'name' | 'description' | 'ingredients'> & {
+  ingredients: MealIngredient[]
+};
+
+export type DayOfEatingFormGroup = TypedFormGroup<DayOfEatingForm, DayOfEatingFormControls>;
 
 @Injectable()
 export class DayOfEatingFormHandler {
-  form: FormGroup;
-
-  readonly meals: TypedFormArray<any>;
+  form: DayOfEatingFormGroup;
+  meals: DayOfEatingMeal[];
 
   hasMeals$: Observable<boolean>;
 
-  constructor() {
-    this.form = new FormGroup({
-      meals: new FormArray([], Validators.required),
+  constructor(private fb: TypedFormBuilder) {
+    this.form = this.fb.group<DayOfEatingForm, DayOfEatingFormControls>({
+      meals: this.fb.array([], Validators.required),
     });
 
-    this.meals = TypedFormArray.from(this.form.get('meals'));
-
-    this.hasMeals$ = this.meals.values.pipe(map((meals: DayOfEatingFormMealValue[]) => meals.length !== 0));
+    this.hasMeals$ = values$(this.form.controls.meals).pipe(map(meals => meals.length > 0));
   }
 
-  get mealsControls(): FormGroup[] {
-    return this.meals.controls as FormGroup[];
+  setValue(dayOfEating: DayOfEating): void {
+    this.meals = this.temp(dayOfEating.meals);
+    this.clearAndCreateForm();
+    this.patchForm(this.mapToFormValue(dayOfEating));
+  }
+
+  temp(meals: Meal[]): DayOfEatingMeal[] {
+    return meals.map(m => ({
+      id: m.id,
+      ingredients: m.ingredients.map(i => ({
+        id: i.id,
+        product: i.product
+      }))
+    }));
   }
 
   getValue(): DayOfEatingFormValue {
     return {
-      meals: this.meals.value,
+      meals: null,
     };
   }
 
-  setValue(dayOfEating: DayOfEating): void {
-    dayOfEating.meals.map(meal => this.createMealControl(meal)).forEach(meal => this.meals.push(meal));
+  addMeal(meal: Meal): void {
+    const values = [...this.form.controls.meals.value, this.mapMealToFormValue(meal)];
+
+    this.meals = [...this.meals.map(m => clone(m)), this.generateMeal(meal)];
+    this.clearAndCreateForm();
+    this.patchForm({ meals: values });
   }
 
-  addNewMeal(): void {
-    this.meals.push(this.createNewMealControl());
+  addMealFromTemplate(mealTemplate: MealTemplate): void {
+    const values = [...this.form.controls.meals.value, this.mapMealToFormValue(mealTemplate)];
+
+    this.meals = [...this.meals.map(meal => clone(meal)), this.generateMeal(mealTemplate)];
+    this.clearAndCreateForm();
+    this.patchForm({ meals: values });
+  }
+
+  removeMeal(idx: number): void {
+    const values = this.form.controls.meals.value.filter((value, index) => index !== idx);
+    this.meals = this.meals.filter((meal, index) => index !== idx).map(meal => clone(meal));
+    this.clearAndCreateForm();
+    this.patchForm({ meals: values });
+  }
+
+  moveUpMeal(idx: number): void {
+    if (idx === 0) {
+      return;
+    }
+
+    const meals = this.meals.map(m => clone(m));
+    const meal = meals[idx];
+    const values = [...this.form.controls.meals.value];
+    const value = values[idx];
+
+    meals.splice(idx, 1);
+    values.splice(idx, 1);
+
+    meals.splice(idx - 1, 0, meal);
+    values.splice(idx - 1, 0, value);
+
+    this.meals = meals;
+    this.clearAndCreateForm();
+    this.patchForm({ meals: values });
+  }
+
+  moveDownMeal(idx: number): void {
+    if (idx === this.meals.length - 1) {
+      return;
+    }
+
+    const meals = this.meals.map(m => clone(m));
+    const meal = meals[idx];
+    const values = [...this.form.controls.meals.value];
+    const value = values[idx];
+
+    meals.splice(idx, 1);
+    values.splice(idx, 1);
+
+    meals.splice(idx + 1, 0, meal);
+    values.splice(idx + 1, 0, value);
+
+    this.meals = meals;
+    this.clearAndCreateForm();
+    this.patchForm({ meals: values });
   }
 
   addNewIngredient(mealIdx: number, product: Product): void {
-    const mealControl = this.meals.at(mealIdx) as FormGroup;
-    const ingredientsControl = mealControl.get('ingredients') as FormArray;
-
-    ingredientsControl.push(this.createIngredientControl(product, 100));
+    this.addIngredient(mealIdx, null, product, 100);
   }
 
-  removeIngredient(mealIdx: number, productIdx: number): void {
-    const mealControl = this.meals.at(mealIdx) as FormGroup;
-    const ingredientsControl = mealControl.get('ingredients') as FormArray;
+  private addIngredient(mealIdx: number, id: number | null, product: Product, weight: number): void {
+    const meal = this.meals[mealIdx];
 
-    ingredientsControl.removeAt(productIdx);
+    meal.ingredients = [...meal.ingredients, { id, product }];
+    this.form.controls.meals.at(mealIdx).controls.ingredients.push(
+      this.fb.control<number>(weight)
+    );
   }
 
-  clearProduct(mealIdx: number): void {
-    const mealControl = this.meals.at(mealIdx) as FormGroup;
-    const productControl = mealControl.get('product') as FormControl;
-
-    productControl.reset();
+  removeIngredient(mealIdx: number, idx: number): void {
+    this.meals[mealIdx].ingredients.splice(idx, 1);
+    this.form.controls.meals.at(mealIdx).controls.ingredients.removeAt(idx);
   }
 
-  private createNewMealControl(): FormGroup {
-    return new FormGroup({
-      name: new FormControl(null, Validators.required),
-      description: new FormControl(null),
-      ingredients: new FormArray([], Validators.required),
-      product: new FormControl(null),
+
+  // getIngredientsArrayControls(mealIdx: number): FormControl[] {
+  //   return this.getIngredientsControl(mealIdx).controls as FormControl[];
+  // }
+
+  private clearAndCreateForm(): void {
+    this.form.controls.meals.clear();
+    this.meals.map(meal => this.generateMealControl(meal)).forEach(mealForm => this.form.controls.meals.push(mealForm));
+  }
+
+  private patchForm(formValue: DayOfEatingForm): void {
+    this.form.controls.meals.controls.forEach((mealControl, index) => mealControl.patchValue(formValue.meals[index]));
+  }
+
+  private generateMealControl(meal: DayOfEatingMeal): TypedFormGroup<DayOfEatingFormMeal, DayOfEatingFormMealControls> {
+    return this.fb.group<DayOfEatingFormMeal, DayOfEatingFormMealControls>({
+      name: this.fb.control<string>(null, Validators.required),
+      description: this.fb.control<string>(null),
+      ingredients: this.generateIngredientsControl(meal.ingredients),
+      product: this.fb.control<Product>(),
     });
   }
 
-  private createMealControl(meal: Meal): FormGroup {
-    const mealFormGroup = this.createNewMealControl();
-
-    mealFormGroup.get('name').setValue(meal.name);
-    mealFormGroup.get('description').setValue(meal.description);
-
-    const ingredients = mealFormGroup.get('ingredients') as FormArray;
-    meal.ingredients
-      .map(ingredient => this.createIngredientControl(ingredient.product, ingredient.weight))
-      .forEach(ingredient => ingredients.push(ingredient));
-
-    return mealFormGroup;
+  private generateIngredientsControl(ingredients: MealIngredient[]): TypedFormArray<number> {
+    return this.fb.array<number>(
+      ingredients.map(() => this.fb.control<number>(null, Validators.required)),
+      Validators.required
+    );
   }
 
-  private createIngredientControl(product: Product, weight: number): FormGroup {
-    return new FormGroup({
-      product: new FormControl(product, Validators.required),
-      weight: new FormControl(weight, Validators.required),
-    });
+  private generateMeal(meal: Meal): DayOfEatingMeal {
+    return {
+      id: meal.id,
+      ingredients: this.generateIngredients(meal.ingredients),
+    };
+  }
+
+  private generateIngredients(ingredients: Ingredient[]): MealIngredient[] {
+    return ingredients.map(ingredient => this.generateIngredient(ingredient));
+  }
+
+  private generateIngredient(ingredient: Ingredient): MealIngredient {
+    return {
+      id: ingredient.id,
+      product: ingredient.product,
+    };
+  }
+
+  private mapToFormValue(dayOfEating: DayOfEating): DayOfEatingForm {
+    return {
+      meals: dayOfEating.meals.map(meal => this.mapMealToFormValue(meal)),
+    };
+  }
+
+  private mapMealToFormValue(meal: Meal): DayOfEatingFormMeal {
+    return {
+      name: meal.name,
+      description: meal.description,
+      ingredients: meal.ingredients.map(i => i.weight),
+      product: null
+    };
   }
 }

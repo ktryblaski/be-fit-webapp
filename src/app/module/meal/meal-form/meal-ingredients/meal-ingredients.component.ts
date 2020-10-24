@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MealFormHandler } from '../meal-form-handler';
 import { Product } from '../../../../shared/model/domain/product';
 import { FormArray } from '@angular/forms';
@@ -7,6 +7,7 @@ import { FormArray } from '@angular/forms';
   selector: 'app-meal-ingredients',
   templateUrl: './meal-ingredients.component.html',
   styleUrls: ['./meal-ingredients.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealIngredientsComponent {
   @Input() formHandler: MealFormHandler;

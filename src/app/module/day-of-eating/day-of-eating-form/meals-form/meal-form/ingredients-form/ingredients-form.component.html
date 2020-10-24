@@ -1,0 +1,6 @@
+<app-product-form [products]="products" [mealControl]="mealControl" [mealIdx]="mealIdx" (addProduct)="handleAddProduct($event)"></app-product-form>
+
+<!--TODO length-->
+<div *ngIf="mealControl.controls.ingredients.length > 0">
+  <app-ingredients-table-form [mealControl]="mealControl" [mealIdx]="mealIdx" (removeIngredient)="handleRemoveIngredient($event)"></app-ingredients-table-form>
+</div>

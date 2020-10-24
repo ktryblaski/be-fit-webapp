@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { MealTemplateFormHandler } from '../../meal-template-form-handler';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { FoodStats } from '../../../../../shared/model/food-stats';
@@ -16,6 +16,7 @@ import { values$ } from '../../../../../shared/form/typed-form/typed-utils';
   selector: 'app-ingredients-table-form',
   templateUrl: './ingredients-table-form.component.html',
   styleUrls: ['./ingredients-table-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IngredientsTableFormComponent implements OnInit, OnDestroy {
   @Output() removeIngredient = new EventEmitter<number>();

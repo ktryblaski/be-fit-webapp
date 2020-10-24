@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { DietMeal } from '../../../../../shared/model/domain/diet';
 import { InternationalizationService } from '../../../../../shared/service/internationalization.service';
 
@@ -6,6 +6,7 @@ import { InternationalizationService } from '../../../../../shared/service/inter
   selector: 'app-diet-details-meals-table',
   templateUrl: './diet-details-meals-table.component.html',
   styleUrls: ['./diet-details-meals-table.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DietDetailsMealsTableComponent {
   readonly MEAL_TYPE: { [key: string]: string };

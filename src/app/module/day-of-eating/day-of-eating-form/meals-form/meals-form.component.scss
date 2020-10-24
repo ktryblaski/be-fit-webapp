@@ -1,0 +1,29 @@
+.expansion-actions {
+  display: flex;
+  justify-content: flex-end;
+
+  button {
+    margin-bottom: 10px;
+    font-size: 22px;
+    color: #676767;
+  }
+
+  button:hover {
+    color: black;
+  }
+}
+
+.meal-panel-header {
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+
+  .meal-panel-title {
+    font-weight: 500;
+  }
+
+  .meal-panel-description {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

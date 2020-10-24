@@ -1,0 +1,9 @@
+<div *ngIf="stats$ | async as stats" class="description">
+  <span class="proteins">{{ stats.proteins }}</span>
+  <span>/</span>
+  <span class="fats">{{ stats.fats }}</span>
+  <span>/</span>
+  <span class="carbohydrates">{{ stats.carbohydrates }}</span>
+  <span>/</span>
+  <span class="calories">{{ stats.calories }}</span>
+</div>

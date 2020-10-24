@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Macronutrients } from '../../model/domain/macronutrients';
 import { Color } from 'ng2-charts';
 import { ChartOptions } from 'chart.js';
@@ -7,6 +7,7 @@ import { ChartOptions } from 'chart.js';
   selector: 'app-macronutrients-chart',
   templateUrl: './macronutrients-chart.component.html',
   styleUrls: ['./macronutrients-chart.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MacronutrientsChartComponent {
   @Input() macronutrients: Macronutrients;

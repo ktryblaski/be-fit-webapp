@@ -1,4 +1,4 @@
-import { Component, HostBinding, HostListener, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, HostListener, Input } from '@angular/core';
 import { ToggleButtonComponent } from '../toggle-button.component';
 
 // TODO add invalid layout
@@ -7,6 +7,7 @@ import { ToggleButtonComponent } from '../toggle-button.component';
   selector: 'button[appToggleButtonOption]',
   templateUrl: './toggle-button-option.component.html',
   styleUrls: ['./toggle-button-option.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToggleButtonOptionComponent {
   // tslint:disable-next-line:no-input-rename

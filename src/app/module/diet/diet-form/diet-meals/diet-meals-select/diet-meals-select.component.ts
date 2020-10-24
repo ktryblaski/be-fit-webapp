@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { DietFormHandler } from '../../diet-form-handler';
 import { MealView } from '../../../../../shared/model/domain/meal';
 import { Observable, Subscription } from 'rxjs';
@@ -9,6 +9,7 @@ import { DietMealsSelectService } from './diet-meals-select.service';
   templateUrl: './diet-meals-select.component.html',
   styleUrls: ['./diet-meals-select.component.scss'],
   providers: [DietMealsSelectService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DietMealsSelectComponent implements OnInit, OnDestroy {
   @Input() formHandler: DietFormHandler;

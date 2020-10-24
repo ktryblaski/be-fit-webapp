@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { MealFormHandler } from '../meal-form/meal-form-handler';
 import { MealCreateService } from './meal-create.service';
 import { Observable } from 'rxjs';
@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './meal-create.component.html',
   styleUrls: ['./meal-create.component.scss'],
   providers: [MealCreateService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealCreateComponent implements OnInit {
   formHandler: MealFormHandler = new MealFormHandler();

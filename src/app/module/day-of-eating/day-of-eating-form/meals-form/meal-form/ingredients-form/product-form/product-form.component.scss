@@ -1,0 +1,9 @@
+.product-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
+  app-product-select-form {
+    width: calc(100% - 84px);
+  }
+}

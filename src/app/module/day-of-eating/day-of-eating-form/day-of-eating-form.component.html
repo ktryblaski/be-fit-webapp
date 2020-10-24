@@ -5,26 +5,27 @@
       <span class="date">{{ dayOfEating.dayDate | date: DATE_FORMAT }}</span>
     </div>
     <div actions>
-      <button (click)="handleCancel()" type="button" mat-raised-button tabindex="5">Cancel</button>
-      <button [disabled]="formHandler.form.invalid" type="submit" mat-raised-button color="primary" tabindex="6">Save</button>
+      <button (click)="handleCancel()" type="button" mat-raised-button>Cancel</button>
+      <button [disabled]="formHandler.form.invalid" type="submit" mat-raised-button color="primary">Save</button>
     </div>
   </div>
 
-  <mat-tab-group mat-align-tabs="start" animationDuration="1000ms">
-    <ng-container formArrayName="meals">
-      <mat-tab *ngFor="let meal of formHandler.mealsControls; let i = index" [label]="meal.get('name').value">
-        <div class="meal-container">
-          <!--          <app-day-of-eating-form-meal [formGroup]="meal"-->
-          <!--                                       [mealIdx]="i"-->
-          <!--                                       [dataSource]="dataSource"></app-day-of-eating-form-meal>-->
-        </div>
-      </mat-tab>
-    </ng-container>
-  </mat-tab-group>
+  <div class="actions">
+    <button (click)="handleCopyExistingMeal()" type="button" mat-raised-button>Copy existing Meal</button>
+    <button (click)="handleAddNewMeal()" type="button" mat-raised-button>Add new Meal</button>
+  </div>
 
-  <!--  <ng-template #noMeals>-->
-  <!--    <div class="no-meals">-->
-  <!--      No Meals-->
-  <!--    </div>-->
-  <!--  </ng-template>-->
+  <div *ngIf="formHandler.hasMeals$ | async; else noMeals" class="meals-container">
+    <app-meals-form
+      [mealsControl]="formHandler.form.controls.meals"
+      [products]="dataSource.products"
+      (moveUpMeal)="handleMoveUpMeal($event)"
+      (moveDownMeal)="handleMoveDownMeal($event)"
+      (removeMeal)="handleRemoveMeal($event)"
+    ></app-meals-form>
+  </div>
+
+  <ng-template #noMeals>
+    <div class="no-meals">No Meals</div>
+  </ng-template>
 </form>

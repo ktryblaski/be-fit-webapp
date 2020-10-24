@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ErrorModalData } from './-model/error-modal-data';
 
@@ -6,6 +6,7 @@ import { ErrorModalData } from './-model/error-modal-data';
   selector: 'app-error-modal',
   templateUrl: './error-modal.component.html',
   styleUrls: ['./error-modal.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ErrorModalComponent {
   title: string | null;

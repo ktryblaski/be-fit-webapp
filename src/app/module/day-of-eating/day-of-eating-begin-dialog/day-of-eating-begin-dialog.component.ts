@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { DayOfEatingBeginFormValue } from './day-of-eating-begin-form/-shared/day-of-eating-begin-form-value';
 import { DayOfEatingBeginDialogService } from './day-of-eating-begin-dialog.service';
 import { DayOfEatingBeginFormDataSource } from './day-of-eating-begin-form/-shared/day-of-eating-begin-form-data-source';
@@ -10,6 +10,7 @@ import { MatDialogRef } from '@angular/material/dialog';
   templateUrl: './day-of-eating-begin-dialog.component.html',
   styleUrls: ['./day-of-eating-begin-dialog.component.scss'],
   providers: [DayOfEatingBeginDialogService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DayOfEatingBeginDialogComponent implements OnInit {
   loading$: Observable<boolean>;

@@ -1,0 +1,23 @@
+@import 'src/app/shared/colors';
+
+.description {
+  & > * {
+    margin: 0 2px;
+  }
+
+  .proteins {
+    color: $proteins-color;
+  }
+
+  .fats {
+    color: $fats-color;
+  }
+
+  .carbohydrates {
+    color: $carbohydrates-color;
+  }
+
+  .calories {
+    color: $kcal-color;
+  }
+}

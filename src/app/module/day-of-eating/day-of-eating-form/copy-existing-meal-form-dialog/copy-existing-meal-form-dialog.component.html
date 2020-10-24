@@ -1,0 +1,21 @@
+<form [formGroup]="formHandler.form" (ngSubmit)="handleSubmit()">
+  <div header>
+    <div title>Select existing Meal</div>
+  </div>
+
+  <div class="select-container">
+    <mat-form-field>
+      <input [formControl]="formHandler.mealTemplate.ref" [matAutocomplete]="auto" type="text" placeholder="Meals" matInput />
+      <mat-autocomplete [displayWith]="displayFn" autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let mealTemplate of data" [value]="mealTemplate">
+          {{ mealTemplate.name }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+
+  <div actions>
+    <button (click)="handleCancel()" mat-raised-button type="button">Cancel</button>
+    <button [disabled]="formHandler.form.invalid" mat-raised-button color="primary">Save</button>
+  </div>
+</form>

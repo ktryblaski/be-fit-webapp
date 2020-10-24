@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { ProductFormHandler } from './product-form-handler';
 import { ProductFormValue } from './-shared/product-form-value';
 
@@ -7,6 +7,7 @@ import { ProductFormValue } from './-shared/product-form-value';
   templateUrl: './product-create-form.component.html',
   styleUrls: ['./product-create-form.component.scss'],
   providers: [ProductFormHandler],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductCreateFormComponent {
   @Output() create = new EventEmitter<ProductFormValue>();

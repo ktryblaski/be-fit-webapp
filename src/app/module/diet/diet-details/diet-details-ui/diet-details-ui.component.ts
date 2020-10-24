@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { Diet } from '../../../../shared/model/domain/diet';
 import { InternationalizationService } from '../../../../shared/service/internationalization.service';
 
@@ -6,6 +6,7 @@ import { InternationalizationService } from '../../../../shared/service/internat
   selector: 'app-diet-details-ui',
   templateUrl: './diet-details-ui.component.html',
   styleUrls: ['./diet-details-ui.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DietDetailsUiComponent implements OnInit {
   readonly DIET_TYPE: { [key: string]: string };

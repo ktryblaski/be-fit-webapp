@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { DietView } from '../../../../shared/model/domain/diet';
 import { InternationalizationService } from '../../../../shared/service/internationalization.service';
 
@@ -6,6 +6,7 @@ import { InternationalizationService } from '../../../../shared/service/internat
   selector: 'app-diets-list-ui',
   templateUrl: './diets-list-ui.component.html',
   styleUrls: ['./diets-list-ui.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DietsListUiComponent {
   readonly DATE_FORMAT: 'd/M/yyyy';

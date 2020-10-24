@@ -1,7 +1,7 @@
 <form [formGroup]="formHandler.form" (ngSubmit)="handleSubmit()">
   <div class="actions">
     <button (click)="handleCancel()" type="button" mat-raised-button tabindex="5">Cancel</button>
-    <button [disabled]="!formHandler.form.valid" type="submit" mat-raised-button color="primary" tabindex="6">Save</button>
+    <button [disabled]="formHandler.form.invalid" type="submit" mat-raised-button color="primary" tabindex="6">Save</button>
   </div>
 
   <div class="title">

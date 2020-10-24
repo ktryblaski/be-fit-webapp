@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { MealTemplateFormHandler } from './meal-template-form-handler';
 import { MealTemplateFormValue } from './-shared/meal-template-form-value';
 import { MealTemplateFormDataSource } from './-shared/meal-template-form-data-source';
@@ -9,6 +9,7 @@ import { MealTemplate } from '../../../shared/model/domain/meal-template';
   templateUrl: './meal-template-form.component.html',
   styleUrls: ['./meal-template-form.component.scss'],
   providers: [MealTemplateFormHandler],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealTemplateFormComponent implements OnChanges {
   @Input() mealTemplate: MealTemplate | null;

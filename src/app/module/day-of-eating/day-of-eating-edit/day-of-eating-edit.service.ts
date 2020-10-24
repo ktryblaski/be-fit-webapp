@@ -118,7 +118,8 @@ export class DayOfEatingEditService implements OnDestroy {
         return {
           name: meal.name,
           description: meal.description,
-          ingredients: meal.ingredients.map(i => ({ productId: i.product.id, weight: i.weight })),
+          // ingredients: meal.ingredients.map(i => ({productId: i.product.id, weight: i.weight}))
+          ingredients: [],
         };
       }),
     };

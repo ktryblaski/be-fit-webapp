@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { MealDetailsService } from './meal-details.service';
@@ -9,6 +9,7 @@ import { Meal } from '../../../shared/model/domain/meal';
   templateUrl: './meal-details.component.html',
   styleUrls: ['./meal-details.component.scss'],
   providers: [MealDetailsService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealDetailsComponent implements OnInit, OnDestroy {
   private subscription: Subscription;

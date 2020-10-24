@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { MealTemplateEditService } from './meal-template-edit.service';
 import { combineLatest, Observable, Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,6 +12,7 @@ import { map } from 'rxjs/operators';
   templateUrl: './meal-template-edit.component.html',
   styleUrls: ['./meal-template-edit.component.scss'],
   providers: [MealTemplateEditService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealTemplateEditComponent implements OnInit, OnDestroy {
   private subscription: Subscription;

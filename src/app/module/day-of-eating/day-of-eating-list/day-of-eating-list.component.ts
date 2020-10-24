@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { combineLatest, Observable } from 'rxjs';
 import { DayOfEatingLite } from '../../../shared/model/domain/day-of-eating';
 import { DayOfEatingListService } from './day-of-eating-list.service';
@@ -13,6 +13,7 @@ import { map } from 'rxjs/operators';
   templateUrl: './day-of-eating-list.component.html',
   styleUrls: ['./day-of-eating-list.component.scss'],
   providers: [DayOfEatingListService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DayOfEatingListComponent implements OnInit {
   daysOfEating$: Observable<DayOfEatingLite[]>;

@@ -1,4 +1,14 @@
-import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { DayOfEatingBeginFormHandler } from './day-of-eating-begin-form-handler';
 import { DayOfEatingBeginFormDataSource } from './-shared/day-of-eating-begin-form-data-source';
 import { DayOfEatingBeginFormValue } from './-shared/day-of-eating-begin-form-value';
@@ -13,6 +23,7 @@ import { values$ } from '../../../../shared/form/typed-form/typed-utils';
   templateUrl: './day-of-eating-begin-form.component.html',
   styleUrls: ['./day-of-eating-begin-form.component.scss'],
   providers: [DayOfEatingBeginFormHandler],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DayOfEatingBeginFormComponent implements OnInit, OnChanges, OnDestroy {
   @Input() dataSource: DayOfEatingBeginFormDataSource;

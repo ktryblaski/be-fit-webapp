@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { DietFormHandler } from './diet-form-handler';
 import { DietType } from '../../../shared/model/domain/diet';
 import { InternationalizationService } from '../../../shared/service/internationalization.service';
@@ -7,6 +7,7 @@ import { InternationalizationService } from '../../../shared/service/internation
   selector: 'app-diet-form',
   templateUrl: './diet-form.component.html',
   styleUrls: ['./diet-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DietFormComponent {
   @Input() formHandler: DietFormHandler;

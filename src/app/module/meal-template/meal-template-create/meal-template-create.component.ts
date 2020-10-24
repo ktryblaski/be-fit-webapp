@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { MealTemplateCreateService } from './meal-template-create.service';
 import { combineLatest, Observable } from 'rxjs';
 import { Router } from '@angular/router';
@@ -11,6 +11,7 @@ import { map } from 'rxjs/operators';
   templateUrl: './meal-template-create.component.html',
   styleUrls: ['./meal-template-create.component.scss'],
   providers: [MealTemplateCreateService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealTemplateCreateComponent implements OnInit {
   dataSource$: Observable<MealTemplateFormDataSource>;

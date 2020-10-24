@@ -9,3 +9,22 @@
   font-weight: 500;
   margin-left: 10px;
 }
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  & > button + button {
+    margin-left: 10px;
+  }
+}
+
+.no-meals {
+  margin: 80px 0;
+  color: grey;
+  font-size: 24px;
+  font-weight: 400;
+  text-align: center;
+}
