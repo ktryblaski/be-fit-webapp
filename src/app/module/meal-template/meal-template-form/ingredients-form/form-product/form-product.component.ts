@@ -3,6 +3,7 @@ import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { Product } from '../../../../../shared/model/domain/product';
 import { MealTemplateFormHandler } from '../../meal-template-form-handler';
 import { distinctUntilChanged, map } from 'rxjs/operators';
+import { values$ } from '../../../../../shared/form/typed-form/typed-utils';
 
 @Component({
   selector: 'app-form-product',
@@ -23,10 +24,10 @@ export class FormProductComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.products$ = combineLatest([
       this.productsChange.pipe(distinctUntilChanged()),
-      this.formHandler.ingredients.values
+      values$(this.formHandler.form.controls.ingredients)
     ]).pipe(
       map(([products, ingredients]) => {
-        const selectedProductIds = ingredients.map(i => i.product.id);
+        const selectedProductIds = ingredients.map((ingredient, idx) => this.formHandler.ingredients[idx].product.id);
         return products.filter(product => selectedProductIds.indexOf(product.id) === -1);
       })
     );
@@ -37,7 +38,7 @@ export class FormProductComponent implements OnInit, OnChanges {
   }
 
   handleAddProduct(): void {
-    this.addProduct.emit(this.formHandler.product.value as Product);
+    this.addProduct.emit(this.formHandler.form.controls.product.value);
   }
 
 }

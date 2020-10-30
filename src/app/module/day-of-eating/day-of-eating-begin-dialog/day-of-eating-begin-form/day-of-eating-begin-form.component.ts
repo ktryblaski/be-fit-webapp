@@ -6,6 +6,7 @@ import { noop, Subscription } from 'rxjs';
 import { filter, tap } from 'rxjs/operators';
 import * as moment from 'moment';
 import { DayOfEatingBeginOrigin } from '../../../../shared/model/dto/day-of-eating-begin-dto';
+import { values$ } from '../../../../shared/form/typed-form/typed-utils';
 
 @Component({
   selector: 'app-day-of-eating-begin-form',
@@ -33,17 +34,15 @@ export class DayOfEatingBeginFormComponent implements OnInit, OnChanges, OnDestr
   }
 
   ngOnInit(): void {
-    this.subscription = this.formHandler.origin.values.pipe(
+    this.subscription = values$(this.formHandler.form.controls.origin).pipe(
       filter(origin => DayOfEatingBeginOrigin.AS_COPY === origin),
-      tap(() => {
-        this.formHandler.setOriginDayDateValue(this.resolveDefaultOriginDayDate());
-      })
+      tap(() => this.formHandler.setOriginDayDateValue(this.resolveDefaultOriginDayDate()))
     ).subscribe(noop);
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.dataSource) {
-      this.availableMoments = this.dataSource.dayOfEatings.map(doe => moment(doe.dayDate));
+      this.availableMoments = this.dataSource.daysOfEating.map(doe => moment(doe.dayDate));
     }
   }
 

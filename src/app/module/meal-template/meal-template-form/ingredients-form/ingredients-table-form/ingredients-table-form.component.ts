@@ -1,26 +1,22 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { MealTemplateFormHandler } from '../../meal-template-form-handler';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
-import { distinctUntilChanged } from 'rxjs/operators';
-import { Ingredient } from '../../../../../shared/model/domain/ingredient';
-import { ControlContainer, FormGroupDirective } from '@angular/forms';
 import { FoodStats } from '../../../../../shared/model/food-stats';
+import { distinctUntilChanged } from 'rxjs/operators';
 import {
   ingredientsCalories,
   ingredientsCarbohydrates,
   ingredientsFats,
   ingredientsProteins, ingredientsWeight
 } from '../../../../../shared/util/calculator/ingredients-calculator';
+import { values$ } from '../../../../../shared/form/typed-form/typed-utils';
 
 @Component({
-  selector: 'app-ingredients-table',
-  templateUrl: './form-ingredients-table.component.html',
-  styleUrls: ['./form-ingredients-table.component.scss'],
-  viewProviders: [
-    { provide: ControlContainer, useExisting: FormGroupDirective }
-  ]
+  selector: 'app-ingredients-table-form',
+  templateUrl: './ingredients-table-form.component.html',
+  styleUrls: ['./ingredients-table-form.component.scss']
 })
-export class FormIngredientsTableComponent implements OnInit, OnDestroy {
+export class IngredientsTableFormComponent implements OnInit, OnDestroy {
 
   @Output() removeIngredient = new EventEmitter<number>();
 
@@ -33,9 +29,7 @@ export class FormIngredientsTableComponent implements OnInit, OnDestroy {
   constructor(public formHandler: MealTemplateFormHandler) { }
 
   ngOnInit(): void {
-    this.subscription = this.formHandler.ingredients.values.subscribe((ingredients: Ingredient[]) => {
-      this.updateTotalData(ingredients);
-    });
+    this.subscription = values$(this.formHandler.form.controls.ingredients).subscribe(weights => this.updateTotalData(weights));
   }
 
   handleRemoveIngredient(idx: number): void {
@@ -46,7 +40,13 @@ export class FormIngredientsTableComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  private updateTotalData(ingredients: Ingredient[]): void {
+  private updateTotalData(weights: number[]): void {
+    const ingredients = weights.map((weight, idx) => ({
+      id: this.formHandler.ingredients[idx].id,
+      weight,
+      product: this.formHandler.ingredients[idx].product
+    }));
+
     this.stats.next({
       proteins: Math.round(ingredientsProteins(ingredients)),
       fats: Math.round(ingredientsFats(ingredients)),

@@ -1,74 +1,77 @@
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Validators } from '@angular/forms';
 import { Product } from '../../../shared/model/domain/product';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { MealTemplateFormIngredientValue, MealTemplateFormValue } from './-shared/meal-template-form-value';
 import { MealTemplate } from '../../../shared/model/domain/meal-template';
-import { TypedFormControl } from '../../../shared/form/typed/typed-form-control';
-import { TypedFormArray } from '../../../shared/form/typed/typed-form-array';
+import { TypedFormBuilder } from '../../../shared/form/typed-form/typed-form-builder.service';
+import { MealTemplateForm, MealTemplateFormControls } from './-shared/meal-template-form';
+import { MealTemplateFormIngredientValue, MealTemplateFormValue } from './-shared/meal-template-form-value';
+import { values$ } from '../../../shared/form/typed-form/typed-utils';
+import { TypedFormGroup } from '../../../shared/form/typed-form/typed-form';
+
+export type IngredientProduct = Omit<MealTemplateFormIngredientValue, 'weight'>;
 
 @Injectable()
 export class MealTemplateFormHandler {
 
-  form: FormGroup;
+  form: TypedFormGroup<MealTemplateForm, MealTemplateFormControls>;
 
-  readonly name: TypedFormControl<string>;
-  readonly description: TypedFormControl<string>;
-  readonly ingredients: TypedFormArray<any>;
-  readonly product: TypedFormControl<Product | string>;
-
+  ingredients: IngredientProduct[] = [];
   hasIngredients$: Observable<boolean>;
 
-  constructor() {
-    this.form = new FormGroup({
-      name: new FormControl(null, Validators.required),
-      description: new FormControl(null),
-      ingredients: new FormArray([], Validators.required),
-      product: new FormControl(null),
+  constructor(private fb: TypedFormBuilder) {
+    this.form = this.fb.group<MealTemplateForm, MealTemplateFormControls>({
+      name: this.fb.control<string>(null, Validators.required),
+      description: this.fb.control<string>(),
+      ingredients: this.fb.array<number>(),
+      product: this.fb.control<Product>()
     });
 
-    this.name = TypedFormControl.from(this.form.get('name'));
-    this.description = TypedFormControl.from(this.form.get('description'));
-    this.ingredients = TypedFormArray.from(this.form.get('ingredients'));
-    this.product = TypedFormControl.from(this.form.get('product'));
-
-    this.hasIngredients$ = this.ingredients.values.pipe(
-      map((ingredients: MealTemplateFormIngredientValue[]) => ingredients.length > 0)
+    this.hasIngredients$ = values$(this.form.controls.ingredients).pipe(
+      map(ingredients => ingredients.length > 0)
     );
+  }
+
+  setValue(mealTemplate: MealTemplate): void {
+    this.form.controls.name.setValue(mealTemplate.name);
+    this.form.controls.description.setValue(mealTemplate.description);
+    this.form.controls.ingredients.setValue([]);
+
+    mealTemplate.ingredients.forEach(ingredient => {
+      this.addIngredient(ingredient.id, ingredient.product, ingredient.weight);
+    });
   }
 
   getValue(): MealTemplateFormValue {
     return {
-      name: this.name.value,
-      description: this.description.value,
-      ingredients: this.ingredients.value
+      name: this.form.controls.name.value,
+      description: this.form.controls.description.value,
+      ingredients: this.form.controls.ingredients.value.map((weight, idx) => ({
+        id: this.ingredients[idx].id,
+        weight,
+        product: this.ingredients[idx].product
+      }))
     };
   }
 
-  setValue(mealTemplate: MealTemplate): void {
-    this.name.setValue(mealTemplate.name);
-    this.description.setValue(mealTemplate.description);
-    this.ingredients.setValue([]);
-
-    mealTemplate.ingredients
-      .map(ingredient => ({id: ingredient.id, product: ingredient.product, weight: ingredient.weight}))
-      .map(ingredient => new FormControl(ingredient))
-      .forEach(ingredient => this.ingredients.push(ingredient));
-  }
-
   addNewIngredient(product: Product): void {
-    this.ingredients.push(
-      new FormControl({id: null, product, weight: 100})
-    );
+    this.addIngredient(null, product, 100);
   }
 
   removeIngredient(idx: number): void {
-    this.ingredients.removeAt(idx);
+    this.ingredients = this.ingredients.filter((i, index) => idx !== index);
+    this.form.controls.ingredients.removeAt(idx);
   }
 
   clearProduct(): void {
-    this.product.reset();
+    this.form.controls.product.reset();
   }
 
+  private addIngredient(id: number | null, product: Product, weight: number): void {
+    this.ingredients = [...this.ingredients, { id, product }];
+    this.form.controls.ingredients.push(
+      this.fb.control<number>(weight)
+    );
+  }
 }

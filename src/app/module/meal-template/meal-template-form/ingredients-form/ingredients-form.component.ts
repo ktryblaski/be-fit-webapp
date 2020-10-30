@@ -1,13 +1,13 @@
-import { Component, Input } from '@angular/core';
-import { MealTemplateFormHandler } from '../meal-template-form-handler';
+import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '../../../../shared/model/domain/product';
+import { MealTemplateFormHandler } from '../meal-template-form-handler';
 
 @Component({
-  selector: 'app-form-ingredients',
-  templateUrl: './form-ingredients.component.html',
-  styleUrls: ['./form-ingredients.component.scss']
+  selector: 'app-ingredients-form',
+  templateUrl: './ingredients-form.component.html',
+  styleUrls: ['./ingredients-form.component.scss']
 })
-export class FormIngredientsComponent {
+export class IngredientsFormComponent {
 
   @Input() products: Product[];
 

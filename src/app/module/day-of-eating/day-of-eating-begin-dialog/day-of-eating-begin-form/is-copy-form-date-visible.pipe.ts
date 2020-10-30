@@ -7,8 +7,8 @@ import { DayOfEatingBeginOrigin } from '../../../../shared/model/dto/day-of-eati
 })
 export class IsCopyFormDateVisiblePipe implements PipeTransform {
 
-  transform(origin: any, dataSource: DayOfEatingBeginFormDataSource): boolean {
-    return dataSource.dayOfEatings.length > 0 && DayOfEatingBeginOrigin.AS_COPY === origin;
+  transform(origin: DayOfEatingBeginOrigin, dataSource: DayOfEatingBeginFormDataSource): boolean {
+    return dataSource.daysOfEating.length > 0 && DayOfEatingBeginOrigin.AS_COPY === origin;
   }
 
 }

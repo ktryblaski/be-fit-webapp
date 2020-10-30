@@ -4,16 +4,16 @@
     <div title>
       <div *ngIf="mealTemplate">
         <span>Meal Template:</span>
-        <span class="name">{{mealTemplate.name}}</span>
+        <span class="name">{{formHandler.form.controls.name.value}}</span>
       </div>
       <div *ngIf="!mealTemplate">
         <span>New Meal Template</span>
       </div>
     </div>
     <div actions>
-      <button (click)="handleCancel()" type="button" mat-raised-button tabindex="5">Cancel</button>
+      <button (click)="handleCancel()" type="button" mat-raised-button>Cancel</button>
       <button [disabled]="formHandler.form.invalid" type="submit"
-              mat-raised-button color="primary" tabindex="6">Save</button>
+              mat-raised-button color="primary">Save</button>
     </div>
   </div>
 
@@ -21,19 +21,18 @@
     <div class="name">
       <mat-form-field>
         <mat-label>Name</mat-label>
-        <input [formControl]="formHandler.name.ref" matInput
-               type="text" tabindex="1">
+        <input [formControl]="formHandler.form.controls.name" matInput type="text">
       </mat-form-field>
     </div>
 
     <div class="description">
       <mat-form-field>
         <mat-label>Description</mat-label>
-        <textarea [formControl]="formHandler.description.ref" matInput tabindex="2"></textarea>
+        <textarea [formControl]="formHandler.form.controls.description" matInput></textarea>
       </mat-form-field>
     </div>
 
-    <app-form-ingredients [products]="dataSource.products"></app-form-ingredients>
+    <app-ingredients-form [products]="dataSource.products"></app-ingredients-form>
   </div>
 
 </form>

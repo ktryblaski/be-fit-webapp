@@ -52,8 +52,8 @@ export class DayOfEatingBeginDialogService implements OnDestroy {
         this.loading.next(true);
       }),
       switchMap(() => this.dayOfEatingRestService.findAllLites().pipe(
-        tap(dayOfEatings => {
-          this.dataSource.next({dayOfEatings});
+        tap(daysOfEating => {
+          this.dataSource.next({daysOfEating});
           this.loaded.next(true);
         }),
         catchError(error => {
@@ -70,7 +70,7 @@ export class DayOfEatingBeginDialogService implements OnDestroy {
   }
 
   private getDayByDate(date: Date): number {
-    return this.dataSource.value.dayOfEatings.find(day => {
+    return this.dataSource.value.daysOfEating.find(day => {
       return moment(day.dayDate).isSame(moment(date), 'day');
     }).id;
   }

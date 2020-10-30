@@ -1,52 +1,47 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { TypedFormControl } from '../../../../shared/form/typed/typed-form-control';
 import { DayOfEatingBeginFormValue } from './-shared/day-of-eating-begin-form-value';
 import { noop, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { DayOfEatingBeginOrigin } from '../../../../shared/model/dto/day-of-eating-begin-dto';
+import { TypedFormGroup } from '../../../../shared/form/typed-form/typed-form';
+import { TypedFormBuilder } from '../../../../shared/form/typed-form/typed-form-builder.service';
+import { DayOfEatingBeginForm, DayOfEatingBeginFormControls } from './-shared/day-of-eating-begin-form';
+import { values$ } from '../../../../shared/form/typed-form/typed-utils';
+import { Validators } from '@angular/forms';
 
 @Injectable()
 export class DayOfEatingBeginFormHandler implements OnDestroy {
 
   private subscription: Subscription;
 
-  form: FormGroup;
+  form: TypedFormGroup<DayOfEatingBeginForm, DayOfEatingBeginFormControls>;
 
-  readonly origin: TypedFormControl<DayOfEatingBeginOrigin>;
-  readonly originDayDate: TypedFormControl<Date>;
-
-  constructor() {
-    this.form = new FormGroup({
-      origin: new FormControl(DayOfEatingBeginOrigin.NEW, Validators.required),
-      originDayDate: new FormControl(null, Validators.required)
+  constructor(private fb: TypedFormBuilder) {
+    this.form = this.fb.group<DayOfEatingBeginForm, DayOfEatingBeginFormControls>({
+      origin: this.fb.control<DayOfEatingBeginOrigin>(DayOfEatingBeginOrigin.NEW, Validators.required),
+      originDayDate: this.fb.control(null, Validators.required)
     });
 
-    this.origin = TypedFormControl.from(this.form.get('origin'));
-    this.originDayDate = TypedFormControl.from(this.form.get('originDayDate'));
-
-    this.subscription = this.origin.values.pipe(
+    this.subscription = values$(this.form.controls.origin).pipe(
       tap(origin => {
         if (DayOfEatingBeginOrigin.AS_COPY === origin) {
-          this.originDayDate.ref.enable();
+          this.form.controls.originDayDate.enable();
         } else {
-          this.originDayDate.setValue(null);
-          this.originDayDate.ref.disable();
+          this.form.controls.originDayDate.setValue(null);
+          this.form.controls.originDayDate.disable();
         }
       })
     ).subscribe(noop);
-    this.originDayDate.ref.disable();
+
+    this.form.controls.originDayDate.disable();
   }
 
   getValue(): DayOfEatingBeginFormValue {
-    return {
-      origin: this.origin.value,
-      originDayDate: this.originDayDate.value
-    };
+    return this.form.value;
   }
 
   setOriginDayDateValue(date: Date): void {
-    this.originDayDate.setValue(date);
+    this.form.controls.originDayDate.setValue(date);
   }
 
   ngOnDestroy(): void {

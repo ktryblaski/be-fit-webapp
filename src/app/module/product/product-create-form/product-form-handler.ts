@@ -1,39 +1,26 @@
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Validators } from '@angular/forms';
 import { ProductFormValue } from './-shared/product-form-value';
-import { TypedFormControl } from '../../../shared/form/typed/typed-form-control';
 import { Injectable } from '@angular/core';
+import { TypedFormGroup, } from '../../../shared/form/typed-form/typed-form';
+import { TypedFormBuilder } from '../../../shared/form/typed-form/typed-form-builder.service';
+
 
 @Injectable()
 export class ProductFormHandler {
 
-  form: FormGroup;
+  form: TypedFormGroup<ProductFormValue>;
 
-  name: TypedFormControl<string>;
-  carbohydrates: TypedFormControl<number>;
-  proteins: TypedFormControl<number>;
-  fats: TypedFormControl<number>;
-
-  constructor() {
-    this.form = new FormGroup({
-      name: new FormControl(null, Validators.required),
-      carbohydrates: new FormControl(0, Validators.required),
-      proteins: new FormControl(0, Validators.required),
-      fats: new FormControl(0, Validators.required)
+  constructor(private fb: TypedFormBuilder) {
+    this.form = this.fb.group<ProductFormValue>({
+      name: this.fb.control(null, Validators.required),
+      proteins: this.fb.control(null, Validators.required),
+      fats: this.fb.control(null, Validators.required),
+      carbohydrates: this.fb.control(null, Validators.required)
     });
-
-    this.name = TypedFormControl.from(this.form.get('name'));
-    this.carbohydrates = TypedFormControl.from(this.form.get('carbohydrates'));
-    this.proteins = TypedFormControl.from(this.form.get('proteins'));
-    this.fats = TypedFormControl.from(this.form.get('fats'));
   }
 
   getValue(): ProductFormValue {
-    return {
-      name: this.name.value,
-      carbohydrates: this.carbohydrates.value,
-      proteins: this.proteins.value,
-      fats: this.fats.value
-    };
+    return this.form.value;
   }
 
 }
