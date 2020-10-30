@@ -1,8 +1,13 @@
 <div class="product-container">
   <app-form-product-select [products]="products$ | async"></app-form-product-select>
 
-  <button [disabled]="!formHandler.form.controls.product.value"
-          (click)="handleAddProduct()"
-          mat-raised-button type="button"
-          class="add-button">Add</button>
+  <button
+    [disabled]="!formHandler.form.controls.product.value"
+    (click)="handleAddProduct()"
+    mat-raised-button
+    type="button"
+    class="add-button"
+  >
+    Add
+  </button>
 </div>

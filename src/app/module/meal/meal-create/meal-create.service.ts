@@ -10,7 +10,6 @@ import { MealMapperService } from '../meal-form/meal-mapper.service';
 
 @Injectable()
 export class MealCreateService {
-
   private readonly saveAction = new Subject<MealFormHandler>();
 
   private readonly saving = new BehaviorSubject<boolean>(false);
@@ -19,10 +18,12 @@ export class MealCreateService {
 
   private subscription: Subscription;
 
-  constructor(private restService: MealRestService,
-              private notificationService: NotificationService,
-              private mapper: MealMapperService,
-              private router: Router) {
+  constructor(
+    private restService: MealRestService,
+    private notificationService: NotificationService,
+    private mapper: MealMapperService,
+    private router: Router
+  ) {
     this.subscription = this.saveEffect().subscribe(noop);
   }
 
@@ -35,26 +36,27 @@ export class MealCreateService {
       tap(() => {
         this.saving.next(true);
       }),
-      switchMap((meal) => this.restService.create(this.mapper.map(meal)).pipe(
-        tap((id) => {
-          this.router.navigate(['meal', id]);
-          this.notificationService.show({
-            message: 'New meal has been added',
-            severity: NotificationSeverity.SUCCESS
-          });
-        }),
-        catchError(error => {
-          console.error(error);
-          this.saving.next(false);
-          this.notificationService.show({
-            message: 'An error has occurred',
-            severity: NotificationSeverity.DANGER
-          });
-          return EMPTY;
-        })
-      )),
+      switchMap(meal =>
+        this.restService.create(this.mapper.map(meal)).pipe(
+          tap(id => {
+            this.router.navigate(['meal', id]);
+            this.notificationService.show({
+              message: 'New meal has been added',
+              severity: NotificationSeverity.SUCCESS,
+            });
+          }),
+          catchError(error => {
+            console.error(error);
+            this.saving.next(false);
+            this.notificationService.show({
+              message: 'An error has occurred',
+              severity: NotificationSeverity.DANGER,
+            });
+            return EMPTY;
+          })
+        )
+      ),
       ignoreElements()
     );
   }
-
 }

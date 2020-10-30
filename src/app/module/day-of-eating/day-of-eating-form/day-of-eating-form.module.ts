@@ -23,16 +23,9 @@ import { HelperModule } from '../../../shared/helper/helper.module';
     MatInputModule,
     MatIconModule,
     CalculatorModule,
-    HelperModule
+    HelperModule,
   ],
-  exports: [
-    DayOfEatingFormComponent
-  ],
-  declarations: [
-    DayOfEatingFormComponent,
-    DayOfEatingFormMealComponent,
-    DayOfEatingFormIngredientsComponent,
-    ProductPipe
-  ]
+  exports: [DayOfEatingFormComponent],
+  declarations: [DayOfEatingFormComponent, DayOfEatingFormMealComponent, DayOfEatingFormIngredientsComponent, ProductPipe],
 })
-export class DayOfEatingFormModule { }
+export class DayOfEatingFormModule {}

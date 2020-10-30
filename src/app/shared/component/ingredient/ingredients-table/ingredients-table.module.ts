@@ -6,17 +6,8 @@ import { SortIngredientsPipe } from './sort-ingredients.pipe';
 import { CalculatorModule } from '../../../pipe/calculator/calculator.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    HelperModule,
-    CalculatorModule
-  ],
-  declarations: [
-    IngredientsTableComponent,
-    SortIngredientsPipe
-  ],
-  exports: [
-    IngredientsTableComponent
-  ]
+  imports: [CommonModule, HelperModule, CalculatorModule],
+  declarations: [IngredientsTableComponent, SortIngredientsPipe],
+  exports: [IngredientsTableComponent],
 })
-export class IngredientsTableModule { }
+export class IngredientsTableModule {}

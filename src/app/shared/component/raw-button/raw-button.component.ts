@@ -4,6 +4,6 @@ import { Component } from '@angular/core';
   // tslint:disable-next-line:component-selector
   selector: 'button[rawButton]',
   templateUrl: './raw-button.component.html',
-  styleUrls: ['./raw-button.component.scss']
+  styleUrls: ['./raw-button.component.scss'],
 })
-export class RawButtonComponent { }
+export class RawButtonComponent {}

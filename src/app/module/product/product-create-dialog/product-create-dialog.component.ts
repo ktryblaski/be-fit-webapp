@@ -5,11 +5,10 @@ import { ProductFormValue } from '../product-create-form/-shared/product-form-va
 @Component({
   selector: 'app-product-create-dialog',
   templateUrl: './product-create-dialog.component.html',
-  styleUrls: ['./product-create-dialog.component.scss']
+  styleUrls: ['./product-create-dialog.component.scss'],
 })
 export class ProductCreateDialogComponent {
-
-  constructor(private dialogRef: MatDialogRef<ProductCreateDialogComponent>) { }
+  constructor(private dialogRef: MatDialogRef<ProductCreateDialogComponent>) {}
 
   handleCreate(formValue: ProductFormValue): void {
     this.dialogRef.close(formValue);
@@ -18,5 +17,4 @@ export class ProductCreateDialogComponent {
   handleCancel(): void {
     this.dialogRef.close();
   }
-
 }

@@ -13,10 +13,9 @@ import { MealTemplateRestService } from '../../../shared/service/rest/meal-templ
 import { ErrorModalService } from '../../../shared/error-modal/error-modal.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DayOfEatingEditService implements OnDestroy {
-
   private loadAction = new Subject<number>();
   private saveAction = new Subject<DayOfEatingFormValue>();
 
@@ -34,18 +33,16 @@ export class DayOfEatingEditService implements OnDestroy {
 
   private subscription: Subscription;
 
-  constructor(private restService: DayOfEatingRestService,
-              private mealTemplateRestService: MealTemplateRestService,
-              private productRestService: ProductRestService,
-              private notificationService: NotificationService,
-              private errorModalService: ErrorModalService,
-              private router: Router,
-              private route: ActivatedRoute) {
-
-    this.subscription = merge(
-      this.loadEffect(),
-      this.saveEffect()
-    ).subscribe(noop);
+  constructor(
+    private restService: DayOfEatingRestService,
+    private mealTemplateRestService: MealTemplateRestService,
+    private productRestService: ProductRestService,
+    private notificationService: NotificationService,
+    private errorModalService: ErrorModalService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    this.subscription = merge(this.loadEffect(), this.saveEffect()).subscribe(noop);
   }
 
   load(id: number): void {
@@ -65,25 +62,23 @@ export class DayOfEatingEditService implements OnDestroy {
       tap(() => {
         this.loading.next(true);
       }),
-      switchMap(id => forkJoin([
-        this.restService.get(id),
-        this.mealTemplateRestService.findAllActive(),
-        this.productRestService.findAll()
-      ]).pipe(
-        tap(([dayOfEating, mealTemplates, products]) => {
-          this.dayOfEating.next(dayOfEating);
-          this.dataSource.next({mealTemplates, products});
-          this.loaded.next(true);
-        }),
-        catchError(error => {
-          console.error(error);
-          this.errorModalService.showError('An error has occurred while loading data');
-          return EMPTY;
-        }),
-        finalize(() => {
-          this.loading.next(false);
-        })
-      )),
+      switchMap(id =>
+        forkJoin([this.restService.get(id), this.mealTemplateRestService.findAllActive(), this.productRestService.findAll()]).pipe(
+          tap(([dayOfEating, mealTemplates, products]) => {
+            this.dayOfEating.next(dayOfEating);
+            this.dataSource.next({ mealTemplates, products });
+            this.loaded.next(true);
+          }),
+          catchError(error => {
+            console.error(error);
+            this.errorModalService.showError('An error has occurred while loading data');
+            return EMPTY;
+          }),
+          finalize(() => {
+            this.loading.next(false);
+          })
+        )
+      ),
       ignoreElements()
     );
   }
@@ -93,23 +88,25 @@ export class DayOfEatingEditService implements OnDestroy {
       tap(() => {
         this.saving.next(true);
       }),
-      switchMap(formValue => this.restService.update(this.mapToSave(formValue)).pipe(
-        tap(mealTemplate => {
-          this.router.navigate(['../'], {relativeTo: this.route});
-          this.notificationService.show({
-            message: 'The meal has been saved',
-            severity: NotificationSeverity.SUCCESS
-          });
-        }),
-        catchError(error => {
-          console.error(error);
-          this.errorModalService.showError('An error has occurred while saving day of eating');
-          return EMPTY;
-        }),
-        finalize(() => {
-          this.saving.next(false);
-        })
-      )),
+      switchMap(formValue =>
+        this.restService.update(this.mapToSave(formValue)).pipe(
+          tap(mealTemplate => {
+            this.router.navigate(['../'], { relativeTo: this.route });
+            this.notificationService.show({
+              message: 'The meal has been saved',
+              severity: NotificationSeverity.SUCCESS,
+            });
+          }),
+          catchError(error => {
+            console.error(error);
+            this.errorModalService.showError('An error has occurred while saving day of eating');
+            return EMPTY;
+          }),
+          finalize(() => {
+            this.saving.next(false);
+          })
+        )
+      ),
       ignoreElements()
     );
   }
@@ -121,10 +118,9 @@ export class DayOfEatingEditService implements OnDestroy {
         return {
           name: meal.name,
           description: meal.description,
-          ingredients: meal.ingredients.map(i => ({productId: i.product.id, weight: i.weight}))
+          ingredients: meal.ingredients.map(i => ({ productId: i.product.id, weight: i.weight })),
         };
-      })
+      }),
     };
   }
-
 }

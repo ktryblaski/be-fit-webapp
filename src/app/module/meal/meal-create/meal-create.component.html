@@ -1,8 +1,5 @@
 <div class="pending-indicator-overlay-boundaries">
-  <app-meal-form [formHandler]="formHandler"
-                 [new]="true"
-                 (save)="handleCreate()"
-                 (cancel)="handleCancel()"></app-meal-form>
+  <app-meal-form [formHandler]="formHandler" [new]="true" (save)="handleCreate()" (cancel)="handleCancel()"></app-meal-form>
 
   <div class="pending-indicator-overlay-container" *ngIf="saving$ | async">
     <app-spinner></app-spinner>

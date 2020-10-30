@@ -3,7 +3,6 @@ import { AbstractTypedControl } from './abstract-typed-control';
 
 // TODO
 export class TypedFormArray<T> extends AbstractTypedControl<T, FormArray> {
-
   static from<T>(control: AbstractControl): TypedFormArray<T> {
     return new TypedFormArray<T>(control as FormArray);
   }
@@ -16,10 +15,13 @@ export class TypedFormArray<T> extends AbstractTypedControl<T, FormArray> {
     super(ref);
   }
 
-  setValue(value: any[], options?: {
-    onlySelf?: boolean;
-    emitEvent?: boolean;
-  }): void {
+  setValue(
+    value: any[],
+    options?: {
+      onlySelf?: boolean;
+      emitEvent?: boolean;
+    }
+  ): void {
     this.ref.setValue(value, options);
   }
 
@@ -42,5 +44,4 @@ export class TypedFormArray<T> extends AbstractTypedControl<T, FormArray> {
   get controls(): AbstractControl[] {
     return (this.ref as FormArray).controls;
   }
-
 }

@@ -11,7 +11,7 @@ import { MealTemplatesListModule } from './meal-templates-list/meal-templates-li
     MealTemplateCreateModule,
     MealTemplateDetailsModule,
     MealTemplateEditModule,
-    MealTemplatesListModule
-  ]
+    MealTemplatesListModule,
+  ],
 })
-export class MealTemplateModule { }
+export class MealTemplateModule {}

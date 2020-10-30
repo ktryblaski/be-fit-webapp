@@ -4,14 +4,12 @@ import { Observable } from 'rxjs';
 import { MealTemplate, MealTemplateCU } from '../../model/domain/meal-template';
 import { DayOfEating, DayOfEatingLite } from '../../model/domain/day-of-eating';
 
-class DayOfEatingBegin {
-}
+class DayOfEatingBegin {}
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DayOfEatingRestService {
-
   private readonly API_URL = '/api/days-of-eating';
 
   constructor(private http: HttpClient) {}
@@ -39,5 +37,4 @@ export class DayOfEatingRestService {
   create(begin: DayOfEatingBegin): Observable<number> {
     return this.http.post<number>(`${this.API_URL}`, begin);
   }
-
 }

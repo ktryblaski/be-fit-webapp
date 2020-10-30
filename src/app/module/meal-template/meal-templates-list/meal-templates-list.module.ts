@@ -9,17 +9,7 @@ import { CalculatorModule } from '../../../shared/pipe/calculator/calculator.mod
 import { NoTableDataModule } from '../../../shared/component/no-table-data/no-table-data.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    HelperModule,
-    MatButtonModule,
-    SpinnerModule,
-    CalculatorModule,
-    NoTableDataModule
-  ],
-  declarations: [
-    MealTemplatesListComponent,
-    MealTemplatesTableComponent
-  ]
+  imports: [CommonModule, HelperModule, MatButtonModule, SpinnerModule, CalculatorModule, NoTableDataModule],
+  declarations: [MealTemplatesListComponent, MealTemplatesTableComponent],
 })
-export class MealTemplatesListModule { }
+export class MealTemplatesListModule {}

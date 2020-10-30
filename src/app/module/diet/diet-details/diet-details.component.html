@@ -1,8 +1,6 @@
 <ng-container *ngIf="loaded$ | async; else loading">
   <div class="pending-indicator-overlay-boundaries">
-    <button [routerLink]="['edit']"
-            mat-raised-button
-            class="edit-button">Edit</button>
+    <button [routerLink]="['edit']" mat-raised-button class="edit-button">Edit</button>
 
     <app-diet-details-ui [diet]="diet$ | async"></app-diet-details-ui>
 

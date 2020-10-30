@@ -8,16 +8,14 @@ import { DietCreateService } from './diet-create.service';
   selector: 'app-diet-create',
   templateUrl: './diet-create.component.html',
   styleUrls: ['./diet-create.component.scss'],
-  providers: [DietCreateService]
+  providers: [DietCreateService],
 })
 export class DietCreateComponent implements OnInit {
-
   formHandler: DietFormHandler = new DietFormHandler();
 
   saving$: Observable<boolean>;
 
-  constructor(private service: DietCreateService,
-              private router: Router) { }
+  constructor(private service: DietCreateService, private router: Router) {}
 
   ngOnInit(): void {
     this.saving$ = this.service.saving$;
@@ -30,5 +28,4 @@ export class DietCreateComponent implements OnInit {
   handleCancel(): void {
     this.router.navigate(['diet']);
   }
-
 }

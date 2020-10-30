@@ -4,10 +4,9 @@ import { Observable } from 'rxjs';
 import { Product } from '../../model/domain/product';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductRestService {
-
   private readonly API_URL = '/api/products';
 
   constructor(private http: HttpClient) {}
@@ -31,5 +30,4 @@ export class ProductRestService {
   unfavourite(id: number): Observable<Product> {
     return this.http.put<Product>(`${this.API_URL}/${id}/unfavourite`, {});
   }
-
 }

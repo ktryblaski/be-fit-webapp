@@ -6,15 +6,14 @@ import { InternationalizationService } from '../../../shared/service/internation
 @Component({
   selector: 'app-diet-form',
   templateUrl: './diet-form.component.html',
-  styleUrls: ['./diet-form.component.scss']
+  styleUrls: ['./diet-form.component.scss'],
 })
 export class DietFormComponent {
-
   @Input() formHandler: DietFormHandler;
   @Output() save = new EventEmitter();
   @Output() cancel = new EventEmitter();
 
-  readonly DIET_TYPE: {[key: string]: string};
+  readonly DIET_TYPE: { [key: string]: string };
   readonly dietTypes: DietType[] = [DietType.CUTTING, DietType.KEEPING, DietType.BULKING];
 
   constructor(private i18nService: InternationalizationService) {

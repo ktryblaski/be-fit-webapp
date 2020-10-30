@@ -16,13 +16,12 @@
     </th>
   </tr>
 
-  <tr *ngFor="let product of products"
-      (click)="handleClick(product)">
-    <td class="name">{{product.name}}</td>
-    <td>{{product.macronutrients.carbohydrates}}</td>
-    <td>{{product.macronutrients.proteins}}</td>
-    <td>{{product.macronutrients.fats}}</td>
-    <td>{{product.macronutrients | macronutrientsCaloriesCalculator}}</td>
+  <tr *ngFor="let product of products" (click)="handleClick(product)">
+    <td class="name">{{ product.name }}</td>
+    <td>{{ product.macronutrients.carbohydrates }}</td>
+    <td>{{ product.macronutrients.proteins }}</td>
+    <td>{{ product.macronutrients.fats }}</td>
+    <td>{{ product.macronutrients | macronutrientsCaloriesCalculator }}</td>
     <td class="favourite">
       <fa-icon *ngIf="product.favourite" icon="heart"></fa-icon>
     </td>

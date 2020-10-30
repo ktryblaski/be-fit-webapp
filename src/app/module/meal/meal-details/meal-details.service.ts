@@ -8,7 +8,6 @@ import { NotificationSeverity } from '../../../shared/component/notification/not
 
 @Injectable()
 export class MealDetailsService implements OnDestroy {
-
   private readonly loadAction = new Subject<number>();
 
   private readonly meal = new BehaviorSubject<Meal | null>(null);
@@ -21,12 +20,8 @@ export class MealDetailsService implements OnDestroy {
 
   private subscription: Subscription;
 
-  constructor(private restService: MealRestService,
-              private notificationService: NotificationService) {
-
-    this.subscription = merge(
-      this.loadEffect()
-    ).subscribe(noop);
+  constructor(private restService: MealRestService, private notificationService: NotificationService) {
+    this.subscription = merge(this.loadEffect()).subscribe(noop);
   }
 
   load(mealId: number): void {
@@ -38,22 +33,24 @@ export class MealDetailsService implements OnDestroy {
       tap(() => {
         this.loading.next(true);
       }),
-      switchMap((mealId: number) => this.restService.getMeal(mealId).pipe(
-        tap((meal: Meal) => {
-          this.meal.next(meal);
-          this.loaded.next(true);
-          this.loading.next(false);
-        }),
-        catchError(error => {
-          console.error(error);
-          this.loading.next(false);
-          this.notificationService.show({
-            message: 'An error has occurred',
-            severity: NotificationSeverity.DANGER
-          });
-          return EMPTY;
-        })
-      )),
+      switchMap((mealId: number) =>
+        this.restService.getMeal(mealId).pipe(
+          tap((meal: Meal) => {
+            this.meal.next(meal);
+            this.loaded.next(true);
+            this.loading.next(false);
+          }),
+          catchError(error => {
+            console.error(error);
+            this.loading.next(false);
+            this.notificationService.show({
+              message: 'An error has occurred',
+              severity: NotificationSeverity.DANGER,
+            });
+            return EMPTY;
+          })
+        )
+      ),
       ignoreElements()
     );
   }

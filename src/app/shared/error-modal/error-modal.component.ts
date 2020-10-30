@@ -5,10 +5,9 @@ import { ErrorModalData } from './-model/error-modal-data';
 @Component({
   selector: 'app-error-modal',
   templateUrl: './error-modal.component.html',
-  styleUrls: ['./error-modal.component.scss']
+  styleUrls: ['./error-modal.component.scss'],
 })
 export class ErrorModalComponent {
-
   title: string | null;
   content: string;
 
@@ -21,5 +20,4 @@ export class ErrorModalComponent {
       this.content = data;
     }
   }
-
 }

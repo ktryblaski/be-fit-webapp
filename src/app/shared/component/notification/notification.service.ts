@@ -4,10 +4,9 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class NotificationService {
-
   private readonly NOTIFICATION_LIFE_TIME = 7;
   private readonly MAX_NOTIFICATIONS_NUMBER = 5;
 
@@ -18,7 +17,7 @@ export class NotificationService {
   show(notification: Notification): void {
     const notifications = [
       ...(this.notifications.value.length === this.MAX_NOTIFICATIONS_NUMBER ? this.notifications.value.slice(1) : this.notifications.value),
-      notification
+      notification,
     ];
 
     setTimeout(() => {
@@ -29,9 +28,6 @@ export class NotificationService {
   }
 
   private close(notification: Notification) {
-    this.notifications.next(
-      this.notifications.value.filter(n => n !== notification)
-    );
+    this.notifications.next(this.notifications.value.filter(n => n !== notification));
   }
-
 }

@@ -11,7 +11,6 @@ import { Meal } from '../../../shared/model/domain/meal';
 
 @Injectable()
 export class MealEditService {
-
   private readonly saveAction = new Subject<MealFormHandler>();
   private readonly loadAction = new Subject<number>();
 
@@ -26,14 +25,13 @@ export class MealEditService {
 
   private subscription: Subscription;
 
-  constructor(private restService: MealRestService,
-              private notificationService: NotificationService,
-              private mapper: MealMapperService,
-              private router: Router) {
-    this.subscription = merge(
-      this.loadEffect(),
-      this.saveEffect()
-    ).subscribe(noop);
+  constructor(
+    private restService: MealRestService,
+    private notificationService: NotificationService,
+    private mapper: MealMapperService,
+    private router: Router
+  ) {
+    this.subscription = merge(this.loadEffect(), this.saveEffect()).subscribe(noop);
   }
 
   load(id: number): void {
@@ -49,23 +47,25 @@ export class MealEditService {
       tap(() => {
         this.pending.next(true);
       }),
-      switchMap((id) => this.restService.getMeal(id).pipe(
-        tap((meal) => {
-          this.meal.next(meal);
-          this.mealFormHandler.next(new MealFormHandler(meal));
-          this.pending.next(false);
-          this.loaded.next(true);
-        }),
-        catchError(error => {
-          console.error(error);
-          this.pending.next(false);
-          this.notificationService.show({
-            message: 'An error has occurred',
-            severity: NotificationSeverity.DANGER
-          });
-          return EMPTY;
-        })
-      )),
+      switchMap(id =>
+        this.restService.getMeal(id).pipe(
+          tap(meal => {
+            this.meal.next(meal);
+            this.mealFormHandler.next(new MealFormHandler(meal));
+            this.pending.next(false);
+            this.loaded.next(true);
+          }),
+          catchError(error => {
+            console.error(error);
+            this.pending.next(false);
+            this.notificationService.show({
+              message: 'An error has occurred',
+              severity: NotificationSeverity.DANGER,
+            });
+            return EMPTY;
+          })
+        )
+      ),
       ignoreElements()
     );
   }
@@ -75,26 +75,27 @@ export class MealEditService {
       tap(() => {
         this.pending.next(true);
       }),
-      switchMap((meal) => this.restService.update(this.mapper.map(meal), this.meal.value.id).pipe(
-        tap((savedMeal) => {
-          this.router.navigate(['meal', savedMeal.id]);
-          this.notificationService.show({
-            message: 'The meal has been saved',
-            severity: NotificationSeverity.SUCCESS
-          });
-        }),
-        catchError(error => {
-          console.error(error);
-          this.pending.next(false);
-          this.notificationService.show({
-            message: 'An error has occurred',
-            severity: NotificationSeverity.DANGER
-          });
-          return EMPTY;
-        })
-      )),
+      switchMap(meal =>
+        this.restService.update(this.mapper.map(meal), this.meal.value.id).pipe(
+          tap(savedMeal => {
+            this.router.navigate(['meal', savedMeal.id]);
+            this.notificationService.show({
+              message: 'The meal has been saved',
+              severity: NotificationSeverity.SUCCESS,
+            });
+          }),
+          catchError(error => {
+            console.error(error);
+            this.pending.next(false);
+            this.notificationService.show({
+              message: 'An error has occurred',
+              severity: NotificationSeverity.DANGER,
+            });
+            return EMPTY;
+          })
+        )
+      ),
       ignoreElements()
     );
   }
-
 }

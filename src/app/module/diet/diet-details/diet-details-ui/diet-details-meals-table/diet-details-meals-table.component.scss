@@ -5,7 +5,7 @@ table[appTable] {
     background-color: #f7f7f7;
 
     td {
-      border-top: 2px solid rgba(0, 0, 0, .12);
+      border-top: 2px solid rgba(0, 0, 0, 0.12);
       color: red;
     }
   }
@@ -13,5 +13,4 @@ table[appTable] {
   td.name-cell {
     font-weight: 500;
   }
-
 }

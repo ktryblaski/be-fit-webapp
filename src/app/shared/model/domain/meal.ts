@@ -7,7 +7,7 @@ export enum MealType {
   DINNER = 'DINNER',
   SUPPER = 'SUPPER',
   BEFORE_WORKOUT = 'BEFORE_WORKOUT',
-  AFTER_WORKOUT = 'AFTER_WORKOUT'
+  AFTER_WORKOUT = 'AFTER_WORKOUT',
 }
 
 export interface Meal {

@@ -10,7 +10,6 @@ import { ErrorModalService } from '../../../shared/error-modal/error-modal.servi
 
 @Injectable()
 export class ProductsListService implements OnDestroy {
-
   private readonly loadAction = new Subject();
   private readonly createAction = new Subject<ProductFormValue>();
 
@@ -26,14 +25,12 @@ export class ProductsListService implements OnDestroy {
 
   private subscription: Subscription;
 
-  constructor(private restService: ProductRestService,
-              private notificationService: NotificationService,
-              private errorModalService: ErrorModalService) {
-
-    this.subscription = merge(
-      this.loadEffect(),
-      this.createEffect()
-    ).subscribe(noop);
+  constructor(
+    private restService: ProductRestService,
+    private notificationService: NotificationService,
+    private errorModalService: ErrorModalService
+  ) {
+    this.subscription = merge(this.loadEffect(), this.createEffect()).subscribe(noop);
   }
 
   load(): void {
@@ -53,23 +50,25 @@ export class ProductsListService implements OnDestroy {
       tap(() => {
         this.creating.next(true);
       }),
-      switchMap(formValue => this.restService.save(this.mapProduct(formValue)).pipe(
-        tap(() => {
-          this.notificationService.show({
-            message: 'New product has been added',
-            severity: NotificationSeverity.SUCCESS
-          });
-          this.load();
-        }),
-        catchError(error => {
-          console.error(error);
-          this.errorModalService.showError('An error has occurred while creating new product');
-          return EMPTY;
-        }),
-        finalize(() => {
-          this.creating.next(false);
-        })
-      )),
+      switchMap(formValue =>
+        this.restService.save(this.mapProduct(formValue)).pipe(
+          tap(() => {
+            this.notificationService.show({
+              message: 'New product has been added',
+              severity: NotificationSeverity.SUCCESS,
+            });
+            this.load();
+          }),
+          catchError(error => {
+            console.error(error);
+            this.errorModalService.showError('An error has occurred while creating new product');
+            return EMPTY;
+          }),
+          finalize(() => {
+            this.creating.next(false);
+          })
+        )
+      ),
       ignoreElements()
     );
   }
@@ -79,20 +78,22 @@ export class ProductsListService implements OnDestroy {
       tap(() => {
         this.loading.next(true);
       }),
-      switchMap(() => this.restService.findAll().pipe(
-        tap(products => {
-          this.products.next(products);
-          this.loaded.next(true);
-        }),
-        catchError(error => {
-          console.error(error);
-          this.errorModalService.showError('An error has occurred while loading data');
-          return EMPTY;
-        }),
-        finalize(() => {
-          this.loading.next(false);
-        })
-      )),
+      switchMap(() =>
+        this.restService.findAll().pipe(
+          tap(products => {
+            this.products.next(products);
+            this.loaded.next(true);
+          }),
+          catchError(error => {
+            console.error(error);
+            this.errorModalService.showError('An error has occurred while loading data');
+            return EMPTY;
+          }),
+          finalize(() => {
+            this.loading.next(false);
+          })
+        )
+      ),
       ignoreElements()
     );
   }
@@ -104,9 +105,8 @@ export class ProductsListService implements OnDestroy {
       macronutrients: {
         carbohydrates: formValue.carbohydrates,
         proteins: formValue.proteins,
-        fats: formValue.fats
-      }
+        fats: formValue.fats,
+      },
     };
   }
-
 }

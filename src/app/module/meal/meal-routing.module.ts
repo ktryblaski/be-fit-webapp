@@ -6,16 +6,14 @@ import { MealCreateComponent } from './meal-create/meal-create.component';
 import { MealEditComponent } from './meal-edit/meal-edit.component';
 
 const routes: Routes = [
-  {path: '', component: MealsListComponent},
-  {path: 'new', component: MealCreateComponent},
-  {path: ':id', component: MealDetailsComponent},
-  {path: ':id/edit', component: MealEditComponent}
+  { path: '', component: MealsListComponent },
+  { path: 'new', component: MealCreateComponent },
+  { path: ':id', component: MealDetailsComponent },
+  { path: ':id/edit', component: MealEditComponent },
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forChild(routes)
-  ],
-  exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class MealRoutingModule { }
+export class MealRoutingModule {}

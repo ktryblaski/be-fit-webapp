@@ -8,17 +8,14 @@ import { ActivatedRoute, Router } from '@angular/router';
   selector: 'app-meals-list',
   templateUrl: './meals-list.component.html',
   styleUrls: ['./meals-list.component.scss'],
-  providers: [MealsListService]
+  providers: [MealsListService],
 })
 export class MealsListComponent implements OnInit {
-
   public meals$: Observable<MealView[]>;
   public loaded$: Observable<boolean>;
   public loading$: Observable<boolean>;
 
-  constructor(private service: MealsListService,
-              private route: ActivatedRoute,
-              private router: Router) { }
+  constructor(private service: MealsListService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     this.meals$ = this.service.meals$;
@@ -29,11 +26,10 @@ export class MealsListComponent implements OnInit {
   }
 
   handleClick(meal: MealView): void {
-    this.router.navigate([meal.id], {relativeTo: this.route});
+    this.router.navigate([meal.id], { relativeTo: this.route });
   }
 
   handleAddNewMeal(): void {
-    this.router.navigate(['new'], {relativeTo: this.route});
+    this.router.navigate(['new'], { relativeTo: this.route });
   }
-
 }

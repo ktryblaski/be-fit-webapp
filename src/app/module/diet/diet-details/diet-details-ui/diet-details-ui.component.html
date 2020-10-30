@@ -1,13 +1,13 @@
-<div class="diet-name">{{diet.name}}</div>
+<div class="diet-name">{{ diet.name }}</div>
 
 <div class="diet-property">
   <div class="title">Diet Type:</div>
-  <div class="value">{{diet.type | i18nSelect:DIET_TYPE}}</div>
+  <div class="value">{{ diet.type | i18nSelect: DIET_TYPE }}</div>
 </div>
 
 <div class="diet-property">
   <div class="title">Dates:</div>
-  <div class="value">{{diet.startDate | date:'mediumDate'}} - {{diet.endDate | date:'mediumDate'}}</div>
+  <div class="value">{{ diet.startDate | date: 'mediumDate' }} - {{ diet.endDate | date: 'mediumDate' }}</div>
 </div>
 
 <div class="diet-property">

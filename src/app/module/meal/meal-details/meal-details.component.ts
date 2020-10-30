@@ -8,18 +8,16 @@ import { Meal } from '../../../shared/model/domain/meal';
   selector: 'app-meal-details',
   templateUrl: './meal-details.component.html',
   styleUrls: ['./meal-details.component.scss'],
-  providers: [MealDetailsService]
+  providers: [MealDetailsService],
 })
 export class MealDetailsComponent implements OnInit, OnDestroy {
-
   private subscription: Subscription;
 
   public meal$: Observable<Meal>;
   public loaded$: Observable<boolean>;
   public loading$: Observable<boolean>;
 
-  constructor(private service: MealDetailsService,
-              private route: ActivatedRoute) { }
+  constructor(private service: MealDetailsService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.meal$ = this.service.meal$;
@@ -34,5 +32,4 @@ export class MealDetailsComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-
 }

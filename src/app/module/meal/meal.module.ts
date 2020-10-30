@@ -64,6 +64,6 @@ import { NoTableDataModule } from '../../shared/component/no-table-data/no-table
     ProductPipe,
     IsAddingDisabledPipe,
     FilterProductsPipe,
-  ]
+  ],
 })
-export class MealModule { }
+export class MealModule {}

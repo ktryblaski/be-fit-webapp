@@ -8,7 +8,6 @@ import { Diet } from '../../../shared/model/domain/diet';
 
 @Injectable()
 export class DietDetailsService implements OnDestroy {
-
   private readonly loadAction = new Subject<number>();
 
   private readonly diet = new BehaviorSubject<Diet | null>(null);
@@ -21,12 +20,8 @@ export class DietDetailsService implements OnDestroy {
 
   private subscription: Subscription;
 
-  constructor(private restService: DietRestService,
-              private notificationService: NotificationService) {
-
-    this.subscription = merge(
-      this.loadEffect()
-    ).subscribe(noop);
+  constructor(private restService: DietRestService, private notificationService: NotificationService) {
+    this.subscription = merge(this.loadEffect()).subscribe(noop);
   }
 
   load(dietId: number): void {
@@ -38,22 +33,24 @@ export class DietDetailsService implements OnDestroy {
       tap(() => {
         this.loading.next(true);
       }),
-      switchMap((dietId: number) => this.restService.getDiet(dietId).pipe(
-        tap((diet: Diet) => {
-          this.diet.next(diet);
-          this.loaded.next(true);
-          this.loading.next(false);
-        }),
-        catchError(error => {
-          console.error(error);
-          this.loading.next(false);
-          this.notificationService.show({
-            message: 'An error has occurred',
-            severity: NotificationSeverity.DANGER
-          });
-          return EMPTY;
-        })
-      )),
+      switchMap((dietId: number) =>
+        this.restService.getDiet(dietId).pipe(
+          tap((diet: Diet) => {
+            this.diet.next(diet);
+            this.loaded.next(true);
+            this.loading.next(false);
+          }),
+          catchError(error => {
+            console.error(error);
+            this.loading.next(false);
+            this.notificationService.show({
+              message: 'An error has occurred',
+              severity: NotificationSeverity.DANGER,
+            });
+            return EMPTY;
+          })
+        )
+      ),
       ignoreElements()
     );
   }
@@ -61,5 +58,4 @@ export class DietDetailsService implements OnDestroy {
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-
 }

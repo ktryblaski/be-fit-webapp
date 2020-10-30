@@ -1,15 +1,15 @@
 <ng-container *ngIf="loaded$ | async; else loading">
   <div class="pending-indicator-overlay-boundaries">
-
-    <app-day-of-eating-form [dayOfEating]="dayOfEating$ | async"
-                            [dataSource]="dataSource$ | async"
-                            (save)="handleSave($event)"
-                            (cancel)="handleCancel()"></app-day-of-eating-form>
+    <app-day-of-eating-form
+      [dayOfEating]="dayOfEating$ | async"
+      [dataSource]="dataSource$ | async"
+      (save)="handleSave($event)"
+      (cancel)="handleCancel()"
+    ></app-day-of-eating-form>
 
     <div class="pending-indicator-overlay-container" *ngIf="loading$ | async">
       <app-spinner></app-spinner>
     </div>
-
   </div>
 </ng-container>
 

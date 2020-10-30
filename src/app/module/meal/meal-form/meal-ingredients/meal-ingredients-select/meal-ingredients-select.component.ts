@@ -9,10 +9,9 @@ import { Ingredient } from '../../../../../shared/model/domain/ingredient';
   selector: 'app-meal-ingredients-select',
   templateUrl: './meal-ingredients-select.component.html',
   styleUrls: ['./meal-ingredients-select.component.scss'],
-  providers: [MealIngredientsSelectService]
+  providers: [MealIngredientsSelectService],
 })
 export class MealIngredientsSelectComponent implements OnInit, OnDestroy {
-
   @Input() formHandler: MealFormHandler;
   @Output() addProduct: EventEmitter<Product> = new EventEmitter<Product>();
 
@@ -23,7 +22,7 @@ export class MealIngredientsSelectComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
 
-  constructor(private service: MealIngredientsSelectService) { }
+  constructor(private service: MealIngredientsSelectService) {}
 
   ngOnInit(): void {
     this.products$ = this.service.products$;
@@ -45,5 +44,4 @@ export class MealIngredientsSelectComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-
 }

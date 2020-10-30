@@ -3,7 +3,6 @@ import { AbstractTypedControl } from './abstract-typed-control';
 
 // TODO
 export class TypedFormGroup<T> extends AbstractTypedControl<T, FormGroup> {
-
   static from<T>(control: AbstractControl): TypedFormGroup<T> {
     return new TypedFormGroup<T>(control as FormGroup);
   }
@@ -11,5 +10,4 @@ export class TypedFormGroup<T> extends AbstractTypedControl<T, FormGroup> {
   protected constructor(ref: FormGroup) {
     super(ref);
   }
-
 }

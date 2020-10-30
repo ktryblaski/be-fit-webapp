@@ -3,10 +3,9 @@ import { Product } from '../../../../../../shared/model/domain/product';
 import { stringCompare } from '../../../../../../shared/util/commons';
 
 @Pipe({
-  name: 'sortProducts'
+  name: 'sortProducts',
 })
 export class SortProductsPipe implements PipeTransform {
-
   transform(products: Product[]): Product[] {
     return [...products].sort(this.compare);
   }
@@ -14,5 +13,4 @@ export class SortProductsPipe implements PipeTransform {
   private compare(a: Product, b: Product): number {
     return stringCompare(a.name, b.name);
   }
-
 }

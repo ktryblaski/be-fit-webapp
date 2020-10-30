@@ -8,10 +8,9 @@ import { DietMealsSelectService } from './diet-meals-select.service';
   selector: 'app-diet-meals-select',
   templateUrl: './diet-meals-select.component.html',
   styleUrls: ['./diet-meals-select.component.scss'],
-  providers: [DietMealsSelectService]
+  providers: [DietMealsSelectService],
 })
 export class DietMealsSelectComponent implements OnInit, OnDestroy {
-
   @Input() formHandler: DietFormHandler;
   @Output() addMeal: EventEmitter<MealView> = new EventEmitter<MealView>();
 
@@ -22,7 +21,7 @@ export class DietMealsSelectComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
 
-  constructor(private service: DietMealsSelectService) { }
+  constructor(private service: DietMealsSelectService) {}
 
   ngOnInit(): void {
     this.meals$ = this.service.meals$;
@@ -44,5 +43,4 @@ export class DietMealsSelectComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-
 }

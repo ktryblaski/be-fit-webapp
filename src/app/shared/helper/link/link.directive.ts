@@ -1,6 +1,6 @@
 import { Directive } from '@angular/core';
 
 @Directive({
-  selector: 'a[appLink]'
+  selector: 'a[appLink]',
 })
-export class LinkDirective { }
+export class LinkDirective {}

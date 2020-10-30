@@ -7,7 +7,6 @@ import { ErrorModalService } from '../../../shared/error-modal/error-modal.servi
 
 @Injectable()
 export class MealTemplatesListService implements OnDestroy {
-
   private readonly loadAction = new Subject();
 
   private readonly mealTemplates = new BehaviorSubject<MealTemplate[]>(null);
@@ -20,9 +19,7 @@ export class MealTemplatesListService implements OnDestroy {
   readonly loaded$: Observable<boolean> = this.loaded.pipe(distinctUntilChanged());
   readonly loading$: Observable<boolean> = this.loading.pipe(distinctUntilChanged());
 
-  constructor(private restService: MealTemplateRestService,
-              private errorModalService: ErrorModalService) {
-
+  constructor(private restService: MealTemplateRestService, private errorModalService: ErrorModalService) {
     this.subscription = this.loadEffect().subscribe(noop);
   }
 
@@ -35,20 +32,22 @@ export class MealTemplatesListService implements OnDestroy {
       tap(() => {
         this.loading.next(true);
       }),
-      switchMap(() => this.restService.findAll().pipe(
-        tap(mealTemplates => {
-          this.mealTemplates.next(mealTemplates);
-          this.loaded.next(true);
-        }),
-        catchError(error => {
-          console.error(error);
-          this.errorModalService.showError('An error has occurred while loading data');
-          return EMPTY;
-        }),
-        finalize(() => {
-          this.loading.next(false);
-        })
-      )),
+      switchMap(() =>
+        this.restService.findAll().pipe(
+          tap(mealTemplates => {
+            this.mealTemplates.next(mealTemplates);
+            this.loaded.next(true);
+          }),
+          catchError(error => {
+            console.error(error);
+            this.errorModalService.showError('An error has occurred while loading data');
+            return EMPTY;
+          }),
+          finalize(() => {
+            this.loading.next(false);
+          })
+        )
+      ),
       ignoreElements()
     );
   }
@@ -56,5 +55,4 @@ export class MealTemplatesListService implements OnDestroy {
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-
 }

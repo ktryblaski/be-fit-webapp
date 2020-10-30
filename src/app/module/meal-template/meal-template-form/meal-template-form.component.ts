@@ -8,16 +8,15 @@ import { MealTemplate } from '../../../shared/model/domain/meal-template';
   selector: 'app-meal-template-form',
   templateUrl: './meal-template-form.component.html',
   styleUrls: ['./meal-template-form.component.scss'],
-  providers: [MealTemplateFormHandler]
+  providers: [MealTemplateFormHandler],
 })
 export class MealTemplateFormComponent implements OnChanges {
-
   @Input() mealTemplate: MealTemplate | null;
   @Input() dataSource: MealTemplateFormDataSource;
   @Output() save = new EventEmitter<MealTemplateFormValue>();
   @Output() cancel = new EventEmitter();
 
-  constructor(public formHandler: MealTemplateFormHandler) { }
+  constructor(public formHandler: MealTemplateFormHandler) {}
 
   handleSubmit(): void {
     this.save.emit(this.formHandler.getValue());
@@ -32,5 +31,4 @@ export class MealTemplateFormComponent implements OnChanges {
       this.formHandler.setValue(this.mealTemplate);
     }
   }
-
 }

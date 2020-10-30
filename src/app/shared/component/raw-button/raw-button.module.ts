@@ -4,11 +4,7 @@ import { RawButtonComponent } from './raw-button.component';
 
 @NgModule({
   declarations: [RawButtonComponent],
-  exports: [
-    RawButtonComponent
-  ],
-  imports: [
-    CommonModule
-  ]
+  exports: [RawButtonComponent],
+  imports: [CommonModule],
 })
-export class RawButtonModule { }
+export class RawButtonModule {}

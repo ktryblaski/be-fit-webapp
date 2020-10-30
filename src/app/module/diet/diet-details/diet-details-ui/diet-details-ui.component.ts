@@ -5,11 +5,10 @@ import { InternationalizationService } from '../../../../shared/service/internat
 @Component({
   selector: 'app-diet-details-ui',
   templateUrl: './diet-details-ui.component.html',
-  styleUrls: ['./diet-details-ui.component.scss']
+  styleUrls: ['./diet-details-ui.component.scss'],
 })
 export class DietDetailsUiComponent implements OnInit {
-
-  readonly DIET_TYPE: {[key: string]: string};
+  readonly DIET_TYPE: { [key: string]: string };
 
   @Input() diet: Diet;
 
@@ -17,7 +16,5 @@ export class DietDetailsUiComponent implements OnInit {
     this.DIET_TYPE = i18nService.DIET_TYPE;
   }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

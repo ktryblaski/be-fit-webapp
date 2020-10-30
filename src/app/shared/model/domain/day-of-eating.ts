@@ -11,4 +11,3 @@ export interface DayOfEatingLite {
   dayDate: number;
   mealsNumber: number;
 }
-

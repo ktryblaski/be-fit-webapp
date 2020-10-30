@@ -8,19 +8,16 @@ import { ActivatedRoute, Router } from '@angular/router';
   selector: 'app-meal-edit',
   templateUrl: './meal-edit.component.html',
   styleUrls: ['./meal-edit.component.scss'],
-  providers: [MealEditService]
+  providers: [MealEditService],
 })
 export class MealEditComponent implements OnInit, OnDestroy {
-
   mealFormHandler$: Observable<MealFormHandler>;
   pending$: Observable<boolean>;
   loaded$: Observable<boolean>;
 
   private subscription: Subscription;
 
-  constructor(private service: MealEditService,
-              private router: Router,
-              private route: ActivatedRoute) { }
+  constructor(private service: MealEditService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.mealFormHandler$ = this.service.mealFormHandler$;
@@ -37,11 +34,10 @@ export class MealEditComponent implements OnInit, OnDestroy {
   }
 
   handleCancel(): void {
-    this.router.navigate(['../'], {relativeTo: this.route});
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-
 }

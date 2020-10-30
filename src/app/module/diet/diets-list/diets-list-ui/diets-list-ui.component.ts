@@ -5,12 +5,11 @@ import { InternationalizationService } from '../../../../shared/service/internat
 @Component({
   selector: 'app-diets-list-ui',
   templateUrl: './diets-list-ui.component.html',
-  styleUrls: ['./diets-list-ui.component.scss']
+  styleUrls: ['./diets-list-ui.component.scss'],
 })
 export class DietsListUiComponent {
-
   readonly DATE_FORMAT: 'd/M/yyyy';
-  readonly DIET_TYPE: {[key: string]: string};
+  readonly DIET_TYPE: { [key: string]: string };
 
   @Input() diets: DietView[];
   @Output() clickId: EventEmitter<DietView> = new EventEmitter<DietView>();
@@ -22,5 +21,4 @@ export class DietsListUiComponent {
   handleClick(diet: DietView) {
     this.clickId.next(diet);
   }
-
 }

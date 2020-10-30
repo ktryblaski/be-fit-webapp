@@ -3,14 +3,10 @@ import { mealsWeight } from '../../util/calculator/meals-calculator';
 import { Meal } from '../../model/domain/meal';
 
 @Pipe({
-  name: 'mealsWeightCalculator'
+  name: 'mealsWeightCalculator',
 })
 export class MealsWeightCalculatorPipe implements PipeTransform {
-
   transform(meals: Meal[]): number {
-    return Math.round(
-      mealsWeight(meals)
-    );
+    return Math.round(mealsWeight(meals));
   }
-
 }

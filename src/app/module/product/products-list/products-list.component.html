@@ -1,21 +1,17 @@
 <ng-container *ngIf="loaded$ | async; else loading">
   <div class="pending-indicator-overlay-boundaries">
-
     <div header>
       <div title>Products</div>
       <div actions>
-        <button (click)="handleAddNewProduct()"
-                mat-raised-button color="primary">Add New Product</button>
+        <button (click)="handleAddNewProduct()" mat-raised-button color="primary">Add New Product</button>
       </div>
     </div>
 
-    <app-products-list-ui [products]="products$ | async"
-                          (clickId)="handleClick($event)"></app-products-list-ui>
+    <app-products-list-ui [products]="products$ | async" (clickId)="handleClick($event)"></app-products-list-ui>
 
     <div class="pending-indicator-overlay-container" *ngIf="pending$ | async">
       <app-spinner></app-spinner>
     </div>
-
   </div>
 </ng-container>
 

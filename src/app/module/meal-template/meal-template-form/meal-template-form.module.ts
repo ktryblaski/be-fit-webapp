@@ -39,10 +39,8 @@ import { IngredientsTableFormComponent } from './ingredients-form/ingredients-ta
     SortProductsPipe,
     FilterProductsPipe,
     IngredientsFormComponent,
-    IngredientsTableFormComponent
+    IngredientsTableFormComponent,
   ],
-  exports: [
-    MealTemplateFormComponent
-  ]
+  exports: [MealTemplateFormComponent],
 })
-export class MealTemplateFormModule { }
+export class MealTemplateFormModule {}

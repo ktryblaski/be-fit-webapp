@@ -16,14 +16,13 @@
     </th>
   </tr>
 
-  <tr *ngFor="let meal of meals"
-      (click)="handleClick(meal)">
-    <td class="name">{{meal.name}}</td>
-    <td>{{meal.weight}}</td>
-    <td>{{meal.carbohydrates}}</td>
-    <td>{{meal.proteins}}</td>
-    <td>{{meal.fats}}</td>
-    <td>{{meal | macronutrientsCaloriesCalculator}}</td>
+  <tr *ngFor="let meal of meals" (click)="handleClick(meal)">
+    <td class="name">{{ meal.name }}</td>
+    <td>{{ meal.weight }}</td>
+    <td>{{ meal.carbohydrates }}</td>
+    <td>{{ meal.proteins }}</td>
+    <td>{{ meal.fats }}</td>
+    <td>{{ meal | macronutrientsCaloriesCalculator }}</td>
   </tr>
 </table>
 

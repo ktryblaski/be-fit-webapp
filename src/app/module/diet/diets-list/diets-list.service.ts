@@ -8,7 +8,6 @@ import { NotificationSeverity } from '../../../shared/component/notification/not
 
 @Injectable()
 export class DietsListService implements OnDestroy {
-
   private readonly loadAction: Subject<never> = new Subject<never>();
 
   private readonly diets: BehaviorSubject<DietView[]> = new BehaviorSubject<DietView[]>([]);
@@ -21,12 +20,8 @@ export class DietsListService implements OnDestroy {
 
   private subscription: Subscription;
 
-  constructor(private restService: DietRestService,
-              private notificationService: NotificationService) {
-
-    this.subscription = merge(
-      this.loadEffect()
-    ).subscribe(noop);
+  constructor(private restService: DietRestService, private notificationService: NotificationService) {
+    this.subscription = merge(this.loadEffect()).subscribe(noop);
   }
 
   load(): void {
@@ -38,22 +33,24 @@ export class DietsListService implements OnDestroy {
       tap(() => {
         this.loading.next(true);
       }),
-      switchMap(() => this.restService.getDietsLite().pipe(
-        tap((diets: DietView[]) => {
-          this.diets.next(diets);
-          this.loading.next(false);
-          this.loaded.next(true);
-        }),
-        catchError(error => {
-          console.error(error);
-          this.loading.next(false);
-          this.notificationService.show({
-            message: 'An error has occurred',
-            severity: NotificationSeverity.DANGER
-          });
-          return EMPTY;
-        })
-      )),
+      switchMap(() =>
+        this.restService.getDietsLite().pipe(
+          tap((diets: DietView[]) => {
+            this.diets.next(diets);
+            this.loading.next(false);
+            this.loaded.next(true);
+          }),
+          catchError(error => {
+            console.error(error);
+            this.loading.next(false);
+            this.notificationService.show({
+              message: 'An error has occurred',
+              severity: NotificationSeverity.DANGER,
+            });
+            return EMPTY;
+          })
+        )
+      ),
       ignoreElements()
     );
   }
@@ -61,5 +58,4 @@ export class DietsListService implements OnDestroy {
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-
 }

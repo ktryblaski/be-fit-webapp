@@ -6,15 +6,14 @@ import { ToggleButtonComponent } from '../toggle-button.component';
   // tslint:disable-next-line:component-selector
   selector: 'button[appToggleButtonOption]',
   templateUrl: './toggle-button-option.component.html',
-  styleUrls: ['./toggle-button-option.component.scss']
+  styleUrls: ['./toggle-button-option.component.scss'],
 })
 export class ToggleButtonOptionComponent {
-
   // tslint:disable-next-line:no-input-rename
   @Input('appToggleButtonOption') value: any;
   @Input() disabled = false;
 
-  constructor(private toggleButtonComponent: ToggleButtonComponent) { }
+  constructor(private toggleButtonComponent: ToggleButtonComponent) {}
 
   @HostListener('click')
   handleClickOption(): void {
@@ -32,5 +31,4 @@ export class ToggleButtonOptionComponent {
   get buttonDisabled(): boolean {
     return this.disabled;
   }
-
 }

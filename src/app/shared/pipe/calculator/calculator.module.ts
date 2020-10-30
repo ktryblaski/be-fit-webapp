@@ -30,7 +30,7 @@ import { MealsWeightCalculatorPipe } from './meals-weight-calculator.pipe';
     MealsProteinsCalculatorPipe,
     MealsFatsCalculatorPipe,
     MealsCaloriesCalculatorPipe,
-    MealsWeightCalculatorPipe
+    MealsWeightCalculatorPipe,
   ],
   exports: [
     MacronutrientsCaloriesCalculatorPipe,
@@ -46,7 +46,7 @@ import { MealsWeightCalculatorPipe } from './meals-weight-calculator.pipe';
     MealsWeightCalculatorPipe,
     MealsProteinsCalculatorPipe,
     MealsFatsCalculatorPipe,
-    MealsCaloriesCalculatorPipe
-  ]
+    MealsCaloriesCalculatorPipe,
+  ],
 })
-export class CalculatorModule { }
+export class CalculatorModule {}

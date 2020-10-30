@@ -21,11 +21,8 @@ import { ProductDetailsDialogModule } from '../product-details-dialog/product-de
     NoTableDataModule,
     SpinnerModule,
     ProductCreateDialogModule,
-    ProductDetailsDialogModule
+    ProductDetailsDialogModule,
   ],
-  declarations: [
-    ProductsListComponent,
-    ProductsListUiComponent
-  ]
+  declarations: [ProductsListComponent, ProductsListUiComponent],
 })
-export class ProductsListModule { }
+export class ProductsListModule {}

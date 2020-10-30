@@ -4,10 +4,9 @@ import { Observable } from 'rxjs';
 import { Diet, DietDTO, DietView } from '../../model/domain/diet';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DietRestService {
-
   private readonly API_URL = '/api/diets';
 
   constructor(private http: HttpClient) {}
@@ -28,5 +27,4 @@ export class DietRestService {
     diet.id = dietId; // TODO
     return this.http.put<Diet>(`${this.API_URL}/${diet.id}`, diet);
   }
-
 }

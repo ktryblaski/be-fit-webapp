@@ -9,25 +9,21 @@ import { map } from 'rxjs/operators';
   selector: 'app-meal-template-details',
   templateUrl: './meal-template-details.component.html',
   styleUrls: ['./meal-template-details.component.scss'],
-  providers: [MealTemplateDetailsService]
+  providers: [MealTemplateDetailsService],
 })
 export class MealTemplateDetailsComponent implements OnInit, OnDestroy {
-
   private subscription: Subscription;
 
   public mealTemplate$: Observable<MealTemplate>;
   public loaded$: Observable<boolean>;
   public pending$: Observable<boolean>;
 
-  constructor(private service: MealTemplateDetailsService,
-              private route: ActivatedRoute) { }
+  constructor(private service: MealTemplateDetailsService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.mealTemplate$ = this.service.mealTemplate$;
     this.loaded$ = this.service.loaded$;
-    this.pending$ = combineLatest([this.service.loading$, this.service.saving$]).pipe(
-      map(([loading, saving]) => loading || saving)
-    );
+    this.pending$ = combineLatest([this.service.loading$, this.service.saving$]).pipe(map(([loading, saving]) => loading || saving));
 
     this.subscription = this.route.paramMap.subscribe(paramMap => {
       this.service.load(+paramMap.get('id'));
@@ -45,5 +41,4 @@ export class MealTemplateDetailsComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-
 }

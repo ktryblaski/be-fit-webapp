@@ -10,10 +10,9 @@ import { DayOfEatingFormValue } from '../day-of-eating-form/-shared/day-of-eatin
   selector: 'app-day-of-eating-edit',
   templateUrl: './day-of-eating-edit.component.html',
   styleUrls: ['./day-of-eating-edit.component.scss'],
-  providers: [DayOfEatingEditService]
+  providers: [DayOfEatingEditService],
 })
 export class DayOfEatingEditComponent implements OnInit, OnDestroy {
-
   loading$: Observable<boolean>;
   loaded$: Observable<boolean>;
   dayOfEating$: Observable<DayOfEating>;
@@ -21,9 +20,7 @@ export class DayOfEatingEditComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription;
 
-  constructor(private service: DayOfEatingEditService,
-              private router: Router,
-              private route: ActivatedRoute) { }
+  constructor(private service: DayOfEatingEditService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.loading$ = this.service.loading$;
@@ -41,11 +38,10 @@ export class DayOfEatingEditComponent implements OnInit, OnDestroy {
   }
 
   handleCancel(): void {
-    this.router.navigate(['../'], {relativeTo: this.route});
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-
 }

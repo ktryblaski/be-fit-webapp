@@ -1,22 +1,19 @@
 <ng-container *ngIf="loaded$ | async; else loading">
   <div class="pending-indicator-overlay-boundaries">
-
     <div header>
       <div title>Days of Eating</div>
       <div actions>
-        <button [disabled]="(canBeginDayOfEating$ | async) !== true"
-                (click)="handleBeginDayOfEating()"
-                mat-raised-button color="primary">Begin Day of Eating</button>
+        <button [disabled]="(canBeginDayOfEating$ | async) !== true" (click)="handleBeginDayOfEating()" mat-raised-button color="primary">
+          Begin Day of Eating
+        </button>
       </div>
     </div>
 
-    <app-day-of-eating-list-ui [daysOfEating]="daysOfEating$ | async"
-                               (clickRow)="handleClick($event)"></app-day-of-eating-list-ui>
+    <app-day-of-eating-list-ui [daysOfEating]="daysOfEating$ | async" (clickRow)="handleClick($event)"></app-day-of-eating-list-ui>
 
     <div class="pending-indicator-overlay-container" *ngIf="pending$ | async">
       <app-spinner></app-spinner>
     </div>
-
   </div>
 </ng-container>
 

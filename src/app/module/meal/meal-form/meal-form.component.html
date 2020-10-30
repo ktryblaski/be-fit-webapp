@@ -1,22 +1,19 @@
 <form [formGroup]="formHandler.form" (ngSubmit)="handleSubmit()">
-
   <div class="actions">
     <button (click)="handleCancel()" type="button" mat-raised-button tabindex="5">Cancel</button>
-    <button [disabled]="!formHandler.form.valid" type="submit"
-            mat-raised-button color="primary" tabindex="6">Save</button>
+    <button [disabled]="!formHandler.form.valid" type="submit" mat-raised-button color="primary" tabindex="6">Save</button>
   </div>
 
   <div class="title">
-    {{new ? 'New Meal' : 'Meal'}}:
-    <span class="name">{{formHandler.form.get('name').value}}</span>
+    {{ new ? 'New Meal' : 'Meal' }}:
+    <span class="name">{{ formHandler.form.get('name').value }}</span>
   </div>
 
   <div class="controls">
     <div class="name">
       <mat-form-field>
         <mat-label>Name</mat-label>
-        <input formControlName="name" matInput
-               type="text" tabindex="1">
+        <input formControlName="name" matInput type="text" tabindex="1" />
       </mat-form-field>
     </div>
 
@@ -29,5 +26,4 @@
 
     <app-meal-ingredients [formHandler]="formHandler"></app-meal-ingredients>
   </div>
-
 </form>

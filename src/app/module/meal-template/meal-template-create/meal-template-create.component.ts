@@ -10,23 +10,19 @@ import { map } from 'rxjs/operators';
   selector: 'app-meal-template-create',
   templateUrl: './meal-template-create.component.html',
   styleUrls: ['./meal-template-create.component.scss'],
-  providers: [MealTemplateCreateService]
+  providers: [MealTemplateCreateService],
 })
 export class MealTemplateCreateComponent implements OnInit {
-
   dataSource$: Observable<MealTemplateFormDataSource>;
   loaded$: Observable<boolean>;
   pending$: Observable<boolean>;
 
-  constructor(private service: MealTemplateCreateService,
-              private router: Router) { }
+  constructor(private service: MealTemplateCreateService, private router: Router) {}
 
   ngOnInit(): void {
     this.dataSource$ = this.service.dataSource$;
     this.loaded$ = this.service.loaded$;
-    this.pending$ = combineLatest([this.service.loading$, this.service.saving$]).pipe(
-      map(([loading, saving]) => loading || saving)
-    );
+    this.pending$ = combineLatest([this.service.loading$, this.service.saving$]).pipe(map(([loading, saving]) => loading || saving));
 
     this.service.load();
   }

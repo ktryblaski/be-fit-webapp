@@ -9,7 +9,6 @@ import { NotificationService } from '../../../shared/component/notification/noti
 
 @Injectable()
 export class ProductDetailsDialogService implements OnDestroy {
-
   private readonly loadAction = new Subject<number>();
   private readonly favouriteAction = new Subject<void>();
 
@@ -27,14 +26,12 @@ export class ProductDetailsDialogService implements OnDestroy {
 
   private subscription: Subscription;
 
-  constructor(private restService: ProductRestService,
-              private notificationService: NotificationService,
-              private errorModalService: ErrorModalService) {
-
-    this.subscription = merge(
-      this.loadEffect(),
-      this.toggleFavouriteEffect()
-    ).subscribe(noop);
+  constructor(
+    private restService: ProductRestService,
+    private notificationService: NotificationService,
+    private errorModalService: ErrorModalService
+  ) {
+    this.subscription = merge(this.loadEffect(), this.toggleFavouriteEffect()).subscribe(noop);
   }
 
   load(productId: number): void {
@@ -50,20 +47,22 @@ export class ProductDetailsDialogService implements OnDestroy {
       tap(() => {
         this.loading.next(true);
       }),
-      switchMap(productId => this.restService.getOne(productId).pipe(
-        tap(product => {
-          this.product.next(product);
-          this.loaded.next(true);
-        }),
-        catchError(error => {
-          console.error(error);
-          this.errorModalService.showError('An error has occurred while creating new product');
-          return EMPTY;
-        }),
-        finalize(() => {
-          this.loading.next(false);
-        })
-      )),
+      switchMap(productId =>
+        this.restService.getOne(productId).pipe(
+          tap(product => {
+            this.product.next(product);
+            this.loaded.next(true);
+          }),
+          catchError(error => {
+            console.error(error);
+            this.errorModalService.showError('An error has occurred while creating new product');
+            return EMPTY;
+          }),
+          finalize(() => {
+            this.loading.next(false);
+          })
+        )
+      ),
       ignoreElements()
     );
   }
@@ -75,19 +74,15 @@ export class ProductDetailsDialogService implements OnDestroy {
       }),
       switchMap(() => {
         const product = this.product.value;
-        const action = product.favourite
-          ? this.restService.unfavourite(product.id)
-          : this.restService.favourite(product.id);
+        const action = product.favourite ? this.restService.unfavourite(product.id) : this.restService.favourite(product.id);
 
         return action.pipe(
           tap(savedProduct => {
             this.product.next(savedProduct);
             this.saved.next(true);
             this.notificationService.show({
-              message: savedProduct.favourite
-                ? 'Product has been been added to favourites'
-                : 'Product has been removed from favourites',
-              severity: NotificationSeverity.SUCCESS
+              message: savedProduct.favourite ? 'Product has been been added to favourites' : 'Product has been removed from favourites',
+              severity: NotificationSeverity.SUCCESS,
             });
           }),
           catchError(error => {
@@ -107,7 +102,6 @@ export class ProductDetailsDialogService implements OnDestroy {
       ignoreElements()
     );
   }
-
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();

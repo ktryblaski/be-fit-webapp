@@ -2,7 +2,6 @@ import { AbstractControl, FormControl } from '@angular/forms';
 import { AbstractTypedControl } from './abstract-typed-control';
 
 export class TypedFormControl<T> extends AbstractTypedControl<T, FormControl> {
-
   static from<T>(control: AbstractControl): TypedFormControl<T> {
     return new TypedFormControl<T>(control as FormControl);
   }
@@ -15,24 +14,29 @@ export class TypedFormControl<T> extends AbstractTypedControl<T, FormControl> {
     super(ref);
   }
 
-  setValue(value: any, options?: {
-    onlySelf?: boolean;
-    emitEvent?: boolean;
-    emitModelToViewChange?: boolean;
-    emitViewToModelChange?: boolean;
-  }): void {
+  setValue(
+    value: any,
+    options?: {
+      onlySelf?: boolean;
+      emitEvent?: boolean;
+      emitModelToViewChange?: boolean;
+      emitViewToModelChange?: boolean;
+    }
+  ): void {
     this.ref.setValue(value, options);
   }
 
-  reset(formState?: any, options?: {
-    onlySelf?: boolean;
-    emitEvent?: boolean;
-  }): void {
+  reset(
+    formState?: any,
+    options?: {
+      onlySelf?: boolean;
+      emitEvent?: boolean;
+    }
+  ): void {
     this.ref.reset(formState, options);
   }
 
   get empty(): boolean {
     return this.ref.value === null || this.ref.value === undefined || this.ref.value === '' || this.ref.value === [];
   }
-
 }

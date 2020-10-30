@@ -9,16 +9,14 @@ import { MatDialogRef } from '@angular/material/dialog';
   selector: 'app-day-of-eating-begin-dialog',
   templateUrl: './day-of-eating-begin-dialog.component.html',
   styleUrls: ['./day-of-eating-begin-dialog.component.scss'],
-  providers: [DayOfEatingBeginDialogService]
+  providers: [DayOfEatingBeginDialogService],
 })
 export class DayOfEatingBeginDialogComponent implements OnInit {
-
   loading$: Observable<boolean>;
   loaded$: Observable<boolean>;
   dataSource$: Observable<DayOfEatingBeginFormDataSource>;
 
-  constructor(private service: DayOfEatingBeginDialogService,
-              private dialogRef: MatDialogRef<DayOfEatingBeginDialogComponent>) { }
+  constructor(private service: DayOfEatingBeginDialogService, private dialogRef: MatDialogRef<DayOfEatingBeginDialogComponent>) {}
 
   ngOnInit(): void {
     this.loading$ = this.service.loading$;
@@ -35,5 +33,4 @@ export class DayOfEatingBeginDialogComponent implements OnInit {
   handleCancel(): void {
     this.dialogRef.close();
   }
-
 }

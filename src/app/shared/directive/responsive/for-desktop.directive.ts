@@ -4,25 +4,20 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
 
 @Directive({
-  selector: '[appForDesktop]'
+  selector: '[appForDesktop]',
 })
 export class ForDesktopDirective extends AbstractTemplateDirective implements OnInit, OnDestroy {
-
   private subscription: Subscription;
 
-  constructor(templateRef: TemplateRef<any>,
-              viewContainerRef: ViewContainerRef,
-              private breakpointObserver: BreakpointObserver) {
+  constructor(templateRef: TemplateRef<any>, viewContainerRef: ViewContainerRef, private breakpointObserver: BreakpointObserver) {
     super(templateRef, viewContainerRef);
   }
 
   ngOnInit(): void {
-    this.subscription = this.breakpointObserver.observe(Breakpoints.Web)
-      .subscribe(state => super.renderWhen(state.matches));
+    this.subscription = this.breakpointObserver.observe(Breakpoints.Web).subscribe(state => super.renderWhen(state.matches));
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-
 }

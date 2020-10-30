@@ -1,12 +1,8 @@
 <mat-form-field [formGroup]="formHandler.form">
-  <input type="text"
-         matInput
-         tabindex="3"
-         formControlName="product"
-         [matAutocomplete]="auto">
+  <input type="text" matInput tabindex="3" formControlName="product" [matAutocomplete]="auto" />
   <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayFn">
-    <mat-option *ngFor="let product of (products$ | async)" [value]="product">
-      {{product.name}}
+    <mat-option *ngFor="let product of products$ | async" [value]="product">
+      {{ product.name }}
     </mat-option>
   </mat-autocomplete>
 </mat-form-field>

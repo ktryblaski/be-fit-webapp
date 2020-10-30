@@ -4,10 +4,9 @@ import { Observable } from 'rxjs';
 import { Meal, MealDTO, MealView } from '../../model/domain/meal';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MealRestService {
-
   private readonly API_URL = '/api/meals';
 
   constructor(private http: HttpClient) {}
@@ -28,5 +27,4 @@ export class MealRestService {
     meal.id = mealId; // TODO
     return this.http.put<Meal>(`${this.API_URL}/${meal.id}`, meal);
   }
-
 }

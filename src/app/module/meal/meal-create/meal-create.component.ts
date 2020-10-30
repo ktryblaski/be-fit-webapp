@@ -8,16 +8,14 @@ import { Router } from '@angular/router';
   selector: 'app-meal-create',
   templateUrl: './meal-create.component.html',
   styleUrls: ['./meal-create.component.scss'],
-  providers: [MealCreateService]
+  providers: [MealCreateService],
 })
 export class MealCreateComponent implements OnInit {
-
   formHandler: MealFormHandler = new MealFormHandler();
 
   saving$: Observable<boolean>;
 
-  constructor(private service: MealCreateService,
-              private router: Router) { }
+  constructor(private service: MealCreateService, private router: Router) {}
 
   ngOnInit(): void {
     this.saving$ = this.service.saving$;

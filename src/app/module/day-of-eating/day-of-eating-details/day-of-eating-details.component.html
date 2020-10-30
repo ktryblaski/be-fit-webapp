@@ -1,15 +1,12 @@
 <ng-container *ngIf="loaded$ | async; else loading">
   <div class="pending-indicator-overlay-boundaries">
-
     <div header>
       <div title>
         <span>Day of Eating:</span>
-        <span class="day">{{(dayOfEating$ | async).dayDate | date:DATE_FORMAT}}</span>
+        <span class="day">{{ (dayOfEating$ | async).dayDate | date: DATE_FORMAT }}</span>
       </div>
       <div actions>
-        <button [routerLink]="['edit']"
-                mat-raised-button
-                class="edit-button">Edit</button>
+        <button [routerLink]="['edit']" mat-raised-button class="edit-button">Edit</button>
       </div>
     </div>
 
@@ -18,7 +15,6 @@
     <div class="pending-indicator-overlay-container" *ngIf="loading$ | async">
       <app-spinner></app-spinner>
     </div>
-
   </div>
 </ng-container>
 

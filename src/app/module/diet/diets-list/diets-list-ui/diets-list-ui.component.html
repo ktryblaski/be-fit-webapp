@@ -19,17 +19,16 @@
     </th>
   </tr>
 
-  <tr *ngFor="let diet of diets"
-      (click)="handleClick(diet)">
-    <td class="name">{{diet.name}}</td>
-    <td>{{diet.startDate | date:DATE_FORMAT}}</td>
-    <td>{{diet.endDate | date:DATE_FORMAT}}</td>
-    <td>{{diet.type | i18nSelect:DIET_TYPE}}</td>
-    <td>{{diet.meals}}</td>
-    <td>{{diet.carbohydrates}}</td>
-    <td>{{diet.proteins}}</td>
-    <td>{{diet.fats}}</td>
-    <td>{{diet | macronutrientsCaloriesCalculator}}</td>
+  <tr *ngFor="let diet of diets" (click)="handleClick(diet)">
+    <td class="name">{{ diet.name }}</td>
+    <td>{{ diet.startDate | date: DATE_FORMAT }}</td>
+    <td>{{ diet.endDate | date: DATE_FORMAT }}</td>
+    <td>{{ diet.type | i18nSelect: DIET_TYPE }}</td>
+    <td>{{ diet.meals }}</td>
+    <td>{{ diet.carbohydrates }}</td>
+    <td>{{ diet.proteins }}</td>
+    <td>{{ diet.fats }}</td>
+    <td>{{ diet | macronutrientsCaloriesCalculator }}</td>
   </tr>
 </table>
 

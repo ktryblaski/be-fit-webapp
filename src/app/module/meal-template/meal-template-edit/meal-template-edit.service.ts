@@ -13,7 +13,6 @@ import { ErrorModalService } from '../../../shared/error-modal/error-modal.servi
 
 @Injectable()
 export class MealTemplateEditService {
-
   private readonly saveAction = new Subject<MealTemplateFormValue>();
   private readonly loadAction = new Subject<number>();
 
@@ -31,16 +30,14 @@ export class MealTemplateEditService {
 
   private subscription: Subscription;
 
-  constructor(private restService: MealTemplateRestService,
-              private productRestService: ProductRestService,
-              private notificationService: NotificationService,
-              private errorModalService: ErrorModalService,
-              private router: Router) {
-
-    this.subscription = merge(
-      this.loadEffect(),
-      this.saveEffect()
-    ).subscribe(noop);
+  constructor(
+    private restService: MealTemplateRestService,
+    private productRestService: ProductRestService,
+    private notificationService: NotificationService,
+    private errorModalService: ErrorModalService,
+    private router: Router
+  ) {
+    this.subscription = merge(this.loadEffect(), this.saveEffect()).subscribe(noop);
   }
 
   load(mealTemplateId: number): void {
@@ -56,24 +53,23 @@ export class MealTemplateEditService {
       tap(() => {
         this.loading.next(true);
       }),
-      switchMap(mealTemplateId => forkJoin([
-        this.restService.getOne(mealTemplateId),
-        this.productRestService.findAll()
-      ]).pipe(
-        tap(([mealTemplate, products]) => {
-          this.mealTemplate.next(mealTemplate);
-          this.dataSource.next({products});
-          this.loaded.next(true);
-        }),
-        catchError(error => {
-          console.error(error);
-          this.errorModalService.showError('An error has occurred while loading data');
-          return EMPTY;
-        }),
-        finalize(() => {
-          this.loading.next(false);
-        })
-      )),
+      switchMap(mealTemplateId =>
+        forkJoin([this.restService.getOne(mealTemplateId), this.productRestService.findAll()]).pipe(
+          tap(([mealTemplate, products]) => {
+            this.mealTemplate.next(mealTemplate);
+            this.dataSource.next({ products });
+            this.loaded.next(true);
+          }),
+          catchError(error => {
+            console.error(error);
+            this.errorModalService.showError('An error has occurred while loading data');
+            return EMPTY;
+          }),
+          finalize(() => {
+            this.loading.next(false);
+          })
+        )
+      ),
       ignoreElements()
     );
   }
@@ -83,23 +79,25 @@ export class MealTemplateEditService {
       tap(() => {
         this.saving.next(true);
       }),
-      switchMap(formValue => this.restService.update(this.mapToUpdate(formValue)).pipe(
-        tap(mealTemplate => {
-          this.router.navigate(['meal-template', mealTemplate.id]);
-          this.notificationService.show({
-            message: 'The meal has been saved',
-            severity: NotificationSeverity.SUCCESS
-          });
-        }),
-        catchError(error => {
-          console.error(error);
-          this.errorModalService.showError('An error has occurred while saving meal template');
-          return EMPTY;
-        }),
-        finalize(() => {
-          this.saving.next(false);
-        })
-      )),
+      switchMap(formValue =>
+        this.restService.update(this.mapToUpdate(formValue)).pipe(
+          tap(mealTemplate => {
+            this.router.navigate(['meal-template', mealTemplate.id]);
+            this.notificationService.show({
+              message: 'The meal has been saved',
+              severity: NotificationSeverity.SUCCESS,
+            });
+          }),
+          catchError(error => {
+            console.error(error);
+            this.errorModalService.showError('An error has occurred while saving meal template');
+            return EMPTY;
+          }),
+          finalize(() => {
+            this.saving.next(false);
+          })
+        )
+      ),
       ignoreElements()
     );
   }
@@ -109,9 +107,8 @@ export class MealTemplateEditService {
       id: this.mealTemplate.value.id,
       name: formValue.name,
       description: formValue.description,
-      ingredients: formValue.ingredients.map(i => ({id: i.id, productId: i.product.id, weight: i.weight})),
-      active: this.mealTemplate.value.active
+      ingredients: formValue.ingredients.map(i => ({ id: i.id, productId: i.product.id, weight: i.weight })),
+      active: this.mealTemplate.value.active,
     };
   }
-
 }

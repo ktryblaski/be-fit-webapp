@@ -5,11 +5,6 @@ import { DayOfEatingListModule } from './day-of-eating-list/day-of-eating-list.m
 import { DayOfEatingRoutingModule } from './day-of-eating-routing.module';
 
 @NgModule({
-  imports: [
-    DayOfEatingRoutingModule,
-    DayOfEatingDetailsModule,
-    DayOfEatingEditModule,
-    DayOfEatingListModule
-  ]
+  imports: [DayOfEatingRoutingModule, DayOfEatingDetailsModule, DayOfEatingEditModule, DayOfEatingListModule],
 })
-export class DayOfEatingModule { }
+export class DayOfEatingModule {}

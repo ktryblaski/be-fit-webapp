@@ -4,10 +4,9 @@ import { MealFormHandler } from './meal-form-handler';
 @Component({
   selector: 'app-meal-form',
   templateUrl: './meal-form.component.html',
-  styleUrls: ['./meal-form.component.scss']
+  styleUrls: ['./meal-form.component.scss'],
 })
 export class MealFormComponent {
-
   @Input() formHandler: MealFormHandler;
   @Input() new = false;
   @Output() save = new EventEmitter();
@@ -20,5 +19,4 @@ export class MealFormComponent {
   handleCancel(): void {
     this.cancel.emit();
   }
-
 }

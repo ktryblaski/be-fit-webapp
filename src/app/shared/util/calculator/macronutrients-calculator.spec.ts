@@ -1,19 +1,19 @@
 import { Macronutrients } from '../../model/domain/macronutrients';
 import {
   macronutrientsCalories,
-  macronutrientsCaloriesForWeight, macronutrientsCarbohydratesForWeight,
+  macronutrientsCaloriesForWeight,
+  macronutrientsCarbohydratesForWeight,
   macronutrientsFatsForWeight,
-  macronutrientsProteinsForWeight
+  macronutrientsProteinsForWeight,
 } from './macronutrients-calculator';
 
 describe('macronutrients-calculator', () => {
-
-  const nuts: Macronutrients = {proteins: 15, fats: 61, carbohydrates: 17};
-  const banana: Macronutrients = {proteins: 1, fats: 0, carbohydrates: 23};
-  const rice: Macronutrients = {proteins: 3, fats: 0, carbohydrates: 28};
-  const coke: Macronutrients = {proteins: 0, fats: 0, carbohydrates: 10};
-  const avocado: Macronutrients = {proteins: 2, fats: 15, carbohydrates: 9};
-  const oliveOil: Macronutrients = {proteins: 0, fats: 100, carbohydrates: 0};
+  const nuts: Macronutrients = { proteins: 15, fats: 61, carbohydrates: 17 };
+  const banana: Macronutrients = { proteins: 1, fats: 0, carbohydrates: 23 };
+  const rice: Macronutrients = { proteins: 3, fats: 0, carbohydrates: 28 };
+  const coke: Macronutrients = { proteins: 0, fats: 0, carbohydrates: 10 };
+  const avocado: Macronutrients = { proteins: 2, fats: 15, carbohydrates: 9 };
+  const oliveOil: Macronutrients = { proteins: 0, fats: 100, carbohydrates: 0 };
 
   it('should calculate calories number correctly', () => {
     expect(macronutrientsCalories(nuts)).toBe(677);
@@ -59,5 +59,4 @@ describe('macronutrients-calculator', () => {
     expect(macronutrientsCarbohydratesForWeight(avocado, 23)).toBe(2.0700000000000003);
     expect(macronutrientsCarbohydratesForWeight(oliveOil, 1)).toBe(0);
   });
-
 });

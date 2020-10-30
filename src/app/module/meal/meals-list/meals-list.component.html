@@ -3,12 +3,10 @@
 
   <div class="pending-indicator-overlay-boundaries">
     <div class="actions">
-      <button (click)="handleAddNewMeal()"
-              mat-raised-button color="primary">Add New Meal</button>
+      <button (click)="handleAddNewMeal()" mat-raised-button color="primary">Add New Meal</button>
     </div>
 
-    <app-meals-list-ui [meals]="meals$ | async"
-                       (clickId)="handleClick($event)"></app-meals-list-ui>
+    <app-meals-list-ui [meals]="meals$ | async" (clickId)="handleClick($event)"></app-meals-list-ui>
 
     <div class="pending-indicator-overlay-container" *ngIf="loading$ | async">
       <app-spinner></app-spinner>

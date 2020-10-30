@@ -8,7 +8,6 @@ import { MealRestService } from '../../../../../shared/service/rest/meal-rest.se
 
 @Injectable()
 export class DietMealsSelectService implements OnDestroy {
-
   private readonly loadAction: Subject<never> = new Subject<never>();
 
   private readonly meals: BehaviorSubject<MealView[]> = new BehaviorSubject<MealView[]>([]);
@@ -19,9 +18,7 @@ export class DietMealsSelectService implements OnDestroy {
 
   private readonly subscription: Subscription;
 
-  constructor(private restService: MealRestService,
-              private notificationService: NotificationService) {
-
+  constructor(private restService: MealRestService, private notificationService: NotificationService) {
     this.subscription = this.loadEffect().subscribe(noop);
   }
 
@@ -34,21 +31,23 @@ export class DietMealsSelectService implements OnDestroy {
       tap(() => {
         this.loading.next(true);
       }),
-      switchMap(() => this.restService.findAllActive().pipe(
-        tap((meals: MealView[]) => {
-          this.meals.next(meals);
-          this.loading.next(false);
-        }),
-        catchError(error => {
-          console.error(error);
-          this.loading.next(false);
-          this.notificationService.show({
-            message: 'An error has occurred',
-            severity: NotificationSeverity.DANGER
-          });
-          return EMPTY;
-        })
-      )),
+      switchMap(() =>
+        this.restService.findAllActive().pipe(
+          tap((meals: MealView[]) => {
+            this.meals.next(meals);
+            this.loading.next(false);
+          }),
+          catchError(error => {
+            console.error(error);
+            this.loading.next(false);
+            this.notificationService.show({
+              message: 'An error has occurred',
+              severity: NotificationSeverity.DANGER,
+            });
+            return EMPTY;
+          })
+        )
+      ),
       ignoreElements()
     );
   }
@@ -56,5 +55,4 @@ export class DietMealsSelectService implements OnDestroy {
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-
 }

@@ -10,7 +10,6 @@ import { Product } from '../../../shared/model/domain/product';
 
 @Injectable()
 export class DayOfEatingFormHandler {
-
   form: FormGroup;
 
   readonly meals: TypedFormArray<any>;
@@ -19,14 +18,12 @@ export class DayOfEatingFormHandler {
 
   constructor() {
     this.form = new FormGroup({
-      meals: new FormArray([], Validators.required)
+      meals: new FormArray([], Validators.required),
     });
 
     this.meals = TypedFormArray.from(this.form.get('meals'));
 
-    this.hasMeals$ = this.meals.values.pipe(
-      map((meals: DayOfEatingFormMealValue[]) => meals.length !== 0)
-    );
+    this.hasMeals$ = this.meals.values.pipe(map((meals: DayOfEatingFormMealValue[]) => meals.length !== 0));
   }
 
   get mealsControls(): FormGroup[] {
@@ -35,7 +32,7 @@ export class DayOfEatingFormHandler {
 
   getValue(): DayOfEatingFormValue {
     return {
-      meals: this.meals.value
+      meals: this.meals.value,
     };
   }
 
@@ -94,8 +91,7 @@ export class DayOfEatingFormHandler {
   private createIngredientControl(product: Product, weight: number): FormGroup {
     return new FormGroup({
       product: new FormControl(product, Validators.required),
-      weight: new FormControl(weight, Validators.required)
+      weight: new FormControl(weight, Validators.required),
     });
   }
-
 }

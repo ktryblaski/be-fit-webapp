@@ -1,5 +1,4 @@
-<app-form-product [products]="products"
-                  (addProduct)="handleAddProduct($event)"></app-form-product>
+<app-form-product [products]="products" (addProduct)="handleAddProduct($event)"></app-form-product>
 
 <div *ngIf="formHandler.hasIngredients$ | async">
   <app-ingredients-table-form (removeIngredient)="handleRemoveIngredient($event)"></app-ingredients-table-form>

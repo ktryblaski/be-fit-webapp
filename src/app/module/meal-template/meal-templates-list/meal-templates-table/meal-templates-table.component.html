@@ -19,17 +19,17 @@
     </td>
   </tr>
 
-  <tr *ngFor="let mealTemplate of mealTemplates"
-      (click)="handleClickRow(mealTemplate)">
-    <td class="name">{{mealTemplate.name}}</td>
-    <td>{{mealTemplate.ingredients | ingredientsWeightCalculator}}</td>
-    <td>{{mealTemplate.ingredients | ingredientsCarbohydratesCalculator}}</td>
-    <td>{{mealTemplate.ingredients | ingredientsProteinsCalculator}}</td>
-    <td>{{mealTemplate.ingredients | ingredientsFatsCalculator}}</td>
-    <td>{{mealTemplate.ingredients | ingredientsCaloriesCalculator}}</td>
+  <tr *ngFor="let mealTemplate of mealTemplates" (click)="handleClickRow(mealTemplate)">
+    <td class="name">{{ mealTemplate.name }}</td>
+    <td>{{ mealTemplate.ingredients | ingredientsWeightCalculator }}</td>
+    <td>{{ mealTemplate.ingredients | ingredientsCarbohydratesCalculator }}</td>
+    <td>{{ mealTemplate.ingredients | ingredientsProteinsCalculator }}</td>
+    <td>{{ mealTemplate.ingredients | ingredientsFatsCalculator }}</td>
+    <td>{{ mealTemplate.ingredients | ingredientsCaloriesCalculator }}</td>
     <td>
-      <span [class.active]="mealTemplate.active"
-            [class.inactive]="!mealTemplate.active">{{mealTemplate.active ? 'Active' : 'Inactive'}}</span>
+      <span [class.active]="mealTemplate.active" [class.inactive]="!mealTemplate.active">{{
+        mealTemplate.active ? 'Active' : 'Inactive'
+      }}</span>
     </td>
   </tr>
 </table>

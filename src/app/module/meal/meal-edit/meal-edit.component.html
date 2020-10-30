@@ -1,10 +1,7 @@
 <ng-container *ngIf="loaded$ | async; else loading">
   <div class="pending-indicator-overlay-boundaries">
-
-    <ng-container *ngIf="(mealFormHandler$ | async) as mealFormHandler">
-      <app-meal-form [formHandler]="mealFormHandler"
-                     (save)="handleUpdate(mealFormHandler)"
-                     (cancel)="handleCancel()"></app-meal-form>
+    <ng-container *ngIf="mealFormHandler$ | async as mealFormHandler">
+      <app-meal-form [formHandler]="mealFormHandler" (save)="handleUpdate(mealFormHandler)" (cancel)="handleCancel()"></app-meal-form>
     </ng-container>
 
     <div class="pending-indicator-overlay-container" *ngIf="pending$ | async">

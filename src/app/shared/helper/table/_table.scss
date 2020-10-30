@@ -12,9 +12,10 @@ table[appTable] {
   tr {
     height: 48px;
 
-    th, td {
+    th,
+    td {
       padding: 0 0 0 24px;
-      border-bottom: 1px solid rgba(0, 0, 0, .12);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
       text-align: left;
     }
 

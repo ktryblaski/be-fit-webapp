@@ -5,10 +5,9 @@ import { MealView } from '../../../../shared/model/domain/meal';
 @Component({
   selector: 'app-diet-meals',
   templateUrl: './diet-meals.component.html',
-  styleUrls: ['./diet-meals.component.scss']
+  styleUrls: ['./diet-meals.component.scss'],
 })
 export class DietMealsComponent {
-
   @Input() formHandler: DietFormHandler;
 
   handleAddMeal(meal: MealView): void {

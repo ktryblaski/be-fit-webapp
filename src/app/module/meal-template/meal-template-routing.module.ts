@@ -6,18 +6,14 @@ import { MealTemplateCreateComponent } from './meal-template-create/meal-templat
 import { MealTemplateEditComponent } from './meal-template-edit/meal-template-edit.component';
 
 const routes: Routes = [
-
-  {path: '', component: MealTemplatesListComponent},
-  {path: 'new', component: MealTemplateCreateComponent},
-  {path: ':id', component: MealTemplateDetailsComponent},
-  {path: ':id/edit', component: MealTemplateEditComponent}
-
+  { path: '', component: MealTemplatesListComponent },
+  { path: 'new', component: MealTemplateCreateComponent },
+  { path: ':id', component: MealTemplateDetailsComponent },
+  { path: ':id/edit', component: MealTemplateEditComponent },
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forChild(routes)
-  ],
-  exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class MealTemplateRoutingModule { }
+export class MealTemplateRoutingModule {}

@@ -4,10 +4,9 @@ import { Observable } from 'rxjs';
 import { MealTemplate, MealTemplateCU } from '../../model/domain/meal-template';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MealTemplateRestService {
-
   private readonly API_URL = '/api/meal-templates';
 
   constructor(private http: HttpClient) {}
@@ -22,10 +21,10 @@ export class MealTemplateRestService {
 
   findAllActive(): Observable<MealTemplate[]> {
     const params = {
-      onlyActive: String(true)
+      onlyActive: String(true),
     };
 
-    return this.http.get<MealTemplate[]>(`${this.API_URL}`, {params});
+    return this.http.get<MealTemplate[]>(`${this.API_URL}`, { params });
   }
 
   create(mealTemplate: MealTemplateCU): Observable<number> {
@@ -43,5 +42,4 @@ export class MealTemplateRestService {
   deactivate(mealTemplateId: number): Observable<MealTemplate> {
     return this.http.post<MealTemplate>(`${this.API_URL}/${mealTemplateId}/deactivate`, {});
   }
-
 }

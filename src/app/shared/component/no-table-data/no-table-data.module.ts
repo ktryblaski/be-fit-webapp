@@ -3,14 +3,8 @@ import { CommonModule } from '@angular/common';
 import { NoTableDataComponent } from './no-table-data.component';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: [
-    NoTableDataComponent
-  ],
-  exports: [
-    NoTableDataComponent
-  ]
+  imports: [CommonModule],
+  declarations: [NoTableDataComponent],
+  exports: [NoTableDataComponent],
 })
-export class NoTableDataModule { }
+export class NoTableDataModule {}

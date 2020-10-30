@@ -4,7 +4,6 @@ import { Ingredient } from '../../../shared/model/domain/ingredient';
 import { Product } from '../../../shared/model/domain/product';
 
 export class MealFormHandler {
-
   form: FormGroup;
 
   constructor(meal?: Meal) {
@@ -19,7 +18,7 @@ export class MealFormHandler {
     (this.form.get('ingredients') as FormArray).push(
       new FormGroup({
         product: new FormControl(product, Validators.required),
-        weight: new FormControl(weight, Validators.required)
+        weight: new FormControl(weight, Validators.required),
       })
     );
   }
@@ -31,7 +30,7 @@ export class MealFormHandler {
   public removeIngredient(productId: number): void {
     const formArray = this.form.get('ingredients') as FormArray;
 
-    for (let i = 0 ; i < formArray.length ; ++i) {
+    for (let i = 0; i < formArray.length; ++i) {
       const currentProduct = formArray.at(i).get('product').value as Product;
 
       if (currentProduct.id === productId) {
@@ -53,12 +52,11 @@ export class MealFormHandler {
   private patchMeal(meal: Meal): void {
     this.form.patchValue({
       name: meal.name,
-      description: meal.description
+      description: meal.description,
     });
 
     (meal.ingredients || []).forEach((ingredient: Ingredient) => {
       this.addIngredient(ingredient.product, ingredient.weight);
     });
   }
-
 }

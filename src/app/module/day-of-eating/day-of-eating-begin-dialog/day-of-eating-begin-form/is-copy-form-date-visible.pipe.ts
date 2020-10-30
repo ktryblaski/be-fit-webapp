@@ -3,12 +3,10 @@ import { DayOfEatingBeginFormDataSource } from './-shared/day-of-eating-begin-fo
 import { DayOfEatingBeginOrigin } from '../../../../shared/model/dto/day-of-eating-begin-dto';
 
 @Pipe({
-  name: 'isCopyFormDateVisible'
+  name: 'isCopyFormDateVisible',
 })
 export class IsCopyFormDateVisiblePipe implements PipeTransform {
-
   transform(origin: DayOfEatingBeginOrigin, dataSource: DayOfEatingBeginFormDataSource): boolean {
     return dataSource.daysOfEating.length > 0 && DayOfEatingBeginOrigin.AS_COPY === origin;
   }
-
 }

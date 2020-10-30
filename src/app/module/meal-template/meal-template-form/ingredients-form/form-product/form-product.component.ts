@@ -8,10 +8,9 @@ import { values$ } from '../../../../../shared/form/typed-form/typed-utils';
 @Component({
   selector: 'app-form-product',
   templateUrl: './form-product.component.html',
-  styleUrls: ['./form-product.component.scss']
+  styleUrls: ['./form-product.component.scss'],
 })
 export class FormProductComponent implements OnInit, OnChanges {
-
   @Input() products: Product[];
   @Output() addProduct = new EventEmitter<Product>();
 
@@ -19,12 +18,12 @@ export class FormProductComponent implements OnInit, OnChanges {
 
   products$: Observable<Product[]> = this.productsChange.pipe(distinctUntilChanged());
 
-  constructor(public formHandler: MealTemplateFormHandler) { }
+  constructor(public formHandler: MealTemplateFormHandler) {}
 
   ngOnInit(): void {
     this.products$ = combineLatest([
       this.productsChange.pipe(distinctUntilChanged()),
-      values$(this.formHandler.form.controls.ingredients)
+      values$(this.formHandler.form.controls.ingredients),
     ]).pipe(
       map(([products, ingredients]) => {
         const selectedProductIds = ingredients.map((ingredient, idx) => this.formHandler.ingredients[idx].product.id);
@@ -40,5 +39,4 @@ export class FormProductComponent implements OnInit, OnChanges {
   handleAddProduct(): void {
     this.addProduct.emit(this.formHandler.form.controls.product.value);
   }
-
 }

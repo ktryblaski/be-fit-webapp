@@ -3,14 +3,10 @@ import { Ingredient } from '../../model/domain/ingredient';
 import { ingredientsCarbohydrates } from '../../util/calculator/ingredients-calculator';
 
 @Pipe({
-  name: 'ingredientsCarbohydratesCalculator'
+  name: 'ingredientsCarbohydratesCalculator',
 })
 export class IngredientsCarbohydratesCalculatorPipe implements PipeTransform {
-
   transform(ingredients: Ingredient[]): number {
-    return Math.round(
-      ingredientsCarbohydrates(ingredients)
-    );
+    return Math.round(ingredientsCarbohydrates(ingredients));
   }
-
 }

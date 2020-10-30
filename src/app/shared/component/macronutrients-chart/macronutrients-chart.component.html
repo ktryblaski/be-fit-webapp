@@ -1,16 +1,20 @@
 <div class="chart-container">
   <div>
-    <canvas baseChart width="100" height="100"
-            [options]="options"
-            [data]="macronutrients | toCanvasData"
-            [colors]="colors"
-            chartType="pie"></canvas>
+    <canvas
+      baseChart
+      width="100"
+      height="100"
+      [options]="options"
+      [data]="macronutrients | toCanvasData"
+      [colors]="colors"
+      chartType="pie"
+    ></canvas>
   </div>
 
   <div class="stats">
-    <div class="macronutrients-label proteins">Proteins: {{macronutrients.proteins}} g</div>
-    <div class="macronutrients-label fats">Fats: {{macronutrients.fats}} g</div>
-    <div class="macronutrients-label carbohydrates">Carbohydrates: {{macronutrients.carbohydrates}} g</div>
-    <div class="macronutrients-label kcal">Calories: {{macronutrients | macronutrientsCaloriesCalculator}}</div>
+    <div class="macronutrients-label proteins">Proteins: {{ macronutrients.proteins }} g</div>
+    <div class="macronutrients-label fats">Fats: {{ macronutrients.fats }} g</div>
+    <div class="macronutrients-label carbohydrates">Carbohydrates: {{ macronutrients.carbohydrates }} g</div>
+    <div class="macronutrients-label kcal">Calories: {{ macronutrients | macronutrientsCaloriesCalculator }}</div>
   </div>
 </div>

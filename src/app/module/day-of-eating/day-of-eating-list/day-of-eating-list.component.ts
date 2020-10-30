@@ -12,25 +12,20 @@ import { map } from 'rxjs/operators';
   selector: 'app-day-of-eating-list',
   templateUrl: './day-of-eating-list.component.html',
   styleUrls: ['./day-of-eating-list.component.scss'],
-  providers: [DayOfEatingListService]
+  providers: [DayOfEatingListService],
 })
 export class DayOfEatingListComponent implements OnInit {
-
   daysOfEating$: Observable<DayOfEatingLite[]>;
   loaded$: Observable<boolean>;
   pending$: Observable<boolean>;
   canBeginDayOfEating$: Observable<boolean>;
 
-  constructor(private service: DayOfEatingListService,
-              private dialog: MatDialog,
-              private router: Router) { }
+  constructor(private service: DayOfEatingListService, private dialog: MatDialog, private router: Router) {}
 
   ngOnInit(): void {
     this.daysOfEating$ = this.service.daysOfEating$;
     this.loaded$ = this.service.loaded$;
-    this.pending$ = combineLatest([this.service.loading$, this.service.saving$]).pipe(
-      map(([loading, saving]) => loading || saving)
-    );
+    this.pending$ = combineLatest([this.service.loading$, this.service.saving$]).pipe(map(([loading, saving]) => loading || saving));
     this.canBeginDayOfEating$ = this.service.canBeginDayOfEating$;
 
     this.service.load();
@@ -41,13 +36,15 @@ export class DayOfEatingListComponent implements OnInit {
   }
 
   handleBeginDayOfEating(): void {
-    this.dialog.open(DayOfEatingBeginDialogComponent, {
-      width: '400px'
-    }).afterClosed().subscribe((dayOfEatingBegin: DayOfEatingBeginDTO) => {
-      if (dayOfEatingBegin) {
-        this.service.save(dayOfEatingBegin);
-      }
-    });
+    this.dialog
+      .open(DayOfEatingBeginDialogComponent, {
+        width: '400px',
+      })
+      .afterClosed()
+      .subscribe((dayOfEatingBegin: DayOfEatingBeginDTO) => {
+        if (dayOfEatingBegin) {
+          this.service.save(dayOfEatingBegin);
+        }
+      });
   }
-
 }

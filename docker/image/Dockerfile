@@ -12,7 +12,7 @@ COPY package.json package-lock.json ./
 RUN npm --unsafe-perm install;
 
 COPY . .
-RUN ng build --prod;
+RUN npm run lint && npm run build:prod;
 
 # RUN
 FROM nginx:$NGINX_VERSION

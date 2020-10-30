@@ -11,7 +11,6 @@ import { Validators } from '@angular/forms';
 
 @Injectable()
 export class DayOfEatingBeginFormHandler implements OnDestroy {
-
   private subscription: Subscription;
 
   form: TypedFormGroup<DayOfEatingBeginForm, DayOfEatingBeginFormControls>;
@@ -19,19 +18,21 @@ export class DayOfEatingBeginFormHandler implements OnDestroy {
   constructor(private fb: TypedFormBuilder) {
     this.form = this.fb.group<DayOfEatingBeginForm, DayOfEatingBeginFormControls>({
       origin: this.fb.control<DayOfEatingBeginOrigin>(DayOfEatingBeginOrigin.NEW, Validators.required),
-      originDayDate: this.fb.control(null, Validators.required)
+      originDayDate: this.fb.control(null, Validators.required),
     });
 
-    this.subscription = values$(this.form.controls.origin).pipe(
-      tap(origin => {
-        if (DayOfEatingBeginOrigin.AS_COPY === origin) {
-          this.form.controls.originDayDate.enable();
-        } else {
-          this.form.controls.originDayDate.setValue(null);
-          this.form.controls.originDayDate.disable();
-        }
-      })
-    ).subscribe(noop);
+    this.subscription = values$(this.form.controls.origin)
+      .pipe(
+        tap(origin => {
+          if (DayOfEatingBeginOrigin.AS_COPY === origin) {
+            this.form.controls.originDayDate.enable();
+          } else {
+            this.form.controls.originDayDate.setValue(null);
+            this.form.controls.originDayDate.disable();
+          }
+        })
+      )
+      .subscribe(noop);
 
     this.form.controls.originDayDate.disable();
   }
@@ -47,5 +48,4 @@ export class DayOfEatingBeginFormHandler implements OnDestroy {
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-
 }

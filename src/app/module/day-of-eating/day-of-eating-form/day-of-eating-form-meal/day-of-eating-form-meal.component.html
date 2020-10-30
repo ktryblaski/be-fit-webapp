@@ -2,8 +2,7 @@
   <div class="name">
     <mat-form-field>
       <mat-label>Name</mat-label>
-      <input [formControl]="name" matInput
-             type="text" tabindex="1">
+      <input [formControl]="name" matInput type="text" tabindex="1" />
     </mat-form-field>
   </div>
 
@@ -14,7 +13,9 @@
     </mat-form-field>
   </div>
 
-  <app-day-of-eating-form-ingredients [formGroup]="control"
-                                      [mealIdx]="mealIdx"
-                                      [products]="dataSource.products"></app-day-of-eating-form-ingredients>
+  <app-day-of-eating-form-ingredients
+    [formGroup]="control"
+    [mealIdx]="mealIdx"
+    [products]="dataSource.products"
+  ></app-day-of-eating-form-ingredients>
 </div>

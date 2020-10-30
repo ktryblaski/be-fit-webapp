@@ -1,8 +1,10 @@
 <ng-container *ngIf="loaded$ | async; else loading">
   <div class="pending-indicator-overlay-boundaries">
-    <app-product-details-dialog-ui [product]="product$ | async"
-                                   (toggleFavourite)="handleToggleFavourite()"
-                                   (exit)="handleExit()"></app-product-details-dialog-ui>
+    <app-product-details-dialog-ui
+      [product]="product$ | async"
+      (toggleFavourite)="handleToggleFavourite()"
+      (exit)="handleExit()"
+    ></app-product-details-dialog-ui>
 
     <div class="pending-indicator-overlay-container" *ngIf="pending$ | async">
       <app-spinner></app-spinner>

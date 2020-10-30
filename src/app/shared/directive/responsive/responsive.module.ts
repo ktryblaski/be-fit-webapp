@@ -7,22 +7,8 @@ import { ForMediaDirective } from './for-media.directive';
 import { ClassForMediaDirective } from './class-for-media.directive';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: [
-    ForMobileDirective,
-    ForLandscapeMobileDirective,
-    ForDesktopDirective,
-    ForMediaDirective,
-    ClassForMediaDirective,
-  ],
-  exports: [
-    ForMobileDirective,
-    ForLandscapeMobileDirective,
-    ForDesktopDirective,
-    ForMediaDirective,
-    ClassForMediaDirective,
-  ]
+  imports: [CommonModule],
+  declarations: [ForMobileDirective, ForLandscapeMobileDirective, ForDesktopDirective, ForMediaDirective, ClassForMediaDirective],
+  exports: [ForMobileDirective, ForLandscapeMobileDirective, ForDesktopDirective, ForMediaDirective, ClassForMediaDirective],
 })
-export class ResponsiveModule { }
+export class ResponsiveModule {}

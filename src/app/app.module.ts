@@ -36,20 +36,11 @@ import { far } from '@fortawesome/free-regular-svg-icons';
     NotificationModule,
     ErrorModalModule,
   ],
-  declarations: [
-    AppComponent,
-    DashboardComponent,
-    MenuComponent,
-    MainAreaComponent,
-  ],
-  bootstrap: [
-    AppComponent
-  ]
+  declarations: [AppComponent, DashboardComponent, MenuComponent, MainAreaComponent],
+  bootstrap: [AppComponent],
 })
 export class AppModule {
-
   constructor(library: FaIconLibrary) {
     library.addIconPacks(fas, far);
   }
-
 }

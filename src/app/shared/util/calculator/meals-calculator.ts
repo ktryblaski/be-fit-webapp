@@ -4,7 +4,7 @@ import {
   ingredientsCarbohydrates,
   ingredientsFats,
   ingredientsProteins,
-  ingredientsWeight
+  ingredientsWeight,
 } from './ingredients-calculator';
 
 export function mealsCalories(meals: Meal[]): number {

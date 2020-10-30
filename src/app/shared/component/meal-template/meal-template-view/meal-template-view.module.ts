@@ -5,16 +5,8 @@ import { IngredientsTableModule } from '../../ingredient/ingredients-table/ingre
 import { FieldModule } from '../../field/field.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    IngredientsTableModule,
-    FieldModule
-  ],
-  declarations: [
-    MealTemplateViewComponent
-  ],
-  exports: [
-    MealTemplateViewComponent
-  ]
+  imports: [CommonModule, IngredientsTableModule, FieldModule],
+  declarations: [MealTemplateViewComponent],
+  exports: [MealTemplateViewComponent],
 })
-export class MealTemplateViewModule { }
+export class MealTemplateViewModule {}

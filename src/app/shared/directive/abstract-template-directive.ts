@@ -1,9 +1,7 @@
 import { EmbeddedViewRef, TemplateRef, ViewContainerRef } from '@angular/core';
 
 export abstract class AbstractTemplateDirective {
-
-  protected constructor(private templateRef: TemplateRef<any>,
-                        private viewContainerRef: ViewContainerRef) { }
+  protected constructor(private templateRef: TemplateRef<any>, private viewContainerRef: ViewContainerRef) {}
 
   protected viewRef: EmbeddedViewRef<any> | null;
 
@@ -27,5 +25,4 @@ export abstract class AbstractTemplateDirective {
       this.viewRef = null;
     }
   }
-
 }

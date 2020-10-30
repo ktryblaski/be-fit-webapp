@@ -4,14 +4,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: [
-    SpinnerComponent
-  ],
-  exports: [
-    SpinnerComponent
-  ]
+  imports: [CommonModule],
+  declarations: [SpinnerComponent],
+  exports: [SpinnerComponent],
 })
-export class SpinnerModule { }
+export class SpinnerModule {}

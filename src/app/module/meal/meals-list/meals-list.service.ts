@@ -8,7 +8,6 @@ import { NotificationSeverity } from '../../../shared/component/notification/not
 
 @Injectable()
 export class MealsListService implements OnDestroy {
-
   private readonly loadAction = new Subject();
 
   private readonly meals = new BehaviorSubject<MealView[]>(null);
@@ -21,11 +20,8 @@ export class MealsListService implements OnDestroy {
 
   private subscription: Subscription;
 
-  constructor(private restService: MealRestService,
-              private notificationService: NotificationService) {
-    this.subscription = merge(
-      this.loadEffect()
-    ).subscribe(noop);
+  constructor(private restService: MealRestService, private notificationService: NotificationService) {
+    this.subscription = merge(this.loadEffect()).subscribe(noop);
   }
 
   load(): void {
@@ -37,22 +33,24 @@ export class MealsListService implements OnDestroy {
       tap(() => {
         this.loading.next(true);
       }),
-      switchMap(() => this.restService.findAll().pipe(
-        tap((meals: MealView[]) => {
-          this.meals.next(meals);
-          this.loaded.next(true);
-          this.loading.next(false);
-        }),
-        catchError(error => {
-          console.error(error);
-          this.loading.next(false);
-          this.notificationService.show({
-            message: 'An error has occurred',
-            severity: NotificationSeverity.DANGER
-          });
-          return EMPTY;
-        })
-      )),
+      switchMap(() =>
+        this.restService.findAll().pipe(
+          tap((meals: MealView[]) => {
+            this.meals.next(meals);
+            this.loaded.next(true);
+            this.loading.next(false);
+          }),
+          catchError(error => {
+            console.error(error);
+            this.loading.next(false);
+            this.notificationService.show({
+              message: 'An error has occurred',
+              severity: NotificationSeverity.DANGER,
+            });
+            return EMPTY;
+          })
+        )
+      ),
       ignoreElements()
     );
   }
@@ -60,5 +58,4 @@ export class MealsListService implements OnDestroy {
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-
 }

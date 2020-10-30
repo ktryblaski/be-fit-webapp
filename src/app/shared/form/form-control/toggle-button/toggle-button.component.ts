@@ -9,12 +9,11 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => ToggleButtonComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class ToggleButtonComponent implements ControlValueAccessor {
-
   value: any;
   disabled = false;
 
@@ -42,5 +41,4 @@ export class ToggleButtonComponent implements ControlValueAccessor {
   setDisabledState(disabled: boolean): void {
     this.disabled = disabled;
   }
-
 }

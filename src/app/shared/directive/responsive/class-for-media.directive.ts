@@ -1,29 +1,19 @@
-import {
-  Directive,
-  ElementRef,
-  Input,
-  OnChanges,
-  OnDestroy,
-  Renderer2, SimpleChanges,
- } from '@angular/core';
+import { Directive, ElementRef, Input, OnChanges, OnDestroy, Renderer2, SimpleChanges } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
 
 type Classes = string | string[];
 
 @Directive({
-  selector: '[appClassForMedia]'
+  selector: '[appClassForMedia]',
 })
 export class ClassForMediaDirective implements OnChanges, OnDestroy {
-
   @Input('appClassForMedia') mediaQuery: Classes;
   @Input() classes: Classes;
 
   private subscription: Subscription;
 
-  constructor(private renderer: Renderer2,
-              private hostElement: ElementRef,
-              private breakpointObserver: BreakpointObserver) { }
+  constructor(private renderer: Renderer2, private hostElement: ElementRef, private breakpointObserver: BreakpointObserver) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.classes && !changes.classes.isFirstChange()) {
@@ -73,5 +63,4 @@ export class ClassForMediaDirective implements OnChanges, OnDestroy {
 
     return [];
   }
-
 }

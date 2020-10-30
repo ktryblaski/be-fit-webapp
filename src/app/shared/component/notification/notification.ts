@@ -2,7 +2,7 @@ export enum NotificationSeverity {
   SUCCESS = 'success',
   INFO = 'info',
   WARNING = 'warning',
-  DANGER = 'danger'
+  DANGER = 'danger',
 }
 
 export interface Notification {

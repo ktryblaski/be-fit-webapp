@@ -21,15 +21,15 @@
     <ng-container formArrayName="ingredients">
       <tr *ngFor="let ingredient of ingredients; let i = index">
         <ng-container [formGroup]="ingredient">
-          <ng-container *ngIf="(ingredient.get('product') | product) as product">
-            <td class="name">{{product.name}}</td>
-            <td>{{product.macronutrients | macronutrientsCarbohydratesCalculator:ingredient.get('weight').value}}</td>
-            <td>{{product.macronutrients | macronutrientsProteinsCalculator:ingredient.get('weight').value}}</td>
-            <td>{{product.macronutrients | macronutrientsFatsCalculator:ingredient.get('weight').value}}</td>
-            <td>{{product.macronutrients | macronutrientsCaloriesCalculator:ingredient.get('weight').value}}</td>
+          <ng-container *ngIf="ingredient.get('product') | product as product">
+            <td class="name">{{ product.name }}</td>
+            <td>{{ product.macronutrients | macronutrientsCarbohydratesCalculator: ingredient.get('weight').value }}</td>
+            <td>{{ product.macronutrients | macronutrientsProteinsCalculator: ingredient.get('weight').value }}</td>
+            <td>{{ product.macronutrients | macronutrientsFatsCalculator: ingredient.get('weight').value }}</td>
+            <td>{{ product.macronutrients | macronutrientsCaloriesCalculator: ingredient.get('weight').value }}</td>
             <td class="weight">
               <mat-form-field>
-                <input formControlName="weight" type="number" min="0" matInput>
+                <input formControlName="weight" type="number" min="0" matInput />
               </mat-form-field>
             </td>
             <td class="remove">

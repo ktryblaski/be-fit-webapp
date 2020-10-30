@@ -5,10 +5,9 @@ import { InternationalizationService } from '../../../../shared/service/internat
 @Component({
   selector: 'app-meal-details-ui',
   templateUrl: './meal-details-ui.component.html',
-  styleUrls: ['./meal-details-ui.component.scss']
+  styleUrls: ['./meal-details-ui.component.scss'],
 })
 export class MealDetailsUiComponent {
-
   readonly MEAL_TYPE;
 
   @Input() meal: Meal;
@@ -16,5 +15,4 @@ export class MealDetailsUiComponent {
   constructor(private i18nService: InternationalizationService) {
     this.MEAL_TYPE = i18nService.MEAL_TYPE;
   }
-
 }

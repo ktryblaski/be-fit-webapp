@@ -1,9 +1,6 @@
 <div class="header">
-  <div title>{{product.name}}</div>
-  <button [class.favourite]="product.favourite"
-          (click)="handleToggleFavourite()"
-          rawButton type="button"
-          class="toggle-favourite">
+  <div title>{{ product.name }}</div>
+  <button [class.favourite]="product.favourite" (click)="handleToggleFavourite()" rawButton type="button" class="toggle-favourite">
     <fa-icon icon="heart"></fa-icon>
   </button>
 </div>
@@ -13,6 +10,5 @@
 </div>
 
 <div actions>
-  <button (click)="handleExit()" type="button"
-          mat-raised-button>Close</button>
+  <button (click)="handleExit()" type="button" mat-raised-button>Close</button>
 </div>

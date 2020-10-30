@@ -7,7 +7,6 @@ import { ErrorModalService } from '../../../shared/error-modal/error-modal.servi
 
 @Injectable()
 export class DayOfEatingDetailsService implements OnDestroy {
-
   private loadAction = new Subject<number>();
 
   private readonly loading = new BehaviorSubject<boolean>(false);
@@ -20,9 +19,7 @@ export class DayOfEatingDetailsService implements OnDestroy {
 
   private subscription: Subscription;
 
-  constructor(private restService: DayOfEatingRestService,
-              private errorModalService: ErrorModalService) {
-
+  constructor(private restService: DayOfEatingRestService, private errorModalService: ErrorModalService) {
     this.subscription = this.loadEffect().subscribe(noop);
   }
 
@@ -39,22 +36,23 @@ export class DayOfEatingDetailsService implements OnDestroy {
       tap(() => {
         this.loading.next(true);
       }),
-      switchMap(id => this.restService.get(id).pipe(
-        tap(dayOfEating => {
-          this.dayOfEating.next(dayOfEating);
-          this.loaded.next(true);
-        }),
-        catchError(error => {
-          console.error(error);
-          this.errorModalService.showError('An error has occurred while loading data');
-          return EMPTY;
-        }),
-        finalize(() => {
-          this.loading.next(false);
-        })
-      )),
+      switchMap(id =>
+        this.restService.get(id).pipe(
+          tap(dayOfEating => {
+            this.dayOfEating.next(dayOfEating);
+            this.loaded.next(true);
+          }),
+          catchError(error => {
+            console.error(error);
+            this.errorModalService.showError('An error has occurred while loading data');
+            return EMPTY;
+          }),
+          finalize(() => {
+            this.loading.next(false);
+          })
+        )
+      ),
       ignoreElements()
     );
   }
-
 }

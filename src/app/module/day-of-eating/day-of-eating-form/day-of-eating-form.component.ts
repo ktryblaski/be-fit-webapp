@@ -8,10 +8,9 @@ import { DayOfEatingFormValue } from './-shared/day-of-eating-form-value';
   selector: 'app-day-of-eating-form',
   templateUrl: './day-of-eating-form.component.html',
   styleUrls: ['./day-of-eating-form.component.scss'],
-  providers: [DayOfEatingFormHandler]
+  providers: [DayOfEatingFormHandler],
 })
 export class DayOfEatingFormComponent implements OnChanges {
-
   readonly DATE_FORMAT = 'dd-MM-yyy';
 
   @Input() dayOfEating: DayOfEating;
@@ -19,7 +18,7 @@ export class DayOfEatingFormComponent implements OnChanges {
   @Output() save = new EventEmitter<DayOfEatingFormValue>();
   @Output() cancel = new EventEmitter();
 
-  constructor(public formHandler: DayOfEatingFormHandler) { }
+  constructor(public formHandler: DayOfEatingFormHandler) {}
 
   handleSubmit(): void {
     this.save.emit(this.formHandler.getValue());
@@ -34,5 +33,4 @@ export class DayOfEatingFormComponent implements OnChanges {
       this.formHandler.setValue(this.dayOfEating);
     }
   }
-
 }

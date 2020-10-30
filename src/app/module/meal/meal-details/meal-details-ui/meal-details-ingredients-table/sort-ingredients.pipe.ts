@@ -3,10 +3,9 @@ import { Ingredient } from '../../../../../shared/model/domain/ingredient';
 import { handleNullArray, stringCompare } from '../../../../../shared/util/commons';
 
 @Pipe({
-  name: 'sortIngredients'
+  name: 'sortIngredients',
 })
 export class SortIngredientsPipe implements PipeTransform {
-
   transform(ingredients: Ingredient[]): Ingredient[] {
     return [...handleNullArray(ingredients)].sort(this.ingredientCompare);
   }
@@ -14,5 +13,4 @@ export class SortIngredientsPipe implements PipeTransform {
   private ingredientCompare(a: Ingredient, b: Ingredient) {
     return stringCompare(a.product.name, b.product.name);
   }
-
 }

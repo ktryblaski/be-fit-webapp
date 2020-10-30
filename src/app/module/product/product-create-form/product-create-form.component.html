@@ -1,33 +1,26 @@
 <form [formGroup]="formHandler.form" (ngSubmit)="handleSubmit()">
-
   <mat-form-field class="name-input">
     <mat-label>Name</mat-label>
-    <input [formControl]="formHandler.form.controls.name" type="text"
-           matInput tabindex="1">
+    <input [formControl]="formHandler.form.controls.name" type="text" matInput tabindex="1" />
   </mat-form-field>
 
   <mat-form-field class="proteins-input">
     <mat-label>Proteins</mat-label>
-    <input [formControl]="formHandler.form.controls.proteins" type="number"
-           min="0" matInput tabindex="3">
+    <input [formControl]="formHandler.form.controls.proteins" type="number" min="0" matInput tabindex="3" />
   </mat-form-field>
 
   <mat-form-field class="fats-input">
     <mat-label>Fats</mat-label>
-    <input [formControl]="formHandler.form.controls.fats" type="number"
-           min="0" matInput tabindex="4">
+    <input [formControl]="formHandler.form.controls.fats" type="number" min="0" matInput tabindex="4" />
   </mat-form-field>
 
   <mat-form-field class="carbohydrates-input">
     <mat-label>Carbohydrates</mat-label>
-    <input [formControl]="formHandler.form.controls.carbohydrates" type="number"
-           min="0" matInput tabindex="2">
+    <input [formControl]="formHandler.form.controls.carbohydrates" type="number" min="0" matInput tabindex="2" />
   </mat-form-field>
 
   <div actions>
-    <button (click)="handleCancel()" type="button"
-            mat-raised-button tabindex="6">Cancel</button>
-    <button [disabled]="!formHandler.form.valid" type="submit"
-            mat-raised-button color="primary" tabindex="5">Save</button>
+    <button (click)="handleCancel()" type="button" mat-raised-button tabindex="6">Cancel</button>
+    <button [disabled]="!formHandler.form.valid" type="submit" mat-raised-button color="primary" tabindex="5">Save</button>
   </div>
 </form>

@@ -6,17 +6,8 @@ import { CalculatorModule } from '../../pipe/calculator/calculator.module';
 import { ToCanvasDataPipe } from './to-canvas-data.pipe';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ChartsModule,
-    CalculatorModule
-  ],
-  declarations: [
-    MacronutrientsChartComponent,
-    ToCanvasDataPipe
-  ],
-  exports: [
-    MacronutrientsChartComponent
-  ]
+  imports: [CommonModule, ChartsModule, CalculatorModule],
+  declarations: [MacronutrientsChartComponent, ToCanvasDataPipe],
+  exports: [MacronutrientsChartComponent],
 })
-export class MacronutrientsChartModule { }
+export class MacronutrientsChartModule {}

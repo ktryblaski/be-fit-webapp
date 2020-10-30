@@ -43,7 +43,7 @@ import { NoTableDataModule } from '../../shared/component/no-table-data/no-table
     MatNativeDateModule,
     MatAutocompleteModule,
     HelperModule,
-    NoTableDataModule
+    NoTableDataModule,
   ],
   declarations: [
     DietsListComponent,
@@ -59,10 +59,8 @@ import { NoTableDataModule } from '../../shared/component/no-table-data/no-table
     DietMealsTableComponent,
     DietMealsSelectUiComponent,
     FilterMealsPipe,
-    IsAddingDisabledPipe
+    IsAddingDisabledPipe,
   ],
-  providers: [
-    MatDatepickerModule,
-  ],
+  providers: [MatDatepickerModule],
 })
-export class DietModule { }
+export class DietModule {}

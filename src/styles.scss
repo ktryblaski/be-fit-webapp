@@ -4,8 +4,14 @@
 @import 'src/app/shared/helper/_helper';
 @import 'src/material-theme';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
 
 ::-webkit-scrollbar {
   width: 6px;
@@ -45,7 +51,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .macronutrients-label {
   &:before {
-    content: "\2022";
+    content: '\2022';
     color: black;
     font-weight: bold;
     display: inline-block;

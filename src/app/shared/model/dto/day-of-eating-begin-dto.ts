@@ -1,6 +1,6 @@
 export enum DayOfEatingBeginOrigin {
   NEW,
-  AS_COPY
+  AS_COPY,
 }
 
 export interface DayOfEatingBeginDTO {

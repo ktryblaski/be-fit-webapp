@@ -3,7 +3,7 @@ import {
   macronutrientsCaloriesForWeight,
   macronutrientsCarbohydratesForWeight,
   macronutrientsFatsForWeight,
-  macronutrientsProteinsForWeight
+  macronutrientsProteinsForWeight,
 } from './macronutrients-calculator';
 
 export function ingredientsCalories(ingredients: Ingredient[]): number {

@@ -12,49 +12,50 @@ import { map } from 'rxjs/operators';
   selector: 'app-products-list',
   templateUrl: './products-list.component.html',
   styleUrls: ['./products-list.component.scss'],
-  providers: [ProductsListService]
+  providers: [ProductsListService],
 })
 export class ProductsListComponent implements OnInit {
-
   public products$: Observable<Product[]>;
   public loaded$: Observable<boolean>;
   public pending$: Observable<boolean>;
 
-  constructor(private service: ProductsListService,
-              private dialog: MatDialog) { }
+  constructor(private service: ProductsListService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.products$ = this.service.products$;
     this.loaded$ = this.service.loaded$;
-    this.pending$ = combineLatest([this.service.loading$, this.service.creating$]).pipe(
-      map(([loading, saving]) => loading || saving)
-    );
+    this.pending$ = combineLatest([this.service.loading$, this.service.creating$]).pipe(map(([loading, saving]) => loading || saving));
 
     this.service.load();
   }
 
   handleClick(product: Product): void {
-    this.dialog.open(ProductDetailsDialogComponent, {
-      data: {
-        productId: product.id
-      },
-      disableClose: true,
-      width: '400px'
-    }).afterClosed().subscribe((saved: boolean) => {
-      if (saved) {
-        this.service.load();
-      }
-    });
+    this.dialog
+      .open(ProductDetailsDialogComponent, {
+        data: {
+          productId: product.id,
+        },
+        disableClose: true,
+        width: '400px',
+      })
+      .afterClosed()
+      .subscribe((saved: boolean) => {
+        if (saved) {
+          this.service.load();
+        }
+      });
   }
 
   handleAddNewProduct(): void {
-    this.dialog.open(ProductCreateDialogComponent, {
-      width: '400px'
-    }).afterClosed().subscribe((formValue: ProductFormValue) => {
-      if (formValue) {
-        this.service.create(formValue);
-      }
-    });
+    this.dialog
+      .open(ProductCreateDialogComponent, {
+        width: '400px',
+      })
+      .afterClosed()
+      .subscribe((formValue: ProductFormValue) => {
+        if (formValue) {
+          this.service.create(formValue);
+        }
+      });
   }
-
 }

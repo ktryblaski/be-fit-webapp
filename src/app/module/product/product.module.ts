@@ -3,9 +3,6 @@ import { ProductRoutingModule } from './product-routing.module';
 import { ProductsListModule } from './products-list/products-list.module';
 
 @NgModule({
-  imports: [
-    ProductRoutingModule,
-    ProductsListModule
-  ]
+  imports: [ProductRoutingModule, ProductsListModule],
 })
-export class ProductModule { }
+export class ProductModule {}

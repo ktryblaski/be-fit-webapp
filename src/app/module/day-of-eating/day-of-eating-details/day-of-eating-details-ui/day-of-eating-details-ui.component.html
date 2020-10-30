@@ -1,5 +1,4 @@
 <div *ngIf="dayOfEating.meals.length > 0; else noMeals" class="meals-container">
-
   <div class="stats">
     <div>
       <app-macronutrients-chart [macronutrients]="dayOfEating | toMacronutrients"></app-macronutrients-chart>
@@ -7,30 +6,27 @@
   </div>
 
   <div class="expansion-actions">
-    <button (click)="accordion.closeAll()"
-            rawButton type="button">
+    <button (click)="accordion.closeAll()" rawButton type="button">
       <fa-icon [fixedWidth]="true" icon="compress-alt"></fa-icon>
     </button>
-    <button (click)="accordion.openAll()"
-            rawButton type="button">
+    <button (click)="accordion.openAll()" rawButton type="button">
       <fa-icon [fixedWidth]="true" icon="expand-alt"></fa-icon>
     </button>
   </div>
 
   <mat-accordion multi>
     <mat-expansion-panel *ngFor="let meal of dayOfEating.meals" [expanded]="false">
-
       <mat-expansion-panel-header>
-        <mat-panel-title>{{meal.name}}</mat-panel-title>
+        <mat-panel-title>{{ meal.name }}</mat-panel-title>
         <mat-panel-description>
           <div class="description">
-            <span class="proteins">{{meal.ingredients | ingredientsProteinsCalculator}}</span>
+            <span class="proteins">{{ meal.ingredients | ingredientsProteinsCalculator }}</span>
             <span>/</span>
-            <span class="fats">{{meal.ingredients | ingredientsFatsCalculator}}</span>
+            <span class="fats">{{ meal.ingredients | ingredientsFatsCalculator }}</span>
             <span>/</span>
-            <span class="carbohydrates">{{meal.ingredients | ingredientsCarbohydratesCalculator}}</span>
+            <span class="carbohydrates">{{ meal.ingredients | ingredientsCarbohydratesCalculator }}</span>
             <span>/</span>
-            <span class="calories">{{meal.ingredients | ingredientsCaloriesCalculator}}</span>
+            <span class="calories">{{ meal.ingredients | ingredientsCaloriesCalculator }}</span>
           </div>
         </mat-panel-description>
       </mat-expansion-panel-header>
@@ -38,10 +34,8 @@
       <div class="meal-container">
         <app-meal-view [meal]="meal"></app-meal-view>
       </div>
-
     </mat-expansion-panel>
   </mat-accordion>
-
 </div>
 
 <ng-template #noMeals>

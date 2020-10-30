@@ -14,7 +14,6 @@ export type IngredientProduct = Omit<MealTemplateFormIngredientValue, 'weight'>;
 
 @Injectable()
 export class MealTemplateFormHandler {
-
   form: TypedFormGroup<MealTemplateForm, MealTemplateFormControls>;
 
   ingredients: IngredientProduct[] = [];
@@ -25,12 +24,10 @@ export class MealTemplateFormHandler {
       name: this.fb.control<string>(null, Validators.required),
       description: this.fb.control<string>(),
       ingredients: this.fb.array<number>(),
-      product: this.fb.control<Product>()
+      product: this.fb.control<Product>(),
     });
 
-    this.hasIngredients$ = values$(this.form.controls.ingredients).pipe(
-      map(ingredients => ingredients.length > 0)
-    );
+    this.hasIngredients$ = values$(this.form.controls.ingredients).pipe(map(ingredients => ingredients.length > 0));
   }
 
   setValue(mealTemplate: MealTemplate): void {
@@ -50,8 +47,8 @@ export class MealTemplateFormHandler {
       ingredients: this.form.controls.ingredients.value.map((weight, idx) => ({
         id: this.ingredients[idx].id,
         weight,
-        product: this.ingredients[idx].product
-      }))
+        product: this.ingredients[idx].product,
+      })),
     };
   }
 
@@ -70,8 +67,6 @@ export class MealTemplateFormHandler {
 
   private addIngredient(id: number | null, product: Product, weight: number): void {
     this.ingredients = [...this.ingredients, { id, product }];
-    this.form.controls.ingredients.push(
-      this.fb.control<number>(weight)
-    );
+    this.form.controls.ingredients.push(this.fb.control<number>(weight));
   }
 }

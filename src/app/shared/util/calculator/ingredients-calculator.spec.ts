@@ -5,33 +5,30 @@ import {
   ingredientsCarbohydrates,
   ingredientsFats,
   ingredientsProteins,
-  ingredientsWeight
+  ingredientsWeight,
 } from './ingredients-calculator';
 
 describe('ingredients-calculator', () => {
-
-  const nuts: Macronutrients = {proteins: 15, fats: 61, carbohydrates: 17};
-  const banana: Macronutrients = {proteins: 1, fats: 0, carbohydrates: 23};
-  const rice: Macronutrients = {proteins: 3, fats: 0, carbohydrates: 28};
-  const coke: Macronutrients = {proteins: 0, fats: 0, carbohydrates: 10};
-  const avocado: Macronutrients = {proteins: 2, fats: 15, carbohydrates: 9};
-  const oliveOil: Macronutrients = {proteins: 0, fats: 100, carbohydrates: 0};
+  const nuts: Macronutrients = { proteins: 15, fats: 61, carbohydrates: 17 };
+  const banana: Macronutrients = { proteins: 1, fats: 0, carbohydrates: 23 };
+  const rice: Macronutrients = { proteins: 3, fats: 0, carbohydrates: 28 };
+  const coke: Macronutrients = { proteins: 0, fats: 0, carbohydrates: 10 };
+  const avocado: Macronutrients = { proteins: 2, fats: 15, carbohydrates: 9 };
+  const oliveOil: Macronutrients = { proteins: 0, fats: 100, carbohydrates: 0 };
 
   const ingredients1: Ingredient[] = [
-    {product: {macronutrients: nuts, name: null, favourite: false}, weight: 30},
-    {product: {macronutrients: banana, name: null, favourite: false}, weight: 120},
-    {product: {macronutrients: rice, name: null, favourite: false}, weight: 90}
+    { product: { macronutrients: nuts, name: null, favourite: false }, weight: 30 },
+    { product: { macronutrients: banana, name: null, favourite: false }, weight: 120 },
+    { product: { macronutrients: rice, name: null, favourite: false }, weight: 90 },
   ];
 
   const ingredients2: Ingredient[] = [
-    {product: {macronutrients: rice, name: null, favourite: false}, weight: 100},
-    {product: {macronutrients: avocado, name: null, favourite: false}, weight: 50},
-    {product: {macronutrients: oliveOil, name: null, favourite: false}, weight: 15}
+    { product: { macronutrients: rice, name: null, favourite: false }, weight: 100 },
+    { product: { macronutrients: avocado, name: null, favourite: false }, weight: 50 },
+    { product: { macronutrients: oliveOil, name: null, favourite: false }, weight: 15 },
   ];
 
-  const ingredients3: Ingredient[] = [
-    {product: {macronutrients: coke, name: null, favourite: false}, weight: 500}
-  ];
+  const ingredients3: Ingredient[] = [{ product: { macronutrients: coke, name: null, favourite: false }, weight: 500 }];
 
   it('should calculate calories number correctly', () => {
     expect(ingredientsCalories(ingredients1)).toBe(429.9);
@@ -62,5 +59,4 @@ describe('ingredients-calculator', () => {
     expect(ingredientsWeight(ingredients2)).toBe(165);
     expect(ingredientsWeight(ingredients3)).toBe(500);
   });
-
 });

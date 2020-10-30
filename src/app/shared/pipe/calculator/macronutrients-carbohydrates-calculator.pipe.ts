@@ -3,14 +3,10 @@ import { Macronutrients } from '../../model/domain/macronutrients';
 import { macronutrientsCarbohydratesForWeight } from '../../util/calculator/macronutrients-calculator';
 
 @Pipe({
-  name: 'macronutrientsCarbohydratesCalculator'
+  name: 'macronutrientsCarbohydratesCalculator',
 })
 export class MacronutrientsCarbohydratesCalculatorPipe implements PipeTransform {
-
   transform(macronutrients: Macronutrients, weight?: number): number {
-    return Math.round(
-      macronutrientsCarbohydratesForWeight(macronutrients, weight)
-    );
+    return Math.round(macronutrientsCarbohydratesForWeight(macronutrients, weight));
   }
-
 }

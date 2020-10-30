@@ -5,13 +5,12 @@ import { MealTemplateFormHandler } from '../meal-template-form-handler';
 @Component({
   selector: 'app-ingredients-form',
   templateUrl: './ingredients-form.component.html',
-  styleUrls: ['./ingredients-form.component.scss']
+  styleUrls: ['./ingredients-form.component.scss'],
 })
 export class IngredientsFormComponent {
-
   @Input() products: Product[];
 
-  constructor(public formHandler: MealTemplateFormHandler) { }
+  constructor(public formHandler: MealTemplateFormHandler) {}
 
   handleAddProduct(product: Product): void {
     this.formHandler.clearProduct();
@@ -21,5 +20,4 @@ export class IngredientsFormComponent {
   handleRemoveIngredient(idx: number): void {
     this.formHandler.removeIngredient(idx);
   }
-
 }

@@ -4,10 +4,9 @@ import { DayOfEatingLite } from '../../../../shared/model/domain/day-of-eating';
 @Component({
   selector: 'app-day-of-eating-list-ui',
   templateUrl: './day-of-eating-list-ui.component.html',
-  styleUrls: ['./day-of-eating-list-ui.component.scss']
+  styleUrls: ['./day-of-eating-list-ui.component.scss'],
 })
 export class DayOfEatingListUiComponent {
-
   readonly DATE_FORMAT = 'dd-MM-yyy';
 
   @Input() daysOfEating: DayOfEatingLite[];
@@ -16,5 +15,4 @@ export class DayOfEatingListUiComponent {
   handleClick(dayOfEating: DayOfEatingLite): void {
     this.clickRow.next(dayOfEating);
   }
-
 }

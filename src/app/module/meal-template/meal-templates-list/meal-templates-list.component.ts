@@ -8,16 +8,14 @@ import { MealTemplate } from '../../../shared/model/domain/meal-template';
   selector: 'app-meal-templates-list',
   templateUrl: './meal-templates-list.component.html',
   styleUrls: ['./meal-templates-list.component.scss'],
-  providers: [MealTemplatesListService]
+  providers: [MealTemplatesListService],
 })
 export class MealTemplatesListComponent implements OnInit {
-
   public mealTemplates$: Observable<MealTemplate[]>;
   public loaded$: Observable<boolean>;
   public loading$: Observable<boolean>;
 
-  constructor(private service: MealTemplatesListService,
-              private router: Router) { }
+  constructor(private service: MealTemplatesListService, private router: Router) {}
 
   ngOnInit(): void {
     this.mealTemplates$ = this.service.mealTemplates$;
@@ -34,5 +32,4 @@ export class MealTemplatesListComponent implements OnInit {
   handleAddNewMealTemplate(): void {
     this.router.navigate(['meal-template', 'new']);
   }
-
 }

@@ -8,7 +8,6 @@ import { NotificationService } from '../../../../../shared/component/notificatio
 
 @Injectable()
 export class MealIngredientsSelectService implements OnDestroy {
-
   private readonly loadAction: Subject<never> = new Subject<never>();
 
   private readonly products: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);
@@ -19,9 +18,7 @@ export class MealIngredientsSelectService implements OnDestroy {
 
   private readonly subscription: Subscription;
 
-  constructor(private restService: ProductRestService,
-              private notificationService: NotificationService) {
-
+  constructor(private restService: ProductRestService, private notificationService: NotificationService) {
     this.subscription = this.loadEffect().subscribe(noop);
   }
 
@@ -34,21 +31,23 @@ export class MealIngredientsSelectService implements OnDestroy {
       tap(() => {
         this.loading.next(true);
       }),
-      switchMap(() => this.restService.findAll().pipe(
-        tap((products: Product[]) => {
-          this.products.next(products);
-          this.loading.next(false);
-        }),
-        catchError(error => {
-          console.error(error);
-          this.loading.next(false);
-          this.notificationService.show({
-            message: 'An error has occurred',
-            severity: NotificationSeverity.DANGER
-          });
-          return EMPTY;
-        })
-      )),
+      switchMap(() =>
+        this.restService.findAll().pipe(
+          tap((products: Product[]) => {
+            this.products.next(products);
+            this.loading.next(false);
+          }),
+          catchError(error => {
+            console.error(error);
+            this.loading.next(false);
+            this.notificationService.show({
+              message: 'An error has occurred',
+              severity: NotificationSeverity.DANGER,
+            });
+            return EMPTY;
+          })
+        )
+      ),
       ignoreElements()
     );
   }
@@ -56,5 +55,4 @@ export class MealIngredientsSelectService implements OnDestroy {
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-
 }

@@ -6,18 +6,18 @@ import { distinctUntilChanged } from 'rxjs/operators';
 import { Ingredient } from '../../../../../shared/model/domain/ingredient';
 import {
   ingredientsCarbohydrates,
-  ingredientsFats, ingredientsKCAL,
+  ingredientsFats,
+  ingredientsKCAL,
   ingredientsProteins,
-  ingredientsWeight
- } from '../../../../../shared/util/calculator';
+  ingredientsWeight,
+} from '../../../../../shared/util/calculator';
 
 @Component({
   selector: 'app-meal-ingredients-table',
   templateUrl: './meal-ingredients-table.component.html',
-  styleUrls: ['./meal-ingredients-table.component.scss']
+  styleUrls: ['./meal-ingredients-table.component.scss'],
 })
 export class MealIngredientsTableComponent implements OnInit, OnDestroy {
-
   private readonly carbohydrates = new BehaviorSubject<number>(0);
   private readonly proteins = new BehaviorSubject<number>(0);
   private readonly fats = new BehaviorSubject<number>(0);
@@ -62,5 +62,4 @@ export class MealIngredientsTableComponent implements OnInit, OnDestroy {
     this.KCAL.next(Math.round(ingredientsKCAL(ingredients)));
     this.weight.next(ingredientsWeight(ingredients));
   }
-
 }

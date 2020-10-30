@@ -7,10 +7,9 @@ import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-diet-meals-select-ui',
   templateUrl: './diet-meals-select-ui.component.html',
-  styleUrls: ['./diet-meals-select-ui.component.scss']
+  styleUrls: ['./diet-meals-select-ui.component.scss'],
 })
 export class DietMealsSelectUiComponent implements OnInit, OnChanges {
-
   @Input() meals: MealView[];
   @Input() formHandler: DietFormHandler;
   @Output() addMeal: EventEmitter<MealView> = new EventEmitter<MealView>();
@@ -20,10 +19,7 @@ export class DietMealsSelectUiComponent implements OnInit, OnChanges {
   meals$: Observable<MealView[]>;
 
   ngOnInit(): void {
-    this.meals$ = merge(
-      this.formHandler.form.get('meal').valueChanges,
-      this.mealsChange.pipe()
-    ).pipe(
+    this.meals$ = merge(this.formHandler.form.get('meal').valueChanges, this.mealsChange.pipe()).pipe(
       map(() => this.filter(this.meals, this.formHandler.form.get('meal').value))
     );
   }
@@ -43,5 +39,4 @@ export class DietMealsSelectUiComponent implements OnInit, OnChanges {
 
     return meals.filter(p => p.name.indexOf(value) > -1);
   }
-
 }

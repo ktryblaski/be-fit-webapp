@@ -12,10 +12,9 @@ import { values$ } from '../../../../shared/form/typed-form/typed-utils';
   selector: 'app-day-of-eating-begin-form',
   templateUrl: './day-of-eating-begin-form.component.html',
   styleUrls: ['./day-of-eating-begin-form.component.scss'],
-  providers: [DayOfEatingBeginFormHandler]
+  providers: [DayOfEatingBeginFormHandler],
 })
 export class DayOfEatingBeginFormComponent implements OnInit, OnChanges, OnDestroy {
-
   @Input() dataSource: DayOfEatingBeginFormDataSource;
   @Output() save = new EventEmitter<DayOfEatingBeginFormValue>();
   @Output() cancel = new EventEmitter();
@@ -26,24 +25,26 @@ export class DayOfEatingBeginFormComponent implements OnInit, OnChanges, OnDestr
 
   private subscription: Subscription;
 
-  constructor(public formHandler: DayOfEatingBeginFormHandler) { }
-
-  dateFilter = (date: Date) => {
-    const dateMoment = moment(date);
-    return this.availableMoments.some(availableMoment => availableMoment.isSame(dateMoment, 'day'));
-  }
+  constructor(public formHandler: DayOfEatingBeginFormHandler) {}
 
   ngOnInit(): void {
-    this.subscription = values$(this.formHandler.form.controls.origin).pipe(
-      filter(origin => DayOfEatingBeginOrigin.AS_COPY === origin),
-      tap(() => this.formHandler.setOriginDayDateValue(this.resolveDefaultOriginDayDate()))
-    ).subscribe(noop);
+    this.subscription = values$(this.formHandler.form.controls.origin)
+      .pipe(
+        filter(origin => DayOfEatingBeginOrigin.AS_COPY === origin),
+        tap(() => this.formHandler.setOriginDayDateValue(this.resolveDefaultOriginDayDate()))
+      )
+      .subscribe(noop);
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.dataSource) {
       this.availableMoments = this.dataSource.daysOfEating.map(doe => moment(doe.dayDate));
     }
+  }
+
+  dateFilter(date: Date): boolean {
+    const dateMoment = moment(date);
+    return this.availableMoments.some(availableMoment => availableMoment.isSame(dateMoment, 'day'));
   }
 
   handleSubmit(): void {
@@ -65,5 +66,4 @@ export class DayOfEatingBeginFormComponent implements OnInit, OnChanges, OnDestr
 
     return moment.max(this.availableMoments).toDate();
   }
-
 }

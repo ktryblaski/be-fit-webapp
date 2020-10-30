@@ -10,7 +10,6 @@ import { ErrorModalService } from '../../../shared/error-modal/error-modal.servi
 
 @Injectable()
 export class DayOfEatingBeginDialogService implements OnDestroy {
-
   private readonly loading = new BehaviorSubject<boolean>(false);
   private readonly loaded = new BehaviorSubject<boolean>(false);
   private readonly dataSource = new BehaviorSubject<DayOfEatingBeginFormDataSource | null>(null);
@@ -23,9 +22,7 @@ export class DayOfEatingBeginDialogService implements OnDestroy {
 
   private subscription: Subscription;
 
-  constructor(private dayOfEatingRestService: DayOfEatingRestService,
-              private errorModalService: ErrorModalService) {
-
+  constructor(private dayOfEatingRestService: DayOfEatingRestService, private errorModalService: ErrorModalService) {
     this.subscription = this.loadEffect().subscribe(noop);
   }
 
@@ -36,9 +33,7 @@ export class DayOfEatingBeginDialogService implements OnDestroy {
   mapDayOfEatingBegin(formValue: DayOfEatingBeginFormValue): DayOfEatingBeginDTO {
     return {
       origin: formValue.origin,
-      originDayId: DayOfEatingBeginOrigin.AS_COPY === formValue.origin
-        ? this.getDayByDate(formValue.originDayDate)
-        : null
+      originDayId: DayOfEatingBeginOrigin.AS_COPY === formValue.origin ? this.getDayByDate(formValue.originDayDate) : null,
     };
   }
 
@@ -51,20 +46,22 @@ export class DayOfEatingBeginDialogService implements OnDestroy {
       tap(() => {
         this.loading.next(true);
       }),
-      switchMap(() => this.dayOfEatingRestService.findAllLites().pipe(
-        tap(daysOfEating => {
-          this.dataSource.next({daysOfEating});
-          this.loaded.next(true);
-        }),
-        catchError(error => {
-          console.error(error);
-          this.errorModalService.showError('An error has occurred while loading data');
-          return EMPTY;
-        }),
-        finalize(() => {
-          this.loading.next(false);
-        })
-      )),
+      switchMap(() =>
+        this.dayOfEatingRestService.findAllLites().pipe(
+          tap(daysOfEating => {
+            this.dataSource.next({ daysOfEating });
+            this.loaded.next(true);
+          }),
+          catchError(error => {
+            console.error(error);
+            this.errorModalService.showError('An error has occurred while loading data');
+            return EMPTY;
+          }),
+          finalize(() => {
+            this.loading.next(false);
+          })
+        )
+      ),
       ignoreElements()
     );
   }
@@ -74,5 +71,4 @@ export class DayOfEatingBeginDialogService implements OnDestroy {
       return moment(day.dayDate).isSame(moment(date), 'day');
     }).id;
   }
-
 }

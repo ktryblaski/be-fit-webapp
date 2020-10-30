@@ -6,10 +6,9 @@ import { FormArray } from '@angular/forms';
 @Component({
   selector: 'app-meal-ingredients',
   templateUrl: './meal-ingredients.component.html',
-  styleUrls: ['./meal-ingredients.component.scss']
+  styleUrls: ['./meal-ingredients.component.scss'],
 })
 export class MealIngredientsComponent {
-
   @Input() formHandler: MealFormHandler;
 
   get ingredients(): FormArray {
@@ -24,5 +23,4 @@ export class MealIngredientsComponent {
   handleRemoveProduct(productId: number): void {
     this.formHandler.removeIngredient(productId);
   }
-
 }

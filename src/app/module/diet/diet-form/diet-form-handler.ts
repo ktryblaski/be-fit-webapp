@@ -6,7 +6,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 
 export class DietFormHandler {
-
   readonly form: FormGroup;
 
   private readonly meals = new BehaviorSubject<MealView[]>([]);
@@ -27,7 +26,7 @@ export class DietFormHandler {
   public addMeal(meal: MealView): void {
     const meals = [...this._meals, meal];
 
-    this.form.patchValue({meals});
+    this.form.patchValue({ meals });
 
     this.meals.next([...meals]);
   }
@@ -35,7 +34,7 @@ export class DietFormHandler {
   public removeMeal(meal: MealView): void {
     const meals = this._meals.filter(m => m !== meal);
 
-    this.form.patchValue({meals});
+    this.form.patchValue({ meals });
 
     this.meals.next([...meals]);
   }
@@ -45,10 +44,13 @@ export class DietFormHandler {
       name: new FormControl(null, Validators.required),
       description: new FormControl(null),
       type: new FormControl(null, Validators.required),
-      dates: new FormGroup({
-        startDate: new FormControl(moment().toDate()),
-        endDate: new FormControl(moment().add(1, 'months').toDate()),
-      }, [this.ValidateDates.bind(this)]),
+      dates: new FormGroup(
+        {
+          startDate: new FormControl(moment().toDate()),
+          endDate: new FormControl(moment().add(1, 'months').toDate()),
+        },
+        [this.ValidateDates.bind(this)]
+      ),
       meals: new FormControl([]),
       meal: new FormControl(null),
     });
@@ -65,15 +67,14 @@ export class DietFormHandler {
     // });
   }
 
-  private ValidateDates(control: AbstractControl): {[key: string]: boolean} | null {
+  private ValidateDates(control: AbstractControl): { [key: string]: boolean } | null {
     const startControl = control.get('startDate').value as Date;
     const endControl = control.get('endDate').value as Date;
 
-    if (!startControl || !endControl || (endControl.getTime() > startControl.getTime())) {
+    if (!startControl || !endControl || endControl.getTime() > startControl.getTime()) {
       return null;
     }
 
-    return {invalidEndDate: true};
+    return { invalidEndDate: true };
   }
-
 }
