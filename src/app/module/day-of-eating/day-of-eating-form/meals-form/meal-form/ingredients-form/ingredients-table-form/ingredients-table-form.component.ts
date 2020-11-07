@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Output, EventEmitter, Input, OnDestroy } from '@angular/core';
 import { MealFormGroup } from '../../../../-shared/day-of-eating-form';
 import { DayOfEatingFormHandler } from '../../../../day-of-eating-form-handler';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
@@ -18,7 +18,8 @@ import {
   styleUrls: ['./ingredients-table-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class IngredientsTableFormComponent implements OnInit {
+export class IngredientsTableFormComponent implements OnInit, OnDestroy {
+
   @Input() mealControl: MealFormGroup;
   @Input() mealIdx: number;
   @Output() removeIngredient = new EventEmitter<number>();
@@ -32,7 +33,9 @@ export class IngredientsTableFormComponent implements OnInit {
   constructor(public formHandler: DayOfEatingFormHandler) {}
 
   ngOnInit(): void {
-    this.subscription = values$(this.formHandler.form.controls.meals.at(this.mealIdx).controls.ingredients).subscribe(weights =>
+    this.subscription = values$(
+      this.formHandler.form.controls.meals.at(this.mealIdx).controls.ingredients
+    ).subscribe(weights =>
       this.updateTotalData(weights)
     );
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { Product } from '../../../../../../../shared/model/domain/product';
 import { MealFormGroup } from '../../../../-shared/day-of-eating-form';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
@@ -12,7 +12,8 @@ import { DayOfEatingFormHandler } from '../../../../day-of-eating-form-handler';
   styleUrls: ['./product-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductFormComponent implements OnInit {
+export class ProductFormComponent implements OnInit, OnChanges {
+
   @Input() products: Product[];
   @Input() mealControl: MealFormGroup;
   @Input() mealIdx: number;
@@ -22,10 +23,13 @@ export class ProductFormComponent implements OnInit {
 
   products$: Observable<Product[]> = this.productsChange.pipe(distinctUntilChanged());
 
-  constructor(private formHandler: DayOfEatingFormHandler) {}
+  constructor(private formHandler: DayOfEatingFormHandler) { }
 
   ngOnInit(): void {
-    this.products$ = combineLatest([this.productsChange.pipe(distinctUntilChanged()), values$(this.mealControl.controls.ingredients)]).pipe(
+    this.products$ = combineLatest([
+      this.productsChange.pipe(distinctUntilChanged()),
+      values$(this.mealControl.controls.ingredients)
+    ]).pipe(
       map(([products, ingredients]) => {
         const selectedProductIds = ingredients.map((ingredient, idx) => this.formHandler.meals[this.mealIdx].ingredients[idx].product.id);
         return products.filter(product => selectedProductIds.indexOf(product.id) === -1);
