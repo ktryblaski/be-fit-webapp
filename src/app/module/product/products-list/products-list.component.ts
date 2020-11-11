@@ -5,8 +5,9 @@ import { Product } from '../../../shared/model/domain/product';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductDetailsDialogComponent } from '../product-details-dialog/product-details-dialog.component';
 import { ProductCreateDialogComponent } from '../product-create-dialog/product-create-dialog.component';
-import { ProductFormValue } from '../product-create-form/-shared/product-form-value';
-import { map } from 'rxjs/operators';
+import { ProductFormValue } from '../product-create-form/model/product-form-value';
+import { filter, map } from 'rxjs/operators';
+import { MatDialogConfig } from '@angular/material/dialog/dialog-config';
 
 @Component({
   selector: 'app-products-list',
@@ -16,47 +17,50 @@ import { map } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsListComponent implements OnInit {
+
   public products$: Observable<Product[]>;
   public loaded$: Observable<boolean>;
   public pending$: Observable<boolean>;
 
-  constructor(private service: ProductsListService, private dialog: MatDialog) {}
+  constructor(private service: ProductsListService,
+              private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.products$ = this.service.products$;
     this.loaded$ = this.service.loaded$;
-    this.pending$ = combineLatest([this.service.loading$, this.service.creating$]).pipe(map(([loading, saving]) => loading || saving));
+    this.pending$ = combineLatest([
+      this.service.loading$, this.service.creating$
+    ]).pipe(
+      map(([loading, saving]) => loading || saving)
+    );
 
     this.service.load();
   }
 
-  handleClick(product: Product): void {
-    this.dialog
-      .open(ProductDetailsDialogComponent, {
-        data: {
-          productId: product.id,
-        },
-        disableClose: true,
-        width: '400px',
-      })
-      .afterClosed()
-      .subscribe((saved: boolean) => {
-        if (saved) {
-          this.service.load();
-        }
-      });
+  handleClickRow(product: Product): void {
+    const dialogConfig: MatDialogConfig = {
+      data: { productId: product.id },
+      disableClose: true,
+      width: '400px'
+    }
+
+    this.dialog.open(ProductDetailsDialogComponent, dialogConfig).afterClosed().pipe(
+      filter((saved: boolean) => saved === true)
+    ).subscribe(() => {
+      this.service.load();
+    });
   }
 
   handleAddNewProduct(): void {
-    this.dialog
-      .open(ProductCreateDialogComponent, {
-        width: '400px',
-      })
-      .afterClosed()
-      .subscribe((formValue: ProductFormValue) => {
-        if (formValue) {
-          this.service.create(formValue);
-        }
-      });
+    const dialogConfig: MatDialogConfig = {
+      width: '400px',
+    }
+
+    this.dialog.open(ProductCreateDialogComponent, dialogConfig).afterClosed().pipe(
+      filter((formValue: ProductFormValue) => !!formValue)
+    ).subscribe((formValue: ProductFormValue) => {
+      this.service.create(formValue);
+    });
   }
+
 }

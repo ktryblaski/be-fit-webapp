@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { ProductFormHandler } from './product-form-handler';
-import { ProductFormValue } from './-shared/product-form-value';
+import { ProductFormValue } from './model/product-form-value';
 
 @Component({
   selector: 'app-product-create-form',
@@ -10,16 +10,22 @@ import { ProductFormValue } from './-shared/product-form-value';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductCreateFormComponent {
+
   @Output() create = new EventEmitter<ProductFormValue>();
   @Output() cancel = new EventEmitter();
 
-  constructor(public formHandler: ProductFormHandler) {}
+  constructor(public formHandler: ProductFormHandler) { }
 
   handleSubmit(): void {
+    if (this.formHandler.form.invalid) {
+      return;
+    }
+
     this.create.emit(this.formHandler.getValue());
   }
 
   handleCancel(): void {
     this.cancel.emit();
   }
+
 }

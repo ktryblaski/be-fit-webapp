@@ -1,6 +1,8 @@
 <div class="header">
   <div title>{{ product.name }}</div>
-  <button [class.favourite]="product.favourite" (click)="handleToggleFavourite()" rawButton type="button" class="toggle-favourite">
+  <button [class.favourite]="product.favourite"
+          (click)="handleToggleFavourite()"
+          rawButton type="button" class="toggle-favourite">
     <fa-icon icon="heart"></fa-icon>
   </button>
 </div>

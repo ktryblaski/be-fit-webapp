@@ -8,6 +8,7 @@ import { Product } from '../../../../shared/model/domain/product';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductDetailsDialogUiComponent {
+
   @Input() product: Product;
   @Output() toggleFavourite = new EventEmitter();
   @Output() exit = new EventEmitter();
@@ -19,4 +20,5 @@ export class ProductDetailsDialogUiComponent {
   handleExit(): void {
     this.exit.next();
   }
+
 }

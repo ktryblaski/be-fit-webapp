@@ -7,12 +7,14 @@ import { TypedAbstractControl, TypedFormArray, TypedFormControl, TypedFormGroup 
   providedIn: 'root',
 })
 export class TypedFormBuilder {
-  constructor(private fb: FormBuilder) {}
+
+  constructor(private fb: FormBuilder) { }
 
   group<T, C extends ControlsIn<T> = InferredControlsIn<T>>(
     controlsConfig: C,
     options?: AbstractControlOptions | { [key: string]: any } | null
   ): TypedFormGroup<T, C> {
+
     return this.fb.group(controlsConfig, options) as any;
   }
 
@@ -21,6 +23,7 @@ export class TypedFormBuilder {
     validatorOrOpts?: ValidatorFn | ValidatorFn[] | AbstractControlOptions | null,
     asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] | null
   ): TypedFormControl<T> {
+
     return this.fb.control(formState, validatorOrOpts, asyncValidator) as any;
   }
 
@@ -29,6 +32,7 @@ export class TypedFormBuilder {
     validatorOrOpts?: ValidatorFn | ValidatorFn[] | AbstractControlOptions | null,
     asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] | null
   ): TypedFormArray<T, C> {
+
     return this.fb.array(controlsConfig, validatorOrOpts, asyncValidator) as any;
   }
 }

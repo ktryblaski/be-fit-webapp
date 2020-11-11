@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { ProductFormValue } from '../product-create-form/-shared/product-form-value';
+import { ProductFormValue } from '../product-create-form/model/product-form-value';
 
 @Component({
   selector: 'app-product-create-dialog',
@@ -9,7 +9,8 @@ import { ProductFormValue } from '../product-create-form/-shared/product-form-va
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductCreateDialogComponent {
-  constructor(private dialogRef: MatDialogRef<ProductCreateDialogComponent>) {}
+
+  constructor(private dialogRef: MatDialogRef<ProductCreateDialogComponent>) { }
 
   handleCreate(formValue: ProductFormValue): void {
     this.dialogRef.close(formValue);

@@ -10,7 +10,18 @@ import { HelperModule } from '../../../shared/helper/helper.module';
 import { SpinnerModule } from '../../../shared/component/spinner/spinner.module';
 
 @NgModule({
-  imports: [CommonModule, FontAwesomeModule, MacronutrientsChartModule, RawButtonModule, MatButtonModule, HelperModule, SpinnerModule],
-  declarations: [ProductDetailsDialogComponent, ProductDetailsDialogUiComponent],
+  imports: [
+    CommonModule,
+    FontAwesomeModule,
+    MacronutrientsChartModule,
+    RawButtonModule,
+    MatButtonModule,
+    HelperModule,
+    SpinnerModule
+  ],
+  declarations: [
+    ProductDetailsDialogComponent,
+    ProductDetailsDialogUiComponent
+  ]
 })
-export class ProductDetailsDialogModule {}
+export class ProductDetailsDialogModule { }

@@ -8,8 +8,19 @@ import { MatButtonModule } from '@angular/material/button';
 import { HelperModule } from '../../../shared/helper/helper.module';
 
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, HelperModule],
-  declarations: [ProductCreateFormComponent],
-  exports: [ProductCreateFormComponent],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    HelperModule
+  ],
+  declarations: [
+    ProductCreateFormComponent
+  ],
+  exports: [
+    ProductCreateFormComponent
+  ]
 })
-export class ProductCreateFormModule {}
+export class ProductCreateFormModule { }

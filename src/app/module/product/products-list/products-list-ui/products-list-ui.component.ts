@@ -8,10 +8,12 @@ import { Product } from '../../../../shared/model/domain/product';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsListUiComponent {
-  @Input() products: Product[];
-  @Output() clickId: EventEmitter<Product> = new EventEmitter<Product>();
 
-  handleClick(product: Product) {
-    this.clickId.next(product);
+  @Input() products: Product[];
+  @Output() clickRow = new EventEmitter<Product>();
+
+  handleClickRow(product: Product) {
+    this.clickRow.next(product);
   }
+
 }

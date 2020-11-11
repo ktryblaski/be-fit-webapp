@@ -7,7 +7,7 @@
       </div>
     </div>
 
-    <app-products-list-ui [products]="products$ | async" (clickId)="handleClick($event)"></app-products-list-ui>
+    <app-products-list-ui [products]="products$ | async" (clickRow)="handleClickRow($event)"></app-products-list-ui>
 
     <div class="pending-indicator-overlay-container" *ngIf="pending$ | async">
       <app-spinner></app-spinner>

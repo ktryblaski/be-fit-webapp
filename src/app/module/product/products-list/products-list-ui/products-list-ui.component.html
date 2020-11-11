@@ -1,4 +1,4 @@
-<table *ngIf="products.length; else noTableData" appTable selectable>
+ <table *ngIf="products.length; else noTableData" appTable selectable>
   <tr>
     <th>Name</th>
     <th>
@@ -16,7 +16,7 @@
     </th>
   </tr>
 
-  <tr *ngFor="let product of products" (click)="handleClick(product)">
+  <tr *ngFor="let product of products" (click)="handleClickRow(product)">
     <td class="name">{{ product.name }}</td>
     <td>{{ product.macronutrients.carbohydrates }}</td>
     <td>{{ product.macronutrients.proteins }}</td>

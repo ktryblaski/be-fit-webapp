@@ -9,6 +9,7 @@ import { NotificationService } from '../../../shared/component/notification/noti
 
 @Injectable()
 export class ProductDetailsDialogService implements OnDestroy {
+
   private readonly loadAction = new Subject<number>();
   private readonly favouriteAction = new Subject<void>();
 
@@ -26,12 +27,14 @@ export class ProductDetailsDialogService implements OnDestroy {
 
   private subscription: Subscription;
 
-  constructor(
-    private restService: ProductRestService,
-    private notificationService: NotificationService,
-    private errorModalService: ErrorModalService
-  ) {
-    this.subscription = merge(this.loadEffect(), this.toggleFavouriteEffect()).subscribe(noop);
+  constructor(private restService: ProductRestService,
+              private notificationService: NotificationService,
+              private errorModalService: ErrorModalService) {
+
+    this.subscription = merge(
+      this.loadEffect(),
+      this.toggleFavouriteEffect()
+    ).subscribe(noop);
   }
 
   load(productId: number): void {
@@ -44,34 +47,26 @@ export class ProductDetailsDialogService implements OnDestroy {
 
   private loadEffect(): Observable<never> {
     return this.loadAction.pipe(
-      tap(() => {
-        this.loading.next(true);
-      }),
-      switchMap(productId =>
-        this.restService.getOne(productId).pipe(
-          tap(product => {
-            this.product.next(product);
-            this.loaded.next(true);
-          }),
-          catchError(error => {
-            console.error(error);
-            this.errorModalService.showError('An error has occurred while creating new product');
-            return EMPTY;
-          }),
-          finalize(() => {
-            this.loading.next(false);
-          })
-        )
-      ),
+      tap(() => this.loading.next(true)),
+      switchMap(productId => this.restService.getOne(productId).pipe(
+        tap(product => {
+          this.product.next(product);
+          this.loaded.next(true);
+        }),
+        catchError(error => {
+          console.error(error);
+          this.errorModalService.showError('An error has occurred while creating new product');
+          return EMPTY;
+        }),
+        finalize(() => this.loading.next(false))
+      )),
       ignoreElements()
     );
   }
 
   private toggleFavouriteEffect(): Observable<never> {
     return this.favouriteAction.pipe(
-      tap(() => {
-        this.saving.next(true);
-      }),
+      tap(() => this.saving.next(true)),
       switchMap(() => {
         const product = this.product.value;
         const action = product.favourite ? this.restService.unfavourite(product.id) : this.restService.favourite(product.id);
@@ -94,9 +89,7 @@ export class ProductDetailsDialogService implements OnDestroy {
             );
             return EMPTY;
           }),
-          finalize(() => {
-            this.saving.next(false);
-          })
+          finalize(() => this.saving.next(false))
         );
       }),
       ignoreElements()
@@ -106,4 +99,5 @@ export class ProductDetailsDialogService implements OnDestroy {
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
+
 }
