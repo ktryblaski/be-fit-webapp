@@ -9,7 +9,8 @@ import { MatAccordion } from '@angular/material/expansion';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DayOfEatingDetailsUiComponent {
-  @Input() dayOfEating: DayOfEating;
 
+  @Input() dayOfEating: DayOfEating;
   @ViewChild(MatAccordion) accordion: MatAccordion;
+
 }

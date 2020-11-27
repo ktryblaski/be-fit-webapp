@@ -7,11 +7,12 @@ import { mealsCarbohydrates, mealsFats, mealsProteins } from '../../../../shared
   name: 'toMacronutrients',
 })
 export class ToMacronutrientsPipe implements PipeTransform {
+
   transform(dayOfEating: DayOfEating): Macronutrients {
     return {
       proteins: Math.round(mealsProteins(dayOfEating.meals)),
       fats: Math.round(mealsFats(dayOfEating.meals)),
-      carbohydrates: Math.round(mealsCarbohydrates(dayOfEating.meals)),
+      carbohydrates: Math.round(mealsCarbohydrates(dayOfEating.meals))
     };
   }
 }

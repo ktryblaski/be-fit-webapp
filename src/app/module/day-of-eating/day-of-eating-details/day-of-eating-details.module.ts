@@ -28,8 +28,12 @@ import { ToMacronutrientsPipe } from './day-of-eating-details-ui/to-macronutrien
     CalculatorModule,
     RawButtonModule,
     FontAwesomeModule,
-    MacronutrientsChartModule,
+    MacronutrientsChartModule
   ],
-  declarations: [DayOfEatingDetailsComponent, DayOfEatingDetailsUiComponent, ToMacronutrientsPipe],
+  declarations: [
+    DayOfEatingDetailsComponent,
+    DayOfEatingDetailsUiComponent,
+    ToMacronutrientsPipe
+  ],
 })
-export class DayOfEatingDetailsModule {}
+export class DayOfEatingDetailsModule { }

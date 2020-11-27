@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DayOfEatingDetailsComponent implements OnInit, OnDestroy {
+
   readonly DATE_FORMAT = 'dd-MM-yyy';
 
   loading$: Observable<boolean>;
@@ -20,7 +21,8 @@ export class DayOfEatingDetailsComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription;
 
-  constructor(private service: DayOfEatingDetailsService, private route: ActivatedRoute) {}
+  constructor(private service: DayOfEatingDetailsService,
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.loading$ = this.service.loading$;
@@ -32,7 +34,9 @@ export class DayOfEatingDetailsComponent implements OnInit, OnDestroy {
     });
   }
 
-  handleEdit(): void {}
+  handleEdit(): void {
+
+  }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
