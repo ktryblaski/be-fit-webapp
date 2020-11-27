@@ -5,7 +5,13 @@ import { DayOfEatingFormModule } from '../day-of-eating-form/day-of-eating-form.
 import { SpinnerModule } from '../../../shared/component/spinner/spinner.module';
 
 @NgModule({
-  imports: [CommonModule, DayOfEatingFormModule, SpinnerModule],
-  declarations: [DayOfEatingEditComponent],
+  imports: [
+    CommonModule,
+    DayOfEatingFormModule,
+    SpinnerModule
+  ],
+  declarations: [
+    DayOfEatingEditComponent
+  ]
 })
-export class DayOfEatingEditModule {}
+export class DayOfEatingEditModule { }

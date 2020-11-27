@@ -14,6 +14,7 @@ import { DayOfEatingFormValue } from '../day-of-eating-form/-shared/day-of-eatin
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DayOfEatingEditComponent implements OnInit, OnDestroy {
+
   loading$: Observable<boolean>;
   loaded$: Observable<boolean>;
   dayOfEating$: Observable<DayOfEating>;
@@ -21,7 +22,9 @@ export class DayOfEatingEditComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription;
 
-  constructor(private service: DayOfEatingEditService, private router: Router, private route: ActivatedRoute) {}
+  constructor(private service: DayOfEatingEditService,
+              private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.loading$ = this.service.loading$;
