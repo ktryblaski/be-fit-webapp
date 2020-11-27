@@ -42,7 +42,7 @@ export class ProductsListComponent implements OnInit {
       data: { productId: product.id },
       disableClose: true,
       width: '400px'
-    }
+    };
 
     this.dialog.open(ProductDetailsDialogComponent, dialogConfig).afterClosed().pipe(
       filter((saved: boolean) => saved === true)
@@ -54,7 +54,7 @@ export class ProductsListComponent implements OnInit {
   handleAddNewProduct(): void {
     const dialogConfig: MatDialogConfig = {
       width: '400px',
-    }
+    };
 
     this.dialog.open(ProductCreateDialogComponent, dialogConfig).afterClosed().pipe(
       filter((formValue: ProductFormValue) => !!formValue)

@@ -7,11 +7,15 @@ import { DayOfEatingEditComponent } from './day-of-eating-edit/day-of-eating-edi
 const routes: Routes = [
   { path: '', component: DayOfEatingListComponent },
   { path: ':id', component: DayOfEatingDetailsComponent },
-  { path: ':id/edit', component: DayOfEatingEditComponent },
+  { path: ':id/edit', component: DayOfEatingEditComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  imports: [
+    RouterModule.forChild(routes)
+  ],
+  exports: [
+    RouterModule
+  ]
 })
-export class DayOfEatingRoutingModule {}
+export class DayOfEatingRoutingModule { }

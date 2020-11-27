@@ -8,6 +8,7 @@ import { DayOfEatingLite } from '../../../../shared/model/domain/day-of-eating';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DayOfEatingListUiComponent {
+
   readonly DATE_FORMAT = 'dd-MM-yyy';
 
   @Input() daysOfEating: DayOfEatingLite[];

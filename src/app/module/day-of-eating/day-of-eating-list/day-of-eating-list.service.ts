@@ -11,6 +11,7 @@ import { ErrorModalService } from '../../../shared/error-modal/error-modal.servi
 
 @Injectable()
 export class DayOfEatingListService implements OnDestroy {
+
   private readonly loadAction = new Subject();
   private readonly saveAction = new Subject<DayOfEatingBeginDTO>();
 
@@ -28,13 +29,15 @@ export class DayOfEatingListService implements OnDestroy {
   readonly canBeginDayOfEating$: Observable<boolean> = this.canBeginDayOfEating.pipe(distinctUntilChanged());
   readonly saving$: Observable<boolean> = this.saving.pipe(distinctUntilChanged());
 
-  constructor(
-    private restService: DayOfEatingRestService,
-    private notificationService: NotificationService,
-    private errorModalService: ErrorModalService,
-    private router: Router
-  ) {
-    this.subscription = merge(this.loadEffect(), this.saveEffect()).subscribe(noop);
+  constructor(private restService: DayOfEatingRestService,
+              private notificationService: NotificationService,
+              private errorModalService: ErrorModalService,
+              private router: Router) {
+
+    this.subscription = merge(
+      this.loadEffect(),
+      this.saveEffect()
+    ).subscribe(noop);
   }
 
   load(): void {
@@ -51,24 +54,19 @@ export class DayOfEatingListService implements OnDestroy {
 
   private loadEffect(): Observable<never> {
     return this.loadAction.pipe(
-      tap(() => {
-        this.loading.next(true);
-      }),
-      switchMap(() =>
-        forkJoin([this.restService.findAllLites(), this.restService.canBeginDayOfEating()]).pipe(
-          tap(([daysOfEating, canBeginDayOfEating]) => {
-            this.loaded.next(true);
-            this.daysOfEating.next(daysOfEating);
-            this.canBeginDayOfEating.next(canBeginDayOfEating);
-          }),
-          catchError(error => {
-            console.error(error);
-            this.errorModalService.showError('An error has occurred while loading data');
-            return EMPTY;
-          }),
-          finalize(() => {
-            this.loading.next(false);
-          })
+      tap(() => this.loading.next(true)),
+      switchMap(() => forkJoin([this.restService.findAllLites(), this.restService.canBeginDayOfEating()]).pipe(
+        tap(([daysOfEating, canBeginDayOfEating]) => {
+          this.loaded.next(true);
+          this.daysOfEating.next(daysOfEating);
+          this.canBeginDayOfEating.next(canBeginDayOfEating);
+        }),
+        catchError(error => {
+          console.error(error);
+          this.errorModalService.showError('An error has occurred while loading data');
+          return EMPTY;
+        }),
+        finalize(() => this.loading.next(false))
         )
       ),
       ignoreElements()
@@ -77,29 +75,24 @@ export class DayOfEatingListService implements OnDestroy {
 
   private saveEffect(): Observable<never> {
     return this.saveAction.pipe(
-      tap(() => {
-        this.saving.next(true);
-      }),
-      switchMap(dayOfEatingBegin =>
-        this.restService.create(dayOfEatingBegin).pipe(
-          tap(id => {
-            this.router.navigate(['day-of-eating', id]);
-            this.notificationService.show({
-              message: 'Day of Eating has been created',
-              severity: NotificationSeverity.SUCCESS,
-            });
-          }),
-          catchError(error => {
-            console.error(error);
-            this.notificationService.show({
-              message: 'An error has occurred',
-              severity: NotificationSeverity.DANGER,
-            });
-            return EMPTY;
-          }),
-          finalize(() => {
-            this.saving.next(false);
-          })
+      tap(() => this.saving.next(true)),
+      switchMap(dayOfEatingBegin => this.restService.create(dayOfEatingBegin).pipe(
+        tap(id => {
+          this.router.navigate(['day-of-eating', id]);
+          this.notificationService.show({
+            message: 'Day of Eating has been created',
+            severity: NotificationSeverity.SUCCESS,
+          });
+        }),
+        catchError(error => {
+          console.error(error);
+          this.notificationService.show({
+            message: 'An error has occurred',
+            severity: NotificationSeverity.DANGER,
+          });
+          return EMPTY;
+        }),
+        finalize(() => this.saving.next(false))
         )
       ),
       ignoreElements()

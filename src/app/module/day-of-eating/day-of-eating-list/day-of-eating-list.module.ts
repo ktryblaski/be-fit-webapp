@@ -10,7 +10,18 @@ import { NoTableDataModule } from '../../../shared/component/no-table-data/no-ta
 import { DayOfEatingBeginDialogModule } from '../day-of-eating-begin-dialog/day-of-eating-begin-dialog.module';
 
 @NgModule({
-  imports: [CommonModule, HelperModule, MatButtonModule, SpinnerModule, NoTableDataModule, DayOfEatingBeginDialogModule],
-  declarations: [DayOfEatingListComponent, DayOfEatingListUiComponent, IsTodayPipe],
+  imports: [
+    CommonModule,
+    HelperModule,
+    MatButtonModule,
+    SpinnerModule,
+    NoTableDataModule,
+    DayOfEatingBeginDialogModule
+  ],
+  declarations: [
+    DayOfEatingListComponent,
+    DayOfEatingListUiComponent,
+    IsTodayPipe
+  ]
 })
-export class DayOfEatingListModule {}
+export class DayOfEatingListModule { }

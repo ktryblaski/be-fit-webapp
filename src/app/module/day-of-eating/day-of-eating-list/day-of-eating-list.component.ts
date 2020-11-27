@@ -48,7 +48,7 @@ export class DayOfEatingListComponent implements OnInit {
   handleBeginDayOfEating(): void {
     const dialogConfig: MatDialogConfig = {
       width: '400px',
-    }
+    };
 
     this.dialog.open(DayOfEatingBeginDialogComponent, dialogConfig).afterClosed().subscribe((dayOfEatingBegin: DayOfEatingBeginDTO) => {
       if (dayOfEatingBegin) {
