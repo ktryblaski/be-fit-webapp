@@ -4,11 +4,9 @@
       <div title>Begin Day of Eating</div>
     </div>
 
-    <app-day-of-eating-begin-form
-      [dataSource]="dataSource$ | async"
-      (save)="handleSave($event)"
-      (cancel)="handleCancel()"
-    ></app-day-of-eating-begin-form>
+    <app-day-of-eating-begin-form [dataSource]="dataSource$ | async"
+                                  (save)="handleSave($event)"
+                                  (cancel)="handleCancel()"></app-day-of-eating-begin-form>
 
     <div class="pending-indicator-overlay-container" *ngIf="loading$ | async">
       <app-spinner></app-spinner>

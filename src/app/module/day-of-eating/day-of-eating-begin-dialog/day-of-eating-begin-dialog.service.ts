@@ -1,15 +1,16 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, EMPTY, noop, Observable, Subject, Subscription } from 'rxjs';
-import { DayOfEatingBeginFormDataSource } from './day-of-eating-begin-form/-shared/day-of-eating-begin-form-data-source';
+import { DayOfEatingBeginFormDataSource } from './day-of-eating-begin-form/model/day-of-eating-begin-form-data-source';
 import { catchError, distinctUntilChanged, finalize, ignoreElements, switchMap, tap } from 'rxjs/operators';
 import { DayOfEatingRestService } from '../../../shared/service/rest/day-of-eating-rest.service';
-import { DayOfEatingBeginFormValue } from './day-of-eating-begin-form/-shared/day-of-eating-begin-form-value';
+import { DayOfEatingBeginFormValue } from './day-of-eating-begin-form/model/day-of-eating-begin-form-value';
 import * as moment from 'moment';
 import { DayOfEatingBeginDTO, DayOfEatingBeginOrigin } from '../../../shared/model/dto/day-of-eating-begin-dto';
 import { ErrorModalService } from '../../../shared/error-modal/error-modal.service';
 
 @Injectable()
 export class DayOfEatingBeginDialogService implements OnDestroy {
+
   private readonly loading = new BehaviorSubject<boolean>(false);
   private readonly loaded = new BehaviorSubject<boolean>(false);
   private readonly dataSource = new BehaviorSubject<DayOfEatingBeginFormDataSource | null>(null);
@@ -22,7 +23,9 @@ export class DayOfEatingBeginDialogService implements OnDestroy {
 
   private subscription: Subscription;
 
-  constructor(private dayOfEatingRestService: DayOfEatingRestService, private errorModalService: ErrorModalService) {
+  constructor(private dayOfEatingRestService: DayOfEatingRestService,
+              private errorModalService: ErrorModalService) {
+
     this.subscription = this.loadEffect().subscribe(noop);
   }
 
@@ -43,9 +46,7 @@ export class DayOfEatingBeginDialogService implements OnDestroy {
 
   private loadEffect(): Observable<never> {
     return this.loadAction.pipe(
-      tap(() => {
-        this.loading.next(true);
-      }),
+      tap(() => this.loading.next(true)),
       switchMap(() =>
         this.dayOfEatingRestService.findAllLites().pipe(
           tap(daysOfEating => {
@@ -57,9 +58,7 @@ export class DayOfEatingBeginDialogService implements OnDestroy {
             this.errorModalService.showError('An error has occurred while loading data');
             return EMPTY;
           }),
-          finalize(() => {
-            this.loading.next(false);
-          })
+          finalize(() => this.loading.next(false))
         )
       ),
       ignoreElements()
@@ -67,8 +66,8 @@ export class DayOfEatingBeginDialogService implements OnDestroy {
   }
 
   private getDayByDate(date: Date): number {
-    return this.dataSource.value.daysOfEating.find(day => {
-      return moment(day.dayDate).isSame(moment(date), 'day');
-    }).id;
+    return this.dataSource.value.daysOfEating.find(
+      day => moment(day.dayDate).isSame(moment(date), 'day')
+    ).id;
   }
 }

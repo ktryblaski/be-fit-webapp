@@ -9,12 +9,10 @@
   <div *ngIf="formHandler.form.controls.origin.value | isCopyFormDateVisible: dataSource" class="date-container">
     <mat-form-field color="primary" appearance="fill">
       <mat-label>Day of Eating date</mat-label>
-      <input
-        matInput
-        [matDatepicker]="originDatePicker"
-        [matDatepickerFilter]="dateFilter"
-        [formControl]="formHandler.form.controls.originDayDate"
-      />
+      <input matInput
+             [matDatepicker]="originDatePicker"
+             [matDatepickerFilter]="dateFilter"
+             [formControl]="formHandler.form.controls.originDayDate"/>
       <mat-datepicker-toggle matSuffix [for]="originDatePicker"></mat-datepicker-toggle>
       <mat-datepicker #originDatePicker></mat-datepicker>
     </mat-form-field>
@@ -22,6 +20,6 @@
 
   <div actions>
     <button (click)="handleCancel()" mat-raised-button type="button">Cancel</button>
-    <button [disabled]="formHandler.form.invalid" mat-raised-button color="primary">Save</button>
+    <button mat-raised-button color="primary">Save</button>
   </div>
 </form>

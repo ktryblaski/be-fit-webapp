@@ -10,8 +10,8 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { DayOfEatingBeginFormHandler } from './day-of-eating-begin-form-handler';
-import { DayOfEatingBeginFormDataSource } from './-shared/day-of-eating-begin-form-data-source';
-import { DayOfEatingBeginFormValue } from './-shared/day-of-eating-begin-form-value';
+import { DayOfEatingBeginFormDataSource } from './model/day-of-eating-begin-form-data-source';
+import { DayOfEatingBeginFormValue } from './model/day-of-eating-begin-form-value';
 import { noop, Subscription } from 'rxjs';
 import { filter, tap } from 'rxjs/operators';
 import * as moment from 'moment';
@@ -26,6 +26,7 @@ import { values$ } from '../../../../shared/form/typed-form/typed-utils';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DayOfEatingBeginFormComponent implements OnInit, OnChanges, OnDestroy {
+
   @Input() dataSource: DayOfEatingBeginFormDataSource;
   @Output() save = new EventEmitter<DayOfEatingBeginFormValue>();
   @Output() cancel = new EventEmitter();
@@ -36,15 +37,18 @@ export class DayOfEatingBeginFormComponent implements OnInit, OnChanges, OnDestr
 
   private subscription: Subscription;
 
-  constructor(public formHandler: DayOfEatingBeginFormHandler) {}
+  dateFilter = (date: Date) => {
+    const dateMoment = moment(date);
+    return this.availableMoments.some(availableMoment => availableMoment.isSame(dateMoment, 'day'));
+  }
+
+  constructor(public formHandler: DayOfEatingBeginFormHandler) { }
 
   ngOnInit(): void {
-    this.subscription = values$(this.formHandler.form.controls.origin)
-      .pipe(
-        filter(origin => DayOfEatingBeginOrigin.AS_COPY === origin),
-        tap(() => this.formHandler.setOriginDayDateValue(this.resolveDefaultOriginDayDate()))
-      )
-      .subscribe(noop);
+    this.subscription = values$(this.formHandler.form.controls.origin).pipe(
+      filter(origin => DayOfEatingBeginOrigin.AS_COPY === origin),
+      tap(() => this.formHandler.setOriginDayDateValue(this.resolveDefaultOriginDayDate()))
+    ).subscribe(noop);
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -53,12 +57,11 @@ export class DayOfEatingBeginFormComponent implements OnInit, OnChanges, OnDestr
     }
   }
 
-  dateFilter(date: Date): boolean {
-    const dateMoment = moment(date);
-    return this.availableMoments.some(availableMoment => availableMoment.isSame(dateMoment, 'day'));
-  }
-
   handleSubmit(): void {
+    if (this.formHandler.form.invalid) {
+      return;
+    }
+
     this.save.emit(this.formHandler.getValue());
   }
 
@@ -70,11 +73,9 @@ export class DayOfEatingBeginFormComponent implements OnInit, OnChanges, OnDestr
     this.subscription.unsubscribe();
   }
 
-  private resolveDefaultOriginDayDate(): Date {
-    if (this.availableMoments.length === 0) {
-      return null;
-    }
-
-    return moment.max(this.availableMoments).toDate();
+  private resolveDefaultOriginDayDate(): Date | null {
+    return this.availableMoments.length > 0
+      ? moment.max(this.availableMoments).toDate()
+      : null;
   }
 }

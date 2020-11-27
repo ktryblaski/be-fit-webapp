@@ -6,7 +6,14 @@ import { SpinnerModule } from '../../../shared/component/spinner/spinner.module'
 import { HelperModule } from '../../../shared/helper/helper.module';
 
 @NgModule({
-  imports: [CommonModule, DayOfEatingBeginFormModule, SpinnerModule, HelperModule],
-  declarations: [DayOfEatingBeginDialogComponent],
+  imports: [
+    CommonModule,
+    DayOfEatingBeginFormModule,
+    SpinnerModule,
+    HelperModule
+  ],
+  declarations: [
+    DayOfEatingBeginDialogComponent
+  ]
 })
-export class DayOfEatingBeginDialogModule {}
+export class DayOfEatingBeginDialogModule { }

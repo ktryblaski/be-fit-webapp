@@ -25,7 +25,12 @@ import { HelperModule } from '../../../../shared/helper/helper.module';
     MatDialogModule,
     HelperModule,
   ],
-  declarations: [DayOfEatingBeginFormComponent, IsCopyFormDateVisiblePipe],
-  exports: [DayOfEatingBeginFormComponent],
+  declarations: [
+    DayOfEatingBeginFormComponent,
+    IsCopyFormDateVisiblePipe
+  ],
+  exports: [
+    DayOfEatingBeginFormComponent
+  ]
 })
 export class DayOfEatingBeginFormModule {}

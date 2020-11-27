@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { DayOfEatingBeginFormValue } from './day-of-eating-begin-form/-shared/day-of-eating-begin-form-value';
+import { DayOfEatingBeginFormValue } from './day-of-eating-begin-form/model/day-of-eating-begin-form-value';
 import { DayOfEatingBeginDialogService } from './day-of-eating-begin-dialog.service';
-import { DayOfEatingBeginFormDataSource } from './day-of-eating-begin-form/-shared/day-of-eating-begin-form-data-source';
+import { DayOfEatingBeginFormDataSource } from './day-of-eating-begin-form/model/day-of-eating-begin-form-data-source';
 import { Observable } from 'rxjs';
 import { MatDialogRef } from '@angular/material/dialog';
 
@@ -13,11 +13,13 @@ import { MatDialogRef } from '@angular/material/dialog';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DayOfEatingBeginDialogComponent implements OnInit {
+
   loading$: Observable<boolean>;
   loaded$: Observable<boolean>;
   dataSource$: Observable<DayOfEatingBeginFormDataSource>;
 
-  constructor(private service: DayOfEatingBeginDialogService, private dialogRef: MatDialogRef<DayOfEatingBeginDialogComponent>) {}
+  constructor(private service: DayOfEatingBeginDialogService,
+              private dialogRef: MatDialogRef<DayOfEatingBeginDialogComponent>) { }
 
   ngOnInit(): void {
     this.loading$ = this.service.loading$;
