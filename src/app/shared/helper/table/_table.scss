@@ -12,8 +12,7 @@ table[appTable] {
   tr {
     height: 48px;
 
-    th,
-    td {
+    th, td {
       padding: 0 0 0 24px;
       border-bottom: 1px solid rgba(0, 0, 0, 0.12);
       text-align: left;
@@ -23,6 +22,7 @@ table[appTable] {
       color: $label-color;
       font-size: 12px;
       font-weight: 500;
+      user-select: none;
     }
 
     td {

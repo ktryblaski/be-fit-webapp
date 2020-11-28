@@ -1,0 +1,12 @@
+:host:hover {
+  cursor: pointer;
+}
+
+.direction {
+  position: relative;
+
+  .direction-icon {
+    position: absolute;
+    right: -20px;
+  }
+}

@@ -1,0 +1,7 @@
+<div class="header">
+  <ng-content></ng-content>
+  <span class="direction">
+    <fa-icon class="direction-icon" *ngIf="sortOrder === SortOrder.ASC" [fixedWidth]="true" icon="chevron-down"></fa-icon>
+    <fa-icon class="direction-icon" *ngIf="sortOrder === SortOrder.DESC" [fixedWidth]="true" icon="chevron-up"></fa-icon>
+  </span>
+</div>

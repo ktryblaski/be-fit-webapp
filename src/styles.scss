@@ -49,6 +49,24 @@ body {
   }
 }
 
+.label {
+  &.carbohydrates {
+    color: $carbohydrates-color;
+  }
+
+  &.proteins {
+    color: $proteins-color;
+  }
+
+  &.fats {
+    color: $fats-color;
+  }
+
+  &.kcal {
+    color: $kcal-color;
+  }
+}
+
 .macronutrients-label {
   &:before {
     content: '\2022';

@@ -10,7 +10,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MenuComponent } from './menu/menu.component';
 import { MainAreaComponent } from './main-area/main-area.component';
 import { MatListModule } from '@angular/material/list';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NotificationModule } from './shared/component/notification/notification.module';
 import { ResponsiveModule } from './shared/directive/responsive/responsive.module';
@@ -18,6 +18,7 @@ import { ErrorModalModule } from './shared/error-modal/error-modal.module';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
+import { HttpsParamsEncoderInterceptor } from './shared/service/https-params-encoder.interceptor';
 
 @NgModule({
   imports: [
@@ -36,8 +37,22 @@ import { far } from '@fortawesome/free-regular-svg-icons';
     NotificationModule,
     ErrorModalModule,
   ],
-  declarations: [AppComponent, DashboardComponent, MenuComponent, MainAreaComponent],
-  bootstrap: [AppComponent],
+  declarations: [
+    AppComponent,
+    DashboardComponent,
+    MenuComponent,
+    MainAreaComponent
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpsParamsEncoderInterceptor,
+      multi: true
+    }
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule {
   constructor(library: FaIconLibrary) {

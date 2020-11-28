@@ -5,3 +5,9 @@ table[appTable] {
 th.favourite, td.favourite {
   font-size: 110%;
 }
+
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 12px;
+}

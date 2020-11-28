@@ -7,7 +7,13 @@
       </div>
     </div>
 
-    <app-products-list-ui [products]="products$ | async" (clickRow)="handleClickRow($event)"></app-products-list-ui>
+    <app-products-list-ui [products]="products$ | async"
+                          [pagination]="pagination"
+                          [sort]="sort"
+                          [total]="total$ | async"
+                          (clickRow)="handleClickRow($event)"
+                          (sortChange)="handleSortChange($event)"
+                          (paginationChange)="handlePaginationChange($event)"></app-products-list-ui>
 
     <div class="pending-indicator-overlay-container" *ngIf="pending$ | async">
       <app-spinner></app-spinner>

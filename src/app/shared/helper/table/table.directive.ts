@@ -1,8 +1,10 @@
 import { Attribute, Directive } from '@angular/core';
 
 @Directive({
-  selector: 'table[appTable]',
+  selector: 'table[appTable]'
 })
 export class TableDirective {
-  constructor(@Attribute('selectable') selectable: any) {}
+
+  constructor(@Attribute('selectable') selectable: any) { }
+
 }

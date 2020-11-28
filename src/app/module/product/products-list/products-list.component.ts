@@ -6,8 +6,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { ProductDetailsDialogComponent } from '../product-details-dialog/product-details-dialog.component';
 import { ProductCreateDialogComponent } from '../product-create-dialog/product-create-dialog.component';
 import { ProductFormValue } from '../product-create-form/model/product-form-value';
-import { filter, map } from 'rxjs/operators';
+import { filter, map, tap } from 'rxjs/operators';
 import { MatDialogConfig } from '@angular/material/dialog/dialog-config';
+import { ProductsSortBy } from './-model/products.sort-by';
+import { ascending, Sort } from '../../../shared/component/sort/-model/sort';
+import { Pagination } from '../../../shared/component/pagination/-model/pagination';
 
 @Component({
   selector: 'app-products-list',
@@ -18,23 +21,47 @@ import { MatDialogConfig } from '@angular/material/dialog/dialog-config';
 })
 export class ProductsListComponent implements OnInit {
 
-  public products$: Observable<Product[]>;
-  public loaded$: Observable<boolean>;
-  public pending$: Observable<boolean>;
+  products$: Observable<Product[]>;
+  loaded$: Observable<boolean>;
+  pending$: Observable<boolean>;
+  total$: Observable<number>;
+
+  sort: Sort<ProductsSortBy> = ascending(ProductsSortBy.NAME);
+  pagination: Pagination = { page: 1, pageSize: 10 };
 
   constructor(private service: ProductsListService,
               private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.products$ = this.service.products$;
+    this.products$ = this.service.products$.pipe(
+      tap(page => {
+        this.pagination = { page: page.page + 1, pageSize: page.pageSize }
+      }),
+      map(page => page.results)
+    );
     this.loaded$ = this.service.loaded$;
     this.pending$ = combineLatest([
       this.service.loading$, this.service.creating$
     ]).pipe(
       map(([loading, saving]) => loading || saving)
     );
+    this.total$ = this.service.products$.pipe(
+      map(page => page.total)
+    );
 
-    this.service.load();
+    this.load();
+  }
+
+  handleAddNewProduct(): void {
+    const dialogConfig: MatDialogConfig = {
+      width: '400px',
+    };
+
+    this.dialog.open(ProductCreateDialogComponent, dialogConfig).afterClosed().pipe(
+      filter((formValue: ProductFormValue) => !!formValue)
+    ).subscribe((formValue: ProductFormValue) => {
+      this.service.create(formValue);
+    });
   }
 
   handleClickRow(product: Product): void {
@@ -47,19 +74,24 @@ export class ProductsListComponent implements OnInit {
     this.dialog.open(ProductDetailsDialogComponent, dialogConfig).afterClosed().pipe(
       filter((saved: boolean) => saved === true)
     ).subscribe(() => {
-      this.service.load();
+      this.load();
     });
   }
 
-  handleAddNewProduct(): void {
-    const dialogConfig: MatDialogConfig = {
-      width: '400px',
-    };
+  handleSortChange(sort: Sort<ProductsSortBy>): void {
+    this.sort = sort ? { ...sort } : null;
+    this.load();
+  }
 
-    this.dialog.open(ProductCreateDialogComponent, dialogConfig).afterClosed().pipe(
-      filter((formValue: ProductFormValue) => !!formValue)
-    ).subscribe((formValue: ProductFormValue) => {
-      this.service.create(formValue);
+  handlePaginationChange(pagination: Pagination): void {
+    this.pagination = { ...pagination };
+    this.load();
+  }
+
+  private load(): void {
+    this.service.load({
+      sort: this.sort,
+      pagination: this.pagination
     });
   }
 

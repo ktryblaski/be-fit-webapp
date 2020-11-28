@@ -1,0 +1,30 @@
+@import 'src/app/shared/_colors';
+
+.pagination {
+  font-size: 18px;
+  user-select: none;
+  font-weight: 400;
+
+  button.page {
+    margin: 0 5px;
+  }
+
+  button.page.active {
+    color: $primary-color;
+    font-weight: 500;
+  }
+
+  button[disabled]:hover,
+  button.page.active {
+    cursor: default;
+  }
+
+  button:not(.page) {
+    color: #454545;
+  }
+
+  button[disabled]:not(.page) {
+    color: grey;
+  }
+
+}

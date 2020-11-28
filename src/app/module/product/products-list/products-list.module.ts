@@ -10,6 +10,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { SpinnerModule } from '../../../shared/component/spinner/spinner.module';
 import { ProductCreateDialogModule } from '../product-create-dialog/product-create-dialog.module';
 import { ProductDetailsDialogModule } from '../product-details-dialog/product-details-dialog.module';
+import { SortModule } from '../../../shared/component/sort/sort.module';
+import { PaginationModule } from '../../../shared/component/pagination/pagination.module';
 
 @NgModule({
   imports: [
@@ -22,6 +24,8 @@ import { ProductDetailsDialogModule } from '../product-details-dialog/product-de
     SpinnerModule,
     ProductCreateDialogModule,
     ProductDetailsDialogModule,
+    SortModule,
+    PaginationModule,
   ],
   declarations: [
     ProductsListComponent,

@@ -1,16 +1,20 @@
- <table *ngIf="products.length; else noTableData" appTable selectable>
+ <table *ngIf="products.length; else noTableData"
+        appTable selectable
+        sortable [sort]="sort" (sortChange)="handleSortChange($event)">
   <tr>
-    <th>Name</th>
-    <th>
-      <span class="macronutrients-label carbohydrates">Carbohydrates [g]</span>
+    <th [sortHeader]="ProductsSortBy.NAME">Name</th>
+    <th [sortHeader]="ProductsSortBy.PROTEINS">
+      <span class="label proteins">Proteins</span>
     </th>
-    <th>
-      <span class="macronutrients-label proteins">Proteins [g]</span>
+    <th [sortHeader]="ProductsSortBy.FATS">
+      <span class="label fats">Fats</span>
     </th>
-    <th>
-      <span class="macronutrients-label fats">Fats [g]</span>
+    <th [sortHeader]="ProductsSortBy.CARBOHYDRATES">
+      <span class="label carbohydrates">Carbohydrates</span>
     </th>
-    <th>KCAL</th>
+    <th [sortHeader]="ProductsSortBy.KCAL">
+      <span class="label kcal">KCAL</span>
+    </th>
     <th class="favourite">
       <fa-icon icon="heart"></fa-icon>
     </th>
@@ -28,6 +32,12 @@
   </tr>
 </table>
 
-<ng-template #noTableData>
+<div *ngIf="total > pagination.pageSize" class="pagination">
+  <app-pagination [pagination]="pagination"
+                  [total]="total"
+                  (paginationChange)="handlePaginationChange($event)"></app-pagination>
+</div>
+
+ <ng-template #noTableData>
   <app-no-table-data></app-no-table-data>
 </ng-template>
