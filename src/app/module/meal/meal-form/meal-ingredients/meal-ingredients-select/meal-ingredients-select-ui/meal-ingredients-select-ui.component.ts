@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
-import { Product } from '../../../../../../shared/model/domain/product';
 import { MealFormHandler } from '../../../meal-form-handler';
 import { merge, Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Product } from '../../../../../product/-model/product';
 
 @Component({
   selector: 'app-meal-ingredients-select-ui',
@@ -11,9 +11,10 @@ import { map } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealIngredientsSelectUiComponent implements OnInit, OnChanges {
+
   @Input() products: Product[];
   @Input() formHandler: MealFormHandler;
-  @Output() addProduct: EventEmitter<Product> = new EventEmitter<Product>();
+  @Output() addProduct = new EventEmitter<Product>();
 
   private readonly productsChange = new Subject<void>();
 

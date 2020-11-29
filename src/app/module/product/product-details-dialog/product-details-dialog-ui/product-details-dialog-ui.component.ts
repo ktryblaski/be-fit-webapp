@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { Product } from '../../../../shared/model/domain/product';
+import { Product } from '../../-model/product';
 
 @Component({
   selector: 'app-product-details-dialog-ui',

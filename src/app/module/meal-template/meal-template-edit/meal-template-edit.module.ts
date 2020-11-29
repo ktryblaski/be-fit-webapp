@@ -5,7 +5,13 @@ import { MealTemplateFormModule } from '../meal-template-form/meal-template-form
 import { SpinnerModule } from '../../../shared/component/spinner/spinner.module';
 
 @NgModule({
-  imports: [CommonModule, MealTemplateFormModule, SpinnerModule],
-  declarations: [MealTemplateEditComponent],
+  imports: [
+    CommonModule,
+    MealTemplateFormModule,
+    SpinnerModule
+  ],
+  declarations: [
+    MealTemplateEditComponent
+  ]
 })
-export class MealTemplateEditModule {}
+export class MealTemplateEditModule { }

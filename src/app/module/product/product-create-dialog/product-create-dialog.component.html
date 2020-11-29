@@ -1,4 +1,10 @@
-<div title>New Product</div>
+<div class="pending-indicator-overlay-boundaries">
+  <div title>New Product</div>
 
-<app-product-create-form (create)="handleCreate($event)"
-                         (cancel)="handleCancel()"></app-product-create-form>
+  <app-product-create-form (create)="handleCreate($event)"
+                           (cancel)="handleCancel()"></app-product-create-form>
+
+  <div class="pending-indicator-overlay-container" *ngIf="creating$ | async">
+    <app-spinner></app-spinner>
+  </div>
+</div>

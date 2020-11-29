@@ -3,5 +3,6 @@ export enum ProductsSortBy {
   PROTEINS = 'PROTEINS',
   FATS = 'FATS',
   CARBOHYDRATES = 'CARBOHYDRATES',
-  KCAL = 'KCAL'
+  CALORIES = 'CALORIES',
+  FAVOURITE = 'FAVOURITE'
 }

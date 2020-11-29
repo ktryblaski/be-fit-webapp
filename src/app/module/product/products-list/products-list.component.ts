@@ -1,29 +1,28 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ProductsListService } from './products-list.service';
-import { combineLatest, Observable } from 'rxjs';
-import { Product } from '../../../shared/model/domain/product';
+import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductDetailsDialogComponent } from '../product-details-dialog/product-details-dialog.component';
 import { ProductCreateDialogComponent } from '../product-create-dialog/product-create-dialog.component';
-import { ProductFormValue } from '../product-create-form/model/product-form-value';
-import { filter, map, tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { MatDialogConfig } from '@angular/material/dialog/dialog-config';
 import { ProductsSortBy } from './-model/products.sort-by';
 import { ascending, Sort } from '../../../shared/component/sort/-model/sort';
 import { Pagination } from '../../../shared/component/pagination/-model/pagination';
+import { ProductLite } from '../-model/product-lite';
 
 @Component({
   selector: 'app-products-list',
   templateUrl: './products-list.component.html',
   styleUrls: ['./products-list.component.scss'],
   providers: [ProductsListService],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductsListComponent implements OnInit {
 
-  products$: Observable<Product[]>;
+  products$: Observable<ProductLite[]>;
   loaded$: Observable<boolean>;
-  pending$: Observable<boolean>;
+  loading$: Observable<boolean>;
   total$: Observable<number>;
 
   sort: Sort<ProductsSortBy> = ascending(ProductsSortBy.NAME);
@@ -34,17 +33,11 @@ export class ProductsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.products$ = this.service.products$.pipe(
-      tap(page => {
-        this.pagination = { page: page.page + 1, pageSize: page.pageSize };
-      }),
+      tap(page => this.pagination = { page: page.page + 1, pageSize: page.pageSize }),
       map(page => page.results)
     );
     this.loaded$ = this.service.loaded$;
-    this.pending$ = combineLatest([
-      this.service.loading$, this.service.creating$
-    ]).pipe(
-      map(([loading, saving]) => loading || saving)
-    );
+    this.loading$ = this.service.loading$;
     this.total$ = this.service.products$.pipe(
       map(page => page.total)
     );
@@ -54,28 +47,29 @@ export class ProductsListComponent implements OnInit {
 
   handleAddNewProduct(): void {
     const dialogConfig: MatDialogConfig = {
-      width: '400px',
+      disableClose: true,
+      width: '400px'
     };
 
-    this.dialog.open(ProductCreateDialogComponent, dialogConfig).afterClosed().pipe(
-      filter((formValue: ProductFormValue) => !!formValue)
-    ).subscribe((formValue: ProductFormValue) => {
-      this.service.create(formValue);
+    this.dialog.open(ProductCreateDialogComponent, dialogConfig).afterClosed().subscribe((created: boolean) => {
+      if (created) {
+        this.load();
+      }
     });
   }
 
-  handleClickRow(product: Product): void {
+  handleClickRow(product: ProductLite): void {
     const dialogConfig: MatDialogConfig = {
       data: { productId: product.id },
       disableClose: true,
       width: '400px'
     };
 
-    this.dialog.open(ProductDetailsDialogComponent, dialogConfig).afterClosed().pipe(
-      filter((saved: boolean) => saved === true)
-    ).subscribe(() => {
-      this.load();
-    });
+    this.dialog.open(ProductDetailsDialogComponent, dialogConfig).afterClosed().subscribe((saved: boolean) => {
+      if (saved) {
+        this.load();
+      }
+    })
   }
 
   handleSortChange(sort: Sort<ProductsSortBy>): void {

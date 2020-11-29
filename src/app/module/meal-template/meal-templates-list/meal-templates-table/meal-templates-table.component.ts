@@ -8,8 +8,9 @@ import { MealTemplate } from '../../../../shared/model/domain/meal-template';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealTemplatesTableComponent {
+
   @Input() mealTemplates: MealTemplate[];
-  @Output() clickRow: EventEmitter<MealTemplate> = new EventEmitter<MealTemplate>();
+  @Output() clickRow = new EventEmitter<MealTemplate>();
 
   handleClickRow(mealTemplate: MealTemplate) {
     this.clickRow.next(mealTemplate);

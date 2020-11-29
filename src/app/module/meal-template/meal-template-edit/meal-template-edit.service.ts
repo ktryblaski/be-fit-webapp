@@ -13,6 +13,7 @@ import { ErrorModalService } from '../../../shared/component/error-modal/error-m
 
 @Injectable()
 export class MealTemplateEditService {
+
   private readonly saveAction = new Subject<MealTemplateFormValue>();
   private readonly loadAction = new Subject<number>();
 
@@ -30,14 +31,16 @@ export class MealTemplateEditService {
 
   private subscription: Subscription;
 
-  constructor(
-    private restService: MealTemplateRestService,
-    private productRestService: ProductRestService,
-    private notificationService: NotificationService,
-    private errorModalService: ErrorModalService,
-    private router: Router
-  ) {
-    this.subscription = merge(this.loadEffect(), this.saveEffect()).subscribe(noop);
+  constructor(private restService: MealTemplateRestService,
+              private productRestService: ProductRestService,
+              private notificationService: NotificationService,
+              private errorModalService: ErrorModalService,
+              private router: Router) {
+
+    this.subscription = merge(
+      this.loadEffect(),
+      this.saveEffect()
+    ).subscribe(noop);
   }
 
   load(mealTemplateId: number): void {
@@ -53,23 +56,24 @@ export class MealTemplateEditService {
       tap(() => {
         this.loading.next(true);
       }),
-      switchMap(mealTemplateId =>
-        forkJoin([this.restService.getOne(mealTemplateId), this.productRestService.findAll()]).pipe(
-          tap(([mealTemplate, products]) => {
-            this.mealTemplate.next(mealTemplate);
-            this.dataSource.next({ products: products.content });
-            this.loaded.next(true);
-          }),
-          catchError(error => {
-            console.error(error);
-            this.errorModalService.showError('An error has occurred while loading data');
-            return EMPTY;
-          }),
-          finalize(() => {
-            this.loading.next(false);
-          })
-        )
-      ),
+      switchMap(mealTemplateId => forkJoin([
+        this.restService.getOne(mealTemplateId),
+        this.productRestService.findAllLegacy()
+      ]).pipe(
+        tap(([mealTemplate, products]) => {
+          this.mealTemplate.next(mealTemplate);
+          this.dataSource.next({ products: products.content });
+          this.loaded.next(true);
+        }),
+        catchError(error => {
+          console.error(error);
+          this.errorModalService.showError('An error has occurred while loading data');
+          return EMPTY;
+        }),
+        finalize(() => {
+          this.loading.next(false);
+        })
+      )),
       ignoreElements()
     );
   }
@@ -79,25 +83,23 @@ export class MealTemplateEditService {
       tap(() => {
         this.saving.next(true);
       }),
-      switchMap(formValue =>
-        this.restService.update(this.mapToUpdate(formValue)).pipe(
-          tap(mealTemplate => {
-            this.router.navigate(['meal-template', mealTemplate.id]);
-            this.notificationService.show({
-              message: 'The meal has been saved',
-              severity: NotificationSeverity.SUCCESS,
-            });
-          }),
-          catchError(error => {
-            console.error(error);
-            this.errorModalService.showError('An error has occurred while saving meal template');
-            return EMPTY;
-          }),
-          finalize(() => {
-            this.saving.next(false);
-          })
-        )
-      ),
+      switchMap(formValue => this.restService.update(this.mapToUpdate(formValue)).pipe(
+        tap(mealTemplate => {
+          this.router.navigate(['meal-template', mealTemplate.id]);
+          this.notificationService.show({
+            message: 'The meal has been saved',
+            severity: NotificationSeverity.SUCCESS,
+          });
+        }),
+        catchError(error => {
+          console.error(error);
+          this.errorModalService.showError('An error has occurred while saving meal template');
+          return EMPTY;
+        }),
+        finalize(() => {
+          this.saving.next(false);
+        })
+      )),
       ignoreElements()
     );
   }

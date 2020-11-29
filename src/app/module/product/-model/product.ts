@@ -1,4 +1,4 @@
-import { Macronutrients } from './macronutrients';
+import { Macronutrients } from '../../../shared/model/domain/macronutrients';
 
 export interface Product {
   id?: number;

@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, Output, EventEmitter, SimpleChanges } from '@angular/core';
-import { Product } from '../../../../../../../shared/model/domain/product';
-import { MealFormGroup } from '../../../../-shared/day-of-eating-form';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { distinctUntilChanged, map } from 'rxjs/operators';
 import { values$ } from '../../../../../../../shared/form/typed-form/typed-utils';
 import { DayOfEatingFormHandler } from '../../../../day-of-eating-form-handler';
+import { MealFormGroup } from '../../../../-shared/day-of-eating-form';
+import { Product } from '../../../../../../product/-model/product';
 
 @Component({
   selector: 'app-product-form',

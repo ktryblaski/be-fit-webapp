@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
-import { Product } from '../../../../../shared/model/domain/product';
 import { MealTemplateFormHandler } from '../../meal-template-form-handler';
 import { distinctUntilChanged, map } from 'rxjs/operators';
 import { values$ } from '../../../../../shared/form/typed-form/typed-utils';
+import { Product } from '../../../../product/-model/product';
 
 @Component({
   selector: 'app-form-product',

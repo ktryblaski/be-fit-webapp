@@ -8,14 +8,14 @@
     </div>
 
     <app-products-list-ui [products]="products$ | async"
+                          [total]="total$ | async"
                           [pagination]="pagination"
                           [sort]="sort"
-                          [total]="total$ | async"
                           (clickRow)="handleClickRow($event)"
                           (sortChange)="handleSortChange($event)"
                           (paginationChange)="handlePaginationChange($event)"></app-products-list-ui>
 
-    <div class="pending-indicator-overlay-container" *ngIf="pending$ | async">
+    <div class="pending-indicator-overlay-container" *ngIf="loading$ | async">
       <app-spinner></app-spinner>
     </div>
   </div>

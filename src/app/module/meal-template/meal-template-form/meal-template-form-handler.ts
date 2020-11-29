@@ -1,5 +1,4 @@
 import { Validators } from '@angular/forms';
-import { Product } from '../../../shared/model/domain/product';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -9,11 +8,13 @@ import { MealTemplateForm, MealTemplateFormControls } from './-shared/meal-templ
 import { MealTemplateFormIngredientValue, MealTemplateFormValue } from './-shared/meal-template-form-value';
 import { values$ } from '../../../shared/form/typed-form/typed-utils';
 import { TypedFormGroup } from '../../../shared/form/typed-form/typed-form';
+import { Product } from '../../product/-model/product';
 
 export type MealTemplateIngredient = Omit<MealTemplateFormIngredientValue, 'weight'>;
 
 @Injectable()
 export class MealTemplateFormHandler {
+
   form: TypedFormGroup<MealTemplateForm, MealTemplateFormControls>;
 
   ingredients: MealTemplateIngredient[] = [];
@@ -69,4 +70,5 @@ export class MealTemplateFormHandler {
     this.ingredients = [...this.ingredients, { id, product }];
     this.form.controls.ingredients.push(this.fb.control<number>(weight));
   }
+
 }

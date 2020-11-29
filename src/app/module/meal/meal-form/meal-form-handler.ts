@@ -1,7 +1,7 @@
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Meal } from '../../../shared/model/domain/meal';
 import { Ingredient } from '../../../shared/model/domain/ingredient';
-import { Product } from '../../../shared/model/domain/product';
+import { Product } from '../../product/-model/product';
 
 export class MealFormHandler {
   form: FormGroup;

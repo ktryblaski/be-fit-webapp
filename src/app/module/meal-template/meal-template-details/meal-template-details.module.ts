@@ -8,7 +8,16 @@ import { HelperModule } from '../../../shared/helper/helper.module';
 import { MealTemplateRoutingModule } from '../meal-template-routing.module';
 
 @NgModule({
-  imports: [CommonModule, MatButtonModule, MealTemplateViewModule, SpinnerModule, HelperModule, MealTemplateRoutingModule],
-  declarations: [MealTemplateDetailsComponent],
+  imports: [
+    CommonModule,
+    MatButtonModule,
+    MealTemplateViewModule,
+    SpinnerModule,
+    HelperModule,
+    MealTemplateRoutingModule
+  ],
+  declarations: [
+    MealTemplateDetailsComponent
+  ]
 })
-export class MealTemplateDetailsModule {}
+export class MealTemplateDetailsModule { }

@@ -14,16 +14,21 @@ import { map } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealTemplateCreateComponent implements OnInit {
+
   dataSource$: Observable<MealTemplateFormDataSource>;
   loaded$: Observable<boolean>;
   pending$: Observable<boolean>;
 
-  constructor(private service: MealTemplateCreateService, private router: Router) {}
+  constructor(private service: MealTemplateCreateService,
+              private router: Router) {}
 
   ngOnInit(): void {
     this.dataSource$ = this.service.dataSource$;
     this.loaded$ = this.service.loaded$;
-    this.pending$ = combineLatest([this.service.loading$, this.service.saving$]).pipe(map(([loading, saving]) => loading || saving));
+    this.pending$ = combineLatest([
+      this.service.loading$,
+      this.service.saving$
+    ]).pipe(map(([loading, saving]) => loading || saving));
 
     this.service.load();
   }
@@ -35,4 +40,5 @@ export class MealTemplateCreateComponent implements OnInit {
   handleCancel(): void {
     this.router.navigate(['meal-template']);
   }
+
 }

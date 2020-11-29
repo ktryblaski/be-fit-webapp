@@ -10,9 +10,9 @@ import { clone } from '../../../shared/util/commons';
 import { values$ } from '../../../shared/form/typed-form/typed-utils';
 import { TypedFormBuilder } from '../../../shared/form/typed-form/typed-form-builder.service';
 import { TypedFormArray, TypedFormGroup } from '../../../shared/form/typed-form/typed-form';
-import { DayOfEatingForm, DayOfEatingFormControls, DayOfEatingFormMeal, DayOfEatingFormMealControls } from './-shared/day-of-eating-form';
-import { Product } from '../../../shared/model/domain/product';
 import { Validators } from '@angular/forms';
+import { DayOfEatingForm, DayOfEatingFormControls, DayOfEatingFormMeal, DayOfEatingFormMealControls } from './-shared/day-of-eating-form';
+import { Product } from '../../product/-model/product';
 
 export type MealIngredient = Omit<DayOfEatingFormIngredientValue, 'weight'>;
 export type DayOfEatingMeal = Omit<DayOfEatingFormMealValue, 'name' | 'description' | 'ingredients'> & {

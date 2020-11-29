@@ -15,6 +15,7 @@ import { map } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealTemplateEditComponent implements OnInit, OnDestroy {
+
   private subscription: Subscription;
 
   mealTemplate$: Observable<MealTemplate | null>;
@@ -22,12 +23,17 @@ export class MealTemplateEditComponent implements OnInit, OnDestroy {
   pending$: Observable<boolean>;
   dataSource$: Observable<MealTemplateFormDataSource | null>;
 
-  constructor(private service: MealTemplateEditService, private router: Router, private route: ActivatedRoute) {}
+  constructor(private service: MealTemplateEditService,
+              private router: Router,
+              private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.mealTemplate$ = this.service.mealTemplate$;
     this.loaded$ = this.service.loaded$;
-    this.pending$ = combineLatest([this.service.loading$, this.service.saving$]).pipe(map(([loading, saving]) => loading || saving));
+    this.pending$ = combineLatest([
+      this.service.loading$,
+      this.service.saving$
+    ]).pipe(map(([loading, saving]) => loading || saving));
     this.dataSource$ = this.service.dataSource$;
 
     this.subscription = this.route.paramMap.subscribe(paramMap => {

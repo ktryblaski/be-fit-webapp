@@ -1,5 +1,5 @@
-import { Product } from '../../../../shared/model/domain/product';
 import { TypedFormArray, TypedFormControl } from '../../../../shared/form/typed-form/typed-form';
+import { Product } from '../../../product/-model/product';
 
 export interface MealTemplateForm {
   name: string;

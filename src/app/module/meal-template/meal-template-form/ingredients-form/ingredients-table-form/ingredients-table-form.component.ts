@@ -19,6 +19,7 @@ import { values$ } from '../../../../../shared/form/typed-form/typed-utils';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IngredientsTableFormComponent implements OnInit, OnDestroy {
+
   @Output() removeIngredient = new EventEmitter<number>();
 
   private readonly stats = new BehaviorSubject<FoodStats | null>(null);
@@ -27,7 +28,7 @@ export class IngredientsTableFormComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
 
-  constructor(public formHandler: MealTemplateFormHandler) {}
+  constructor(public formHandler: MealTemplateFormHandler) { }
 
   ngOnInit(): void {
     this.subscription = values$(this.formHandler.form.controls.ingredients).subscribe(weights => this.updateTotalData(weights));

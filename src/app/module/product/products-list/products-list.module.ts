@@ -32,4 +32,4 @@ import { PaginationModule } from '../../../shared/component/pagination/paginatio
     ProductsListUiComponent
   ]
 })
-export class ProductsListModule {}
+export class ProductsListModule { }

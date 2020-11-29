@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { Product } from '../../../../shared/model/domain/product';
 import { Sort } from '../../../../shared/component/sort/-model/sort';
 import { ProductsSortBy } from '../-model/products.sort-by';
 import { Pagination } from '../../../../shared/component/pagination/-model/pagination';
+import { ProductLite } from '../../-model/product-lite';
 
 @Component({
   selector: 'app-products-list-ui',
@@ -14,16 +14,16 @@ export class ProductsListUiComponent {
 
   readonly ProductsSortBy = ProductsSortBy;
 
-  @Input() products: Product[];
+  @Input() products: ProductLite[];
   @Input() pagination: Pagination;
   @Input() sort: Sort<ProductsSortBy>;
   @Input() total: number;
 
-  @Output() clickRow = new EventEmitter<Product>();
+  @Output() clickRow = new EventEmitter<ProductLite>();
   @Output() sortChange = new EventEmitter<Sort<ProductsSortBy>>();
   @Output() paginationChange = new EventEmitter<Pagination>();
 
-  handleClickRow(product: Product) {
+  handleClickRow(product: ProductLite) {
     this.clickRow.next(product);
   }
 

@@ -9,6 +9,7 @@ import { ErrorModalService } from '../../../shared/component/error-modal/error-m
 
 @Injectable()
 export class MealTemplateDetailsService implements OnDestroy {
+
   private readonly loadAction = new Subject<number>();
   private readonly activateAction = new Subject<void>();
   private readonly deactivateAction = new Subject<void>();
@@ -25,12 +26,15 @@ export class MealTemplateDetailsService implements OnDestroy {
   readonly loading$: Observable<boolean> = this.loading.pipe(distinctUntilChanged());
   readonly saving$: Observable<boolean> = this.saving.pipe(distinctUntilChanged());
 
-  constructor(
-    private restService: MealTemplateRestService,
-    private notificationService: NotificationService,
-    private errorModalService: ErrorModalService
-  ) {
-    this.subscription = merge(this.loadEffect(), this.activateEffect(), this.deactivateEffect()).subscribe(noop);
+  constructor(private restService: MealTemplateRestService,
+              private notificationService: NotificationService,
+              private errorModalService: ErrorModalService) {
+
+    this.subscription = merge(
+      this.loadEffect(),
+      this.activateEffect(),
+      this.deactivateEffect()
+    ).subscribe(noop);
   }
 
   load(mealTemplateId: number): void {
@@ -54,22 +58,20 @@ export class MealTemplateDetailsService implements OnDestroy {
       tap(() => {
         this.loading.next(true);
       }),
-      switchMap(mealTemplateId =>
-        this.restService.getOne(mealTemplateId).pipe(
-          tap(mealTemplate => {
-            this.mealTemplate.next(mealTemplate);
-            this.loaded.next(true);
-          }),
-          catchError(error => {
-            console.error(error);
-            this.errorModalService.showError('An error has occurred while loading data');
-            return EMPTY;
-          }),
-          finalize(() => {
-            this.loading.next(false);
-          })
-        )
-      ),
+      switchMap(mealTemplateId => this.restService.getOne(mealTemplateId).pipe(
+        tap(mealTemplate => {
+          this.mealTemplate.next(mealTemplate);
+          this.loaded.next(true);
+        }),
+        catchError(error => {
+          console.error(error);
+          this.errorModalService.showError('An error has occurred while loading data');
+          return EMPTY;
+        }),
+        finalize(() => {
+          this.loading.next(false);
+        })
+      )),
       ignoreElements()
     );
   }
@@ -79,25 +81,23 @@ export class MealTemplateDetailsService implements OnDestroy {
       tap(() => {
         this.saving.next(true);
       }),
-      switchMap(() =>
-        this.restService.activate(this.mealTemplate.value.id).pipe(
-          tap(mealTemplate => {
-            this.mealTemplate.next(mealTemplate);
-            this.notificationService.show({
-              message: 'The Meal Template has been activated',
-              severity: NotificationSeverity.SUCCESS,
-            });
-          }),
-          catchError(error => {
-            console.error(error);
-            this.errorModalService.showError('An error has occurred while activating meal template');
-            return EMPTY;
-          }),
-          finalize(() => {
-            this.saving.next(false);
-          })
-        )
-      ),
+      switchMap(() => this.restService.activate(this.mealTemplate.value.id).pipe(
+        tap(mealTemplate => {
+          this.mealTemplate.next(mealTemplate);
+          this.notificationService.show({
+            message: 'The Meal Template has been activated',
+            severity: NotificationSeverity.SUCCESS,
+          });
+        }),
+        catchError(error => {
+          console.error(error);
+          this.errorModalService.showError('An error has occurred while activating meal template');
+          return EMPTY;
+        }),
+        finalize(() => {
+          this.saving.next(false);
+        })
+      )),
       ignoreElements()
     );
   }
@@ -107,26 +107,25 @@ export class MealTemplateDetailsService implements OnDestroy {
       tap(() => {
         this.saving.next(true);
       }),
-      switchMap(() =>
-        this.restService.deactivate(this.mealTemplate.value.id).pipe(
-          tap(mealTemplate => {
-            this.mealTemplate.next(mealTemplate);
-            this.notificationService.show({
-              message: 'The Meal Template has been deactivated',
-              severity: NotificationSeverity.SUCCESS,
-            });
-          }),
-          catchError(error => {
-            console.error(error);
-            this.errorModalService.showError('An error has occurred while deactivating meal template');
-            return EMPTY;
-          }),
-          finalize(() => {
-            this.saving.next(false);
-          })
-        )
-      ),
+      switchMap(() => this.restService.deactivate(this.mealTemplate.value.id).pipe(
+        tap(mealTemplate => {
+          this.mealTemplate.next(mealTemplate);
+          this.notificationService.show({
+            message: 'The Meal Template has been deactivated',
+            severity: NotificationSeverity.SUCCESS,
+          });
+        }),
+        catchError(error => {
+          console.error(error);
+          this.errorModalService.showError('An error has occurred while deactivating meal template');
+          return EMPTY;
+        }),
+        finalize(() => {
+          this.saving.next(false);
+        })
+      )),
       ignoreElements()
     );
   }
+
 }

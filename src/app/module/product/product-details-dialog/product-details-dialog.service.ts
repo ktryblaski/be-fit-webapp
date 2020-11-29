@@ -1,11 +1,11 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { ProductRestService } from '../../../shared/service/rest/product-rest.service';
 import { BehaviorSubject, EMPTY, merge, noop, Observable, Subject, Subscription } from 'rxjs';
-import { Product } from '../../../shared/model/domain/product';
 import { catchError, distinctUntilChanged, finalize, ignoreElements, switchMap, tap } from 'rxjs/operators';
 import { ErrorModalService } from '../../../shared/component/error-modal/error-modal.service';
 import { NotificationSeverity } from '../../../shared/component/notification/notification';
 import { NotificationService } from '../../../shared/component/notification/notification.service';
+import { Product } from '../-model/product';
 
 @Injectable()
 export class ProductDetailsDialogService implements OnDestroy {

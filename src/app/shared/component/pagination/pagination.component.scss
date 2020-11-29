@@ -14,17 +14,20 @@
     font-weight: 500;
   }
 
-  button[disabled]:hover,
-  button.page.active {
+  button[disabled]:hover {
     cursor: default;
   }
 
-  button:not(.page) {
-    color: #454545;
+  button[disabled]:not(.page) {
+    color: #d2d2d2;
   }
 
-  button[disabled]:not(.page) {
+  button:not([disabled]) {
     color: grey;
+  }
+
+  button:not([disabled]):hover {
+    color: #000;
   }
 
 }

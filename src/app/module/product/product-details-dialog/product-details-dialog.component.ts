@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component, Inject, OnDestroy, OnInit } from '@
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ProductDetailsDialogService } from './product-details-dialog.service';
 import { combineLatest, merge, noop, Observable, Subscription } from 'rxjs';
-import { Product } from '../../../shared/model/domain/product';
 import { filter, map, tap } from 'rxjs/operators';
+import { Product } from '../-model/product';
 
 export interface ProductDialogData {
   productId: number;

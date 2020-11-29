@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 import { MealFormGroup } from '../../-shared/day-of-eating-form';
-import { Product } from '../../../../../shared/model/domain/product';
+import { Product } from '../../../../product/-model/product';
 
 @Component({
   selector: 'app-meal-form',

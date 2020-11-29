@@ -13,6 +13,7 @@ import { ErrorModalService } from '../../../shared/component/error-modal/error-m
 
 @Injectable()
 export class MealTemplateCreateService {
+
   private readonly saveAction = new Subject<MealTemplateFormValue>();
   private readonly loadAction = new Subject<void>();
 
@@ -28,14 +29,16 @@ export class MealTemplateCreateService {
   readonly loaded$: Observable<boolean> = this.loaded.pipe(distinctUntilChanged());
   readonly dataSource$: Observable<MealTemplateFormDataSource | null> = this.dataSource.pipe(distinctUntilChanged());
 
-  constructor(
-    private restService: MealTemplateRestService,
-    private productRestService: ProductRestService,
-    private notificationService: NotificationService,
-    private errorModalService: ErrorModalService,
-    private router: Router
-  ) {
-    this.subscription = merge(this.loadEffect(), this.saveEffect()).subscribe(noop);
+  constructor(private restService: MealTemplateRestService,
+              private productRestService: ProductRestService,
+              private notificationService: NotificationService,
+              private errorModalService: ErrorModalService,
+              private router: Router) {
+
+    this.subscription = merge(
+      this.loadEffect(),
+      this.saveEffect()
+    ).subscribe(noop);
   }
 
   load(): void {
@@ -51,25 +54,23 @@ export class MealTemplateCreateService {
       tap(() => {
         this.saving.next(true);
       }),
-      switchMap(formValue =>
-        this.restService.create(this.mapToCreate(formValue)).pipe(
-          tap(id => {
-            this.router.navigate(['meal-template', id]);
-            this.notificationService.show({
-              message: 'New meal has been added',
-              severity: NotificationSeverity.SUCCESS,
-            });
-          }),
-          catchError(error => {
-            console.error(error);
-            this.errorModalService.showError('An error has occurred while saving meal template');
-            return EMPTY;
-          }),
-          finalize(() => {
-            this.saving.next(false);
-          })
-        )
-      ),
+      switchMap(formValue => this.restService.create(this.mapToCreate(formValue)).pipe(
+        tap(id => {
+          this.router.navigate(['meal-template', id]);
+          this.notificationService.show({
+            message: 'New meal has been added',
+            severity: NotificationSeverity.SUCCESS,
+          });
+        }),
+        catchError(error => {
+          console.error(error);
+          this.errorModalService.showError('An error has occurred while saving meal template');
+          return EMPTY;
+        }),
+        finalize(() => {
+          this.saving.next(false);
+        })
+      )),
       ignoreElements()
     );
   }
@@ -79,22 +80,20 @@ export class MealTemplateCreateService {
       tap(() => {
         this.loading.next(true);
       }),
-      switchMap(() =>
-        this.productRestService.findAll().pipe(
-          tap(products => {
-            this.dataSource.next({ products: products.content });
-            this.loaded.next(true);
-          }),
-          catchError(error => {
-            console.error(error);
-            this.errorModalService.showError('An error has occurred while loading data');
-            return EMPTY;
-          }),
-          finalize(() => {
-            this.loading.next(false);
-          })
-        )
-      ),
+      switchMap(() => this.productRestService.findAllLegacy().pipe(
+        tap(products => {
+          this.dataSource.next({ products: products.content });
+          this.loaded.next(true);
+        }),
+        catchError(error => {
+          console.error(error);
+          this.errorModalService.showError('An error has occurred while loading data');
+          return EMPTY;
+        }),
+        finalize(() => {
+          this.loading.next(false);
+        })
+      )),
       ignoreElements()
     );
   }
@@ -104,7 +103,7 @@ export class MealTemplateCreateService {
       id: null,
       name: formValue.name,
       description: formValue.description,
-      ingredients: formValue.ingredients.map(i => ({ id: null, productId: i.product.id, weight: i.weight })),
+      ingredients: formValue.ingredients.map(i => ({ id: null, productId: i.product.id, weight: i.weight }))
     };
   }
 }

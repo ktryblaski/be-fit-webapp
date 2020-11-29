@@ -1,5 +1,5 @@
-import { Product } from '../../../../shared/model/domain/product';
 import { TypedFormArray, TypedFormControl, TypedFormGroup } from '../../../../shared/form/typed-form/typed-form';
+import { Product } from '../../../product/-model/product';
 
 export type MealFormGroup = TypedFormGroup<DayOfEatingFormMeal, DayOfEatingFormMealControls>;
 export type MealsFormArray = TypedFormArray<DayOfEatingFormMeal, MealFormGroup>;

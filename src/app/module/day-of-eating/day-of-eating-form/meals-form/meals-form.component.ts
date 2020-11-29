@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, Output, EventEmitter, ViewChild, Input } from '@angular/core';
 import { MatAccordion } from '@angular/material/expansion';
 import { MealsFormArray } from '../-shared/day-of-eating-form';
-import { Product } from '../../../../shared/model/domain/product';
+import { Product } from '../../../product/-model/product';
 
 @Component({
   selector: 'app-meals-form',

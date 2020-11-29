@@ -1,9 +1,24 @@
+.table-container {
+  overflow-x: scroll;
+}
+
 table[appTable] {
   width: 100%;
 }
 
-th.favourite, td.favourite {
-  font-size: 110%;
+th {
+  white-space: nowrap;
+}
+
+th, td {
+  &.name {
+    min-width: 180px;
+  }
+
+  &.favourite {
+    font-size: 110%;
+    min-width: 40px;
+  }
 }
 
 .pagination {

@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
-import { Product } from '../../../../../../../../shared/model/domain/product';
 import { MealFormGroup } from '../../../../../-shared/day-of-eating-form';
+import { Product } from '../../../../../../../product/-model/product';
 
 @Component({
   selector: 'app-product-select-form',

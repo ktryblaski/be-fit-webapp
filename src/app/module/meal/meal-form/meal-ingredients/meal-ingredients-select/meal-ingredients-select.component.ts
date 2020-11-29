@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { MealIngredientsSelectService } from './meal-ingredients-select.service';
 import { Observable, Subscription } from 'rxjs';
-import { Product } from '../../../../../shared/model/domain/product';
 import { MealFormHandler } from '../../meal-form-handler';
 import { Ingredient } from '../../../../../shared/model/domain/ingredient';
+import { Product } from '../../../../product/-model/product';
 
 @Component({
   selector: 'app-meal-ingredients-select',
@@ -13,8 +13,9 @@ import { Ingredient } from '../../../../../shared/model/domain/ingredient';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealIngredientsSelectComponent implements OnInit, OnDestroy {
+
   @Input() formHandler: MealFormHandler;
-  @Output() addProduct: EventEmitter<Product> = new EventEmitter<Product>();
+  @Output() addProduct = new EventEmitter<Product>();
 
   selected = [];
 

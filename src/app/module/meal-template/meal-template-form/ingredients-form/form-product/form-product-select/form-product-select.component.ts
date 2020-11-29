@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Product } from '../../../../../../shared/model/domain/product';
 import { MealTemplateFormHandler } from '../../../meal-template-form-handler';
+import { Product } from '../../../../../product/-model/product';
 
 @Component({
   selector: 'app-form-product-select',
