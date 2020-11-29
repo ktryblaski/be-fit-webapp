@@ -5,9 +5,9 @@ import { DayOfEatingLite } from '../../../shared/model/domain/day-of-eating';
 import { catchError, distinctUntilChanged, finalize, ignoreElements, switchMap, tap } from 'rxjs/operators';
 import { NotificationSeverity } from '../../../shared/component/notification/notification';
 import { NotificationService } from '../../../shared/component/notification/notification.service';
-import { DayOfEatingBeginDTO } from '../../../shared/model/dto/day-of-eating-begin-dto';
+import { DayOfEatingBeginDTO } from '../day-of-eating-begin-dialog/-dto/day-of-eating-begin.dto';
 import { Router } from '@angular/router';
-import { ErrorModalService } from '../../../shared/error-modal/error-modal.service';
+import { ErrorModalService } from '../../../shared/component/error-modal/error-modal.service';
 
 @Injectable()
 export class DayOfEatingListService implements OnDestroy {

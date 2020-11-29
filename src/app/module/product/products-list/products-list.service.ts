@@ -6,7 +6,7 @@ import { ProductRestService } from '../../../shared/service/rest/product-rest.se
 import { NotificationService } from '../../../shared/component/notification/notification.service';
 import { NotificationSeverity } from '../../../shared/component/notification/notification';
 import { ProductFormValue } from '../product-create-form/model/product-form-value';
-import { ErrorModalService } from '../../../shared/error-modal/error-modal.service';
+import { ErrorModalService } from '../../../shared/component/error-modal/error-modal.service';
 import { ProductParams } from './-model/product.params';
 import { fromDTO, Paged } from '../../../shared/model/table/paged';
 

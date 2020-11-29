@@ -10,7 +10,7 @@ import { DayOfEatingFormValue } from '../day-of-eating-form/-shared/day-of-eatin
 import { ProductRestService } from '../../../shared/service/rest/product-rest.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MealTemplateRestService } from '../../../shared/service/rest/meal-template-rest.service';
-import { ErrorModalService } from '../../../shared/error-modal/error-modal.service';
+import { ErrorModalService } from '../../../shared/component/error-modal/error-modal.service';
 
 @Injectable({
   providedIn: 'root',
@@ -70,7 +70,7 @@ export class DayOfEatingEditService implements OnDestroy {
       ]).pipe(
         tap(([dayOfEating, mealTemplates, products]) => {
           this.dayOfEating.next(dayOfEating);
-          this.dataSource.next({ mealTemplates, products });
+          this.dataSource.next({ mealTemplates, products: products.content });
           this.loaded.next(true);
         }),
         catchError(error => {

@@ -6,9 +6,10 @@ import { ErrorModalData } from './-model/error-modal-data';
   selector: 'app-error-modal',
   templateUrl: './error-modal.component.html',
   styleUrls: ['./error-modal.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ErrorModalComponent {
+
   title: string | null;
   content: string;
 
@@ -21,4 +22,5 @@ export class ErrorModalComponent {
       this.content = data;
     }
   }
+
 }

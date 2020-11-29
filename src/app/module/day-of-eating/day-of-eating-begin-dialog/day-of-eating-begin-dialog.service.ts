@@ -5,8 +5,9 @@ import { catchError, distinctUntilChanged, finalize, ignoreElements, switchMap, 
 import { DayOfEatingRestService } from '../../../shared/service/rest/day-of-eating-rest.service';
 import { DayOfEatingBeginFormValue } from './day-of-eating-begin-form/model/day-of-eating-begin-form-value';
 import * as moment from 'moment';
-import { DayOfEatingBeginDTO, DayOfEatingBeginOrigin } from '../../../shared/model/dto/day-of-eating-begin-dto';
-import { ErrorModalService } from '../../../shared/error-modal/error-modal.service';
+import { DayOfEatingBeginDTO } from './-dto/day-of-eating-begin.dto';
+import { ErrorModalService } from '../../../shared/component/error-modal/error-modal.service';
+import { DayOfEatingBeginOrigin } from './-model/day-of-eating-begin-origin';
 
 @Injectable()
 export class DayOfEatingBeginDialogService implements OnDestroy {

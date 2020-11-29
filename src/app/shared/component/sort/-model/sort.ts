@@ -6,9 +6,9 @@ export interface Sort<T extends string = string> {
 }
 
 export function ascending<T extends string = string>(sortBy: T): Sort<T> {
-  return { sortBy, sortOrder: SortOrder.ASC }
+  return { sortBy, sortOrder: SortOrder.ASC };
 }
 
 export function descending<T extends string = string>(sortBy: T): Sort<T> {
-  return { sortBy, sortOrder: SortOrder.DESC }
+  return { sortBy, sortOrder: SortOrder.DESC };
 }

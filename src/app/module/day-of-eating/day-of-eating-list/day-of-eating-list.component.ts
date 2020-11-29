@@ -5,7 +5,7 @@ import { DayOfEatingListService } from './day-of-eating-list.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DayOfEatingBeginDialogComponent } from '../day-of-eating-begin-dialog/day-of-eating-begin-dialog.component';
-import { DayOfEatingBeginDTO } from '../../../shared/model/dto/day-of-eating-begin-dto';
+import { DayOfEatingBeginDTO } from '../day-of-eating-begin-dialog/-dto/day-of-eating-begin.dto';
 import { map } from 'rxjs/operators';
 import { MatDialogConfig } from '@angular/material/dialog/dialog-config';
 

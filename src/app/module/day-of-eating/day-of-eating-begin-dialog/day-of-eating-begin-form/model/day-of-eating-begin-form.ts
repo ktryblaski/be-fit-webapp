@@ -1,5 +1,5 @@
-import { DayOfEatingBeginOrigin } from '../../../../../shared/model/dto/day-of-eating-begin-dto';
 import { TypedFormControl } from '../../../../../shared/form/typed-form/typed-form';
+import { DayOfEatingBeginOrigin } from '../../-model/day-of-eating-begin-origin';
 
 export interface DayOfEatingBeginForm {
   origin: DayOfEatingBeginOrigin;

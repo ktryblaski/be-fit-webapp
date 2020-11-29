@@ -14,13 +14,13 @@ describe('isLastPage', () => {
     });
     it('when page is empty', () => {
       const pagination: Pagination = { page: null, pageSize: 10 };
-      const total: number = 4;
+      const total = 4;
 
       expect(() => pipe.transform(pagination, total)).toThrowMatching((thrown: any) => thrown instanceof Error);
     });
     it('when pageSize is empty', () => {
       const pagination: Pagination = { page: 2, pageSize: null };
-      const total: number = 4;
+      const total = 4;
 
       expect(() => pipe.transform(pagination, total)).toThrowMatching((thrown: any) => thrown instanceof Error);
     });
@@ -28,27 +28,27 @@ describe('isLastPage', () => {
 
   it('should return true', () => {
     const pagination: Pagination = { page: 3, pageSize: 10 };
-    const total: number = 30;
+    const total = 30;
 
     expect(pipe.transform(pagination, total)).toBeTrue();
   });
 
   describe('should return false', () => {
-    it('#1', () => {
+    it('with total=31 and page={3, 10}', () => {
       const pagination: Pagination = { page: 3, pageSize: 10 };
-      const total: number = 31;
+      const total = 31;
 
       expect(pipe.transform(pagination, total)).toBeFalse();
     });
-    it('#2', () => {
+    it('with total=40 and page={3, 10}', () => {
       const pagination: Pagination = { page: 3, pageSize: 10 };
-      const total: number = 40;
+      const total = 40;
 
       expect(pipe.transform(pagination, total)).toBeFalse();
     });
-    it('#2', () => {
+    it('with total=40 and page={1, 2}', () => {
       const pagination: Pagination = { page: 1, pageSize: 2 };
-      const total: number = 40;
+      const total = 40;
 
       expect(pipe.transform(pagination, total)).toBeFalse();
     });

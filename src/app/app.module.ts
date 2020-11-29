@@ -14,11 +14,11 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NotificationModule } from './shared/component/notification/notification.module';
 import { ResponsiveModule } from './shared/directive/responsive/responsive.module';
-import { ErrorModalModule } from './shared/error-modal/error-modal.module';
+import { ErrorModalModule } from './shared/component/error-modal/error-modal.module';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
-import { HttpsParamsEncoderInterceptor } from './shared/service/https-params-encoder.interceptor';
+import { HttpsParamsEncoderInterceptor } from './shared/service/interceptor/https-params-encoder.interceptor';
 
 @NgModule({
   imports: [
@@ -55,6 +55,7 @@ import { HttpsParamsEncoderInterceptor } from './shared/service/https-params-enc
   ]
 })
 export class AppModule {
+
   constructor(library: FaIconLibrary) {
     library.addIconPacks(fas, far);
   }

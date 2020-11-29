@@ -3,7 +3,7 @@ import { ProductRestService } from '../../../shared/service/rest/product-rest.se
 import { BehaviorSubject, EMPTY, merge, noop, Observable, Subject, Subscription } from 'rxjs';
 import { Product } from '../../../shared/model/domain/product';
 import { catchError, distinctUntilChanged, finalize, ignoreElements, switchMap, tap } from 'rxjs/operators';
-import { ErrorModalService } from '../../../shared/error-modal/error-modal.service';
+import { ErrorModalService } from '../../../shared/component/error-modal/error-modal.service';
 import { NotificationSeverity } from '../../../shared/component/notification/notification';
 import { NotificationService } from '../../../shared/component/notification/notification.service';
 

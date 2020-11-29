@@ -5,7 +5,7 @@ import { NotificationService } from '../../../shared/component/notification/noti
 import { NotificationSeverity } from '../../../shared/component/notification/notification';
 import { MealTemplate } from '../../../shared/model/domain/meal-template';
 import { MealTemplateRestService } from '../../../shared/service/rest/meal-template-rest.service';
-import { ErrorModalService } from '../../../shared/error-modal/error-modal.service';
+import { ErrorModalService } from '../../../shared/component/error-modal/error-modal.service';
 
 @Injectable()
 export class MealTemplateDetailsService implements OnDestroy {

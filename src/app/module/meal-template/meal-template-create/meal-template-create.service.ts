@@ -9,7 +9,7 @@ import { MealTemplateRestService } from '../../../shared/service/rest/meal-templ
 import { ProductRestService } from '../../../shared/service/rest/product-rest.service';
 import { MealTemplateFormDataSource } from '../meal-template-form/-shared/meal-template-form-data-source';
 import { MealTemplateCU } from '../../../shared/model/domain/meal-template';
-import { ErrorModalService } from '../../../shared/error-modal/error-modal.service';
+import { ErrorModalService } from '../../../shared/component/error-modal/error-modal.service';
 
 @Injectable()
 export class MealTemplateCreateService {
@@ -82,7 +82,7 @@ export class MealTemplateCreateService {
       switchMap(() =>
         this.productRestService.findAll().pipe(
           tap(products => {
-            this.dataSource.next({ products });
+            this.dataSource.next({ products: products.content });
             this.loaded.next(true);
           }),
           catchError(error => {

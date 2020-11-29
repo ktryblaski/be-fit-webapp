@@ -4,6 +4,7 @@ import { SortOrder } from '../-model/sort-order';
 import { Subscription } from 'rxjs';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'th[sortHeader]',
   templateUrl: './sort-header.component.html',
   styleUrls: ['./sort-header.component.scss'],

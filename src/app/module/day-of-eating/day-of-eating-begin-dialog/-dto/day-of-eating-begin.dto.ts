@@ -1,7 +1,4 @@
-export enum DayOfEatingBeginOrigin {
-  NEW,
-  AS_COPY,
-}
+import { DayOfEatingBeginOrigin } from '../-model/day-of-eating-begin-origin';
 
 export interface DayOfEatingBeginDTO {
   origin: DayOfEatingBeginOrigin;

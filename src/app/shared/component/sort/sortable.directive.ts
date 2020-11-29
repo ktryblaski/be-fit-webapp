@@ -5,6 +5,7 @@ import { distinctUntilChanged } from 'rxjs/operators';
 import { SortOrder } from './-model/sort-order';
 
 @Directive({
+  // tslint:disable-next-line:directive-selector
   selector: 'table[sortable]'
 })
 export class SortableDirective<T extends string = string>  implements OnChanges {
@@ -24,7 +25,7 @@ export class SortableDirective<T extends string = string>  implements OnChanges 
     } else {
       activeSort.sortOrder === SortOrder.ASC
         ? this.changeSort({ sortBy: sortHeader, sortOrder: SortOrder.DESC })
-        : this.changeSort(null)
+        : this.changeSort(null);
     }
   }
 

@@ -35,7 +35,7 @@ export class ProductsListComponent implements OnInit {
   ngOnInit(): void {
     this.products$ = this.service.products$.pipe(
       tap(page => {
-        this.pagination = { page: page.page + 1, pageSize: page.pageSize }
+        this.pagination = { page: page.page + 1, pageSize: page.pageSize };
       }),
       map(page => page.results)
     );

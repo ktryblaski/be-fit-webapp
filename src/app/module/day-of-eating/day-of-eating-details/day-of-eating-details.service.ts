@@ -3,7 +3,7 @@ import { BehaviorSubject, EMPTY, noop, Observable, Subject, Subscription } from 
 import { DayOfEating } from '../../../shared/model/domain/day-of-eating';
 import { catchError, distinctUntilChanged, finalize, ignoreElements, switchMap, tap } from 'rxjs/operators';
 import { DayOfEatingRestService } from '../../../shared/service/rest/day-of-eating-rest.service';
-import { ErrorModalService } from '../../../shared/error-modal/error-modal.service';
+import { ErrorModalService } from '../../../shared/component/error-modal/error-modal.service';
 
 @Injectable()
 export class DayOfEatingDetailsService implements OnDestroy {

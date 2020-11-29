@@ -1,4 +1,4 @@
-import { DayOfEatingBeginOrigin } from '../../../../../shared/model/dto/day-of-eating-begin-dto';
+import { DayOfEatingBeginOrigin } from '../../-model/day-of-eating-begin-origin';
 
 export interface DayOfEatingBeginFormValue {
   origin: DayOfEatingBeginOrigin;

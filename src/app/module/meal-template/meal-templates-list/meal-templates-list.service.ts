@@ -3,7 +3,7 @@ import { BehaviorSubject, EMPTY, noop, Observable, Subject, Subscription } from 
 import { catchError, distinctUntilChanged, finalize, ignoreElements, switchMap, tap } from 'rxjs/operators';
 import { MealTemplateRestService } from '../../../shared/service/rest/meal-template-rest.service';
 import { MealTemplate } from '../../../shared/model/domain/meal-template';
-import { ErrorModalService } from '../../../shared/error-modal/error-modal.service';
+import { ErrorModalService } from '../../../shared/component/error-modal/error-modal.service';
 
 @Injectable()
 export class MealTemplatesListService implements OnDestroy {
