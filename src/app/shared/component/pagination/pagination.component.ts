@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 import { Pagination } from './-model/pagination';
 
 @Component({
@@ -7,70 +7,22 @@ import { Pagination } from './-model/pagination';
   styleUrls: ['./pagination.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PaginationComponent implements OnInit {
+export class PaginationComponent {
 
   @Input() pagination: Pagination;
   @Input() total: number;
+  @Input() pageSizes = [5, 10, 25, 100];
   @Output() paginationChange = new EventEmitter<Pagination>();
 
-  constructor() { }
-
-  ngOnInit(): void {
+  handlePageChange(page: number): void {
+    this.paginationChange.next({ page, pageSize: this.pagination.pageSize });
   }
 
-  first(): void {
-    if (this.pagination.page === 1) {
-      return;
-    }
+  handlePageSizeChange(pageSize: number): void {
+    const currentPageFirstRowIndex = this.pagination.pageSize * (this.pagination.page - 1) + 1;
+    const page = Math.ceil(currentPageFirstRowIndex / pageSize);
 
-    this.paginationChange.next({
-      page: 1,
-      pageSize: this.pagination.pageSize
-    });
-  }
-
-  previous(): void {
-    if (this.pagination.page === 1) {
-      return;
-    }
-
-    this.paginationChange.next({
-      page: this.pagination.page - 1,
-      pageSize: this.pagination.pageSize
-    });
-  }
-
-  page(index: number): void {
-    if (index < 1 || index > Math.ceil(this.total / this.pagination.pageSize)) {
-      return;
-    }
-
-    this.paginationChange.next({
-      page: index,
-      pageSize: this.pagination.pageSize
-    });
-  }
-
-  next(): void {
-    if (this.pagination.page === Math.ceil(this.total / this.pagination.pageSize)) {
-      return;
-    }
-
-    this.paginationChange.next({
-      page: this.pagination.page + 1,
-      pageSize: this.pagination.pageSize
-    });
-  }
-
-  last(): void {
-    if (this.pagination.page === Math.ceil(this.total / this.pagination.pageSize)) {
-      return;
-    }
-
-    this.paginationChange.next({
-      page: Math.ceil(this.total / this.pagination.pageSize),
-      pageSize: this.pagination.pageSize
-    });
+    this.paginationChange.next({ page, pageSize });
   }
 
 }

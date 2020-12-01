@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Pagination } from './-model/pagination';
+import { Pagination } from '../-model/pagination';
 
 @Pipe({
   name: 'pages'

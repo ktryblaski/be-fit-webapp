@@ -1,4 +1,4 @@
-import { Pagination } from './-model/pagination';
+import { Pagination } from '../-model/pagination';
 import { PagesPipe } from './pages.pipe';
 
 describe('pages', () => {

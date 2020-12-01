@@ -1,5 +1,5 @@
 import { IsLastPagePipe } from './is-last-page.pipe';
-import { Pagination } from './-model/pagination';
+import { Pagination } from '../-model/pagination';
 
 describe('isLastPage', () => {
 

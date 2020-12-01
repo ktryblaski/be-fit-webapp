@@ -1,0 +1,26 @@
+@import 'src/app/shared/_colors';
+
+button.page {
+  margin: 0 5px;
+}
+
+button.page.active {
+  color: $primary-color;
+  font-weight: 500;
+}
+
+button[disabled]:hover {
+  cursor: default;
+}
+
+button[disabled]:not(.page) {
+  color: #d2d2d2;
+}
+
+button:not([disabled]) {
+  color: grey;
+}
+
+button:not([disabled]):hover {
+  color: #000;
+}

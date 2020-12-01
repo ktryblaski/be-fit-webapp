@@ -34,7 +34,7 @@
   </table>
 </div>
 
-<div *ngIf="total > pagination.pageSize" class="pagination">
+<div *ngIf="total > 0" class="pagination">
   <app-pagination [pagination]="pagination"
                   [total]="total"
                   (paginationChange)="handlePaginationChange($event)"></app-pagination>

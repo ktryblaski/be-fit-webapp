@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PaginationComponent } from './pagination.component';
-import { PagesPipe } from './pages.pipe';
-import { IsLastPagePipe } from './is-last-page.pipe';
+import { PagesPipe } from './pages/pages.pipe';
+import { IsLastPagePipe } from './pages/is-last-page.pipe';
 import { RawButtonModule } from '../raw-button/raw-button.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PageSizeComponent } from './page-size/page-size.component';
+import { PagesComponent } from './pages/pages.component';
 
 @NgModule({
   imports: [
@@ -16,6 +18,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     PaginationComponent,
     PagesPipe,
     IsLastPagePipe,
+    PageSizeComponent,
+    PagesComponent,
   ],
   exports: [
     PaginationComponent

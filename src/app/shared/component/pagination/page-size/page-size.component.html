@@ -1,0 +1,7 @@
+<!-- TODO will be used select component when is implemented own version -->
+<div class="page-size-container">
+  <span class="title">Page size:</span>
+  <span class="page-size" [class.active]="ps === pageSize" *ngFor="let ps of pageSizes">
+    <button type="button" rawButton (click)="handlePageSizeClick(ps)">{{ ps }}</button>
+  </span>
+</div>

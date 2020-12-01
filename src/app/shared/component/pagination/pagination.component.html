@@ -1,34 +1,12 @@
 <div class="pagination">
-  <button [disabled]="pagination.page === 1"
-          (click)="first()"
-          rawButton type="button">
-    <fa-icon [fixedWidth]="true" icon="angle-double-left"></fa-icon>
-  </button>
 
-  <button [disabled]="pagination.page === 1"
-          (click)="previous()"
-          rawButton type="button">
-    <fa-icon [fixedWidth]="true" icon="angle-left"></fa-icon>
-  </button>
+  <app-page-size [pageSize]="pagination.pageSize"
+                 [pageSizes]="pageSizes"
+                 (pageSizeChange)="handlePageSizeChange($event)"></app-page-size>
 
-  <button *ngFor="let index of pagination | pages: total"
-          [class.active]="pagination.page === index"
-          [disabled]="pagination.page === index"
-          (click)="page(index)"
-          class="page" rawButton type="button">
-    {{index}}
-  </button>
-
-  <button [disabled]="pagination | isLastPage:total"
-          (click)="next()"
-          rawButton type="button">
-    <fa-icon [fixedWidth]="true" icon="angle-right"></fa-icon>
-  </button>
-
-  <button [disabled]="pagination | isLastPage:total"
-          (click)="last()"
-          rawButton type="button">
-    <fa-icon [fixedWidth]="true" icon="angle-double-right"></fa-icon>
-  </button>
+  <app-pages *ngIf="total > pagination.pageSize "
+             [pagination]="pagination"
+             [total]="total"
+             (pageChange)="handlePageChange($event)"></app-pages>
 
 </div>

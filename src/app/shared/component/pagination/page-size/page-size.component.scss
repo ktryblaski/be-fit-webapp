@@ -1,0 +1,24 @@
+@import 'src/app/shared/_colors';
+
+.page-size-container {
+  color: grey;
+
+  .title {
+    color: #d2d2d2;
+    font-weight: 500;
+    margin-right: 10px;
+  }
+
+  .page-size + .page-size {
+    margin-left: 10px;
+  }
+
+  .page-size > button:hover {
+    color: #000;
+  }
+
+  .page-size.active {
+    color: $primary-color;
+    font-weight: 500;
+  }
+}

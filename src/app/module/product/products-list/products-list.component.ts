@@ -69,7 +69,7 @@ export class ProductsListComponent implements OnInit {
       if (saved) {
         this.load();
       }
-    })
+    });
   }
 
   handleSortChange(sort: Sort<ProductsSortBy>): void {
