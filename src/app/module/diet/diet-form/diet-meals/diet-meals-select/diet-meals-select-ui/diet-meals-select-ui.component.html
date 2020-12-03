@@ -1,8 +1,0 @@
-<mat-form-field [formGroup]="formHandler.form">
-  <input type="text" matInput formControlName="meal" [matAutocomplete]="auto" />
-  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayFn">
-    <mat-option *ngFor="let meal of meals$ | async" [value]="meal">
-      {{ meal.name }}
-    </mat-option>
-  </mat-autocomplete>
-</mat-form-field>

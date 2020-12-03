@@ -14,9 +14,6 @@ const routes: Routes = [
     loadChildren: () => import('./module/day-of-eating/day-of-eating.module').then(module => module.DayOfEatingModule),
   },
 
-  // {path: 'diet',
-  //   loadChildren: () => import('./module/diet/diet.module').then(module => module.DietModule)}
-
   // {path: 'meal',
   //   loadChildren: () => import('./module/meal/meal.module').then(module => module.MealModule)},
 
