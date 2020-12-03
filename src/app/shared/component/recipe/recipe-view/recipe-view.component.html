@@ -1,0 +1,15 @@
+<app-field label="Name">
+  <div>{{ recipe.name }}</div>
+</app-field>
+
+<app-field label="Description">
+  <div>{{ recipe.description }}</div>
+</app-field>
+
+<app-field label="Status">
+  <div [class.active]="recipe.active" [class.inactive]="!recipe.active">{{ recipe.active ? 'Active' : 'Inactive' }}</div>
+</app-field>
+
+<div class="ingredients-container">
+  <app-ingredients-table [ingredients]="recipe.ingredients"></app-ingredients-table>
+</div>

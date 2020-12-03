@@ -5,10 +5,10 @@
 
   <div class="select-container">
     <mat-form-field>
-      <input [formControl]="formHandler.mealTemplate" [matAutocomplete]="auto" type="text" placeholder="Meals" matInput />
+      <input [formControl]="formHandler.recipe" [matAutocomplete]="auto" type="text" placeholder="Meals" matInput />
       <mat-autocomplete [displayWith]="displayFn" autoActiveFirstOption #auto="matAutocomplete">
-        <mat-option *ngFor="let mealTemplate of data" [value]="mealTemplate">
-          {{ mealTemplate.name }}
+        <mat-option *ngFor="let recipe of data" [value]="recipe">
+          {{ recipe.name }}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>

@@ -1,0 +1,39 @@
+<table *ngIf="recipes.length; else noTableData" appTable selectable>
+  <tr>
+    <th>Name</th>
+    <th>Weight [g]</th>
+    <th>
+      <span class="macronutrients-label carbohydrates">Carbohydrates [g]</span>
+    </th>
+    <th>
+      <span class="macronutrients-label proteins">Proteins [g]</span>
+    </th>
+    <th>
+      <span class="macronutrients-label fats">Fats [g]</span>
+    </th>
+    <th>
+      <span class="macronutrients-label kcal">KCAL</span>
+    </th>
+    <td>
+      <span>Status</span>
+    </td>
+  </tr>
+
+  <tr *ngFor="let recipe of recipes" (click)="handleClickRow(recipe)">
+    <td class="name">{{ recipe.name }}</td>
+    <td>{{ recipe.ingredients | ingredientsWeightCalculator }}</td>
+    <td>{{ recipe.ingredients | ingredientsCarbohydratesCalculator }}</td>
+    <td>{{ recipe.ingredients | ingredientsProteinsCalculator }}</td>
+    <td>{{ recipe.ingredients | ingredientsFatsCalculator }}</td>
+    <td>{{ recipe.ingredients | ingredientsCaloriesCalculator }}</td>
+    <td>
+      <span [class.active]="recipe.active" [class.inactive]="!recipe.active">{{
+        recipe.active ? 'Active' : 'Inactive'
+      }}</span>
+    </td>
+  </tr>
+</table>
+
+<ng-template #noTableData>
+  <app-no-table-data></app-no-table-data>
+</ng-template>

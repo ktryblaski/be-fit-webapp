@@ -1,5 +1,5 @@
-import { MealTemplate } from '../../../../shared/model/domain/meal-template';
+import { Recipe } from '../../../../shared/model/domain/recipe';
 
 export class CopyExistingMealDialogData {
-  mealTemplates: MealTemplate[];
+  recipes: Recipe[];
 }

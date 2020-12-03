@@ -9,7 +9,7 @@ import { DayOfEatingFormDataSource } from '../day-of-eating-form/-shared/day-of-
 import { DayOfEatingFormValue } from '../day-of-eating-form/-shared/day-of-eating-form-value';
 import { ProductRestService } from '../../../shared/service/rest/product-rest.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MealTemplateRestService } from '../../../shared/service/rest/meal-template-rest.service';
+import { RecipeRestService } from '../../../shared/service/rest/recipe-rest.service';
 import { ErrorModalService } from '../../../shared/component/error-modal/error-modal.service';
 
 @Injectable({
@@ -35,7 +35,7 @@ export class DayOfEatingEditService implements OnDestroy {
   private subscription: Subscription;
 
   constructor(private restService: DayOfEatingRestService,
-              private mealTemplateRestService: MealTemplateRestService,
+              private recipeRestService: RecipeRestService,
               private productRestService: ProductRestService,
               private notificationService: NotificationService,
               private errorModalService: ErrorModalService,
@@ -65,12 +65,12 @@ export class DayOfEatingEditService implements OnDestroy {
       tap(() => this.loading.next(true)),
       switchMap(id => forkJoin([
         this.restService.get(id),
-        this.mealTemplateRestService.findAllActive(),
+        this.recipeRestService.findAllActive(),
         this.productRestService.findAllLegacy()
       ]).pipe(
-        tap(([dayOfEating, mealTemplates, products]) => {
+        tap(([dayOfEating, recipes, products]) => {
           this.dayOfEating.next(dayOfEating);
-          this.dataSource.next({ mealTemplates, products: products.content });
+          this.dataSource.next({ recipes, products: products.content });
           this.loaded.next(true);
         }),
         catchError(error => {

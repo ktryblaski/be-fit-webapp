@@ -1,22 +1,22 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MealTemplate } from '../../../../shared/model/domain/meal-template';
+import { Recipe } from '../../../../shared/model/domain/recipe';
 
 @Injectable()
 export class CopyExistingMealFormHandler {
 
   form: FormGroup;
-  mealTemplate: FormControl;
+  recipe: FormControl;
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
-      mealTemplate: this.fb.control(null, Validators.required),
+      recipe: this.fb.control(null, Validators.required),
     });
 
-    this.mealTemplate = this.form.controls.mealTemplate as FormControl;
+    this.recipe = this.form.controls.recipe as FormControl;
   }
 
-  getValue(): MealTemplate {
-    return this.mealTemplate.value;
+  getValue(): Recipe {
+    return this.recipe.value;
   }
 }

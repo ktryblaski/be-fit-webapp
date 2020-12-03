@@ -18,8 +18,8 @@ const routes: Routes = [
   //   loadChildren: () => import('./module/meal/meal.module').then(module => module.MealModule)},
 
   {
-    path: 'meal-template',
-    loadChildren: () => import('./module/meal-template/meal-template.module').then(module => module.MealTemplateModule),
+    path: 'recipe',
+    loadChildren: () => import('./module/recipe/recipe.module').then(module => module.RecipeModule),
   },
 
   { path: 'product', loadChildren: () => import('./module/product/product.module').then(module => module.ProductModule) },

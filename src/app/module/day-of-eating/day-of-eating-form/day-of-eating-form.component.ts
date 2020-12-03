@@ -38,7 +38,7 @@ export class DayOfEatingFormComponent implements OnChanges {
     this.dialog
       .open(CopyExistingMealFormDialogComponent, {
         width: '400px',
-        data: this.dataSource.mealTemplates,
+        data: this.dataSource.recipes,
         autoFocus: false,
       })
       .afterClosed()

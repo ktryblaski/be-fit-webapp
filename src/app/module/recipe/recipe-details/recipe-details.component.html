@@ -1,0 +1,29 @@
+<ng-container *ngIf="loaded$ | async; else loading">
+  <div class="pending-indicator-overlay-boundaries">
+    <ng-container *ngIf="recipe$ | async as recipe">
+      <div header>
+        <div title>
+          <span>Recipe:</span>
+          <span class="name" [class.inactive]="!recipe.active">
+            {{ recipe.name }}
+          </span>
+        </div>
+        <div actions>
+          <button *ngIf="recipe.active" (click)="handleDeactivate()" mat-raised-button class="edit-button">Deactivate</button>
+          <button *ngIf="!recipe.active" (click)="handleActivate()" mat-raised-button class="edit-button">Activate</button>
+          <button [routerLink]="['edit']" mat-raised-button class="edit-button">Edit</button>
+        </div>
+      </div>
+
+      <app-recipe-view [recipe]="recipe"></app-recipe-view>
+    </ng-container>
+
+    <div class="pending-indicator-overlay-container" *ngIf="pending$ | async">
+      <app-spinner></app-spinner>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #loading>
+  <app-spinner></app-spinner>
+</ng-template>

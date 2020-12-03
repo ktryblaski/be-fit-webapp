@@ -5,7 +5,7 @@ import { Ingredient } from '../../../shared/model/domain/ingredient';
 import { DayOfEatingFormIngredientValue, DayOfEatingFormMealValue, DayOfEatingFormValue } from './-shared/day-of-eating-form-value';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { MealTemplate } from '../../../shared/model/domain/meal-template';
+import { Recipe } from '../../../shared/model/domain/recipe';
 import { clone } from '../../../shared/util/commons';
 import { values$ } from '../../../shared/form/typed-form/typed-utils';
 import { TypedFormBuilder } from '../../../shared/form/typed-form/typed-form-builder.service';
@@ -66,10 +66,10 @@ export class DayOfEatingFormHandler {
     this.patchForm({ meals: values });
   }
 
-  addMealFromTemplate(mealTemplate: MealTemplate): void {
-    const values = [...this.form.controls.meals.value, this.mapMealToFormValue(mealTemplate)];
+  addMealFromTemplate(recipe: Recipe): void {
+    const values = [...this.form.controls.meals.value, this.mapMealToFormValue(recipe)];
 
-    this.meals = [...this.meals.map(meal => clone(meal)), this.generateMeal(mealTemplate)];
+    this.meals = [...this.meals.map(meal => clone(meal)), this.generateMeal(recipe)];
     this.clearAndCreateForm();
     this.patchForm({ meals: values });
   }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { MealTemplate, MealTemplateCU } from '../../model/domain/meal-template';
+import { Recipe, RecipeCU } from '../../model/domain/recipe';
 import { DayOfEating, DayOfEatingLite } from '../../model/domain/day-of-eating';
 
 class DayOfEatingBegin {}
@@ -30,8 +30,8 @@ export class DayOfEatingRestService {
     return this.http.get<boolean>(`${this.API_URL}/can-begin-day-of-eating`);
   }
 
-  update(mealTemplate: MealTemplateCU): Observable<MealTemplate> {
-    return this.http.put<MealTemplate>(`${this.API_URL}/${mealTemplate.id}`, mealTemplate);
+  update(recipe: RecipeCU): Observable<Recipe> {
+    return this.http.put<Recipe>(`${this.API_URL}/${recipe.id}`, recipe);
   }
 
   create(begin: DayOfEatingBegin): Observable<number> {

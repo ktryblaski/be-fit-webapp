@@ -2,10 +2,10 @@ import { Component, ChangeDetectionStrategy, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormGroup } from '@angular/forms';
 import { CopyExistingMealFormHandler } from './copy-existing-meal-form-handler';
-import { MealTemplate } from '../../../../shared/model/domain/meal-template';
+import { Recipe } from '../../../../shared/model/domain/recipe';
 
-export type CopyExistingMealDialogResult = MealTemplate;
-export type CopyExistingMealDialogData = MealTemplate[];
+export type CopyExistingMealDialogResult = Recipe;
+export type CopyExistingMealDialogData = Recipe[];
 
 @Component({
   selector: 'app-copy-existing-meal-form-dialog',
@@ -23,8 +23,8 @@ export class CopyExistingMealFormDialogComponent {
     private dialogRef: MatDialogRef<CopyExistingMealFormDialogComponent>
   ) {}
 
-  displayFn(mealTemplate: MealTemplate): string {
-    return mealTemplate?.name || '';
+  displayFn(recipe: Recipe): string {
+    return recipe?.name || '';
   }
 
   handleSubmit(): void {
