@@ -2,11 +2,12 @@
 
 .page-size-container {
   color: grey;
+  white-space: nowrap;
 
   .title {
     color: #d2d2d2;
-    font-weight: 500;
     margin-right: 10px;
+    font-size: 16px;
   }
 
   .page-size + .page-size {

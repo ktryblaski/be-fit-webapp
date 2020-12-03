@@ -1,9 +1,12 @@
+@import 'src/app/shared/_colors';
+
 :host:hover {
   cursor: pointer;
 }
 
 .direction {
   position: relative;
+  color: $primary-color;
 
   .direction-icon {
     position: absolute;

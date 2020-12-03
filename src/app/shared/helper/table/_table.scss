@@ -5,18 +5,15 @@ table[appTable] {
   border-spacing: 0;
 
   &[selectable] tr:not(:first-child):hover {
-    background-color: whitesmoke;
+    background-color: #f1f6ff;
     cursor: pointer;
   }
 
   tr {
     height: 48px;
 
-    &:nth-child(even) {
-      background-color: #fafafa;
-    }
-
     th, td {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
       padding: 0 0 0 24px;
       text-align: left;
     }
@@ -38,15 +35,4 @@ table[appTable] {
     }
   }
 
-  tr:first-child {
-    th, td {
-      border-bottom: 2px solid rgba(0, 0, 0, 0.12);
-    }
-  }
-
-  tr:not(:first-child):not(:last-child) {
-    th, td {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-    }
-  }
 }
