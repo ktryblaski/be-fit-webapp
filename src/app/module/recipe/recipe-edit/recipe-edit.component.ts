@@ -3,7 +3,7 @@ import { RecipeEditService } from './recipe-edit.service';
 import { combineLatest, Observable, Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RecipeFormDataSource } from '../recipe-form/-shared/recipe-form-data-source';
-import { Recipe } from '../../../shared/model/domain/recipe';
+import { Recipe } from '../-model/recipe';
 import { RecipeFormValue } from '../recipe-form/-shared/recipe-form-value';
 import { map } from 'rxjs/operators';
 

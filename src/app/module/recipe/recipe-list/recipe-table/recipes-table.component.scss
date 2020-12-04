@@ -9,3 +9,13 @@ table[appTable] {
     color: red;
   }
 }
+
+th, td {
+  &.name {
+    min-width: 180px;
+  }
+}
+
+.pagination {
+  padding-top: 12px;
+}

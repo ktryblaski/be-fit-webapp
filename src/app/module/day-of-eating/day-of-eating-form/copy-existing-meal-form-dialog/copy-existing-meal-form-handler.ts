@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Recipe } from '../../../../shared/model/domain/recipe';
+import { Recipe } from '../../../recipe/-model/recipe';
 
 @Injectable()
 export class CopyExistingMealFormHandler {

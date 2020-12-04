@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormGroup } from '@angular/forms';
 import { CopyExistingMealFormHandler } from './copy-existing-meal-form-handler';
-import { Recipe } from '../../../../shared/model/domain/recipe';
+import { Recipe } from '../../../recipe/-model/recipe';
 
 export type CopyExistingMealDialogResult = Recipe;
 export type CopyExistingMealDialogData = Recipe[];

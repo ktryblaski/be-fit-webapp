@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Recipe, RecipeCU } from '../../model/domain/recipe';
+import { Recipe, RecipeCU } from '../../../module/recipe/-model/recipe';
+import { RecipeLite } from '../../../module/recipe/-model/recipe-lite';
+import { RecipesSearchParams } from '../../../module/recipe/recipe-list/-model/recipes.search-params';
+import { SortOrder } from '../../component/sort/-model/sort-order';
+import { PagedDTO } from '../../dto/table/paged.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -15,11 +19,27 @@ export class RecipeRestService {
     return this.http.get<Recipe>(`${this.API_URL}/${recipeId}`);
   }
 
-  findAll(): Observable<Recipe[]> {
+  findAll(params: RecipesSearchParams): Observable<PagedDTO<RecipeLite>> {
+    const queryParams: { [key: string]: string | string[] } = { };
+
+    if (params?.sort) {
+      const order = params.sort.sortOrder === SortOrder.ASC ? '+' : '-';
+      queryParams.sort = `${order}${params.sort.sortBy}`;
+    }
+
+    if (params?.pagination?.page && params?.pagination?.pageSize) {
+      queryParams.page = String(params.pagination.page - 1);
+      queryParams.pageSize = String(params.pagination.pageSize);
+    }
+
+    return this.http.get<PagedDTO<RecipeLite>>(`${this.API_URL}`, { params: queryParams });
+  }
+
+  findAllLegacy(): Observable<Recipe[]> {
     return this.http.get<Recipe[]>(`${this.API_URL}`);
   }
 
-  findAllActive(): Observable<Recipe[]> {
+  findAllActiveLegacy(): Observable<Recipe[]> {
     const params = {
       onlyActive: String(true),
     };

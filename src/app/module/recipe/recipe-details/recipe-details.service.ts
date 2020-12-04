@@ -3,7 +3,7 @@ import { BehaviorSubject, EMPTY, merge, noop, Observable, Subject, Subscription 
 import { catchError, distinctUntilChanged, finalize, ignoreElements, switchMap, tap } from 'rxjs/operators';
 import { NotificationService } from '../../../shared/component/notification/notification.service';
 import { NotificationSeverity } from '../../../shared/component/notification/notification';
-import { Recipe } from '../../../shared/model/domain/recipe';
+import { Recipe } from '../-model/recipe';
 import { RecipeRestService } from '../../../shared/service/rest/recipe-rest.service';
 import { ErrorModalService } from '../../../shared/component/error-modal/error-modal.service';
 

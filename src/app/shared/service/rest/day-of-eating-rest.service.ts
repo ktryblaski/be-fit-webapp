@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Recipe, RecipeCU } from '../../model/domain/recipe';
+import { Recipe, RecipeCU } from '../../../module/recipe/-model/recipe';
 import { DayOfEating, DayOfEatingLite } from '../../model/domain/day-of-eating';
 
 class DayOfEatingBegin {}

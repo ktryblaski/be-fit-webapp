@@ -8,7 +8,7 @@ import { RecipeFormValue } from '../recipe-form/-shared/recipe-form-value';
 import { RecipeRestService } from '../../../shared/service/rest/recipe-rest.service';
 import { ProductRestService } from '../../../shared/service/rest/product-rest.service';
 import { RecipeFormDataSource } from '../recipe-form/-shared/recipe-form-data-source';
-import { RecipeCU } from '../../../shared/model/domain/recipe';
+import { RecipeCU } from '../-model/recipe';
 import { ErrorModalService } from '../../../shared/component/error-modal/error-modal.service';
 
 @Injectable()

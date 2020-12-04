@@ -7,6 +7,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { SpinnerModule } from '../../../shared/component/spinner/spinner.module';
 import { CalculatorModule } from '../../../shared/pipe/calculator/calculator.module';
 import { NoTableDataModule } from '../../../shared/component/no-table-data/no-table-data.module';
+import { SortModule } from '../../../shared/component/sort/sort.module';
+import { PaginationModule } from '../../../shared/component/pagination/pagination.module';
 
 @NgModule({
   imports: [
@@ -15,7 +17,9 @@ import { NoTableDataModule } from '../../../shared/component/no-table-data/no-ta
     MatButtonModule,
     SpinnerModule,
     CalculatorModule,
-    NoTableDataModule
+    NoTableDataModule,
+    SortModule,
+    PaginationModule
   ],
   declarations: [
     RecipesListComponent,

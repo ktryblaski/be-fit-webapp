@@ -5,7 +5,7 @@ import { NotificationSeverity } from '../../../shared/component/notification/not
 import { NotificationService } from '../../../shared/component/notification/notification.service';
 import { Router } from '@angular/router';
 import { RecipeFormValue } from '../recipe-form/-shared/recipe-form-value';
-import { Recipe, RecipeCU } from '../../../shared/model/domain/recipe';
+import { Recipe, RecipeCU } from '../-model/recipe';
 import { RecipeFormDataSource } from '../recipe-form/-shared/recipe-form-data-source';
 import { ProductRestService } from '../../../shared/service/rest/product-rest.service';
 import { RecipeRestService } from '../../../shared/service/rest/recipe-rest.service';

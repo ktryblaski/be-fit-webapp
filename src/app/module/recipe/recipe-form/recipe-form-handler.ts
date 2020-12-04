@@ -2,7 +2,7 @@ import { Validators } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Recipe } from '../../../shared/model/domain/recipe';
+import { Recipe } from '../-model/recipe';
 import { TypedFormBuilder } from '../../../shared/form/typed-form/typed-form-builder.service';
 import { RecipeForm, RecipeFormControls } from './-shared/recipe-form';
 import { RecipeFormIngredientValue, RecipeFormValue } from './-shared/recipe-form-value';

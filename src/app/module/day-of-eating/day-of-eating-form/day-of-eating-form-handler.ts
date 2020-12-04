@@ -5,7 +5,7 @@ import { Ingredient } from '../../../shared/model/domain/ingredient';
 import { DayOfEatingFormIngredientValue, DayOfEatingFormMealValue, DayOfEatingFormValue } from './-shared/day-of-eating-form-value';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Recipe } from '../../../shared/model/domain/recipe';
+import { Recipe } from '../../recipe/-model/recipe';
 import { clone } from '../../../shared/util/commons';
 import { values$ } from '../../../shared/form/typed-form/typed-utils';
 import { TypedFormBuilder } from '../../../shared/form/typed-form/typed-form-builder.service';

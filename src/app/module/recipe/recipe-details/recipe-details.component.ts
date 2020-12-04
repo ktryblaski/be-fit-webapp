@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/
 import { ActivatedRoute } from '@angular/router';
 import { combineLatest, Observable, Subscription } from 'rxjs';
 import { RecipeDetailsService } from './recipe-details.service';
-import { Recipe } from '../../../shared/model/domain/recipe';
+import { Recipe } from '../-model/recipe';
 import { map } from 'rxjs/operators';
 
 @Component({

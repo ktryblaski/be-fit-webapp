@@ -6,10 +6,6 @@ table[appTable] {
   width: 100%;
 }
 
-th {
-  white-space: nowrap;
-}
-
 th, td {
   &.name {
     min-width: 180px;

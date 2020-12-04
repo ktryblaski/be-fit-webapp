@@ -1,31 +1,33 @@
-<table *ngIf="recipes.length; else noTableData" appTable selectable>
+<table *ngIf="recipes.length; else noTableData"
+       appTable selectable
+       sortable [sort]="sort" (sortChange)="handleSortChange($event)">
   <tr>
-    <th>Name</th>
-    <th>Weight [g]</th>
-    <th>
-      <span class="macronutrients-label carbohydrates">Carbohydrates [g]</span>
+    <th [sortHeader]="RecipesSortBy.NAME" class="name">Name</th>
+    <th [sortHeader]="RecipesSortBy.WEIGHT">Weight</th>
+    <th [sortHeader]="RecipesSortBy.PROTEINS">
+      <span class="label proteins">Proteins</span>
+    </th>
+    <th [sortHeader]="RecipesSortBy.FATS">
+      <span class="label fats">Fats</span>
+    </th>
+    <th [sortHeader]="RecipesSortBy.CARBOHYDRATES">
+      <span class="label carbohydrates">Carbohydrates</span>
     </th>
     <th>
-      <span class="macronutrients-label proteins">Proteins [g]</span>
+      <span class="label kcal">KCAL</span>
     </th>
-    <th>
-      <span class="macronutrients-label fats">Fats [g]</span>
-    </th>
-    <th>
-      <span class="macronutrients-label kcal">KCAL</span>
-    </th>
-    <td>
+    <th [sortHeader]="RecipesSortBy.ACTIVE">
       <span>Status</span>
-    </td>
+    </th>
   </tr>
 
   <tr *ngFor="let recipe of recipes" (click)="handleClickRow(recipe)">
     <td class="name">{{ recipe.name }}</td>
-    <td>{{ recipe.ingredients | ingredientsWeightCalculator }}</td>
-    <td>{{ recipe.ingredients | ingredientsCarbohydratesCalculator }}</td>
-    <td>{{ recipe.ingredients | ingredientsProteinsCalculator }}</td>
-    <td>{{ recipe.ingredients | ingredientsFatsCalculator }}</td>
-    <td>{{ recipe.ingredients | ingredientsCaloriesCalculator }}</td>
+    <td>{{ recipe.weight }}</td>
+    <td>{{ recipe.proteins }}</td>
+    <td>{{ recipe.fats }}</td>
+    <td>{{ recipe.carbohydrates }}</td>
+    <td>{{ -1 }}</td>
     <td>
       <span [class.active]="recipe.active" [class.inactive]="!recipe.active">{{
         recipe.active ? 'Active' : 'Inactive'
@@ -33,6 +35,12 @@
     </td>
   </tr>
 </table>
+
+<div *ngIf="total > 0" class="pagination">
+  <app-pagination [pagination]="pagination"
+                  [total]="total"
+                  (paginationChange)="handlePaginationChange($event)"></app-pagination>
+</div>
 
 <ng-template #noTableData>
   <app-no-table-data></app-no-table-data>

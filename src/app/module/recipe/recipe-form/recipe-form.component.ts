@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Out
 import { RecipeFormHandler } from './recipe-form-handler';
 import { RecipeFormValue } from './-shared/recipe-form-value';
 import { RecipeFormDataSource } from './-shared/recipe-form-data-source';
-import { Recipe } from '../../../shared/model/domain/recipe';
+import { Recipe } from '../-model/recipe';
 
 @Component({
   selector: 'app-recipe-form',

@@ -7,7 +7,13 @@
       </div>
     </div>
 
-    <app-recipes-table [recipes]="recipes$ | async" (clickRow)="handleClickRow($event)"></app-recipes-table>
+    <app-recipes-table [recipes]="recipes$ | async"
+                       [sort]="sort"
+                       [pagination]="pagination"
+                       [total]="total$ | async"
+                       (clickRow)="handleClickRow($event)"
+                       (sortChange)="handleSortChange($event)"
+                       (paginationChange)="handlePaginationChange($event)"></app-recipes-table>
 
     <div class="pending-indicator-overlay-container" *ngIf="loading$ | async">
       <app-spinner></app-spinner>

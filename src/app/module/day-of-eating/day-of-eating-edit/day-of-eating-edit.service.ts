@@ -65,7 +65,7 @@ export class DayOfEatingEditService implements OnDestroy {
       tap(() => this.loading.next(true)),
       switchMap(id => forkJoin([
         this.restService.get(id),
-        this.recipeRestService.findAllActive(),
+        this.recipeRestService.findAllActiveLegacy(),
         this.productRestService.findAllLegacy()
       ]).pipe(
         tap(([dayOfEating, recipes, products]) => {

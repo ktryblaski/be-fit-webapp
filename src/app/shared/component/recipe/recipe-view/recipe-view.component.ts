@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Recipe } from '../../../model/domain/recipe';
+import { Recipe } from '../../../../module/recipe/-model/recipe';
 
 @Component({
   selector: 'app-recipe-view',

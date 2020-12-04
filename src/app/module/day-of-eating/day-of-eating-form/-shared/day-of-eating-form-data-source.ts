@@ -1,4 +1,4 @@
-import { Recipe } from '../../../../shared/model/domain/recipe';
+import { Recipe } from '../../../recipe/-model/recipe';
 import { Product } from '../../../product/-model/product';
 
 export interface DayOfEatingFormDataSource {
