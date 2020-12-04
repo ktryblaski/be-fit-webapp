@@ -7,4 +7,5 @@ export interface RecipeLite {
   proteins: number;
   fats: number;
   carbohydrates: number;
+  calories: number;
 }

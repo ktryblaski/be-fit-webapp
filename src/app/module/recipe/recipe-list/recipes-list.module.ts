@@ -9,6 +9,7 @@ import { CalculatorModule } from '../../../shared/pipe/calculator/calculator.mod
 import { NoTableDataModule } from '../../../shared/component/no-table-data/no-table-data.module';
 import { SortModule } from '../../../shared/component/sort/sort.module';
 import { PaginationModule } from '../../../shared/component/pagination/pagination.module';
+import { FloorModule } from '../../../shared/pipe/floor/floor.module';
 
 @NgModule({
   imports: [
@@ -19,11 +20,12 @@ import { PaginationModule } from '../../../shared/component/pagination/paginatio
     CalculatorModule,
     NoTableDataModule,
     SortModule,
-    PaginationModule
+    PaginationModule,
+    FloorModule
   ],
   declarations: [
     RecipesListComponent,
     RecipesTableComponent
   ]
 })
-export class RecipesListModule {}
+export class RecipesListModule { }

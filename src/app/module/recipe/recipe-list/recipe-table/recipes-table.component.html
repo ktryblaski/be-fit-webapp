@@ -14,7 +14,7 @@
       <th [sortHeader]="RecipesSortBy.CARBOHYDRATES">
         <span class="label carbohydrates">Carbohydrates</span>
       </th>
-      <th>
+      <th [sortHeader]="RecipesSortBy.CALORIES">
         <span class="label kcal">KCAL</span>
       </th>
       <th [sortHeader]="RecipesSortBy.ACTIVE" class="status">
@@ -25,10 +25,10 @@
     <tr *ngFor="let recipe of recipes" (click)="handleClickRow(recipe)">
       <td class="name">{{ recipe.name }}</td>
       <td>{{ recipe.weight }}</td>
-      <td>{{ recipe.proteins }}</td>
-      <td>{{ recipe.fats }}</td>
-      <td>{{ recipe.carbohydrates }}</td>
-      <td>{{ -1 }}</td>
+      <td>{{ recipe.proteins | floor }}</td>
+      <td>{{ recipe.fats | floor }}</td>
+      <td>{{ recipe.carbohydrates | floor }}</td>
+      <td>{{ recipe.calories | floor }}</td>
       <td class="status">
         <div [class.success]="recipe.active" [class.danger]="!recipe.active"
              class="badge">{{ recipe.active ? 'Active' : 'Inactive' }}</div>
