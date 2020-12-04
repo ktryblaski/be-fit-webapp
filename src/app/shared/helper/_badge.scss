@@ -1,0 +1,46 @@
+@import 'src/app/shared/_colors';
+
+$success: #0d952f;
+$success-background: #d4edda;
+
+$danger: #d71225;
+$danger-background: #f8d7da;
+
+$warning: #bf9008;
+$warning-background: #fff3cd;
+
+$dark: #505050;
+$dark-background: #f2f2f2;
+
+.badge {
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-around;
+  border-radius: 4px;
+  font-weight: 500;
+
+  &.primary {
+    color: $primary-color;
+    background-color: rgba($primary-color, 0.2);
+  }
+
+  &.success {
+    color: $success;
+    background-color: $success-background;
+  }
+
+  &.danger {
+    color: $danger;
+    background-color: $danger-background;
+  }
+
+  &.warning {
+    color: $warning;
+    background-color: $warning-background;
+  }
+
+  &.dark {
+    color: $dark;
+    background-color: $dark-background;
+  }
+}

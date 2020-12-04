@@ -1,8 +1,13 @@
+.table-container {
+  overflow-x: scroll;
+}
+
 table[appTable] {
   width: 100%;
 
   .active {
     color: green;
+    background-color: #00f6de;
   }
 
   .inactive {
@@ -13,6 +18,13 @@ table[appTable] {
 th, td {
   &.name {
     min-width: 180px;
+  }
+
+  &.status {
+    min-width: 90px;
+    width: 90px;
+    max-width: 90px;
+    padding-right: 10px;
   }
 }
 
