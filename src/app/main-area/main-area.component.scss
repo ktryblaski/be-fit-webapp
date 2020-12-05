@@ -1,13 +1,10 @@
 .main-area-container {
-  background-color: rgb(242, 247, 251);
+  background-color: #EDF0F2;
   overflow: auto;
   height: 100%;
 
-  .card {
-    border-radius: 5px;
-    box-shadow: 0 0 5px 0 rgba(43, 43, 43, 0.1), 0 11px 6px -7px rgba(43, 43, 43, 0.1);
-    background-color: #fbfeff;
-    margin: 25px 30px 30px;
+  .main-card {
+    margin: 20px 20px 20px 20px;
     padding: 40px 40px;
   }
 

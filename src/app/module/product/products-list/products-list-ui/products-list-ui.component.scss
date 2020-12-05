@@ -12,8 +12,13 @@ th, td {
   }
 
   &.favourite {
-    font-size: 110%;
     min-width: 40px;
+  }
+}
+
+td {
+  &.favourite {
+    font-size: 110%;
   }
 }
 

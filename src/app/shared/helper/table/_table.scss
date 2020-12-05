@@ -1,19 +1,27 @@
 @import 'src/app/shared/_colors';
 
+$border: 1px solid #e1e6e9;
+
 table[appTable] {
   border-radius: 3px;
   border-spacing: 0;
+  border: $border;
 
   &[selectable] tr:not(:first-child):hover {
-    background-color: #f1f6ff;
+    background-color: $hover-color;
     cursor: pointer;
   }
 
   tr {
     height: 48px;
 
+    &:not(:last-child) {
+      th, td {
+        border-bottom: $border;
+      }
+    }
+
     th, td {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
       padding: 0 0 0 24px;
       text-align: left;
     }

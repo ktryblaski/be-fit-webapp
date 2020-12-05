@@ -6,10 +6,13 @@
 
 .direction {
   position: relative;
-  color: $primary-color;
 
   .direction-icon {
     position: absolute;
     right: -20px;
+
+    &.up, &.down {
+      color: $primary-color;
+    }
   }
 }

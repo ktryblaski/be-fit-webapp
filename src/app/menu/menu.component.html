@@ -1,41 +1,44 @@
 <div class="menu-container">
-  <div class="title">be fit</div>
+  <div class="content-container">
+    <div class="title">be fit</div>
 
-  <mat-nav-list>
-    <mat-list-item class="dashboard" [routerLink]="['dashboard']" [routerLinkActive]="'active'">
-      <a matLine>
-        <fa-icon [fixedWidth]="true" icon="home"></fa-icon>
-        <span>Dashboard</span>
-      </a>
-    </mat-list-item>
+    <mat-nav-list>
+      <mat-list-item class="dashboard" [routerLink]="['dashboard']" [routerLinkActive]="'active'">
+        <a matLine>
+          <fa-icon [fixedWidth]="true" icon="home"></fa-icon>
+          <span>Dashboard</span>
+        </a>
+      </mat-list-item>
 
-    <mat-list-item [routerLink]="['day-of-eating']" [routerLinkActive]="'active'">
-      <a matLine>
-        <fa-icon [fixedWidth]="true" icon="calendar-day"></fa-icon>
-        <span>Days of Eating</span>
-      </a>
-    </mat-list-item>
+      <mat-list-item [routerLink]="['day-of-eating']" [routerLinkActive]="'active'">
+        <a matLine>
+          <fa-icon [fixedWidth]="true" icon="calendar-day"></fa-icon>
+          <span>Days of Eating</span>
+        </a>
+      </mat-list-item>
 
-    <mat-list-item [routerLink]="['recipe']" [routerLinkActive]="'active'">
-      <a matLine>
-        <fa-icon [fixedWidth]="true" icon="utensils"></fa-icon>
-        <span>Recipes</span>
-      </a>
-    </mat-list-item>
+      <mat-list-item [routerLink]="['recipe']" [routerLinkActive]="'active'">
+        <a matLine>
+          <fa-icon [fixedWidth]="true" icon="utensils"></fa-icon>
+          <span>Recipes</span>
+        </a>
+      </mat-list-item>
 
-    <!--    <mat-list-item [routerLink]="['meal']" [routerLinkActive]="'active'">-->
-    <!--      <a matLine>Meals</a>-->
-    <!--    </mat-list-item>-->
+      <!--    <mat-list-item [routerLink]="['meal']" [routerLinkActive]="'active'">-->
+      <!--      <a matLine>Meals</a>-->
+      <!--    </mat-list-item>-->
 
-    <mat-list-item [routerLink]="['product']" [routerLinkActive]="'active'">
-      <a matLine>
-        <fa-icon [fixedWidth]="true" icon="carrot"></fa-icon>
-        <span>Products</span>
-      </a>
-    </mat-list-item>
+      <mat-list-item [routerLink]="['product']" [routerLinkActive]="'active'">
+        <a matLine>
+          <fa-icon [fixedWidth]="true" icon="carrot"></fa-icon>
+          <span>Products</span>
+        </a>
+      </mat-list-item>
 
-    <!--    <mat-list-item class="log-out">-->
-    <!--      <a matLine>Log out</a>-->
-    <!--    </mat-list-item>-->
-  </mat-nav-list>
+      <!--    <mat-list-item class="log-out">-->
+      <!--      <a matLine>Log out</a>-->
+      <!--    </mat-list-item>-->
+    </mat-nav-list>
+  </div>
+
 </div>
