@@ -1,9 +1,9 @@
 <ng-container *ngIf="loaded$ | async; else loading">
   <div class="pending-indicator-overlay-boundaries">
     <app-recipe-form [recipe]="recipe$ | async"
-                            [dataSource]="dataSource$ | async"
-                            (save)="handleUpdate($event)"
-                            (cancel)="handleCancel()"></app-recipe-form>
+                     [dataSource]="dataSource$ | async"
+                     (save)="handleUpdate($event)"
+                     (cancel)="handleCancel()"></app-recipe-form>
 
     <div class="pending-indicator-overlay-container" *ngIf="pending$ | async">
       <app-spinner></app-spinner>

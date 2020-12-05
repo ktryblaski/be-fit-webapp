@@ -80,7 +80,7 @@ export class RecipeCreateService {
       tap(() => {
         this.loading.next(true);
       }),
-      switchMap(() => this.productRestService.findAllLegacy().pipe(
+      switchMap(() => this.productRestService.findAll().pipe(
         tap(products => {
           this.dataSource.next({ products: products.content });
           this.loaded.next(true);

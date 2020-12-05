@@ -58,7 +58,7 @@ export class RecipeEditService {
       }),
       switchMap(recipeId => forkJoin([
         this.restService.getOne(recipeId),
-        this.productRestService.findAllLegacy()
+        this.productRestService.findAll()
       ]).pipe(
         tap(([recipe, products]) => {
           this.recipe.next(recipe);

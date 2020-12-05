@@ -26,12 +26,12 @@ export class IngredientsTableFormComponent implements OnInit, OnDestroy {
 
   readonly stats$: Observable<FoodStats | null> = this.stats.pipe(distinctUntilChanged());
 
-  subscription: Subscription;
+  private subscription: Subscription;
 
   constructor(public formHandler: RecipeFormHandler) { }
 
   ngOnInit(): void {
-    this.subscription = values$(this.formHandler.form.controls.ingredients).subscribe(weights => this.updateTotalData(weights));
+    this.subscription = values$(this.formHandler.form.controls.weights).subscribe(weights => this.updateTotalData(weights));
   }
 
   handleRemoveIngredient(idx: number): void {
@@ -43,11 +43,25 @@ export class IngredientsTableFormComponent implements OnInit, OnDestroy {
   }
 
   private updateTotalData(weights: number[]): void {
-    const ingredients = weights.map((weight, idx) => ({
-      id: this.formHandler.ingredients[idx].id,
-      weight,
-      product: this.formHandler.ingredients[idx].product,
-    }));
+    const ingredients = weights.map((weight, idx) => {
+      const ingredient = this.formHandler.ingredients[idx];
+      const product = ingredient.product;
+
+      return {
+        id: ingredient.id,
+        weight,
+        product: {
+          id: product.id,
+          name: product.name,
+          macronutrients: {
+            proteins: product.proteins,
+            fats: product.fats,
+            carbohydrates: product.carbohydrates,
+          },
+          favourite: product.favourite
+        }
+      }
+    });
 
     this.stats.next({
       proteins: Math.round(ingredientsProteins(ingredients)),

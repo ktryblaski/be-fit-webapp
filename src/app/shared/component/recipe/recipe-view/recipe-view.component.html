@@ -7,9 +7,7 @@
 </app-field>
 
 <app-field label="Status">
-  <div [class.active]="recipe.active" [class.inactive]="!recipe.active">{{ recipe.active ? 'Active' : 'Inactive' }}</div>
+  <span class="status badge" [class.success]="recipe.active" [class.danger]="!recipe.active">{{ recipe.active ? 'Active' : 'Inactive' }}</span>
 </app-field>
 
-<div class="ingredients-container">
-  <app-ingredients-table [ingredients]="recipe.ingredients"></app-ingredients-table>
-</div>
+<app-ingredients-table [ingredients]="recipe.ingredients"></app-ingredients-table>

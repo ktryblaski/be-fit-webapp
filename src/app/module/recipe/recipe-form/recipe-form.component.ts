@@ -20,17 +20,17 @@ export class RecipeFormComponent implements OnChanges {
 
   constructor(public formHandler: RecipeFormHandler) { }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.recipe) {
+      this.formHandler.setValue(this.recipe);
+    }
+  }
+
   handleSubmit(): void {
     this.save.emit(this.formHandler.getValue());
   }
 
   handleCancel(): void {
     this.cancel.emit();
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.recipe) {
-      this.formHandler.setValue(this.recipe);
-    }
   }
 }

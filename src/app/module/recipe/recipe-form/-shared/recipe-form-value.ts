@@ -1,5 +1,3 @@
-import { Product } from '../../../product/-model/product';
-
 export interface RecipeFormValue {
   name: string;
   description: string;
@@ -9,5 +7,14 @@ export interface RecipeFormValue {
 export interface RecipeFormIngredientValue {
   id: number | null;
   weight: number;
-  product: Product;
+  product: RecipeFormProductValue;
+}
+
+export interface RecipeFormProductValue {
+  id: number;
+  name: string;
+  favourite: boolean;
+  proteins: number;
+  fats: number;
+  carbohydrates: number;
 }

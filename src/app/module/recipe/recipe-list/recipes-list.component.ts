@@ -32,7 +32,7 @@ export class RecipesListComponent implements OnInit {
   ngOnInit(): void {
     this.recipes$ = this.service.recipes$.pipe(
       tap(page => {
-        this.pagination = { page: page.page + 1, pageSize: page.pageSize }
+        this.pagination = { page: page.page + 1, pageSize: page.pageSize };
       }),
       map(page => page.results)
     );

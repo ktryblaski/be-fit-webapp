@@ -4,9 +4,7 @@
       <div header>
         <div title>
           <span>Recipe:</span>
-          <span class="name" [class.inactive]="!recipe.active">
-            {{ recipe.name }}
-          </span>
+          <span class="name">{{ recipe.name }}</span>
         </div>
         <div actions>
           <button *ngIf="recipe.active" (click)="handleDeactivate()" mat-raised-button class="edit-button">Deactivate</button>

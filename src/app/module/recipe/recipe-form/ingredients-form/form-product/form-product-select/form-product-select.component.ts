@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { RecipeFormHandler } from '../../../recipe-form-handler';
-import { Product } from '../../../../../product/-model/product';
+import { ProductLite } from '../../../../../product/-model/product-lite';
 
 @Component({
   selector: 'app-form-product-select',
@@ -9,11 +9,12 @@ import { Product } from '../../../../../product/-model/product';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormProductSelectComponent {
-  @Input() products: Product[];
 
-  constructor(public formHandler: RecipeFormHandler) {}
+  @Input() products: ProductLite[];
 
-  displayFn(product: Product): string {
+  constructor(public formHandler: RecipeFormHandler) { }
+
+  displayFn(product: ProductLite): string {
     return product?.name || '';
   }
 }

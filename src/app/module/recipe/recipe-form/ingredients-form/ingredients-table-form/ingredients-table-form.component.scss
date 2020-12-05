@@ -1,33 +1,59 @@
+$weight-width: 80px;
+$remove-width: 70px;
+
+.table-container {
+  overflow-x: scroll;
+}
+
 table[appTable] {
   width: 100%;
+}
 
-  tr.total {
-    background-color: #f7f7f7;
+tr.total {
+  background-color: #f7f7f7;
 
-    td {
-      border-top: 2px solid rgba(0, 0, 0, 0.12);
-      color: red;
+  td {
+    border-top: 2px solid rgba(0, 0, 0, 0.12);
+    color: red;
+  }
+}
+
+td, th {
+  &.name {
+    white-space: nowrap;
+  }
+
+  &.weight {
+    min-width: $weight-width;
+    width: $weight-width;
+    max-width: $weight-width;
+
+    mat-form-field {
+      width: 100%;
     }
   }
 
-  .weight {
-    width: 120px;
-  }
+  &.remove {
+    min-width: $remove-width;
+    width: $remove-width;
+    max-width: $remove-width;
 
-  .remove {
-    width: 50px;
-    padding: 0;
+    span {
+      padding: 0;
+      display: flex;
+      justify-content: space-around;
 
-    fa-icon {
-      border: none;
-      font-size: 0.9rem;
-      line-height: 1.2;
-      white-space: nowrap;
-      text-decoration: none;
-      padding: 0.25rem 0.5rem;
-      margin: 0.25rem;
-      background-color: inherit;
-      outline: none;
+      fa-icon {
+        border: none;
+        font-size: 0.9rem;
+        line-height: 1.2;
+        white-space: nowrap;
+        text-decoration: none;
+        padding: 0.25rem 0.5rem;
+        margin: 0.25rem;
+        background-color: inherit;
+        outline: none;
+      }
     }
   }
 }

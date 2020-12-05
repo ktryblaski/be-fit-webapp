@@ -1,53 +1,59 @@
-<table appTable>
-  <tr>
-    <th>Name</th>
-    <th>
-      <span class="macronutrients-label proteins">Proteins [g]</span>
-    </th>
-    <th>
-      <span class="macronutrients-label fats">Fats [g]</span>
-    </th>
-    <th>
-      <span class="macronutrients-label carbohydrates">Carbohydrates [g]</span>
-    </th>
-    <th>
-      <span class="macronutrients-label kcal">KCAL</span>
-    </th>
-    <th class="weight">Weight [g]</th>
-    <th class="remove">
-      <fa-icon [fixedWidth]="true" icon="trash"></fa-icon>
-    </th>
-  </tr>
+<div class="table-container">
+  <table appTable>
+    <tr>
+      <th class="name">Name</th>
+      <th>
+        <span class="label proteins">Proteins</span>
+      </th>
+      <th>
+        <span class="label fats">Fats</span>
+      </th>
+      <th>
+        <span class="label carbohydrates">Carbohydrates</span>
+      </th>
+      <th>
+        <span class="label kcal">KCAL</span>
+      </th>
+      <th class="weight">Weight</th>
+      <th class="remove">
+        <span>
+          <fa-icon [fixedWidth]="true" icon="trash"></fa-icon>
+        </span>
+      </th>
+    </tr>
 
-  <ng-container *ngFor="let control of formHandler.form.controls.ingredients.controls; let i = index">
-    <ng-container *ngIf="formHandler.ingredients[i] as ingredient">
-      <tr>
-        <td class="name">{{ ingredient.product.name }}</td>
-        <td>{{ ingredient.product.macronutrients | macronutrientsProteinsCalculator: control.value || 0 }}</td>
-        <td>{{ ingredient.product.macronutrients | macronutrientsFatsCalculator: control.value || 0 }}</td>
-        <td>{{ ingredient.product.macronutrients | macronutrientsCarbohydratesCalculator: control.value || 0 }}</td>
-        <td>{{ ingredient.product.macronutrients | macronutrientsCaloriesCalculator: control.value || 0 }}</td>
-        <td class="weight">
-          <mat-form-field>
-            <input [formControl]="control" type="number" min="0" matInput />
-          </mat-form-field>
-        </td>
-        <td class="remove">
-          <button (click)="handleRemoveIngredient(i)" rawButton type="button">
-            <fa-icon [fixedWidth]="true" icon="trash"></fa-icon>
-          </button>
-        </td>
-      </tr>
+    <ng-container *ngFor="let control of formHandler.form.controls.weights.controls; let i = index">
+      <ng-container *ngIf="formHandler.ingredients[i] as ingredient">
+        <tr>
+          <td class="name">{{ ingredient.product.name }}</td>
+          <td>{{ ingredient.product | macronutrientsProteinsCalculator: control.value || 0 }}</td>
+          <td>{{ ingredient.product | macronutrientsFatsCalculator: control.value || 0 }}</td>
+          <td>{{ ingredient.product | macronutrientsCarbohydratesCalculator: control.value || 0 }}</td>
+          <td>{{ ingredient.product | macronutrientsCaloriesCalculator: control.value || 0 }}</td>
+          <td class="weight">
+            <mat-form-field>
+              <input [formControl]="control" type="number" min="0" matInput />
+            </mat-form-field>
+          </td>
+          <td class="remove">
+            <span>
+              <button (click)="handleRemoveIngredient(i)" rawButton type="button">
+                <fa-icon [fixedWidth]="true" icon="trash"></fa-icon>
+              </button>
+            </span>
+          </td>
+        </tr>
+      </ng-container>
     </ng-container>
-  </ng-container>
 
-  <tr *ngIf="stats$ | async as stats" class="total">
-    <td class="name">Total</td>
-    <td>{{ stats.proteins }}</td>
-    <td>{{ stats.fats }}</td>
-    <td>{{ stats.carbohydrates }}</td>
-    <td>{{ stats.calories }}</td>
-    <td>{{ stats.weight }}</td>
-    <td></td>
-  </tr>
-</table>
+    <tr *ngIf="stats$ | async as stats" class="total">
+      <td class="name">Total</td>
+      <td>{{ stats.proteins }}</td>
+      <td>{{ stats.fats }}</td>
+      <td>{{ stats.carbohydrates }}</td>
+      <td>{{ stats.calories }}</td>
+      <td>{{ stats.weight }}</td>
+      <td></td>
+    </tr>
+  </table>
+</div>

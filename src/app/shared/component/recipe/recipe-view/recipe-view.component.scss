@@ -1,17 +1,9 @@
 @import 'src/app/shared/_colors';
 
-.ingredients-container {
-  width: 50%;
-}
-
 app-field div {
   font-size: 18px;
 }
 
-.active {
-  color: green;
-}
-
-.inactive {
-  color: red;
+.status {
+  width: 100px;
 }

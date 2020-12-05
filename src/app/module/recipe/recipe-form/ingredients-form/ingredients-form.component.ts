@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { RecipeFormHandler } from '../recipe-form-handler';
 import { Product } from '../../../product/-model/product';
+import { ProductLite } from '../../../product/-model/product-lite';
 
 @Component({
   selector: 'app-ingredients-form',
@@ -10,11 +11,11 @@ import { Product } from '../../../product/-model/product';
 })
 export class IngredientsFormComponent {
 
-  @Input() products: Product[];
+  @Input() products: ProductLite[];
 
   constructor(public formHandler: RecipeFormHandler) { }
 
-  handleAddProduct(product: Product): void {
+  handleAddProduct(product: ProductLite): void {
     this.formHandler.clearProduct();
     this.formHandler.addNewIngredient(product);
   }

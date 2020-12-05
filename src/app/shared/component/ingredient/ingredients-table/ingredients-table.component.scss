@@ -1,3 +1,7 @@
+.table-container {
+  overflow-x: scroll;
+}
+
 table[appTable] {
   width: 100%;
 
@@ -7,6 +11,12 @@ table[appTable] {
     td {
       border-top: 2px solid rgba(0, 0, 0, 0.12);
       color: red;
+    }
+  }
+
+  td, th {
+    &.name {
+      white-space: nowrap;
     }
   }
 }

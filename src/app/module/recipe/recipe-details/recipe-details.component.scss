@@ -9,10 +9,5 @@
     color: $primary-color;
     font-weight: 500;
     margin-left: 10px;
-
-    &.inactive {
-      text-decoration: line-through;
-      text-decoration-color: $primary-color;
-    }
   }
 }

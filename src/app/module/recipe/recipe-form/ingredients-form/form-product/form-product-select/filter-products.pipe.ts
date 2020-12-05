@@ -1,11 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Product } from '../../../../../product/-model/product';
+import { ProductLite } from '../../../../../product/-model/product-lite';
 
 @Pipe({
   name: 'filterProducts',
 })
 export class FilterProductsPipe implements PipeTransform {
-  transform(products: Product[], chosen: string | Product): Product[] {
+  transform(products: ProductLite[], chosen: string | ProductLite): ProductLite[] {
     if (typeof chosen !== 'string' || chosen.trim() === '') {
       return [...products];
     }
