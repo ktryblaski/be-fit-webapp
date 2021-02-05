@@ -5,6 +5,7 @@ import { Attribute, Directive } from '@angular/core';
 })
 export class TableDirective {
 
-  constructor(@Attribute('selectable') selectable: any) { }
+  constructor(@Attribute('selectable') selectable: any,
+              @Attribute('small') small: any) { }
 
 }

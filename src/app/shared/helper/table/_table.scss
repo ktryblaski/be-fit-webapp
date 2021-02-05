@@ -28,7 +28,7 @@ table[appTable] {
 
     th {
       color: $label-color;
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 500;
       user-select: none;
       white-space: nowrap;
@@ -36,7 +36,7 @@ table[appTable] {
 
     td {
       color: black;
-      font-size: 14px;
+      font-size: 15px;
 
       &.distinction {
         font-weight: 500;
@@ -44,4 +44,23 @@ table[appTable] {
     }
   }
 
+  &[small] {
+    border-radius: 2px;
+
+    tr {
+      height: 32px;
+    }
+
+    th, td {
+      padding: 4px 0 0 18px;
+    }
+
+    th {
+      font-size: 12px;
+    }
+
+    td {
+      font-size: 14px;
+    }
+  }
 }
