@@ -60,7 +60,7 @@ export class IngredientsTableFormComponent implements OnInit, OnDestroy {
           },
           favourite: product.favourite
         }
-      }
+      };
     });
 
     this.stats.next({
