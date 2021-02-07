@@ -13,8 +13,7 @@ COPY package.json package-lock.json ./
 RUN npm i --unsafe-perm
 
 COPY . .
-#RUN npm run lint && npm run test && npm run build:prod
-RUN npm run lint && npm run build:prod
+RUN npm run lint && npm run test:headless && npm run build:prod
 
 # RUN
 FROM nginx:$NGINX_VERSION
