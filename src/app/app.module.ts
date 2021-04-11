@@ -14,6 +14,7 @@ import { HttpsParamsEncoderInterceptor } from './shared/service/interceptor/http
 import {NotificationModule} from './shared/component/notification/notification.module';
 import {PublicModule} from './public/public.module';
 import {AuthService} from './shared/service/auth.service';
+import {UnauthorizedInterceptor} from "./shared/service/interceptor/unauthorized.interceptor";
 
 export function appInitializer(authService: AuthService) {
   return () => {
@@ -41,6 +42,11 @@ export function appInitializer(authService: AuthService) {
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpsParamsEncoderInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UnauthorizedInterceptor,
       multi: true
     },
     {
