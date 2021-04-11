@@ -31,7 +31,6 @@ export class UnauthorizedInterceptor implements HttpInterceptor {
   }
 
   isDisabledURL(requestURL: string): boolean {
-    console.log(requestURL);
     return this.DISABLED_URLS.some(url => requestURL.indexOf(url) !== -1);
   }
 
