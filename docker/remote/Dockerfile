@@ -27,6 +27,14 @@ RUN apt-get update \
 	  && apt-get purge --auto-remove -y curl gnupg \
 	  && rm -rf /var/lib/apt/lists/*
 
+
+# prepare nginx
+FROM nginx:1.19.6-alpine AS pre_run
+
+RUN rm -rf /usr/share/nginx/html/*
+COPY docker/remote/default.conf /etc/nginx/conf.d/
+
+
 # lint, test, build
 FROM pre_build AS build
 
@@ -40,11 +48,9 @@ RUN npm run lint \
     && npm run test:headless \
     && npm run build:prod
 
-# run
-FROM nginx:1.19.6-alpine
 
-RUN rm -rf /usr/share/nginx/html/*
-COPY docker/remote/default.conf /etc/nginx/conf.d/
+# run
+FROM pre_run
 
 #RUN adduser -D befit befit
 #USER befit
