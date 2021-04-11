@@ -1,0 +1,16 @@
+<div class="pending-indicator-overlay-boundaries">
+
+  <mat-sidenav-container>
+    <mat-sidenav mode="side" opened>
+      <app-menu></app-menu>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <app-main-area></app-main-area>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+
+  <div class="pending-indicator-overlay-container" *ngIf="logouting$ | async">
+    <app-spinner></app-spinner>
+  </div>
+</div>

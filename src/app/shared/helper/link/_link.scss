@@ -1,8 +1,8 @@
-@import 'src/app/shared/_colors';
+@import '../../_colors';
 
 a[appLink] {
   color: $primary-color;
-  padding: 0 15px;
+  text-decoration: none;
 
   &:hover {
     cursor: pointer;

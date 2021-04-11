@@ -1,0 +1,9 @@
+.main-area-container {
+  overflow: auto;
+  height: calc(100% - 60px);
+  padding: 30px 30px 30px 20px;
+
+  .main-card {
+    padding: 40px 40px;
+  }
+}

@@ -1,0 +1,22 @@
+<div class="register-container">
+  <div class="pending-indicator-overlay-boundaries">
+
+    <div class="card">
+      <a appLink [routerLink]="['/']">
+        <div class="title">be fit</div>
+      </a>
+      <div class="register">Register</div>
+      <app-register-form (register)="handleRegister($event)"></app-register-form>
+
+      <div class="login-container">
+        <a appLink class="login" [routerLink]="['/', 'login']">Login</a>
+      </div>
+
+    </div>
+
+    <div class="pending-indicator-overlay-container" *ngIf="registering$ | async">
+      <app-spinner></app-spinner>
+    </div>
+
+  </div>
+</div>

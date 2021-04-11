@@ -34,3 +34,13 @@ mat-dialog-container [actions] {
     margin-left: 10px;
   }
 }
+
+[actions] {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+
+  button + button {
+    margin-left: 10px;
+  }
+}

@@ -1,0 +1,49 @@
+<div class="menu-container">
+  <div class="menu-content-container">
+    <div class="title">be fit</div>
+
+    <mat-nav-list>
+
+      <div class="top">
+        <mat-list-item [routerLink]="['day-of-eating']" [routerLinkActive]="'active'">
+          <a matLine>
+            <fa-icon [fixedWidth]="true" icon="calendar-day"></fa-icon>
+            <span>Days of Eating</span>
+          </a>
+        </mat-list-item>
+
+        <mat-list-item [routerLink]="['recipe']" [routerLinkActive]="'active'">
+          <a matLine>
+            <fa-icon [fixedWidth]="true" icon="utensils"></fa-icon>
+            <span>Recipes</span>
+          </a>
+        </mat-list-item>
+
+        <mat-list-item [routerLink]="['product']" [routerLinkActive]="'active'">
+          <a matLine>
+            <fa-icon [fixedWidth]="true" icon="carrot"></fa-icon>
+            <span>Products</span>
+          </a>
+        </mat-list-item>
+      </div>
+
+      <div class="bottom">
+        <mat-list-item [routerLink]="['account']" [routerLinkActive]="'active'">
+          <a matLine>
+            <fa-icon [fixedWidth]="true" icon="user"></fa-icon>
+            <span>Account</span>
+          </a>
+        </mat-list-item>
+        <mat-list-item (click)="handleLogout()">
+          <a matLine>
+            <fa-icon [fixedWidth]="true" icon="sign-out-alt"></fa-icon>
+            <span>Logout</span>
+          </a>
+        </mat-list-item>
+      </div>
+
+
+    </mat-nav-list>
+  </div>
+
+</div>

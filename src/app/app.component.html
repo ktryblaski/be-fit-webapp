@@ -1,8 +1,7 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav class="sidenav" mode="side" opened>
-    <app-menu></app-menu>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <app-main-area></app-main-area>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<div class="app-container">
+  <router-outlet></router-outlet>
+
+  <div class="notifications">
+    <app-notification></app-notification>
+  </div>
+</div>

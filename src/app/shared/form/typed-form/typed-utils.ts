@@ -8,8 +8,6 @@ export type InferredTypedControl<T> = T extends boolean
   ? TypedFormControl<string>
   : T extends number
   ? TypedFormControl<number>
-  : T extends bigint
-  ? TypedFormControl<bigint>
   : T extends (infer U)[]
   ? TypedFormArray<U>
   : T extends object
@@ -27,4 +25,11 @@ export type Properties<T> = { [Key in keyof T]: T[Key] };
 
 export function values$<T>(control: TypedAbstractControl<T>): Observable<T> {
   return defer<Observable<T>>(() => control.valueChanges.pipe(startWith<T, T>(control.value)));
+}
+
+export type ControlStatus = 'VALID' | 'INVALID' | 'DISABLED' | 'PENDING' | null;
+export function statusChanges$<T>(control: TypedAbstractControl): Observable<ControlStatus> {
+  return defer<Observable<ControlStatus>>(() => control.statusChanges.pipe(
+    startWith<ControlStatus, ControlStatus>(control.status as ControlStatus))
+  );
 }

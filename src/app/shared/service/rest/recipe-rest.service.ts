@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Recipe, RecipeCU } from '../../../module/recipe/-model/recipe';
-import { RecipeLite } from '../../../module/recipe/-model/recipe-lite';
-import { RecipesSearchParams } from '../../../module/recipe/recipe-list/-model/recipes.search-params';
+import { Recipe, RecipeCU } from '../../../secured/module/recipe/-model/recipe';
+import { RecipeLite } from '../../../secured/module/recipe/-model/recipe-lite';
+import { RecipesSearchParams } from '../../../secured/module/recipe/recipe-list/-model/recipes.search-params';
 import { SortOrder } from '../../component/sort/-model/sort-order';
 import { PagedDTO } from '../../dto/table/paged.dto';
 

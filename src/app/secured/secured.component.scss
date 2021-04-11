@@ -1,0 +1,24 @@
+@import '../shared/colors';
+
+mat-sidenav-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: $main-background-color;
+
+  mat-sidenav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 280px;
+    border: none;
+    background-color: $main-background-color;
+  }
+}
+
+.pending-indicator-overlay-boundaries {
+  width: 100%;
+  height: 100%;
+}
