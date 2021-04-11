@@ -8,7 +8,7 @@ import {AuthService} from '../auth.service';
 @Injectable()
 export class UnauthorizedInterceptor implements HttpInterceptor {
 
-  readonly DISABLED_URLS = ['/api/auth/check-authentication'];
+  readonly DISABLED_URLS = ['/api/auth/check-authentication', '/api/auth/login'];
 
   constructor(private authService: AuthService,
               private router: Router) { }
@@ -20,11 +20,9 @@ export class UnauthorizedInterceptor implements HttpInterceptor {
   }
 
   private redirectToLoginIfUnauthorized(event: HttpEvent<any>): Observable<HttpEvent<any>> {
-    if (event instanceof HttpErrorResponse && event.status === 401) {
-      if (!this.isDisabledURL(event.url)) {
-        this.authService.invalidAuthentication();
-        this.router.navigate(['/', 'login']);
-      }
+    if (event instanceof HttpErrorResponse && event.status === 401 && !this.isDisabledURL(event.url)) {
+      this.authService.invalidAuthentication();
+      this.router.navigate(['/', 'login']);
 
       return EMPTY;
     }
@@ -33,7 +31,8 @@ export class UnauthorizedInterceptor implements HttpInterceptor {
   }
 
   isDisabledURL(requestURL: string): boolean {
-    return this.DISABLED_URLS.some(url => url.indexOf(requestURL) !== -1);
+    console.log(requestURL);
+    return this.DISABLED_URLS.some(url => requestURL.indexOf(url) !== -1);
   }
 
 }
