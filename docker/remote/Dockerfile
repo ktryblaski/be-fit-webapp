@@ -33,7 +33,7 @@ FROM pre_build AS build
 RUN npm i --unsafe-perm -g @angular/cli
 
 COPY package.json package-lock.json ./
-RUN npm i --unsafe-perm
+RUN npm i --unsafe-perm  && ./node_modules/.bin/ngcc --properties es2015
 
 COPY . .
 RUN npm run lint \
