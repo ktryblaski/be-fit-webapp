@@ -1,26 +1,26 @@
-import { BrowserModule } from '@angular/platform-browser';
-import {APP_INITIALIZER, NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {ApplicationRef, DoBootstrap, Inject, NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
-import { ErrorModalModule } from './shared/component/error-modal/error-modal.module';
-import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { far } from '@fortawesome/free-regular-svg-icons';
-import { HttpsParamsEncoderInterceptor } from './shared/service/interceptor/https-params-encoder.interceptor';
+import {AppComponent} from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {ReactiveFormsModule} from '@angular/forms';
+import {ErrorModalModule} from './shared/component/error-modal/error-modal.module';
+import {FaIconLibrary, FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {fas} from '@fortawesome/free-solid-svg-icons';
+import {far} from '@fortawesome/free-regular-svg-icons';
 import {NotificationModule} from './shared/component/notification/notification.module';
-import {PublicModule} from './public/public.module';
-import {AuthService} from './shared/service/auth.service';
+import {OAuthService} from 'angular-oauth2-oidc';
+import {DOCUMENT} from '@angular/common';
 import {UnauthorizedInterceptor} from './shared/service/interceptor/unauthorized.interceptor';
+import {HttpsParamsEncoderInterceptor} from './shared/service/interceptor/https-params-encoder.interceptor';
+import {AppOAuthModule, authConfig} from './app-oauth.module';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MainAreaComponent} from './main-area/main-area.component';
+import {MenuComponent} from './menu/menu.component';
+import {MatListModule} from '@angular/material/list';
 
-export function appInitializer(authService: AuthService) {
-  return () => {
-    return authService.checkAuthentication().toPromise();
-  };
-}
 
 @NgModule({
   imports: [
@@ -29,14 +29,19 @@ export function appInitializer(authService: AuthService) {
     HttpClientModule,
     ReactiveFormsModule,
 
-    PublicModule,
+    AppRoutingModule,
+    AppOAuthModule,
 
     ErrorModalModule,
     NotificationModule,
-    AppRoutingModule
+    MatSidenavModule,
+    MatListModule,
+    FontAwesomeModule
   ],
   declarations: [
-    AppComponent
+    AppComponent,
+    MainAreaComponent,
+    MenuComponent
   ],
   providers: [
     {
@@ -49,21 +54,38 @@ export function appInitializer(authService: AuthService) {
       useClass: UnauthorizedInterceptor,
       multi: true
     },
-    {
-      provide: APP_INITIALIZER,
-      useFactory: appInitializer,
-      deps: [AuthService],
-      multi: true
-    }
   ],
-  bootstrap: [
+  entryComponents: [
     AppComponent
   ]
 })
-export class AppModule {
+export class AppModule implements DoBootstrap {
 
-  constructor(library: FaIconLibrary) {
+  constructor(@Inject(DOCUMENT) private document: Document,
+              private library: FaIconLibrary,
+              private oAuthService: OAuthService) {
+
     library.addIconPacks(fas, far);
+  }
+
+  ngDoBootstrap(applicationRef: ApplicationRef): void {
+    this.oAuthService.configure(authConfig);
+
+    this.oAuthService.loadDiscoveryDocumentAndLogin({
+      state: window.location.href
+    }).then(logged => {
+      if (!logged) {
+        return;
+      }
+
+      if (this.oAuthService.state) {
+        const url = decodeURIComponent(this.oAuthService.state);
+        this.document.defaultView.location.replace(url);
+      } else {
+        applicationRef.bootstrap(AppComponent);
+        console.log(this.oAuthService.getGrantedScopes());
+      }
+    }).catch(error => console.error(error));
   }
 
 }

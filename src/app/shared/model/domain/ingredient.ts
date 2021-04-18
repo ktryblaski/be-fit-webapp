@@ -1,4 +1,4 @@
-import { Product } from '../../../secured/module/product/-model/product';
+import { Product } from '../../../module/product/-model/product';
 
 export interface Ingredient {
   id?: number;

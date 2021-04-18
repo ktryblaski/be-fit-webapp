@@ -1,7 +1,14 @@
-<div class="app-container">
-  <router-outlet></router-outlet>
+<mat-sidenav-container>
+  <mat-sidenav mode="side" opened>
+    <app-menu></app-menu>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-main-area>
+      <router-outlet></router-outlet>
+    </app-main-area>
 
-  <div class="notifications">
-    <app-notification></app-notification>
-  </div>
-</div>
+    <div class="notifications">
+      <app-notification></app-notification>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

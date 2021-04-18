@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ProductParams } from '../../../secured/module/product/products-list/-model/product.params';
+import { ProductParams } from '../../../module/product/products-list/-model/product.params';
 import { SortOrder } from '../../component/sort/-model/sort-order';
 import { PagedDTO } from '../../dto/table/paged.dto';
-import { ProductLite } from '../../../secured/module/product/-model/product-lite';
-import { Product } from '../../../secured/module/product/-model/product';
+import { ProductLite } from '../../../module/product/-model/product-lite';
+import { Product } from '../../../module/product/-model/product';
+import {environment} from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductRestService {
 
-  private readonly API_URL = '/api/products';
+  private readonly API_URL = `${environment.API_URL}/products`;
 
   constructor(private http: HttpClient) { }
 

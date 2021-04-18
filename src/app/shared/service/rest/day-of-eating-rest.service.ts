@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Recipe, RecipeCU } from '../../../secured/module/recipe/-model/recipe';
+import { Recipe, RecipeCU } from '../../../module/recipe/-model/recipe';
 import { DayOfEating, DayOfEatingLite } from '../../model/domain/day-of-eating';
+import {environment} from '../../../../environments/environment';
 
 class DayOfEatingBegin {}
 
@@ -10,9 +11,10 @@ class DayOfEatingBegin {}
   providedIn: 'root',
 })
 export class DayOfEatingRestService {
-  private readonly API_URL = '/api/days-of-eating';
 
-  constructor(private http: HttpClient) {}
+  private readonly API_URL = `${environment.API_URL}/days-of-eating`;
+
+  constructor(private http: HttpClient) { }
 
   get(id: number): Observable<DayOfEating> {
     return this.http.get<DayOfEating>(`${this.API_URL}/${id}`);
@@ -37,4 +39,5 @@ export class DayOfEatingRestService {
   create(begin: DayOfEatingBegin): Observable<number> {
     return this.http.post<number>(`${this.API_URL}`, begin);
   }
+
 }

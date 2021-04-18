@@ -1,19 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Recipe, RecipeCU } from '../../../secured/module/recipe/-model/recipe';
-import { RecipeLite } from '../../../secured/module/recipe/-model/recipe-lite';
-import { RecipesSearchParams } from '../../../secured/module/recipe/recipe-list/-model/recipes.search-params';
+import { Recipe, RecipeCU } from '../../../module/recipe/-model/recipe';
+import { RecipeLite } from '../../../module/recipe/-model/recipe-lite';
+import { RecipesSearchParams } from '../../../module/recipe/recipe-list/-model/recipes.search-params';
 import { SortOrder } from '../../component/sort/-model/sort-order';
 import { PagedDTO } from '../../dto/table/paged.dto';
+import {environment} from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RecipeRestService {
-  private readonly API_URL = '/api/recipes';
 
-  constructor(private http: HttpClient) {}
+  private readonly API_URL = `${environment.API_URL}/recipes`;
+
+  constructor(private http: HttpClient) { }
 
   getOne(recipeId: number): Observable<Recipe> {
     return this.http.get<Recipe>(`${this.API_URL}/${recipeId}`);
@@ -33,10 +35,6 @@ export class RecipeRestService {
     }
 
     return this.http.get<PagedDTO<RecipeLite>>(`${this.API_URL}`, { params: queryParams });
-  }
-
-  findAllLegacy(): Observable<Recipe[]> {
-    return this.http.get<Recipe[]>(`${this.API_URL}`);
   }
 
   findAllActiveLegacy(): Observable<Recipe[]> {
@@ -62,4 +60,5 @@ export class RecipeRestService {
   deactivate(recipeId: number): Observable<Recipe> {
     return this.http.post<Recipe>(`${this.API_URL}/${recipeId}/deactivate`, {});
   }
+
 }
