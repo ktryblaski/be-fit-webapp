@@ -83,7 +83,6 @@ export class AppModule implements DoBootstrap {
         this.document.defaultView.location.replace(url);
       } else {
         applicationRef.bootstrap(AppComponent);
-        console.log(this.oAuthService.getGrantedScopes());
       }
     }).catch(error => console.error(error));
   }

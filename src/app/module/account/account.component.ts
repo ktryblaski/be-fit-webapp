@@ -1,5 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import {OAuthService} from 'angular-oauth2-oidc';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-account',
@@ -7,17 +6,4 @@ import {OAuthService} from 'angular-oauth2-oidc';
   styleUrls: ['./account.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AccountComponent implements OnInit {
-
-  constructor(private a: OAuthService) { }
-
-  ngOnInit(): void {
-
-    console.log(this.a.getIdToken());
-    console.log(this.a.scope);
-    // this.a.loadUserProfile().then(a => {
-    //   console.log(a);
-    // });
-  }
-
-}
+export class AccountComponent { }
